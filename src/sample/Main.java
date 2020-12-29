@@ -14,6 +14,7 @@ import java.nio.file.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 public class Main extends Application {
 
@@ -69,8 +70,84 @@ public class Main extends Application {
 
        /* System.out.println();
         System.out.println(hashMap);
+        System.out.println();*/
+
+        File collectionsDB = new File("D:\\Program Files\\osu!\\collection.db");
+
+        String data = "";
+        data = new String(Files.readAllBytes(Paths.get("D:\\Program Files\\osu!\\collection.db")));
+        //System.out.println(data);
+
+        //System.out.println(data);
+
+        //String clean = data.replaceAll("\\P{Print}", " ");
+        //String [] cleanSplit = clean.split(" ");
+        String [] clean = data.split("\\P{Print}");
+
+        ArrayList<String> cleanArray = new ArrayList<>();
+
+        for (String a: clean){
+            System.out.print(a + ",");
+            if (!a.equals("")){
+                cleanArray.add(a);
+            }
+        }
+
+        System.out.println("\n\n\n");
+
+        System.out.println(cleanArray);
+
+        cleanArray.remove(0);
+
+        /*for (int i=0; i<cleanArray.size(); i++){
+            if ( String.valueOf(cleanArray.get(i).charAt(0)).equals(" ") )
+            cleanArray.set(i, cleanArray.get(i).substring(1) );
+        }*/
+
+        System.out.println("\n\n\n");
+
+        System.out.println(cleanArray);
+
+
+        ArrayList<ArrayList<String>> CollectionList = new ArrayList<>();
+
+        /*for (int i=0; i<cleanArray.size(); i++){
+            if (cleanArray.get(i).length() < 32){
+                int finalI = i;
+                CollectionList.add(new ArrayList<String>(){{add(cleanArray.get(finalI));}});
+            }
+        }*/
+
+
+        /*System.out.println();
+        String realclean = data.replaceAll("\\P{Print}", " ");
+        System.out.println(realclean);*/
+
+       /* ArrayList<String> cleanerArray = new ArrayList<>();
+        for (String a: cleanSplit){
+            if (!a.equals(" ")){
+                cleanerArray.add(a);
+            }
+
+        }*/
+
+
+        /*for(String e: cleanSplit){
+            System.out.print(e + "");
+        }
         System.out.println();
-*/
+        System.out.println();
+
+        System.out.println(cleanerArray);*/
+
+       /* data.split("\u0001");
+        data.split("\u000B");
+
+
+        System.out.println(" \u0001 \u0003 \u000B \u0006 \u0001 \u000B \u000B \u000B \u000B \u000B \u000B \u000B \u000B \u000B \u000B \u0007 \u000B \u000B \u000B " +
+                "\u000B \u000B \u000B \u000B  ");*/
+
+
 
 
 
