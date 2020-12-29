@@ -4,9 +4,12 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import jdk.nashorn.internal.parser.JSONParser;
 
+import javax.swing.*;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FilenameFilter;
@@ -20,10 +23,17 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("sample.fxml"));
+
+        Parent root = fxmlLoader.load();
+        Controller controller = fxmlLoader.getController();
+
+
         primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        primaryStage.setScene(new Scene(root, 600, 600));
         primaryStage.show();
+
 
         //Path to songs folder
         String path = "D:\\Program Files\\osu!\\Songs\\";
@@ -54,19 +64,14 @@ public class Main extends Application {
 
         for (File [] diffList: diffListList){
             for (File difficulty: diffList){
-                String md5Hash = MD5Calculator.GetMD5Hash(difficulty);
-                hashMap.put(md5Hash, difficulty);
-                System.out.println(md5Hash);
+                String key = MD5Calculator.GetMD5Hash(difficulty);
+                hashMap.put(key, difficulty);
+                System.out.println(hashMap.size() + " " + key);
             }
         }
-        System.out.println(hashMap.size());
 
-        String chosen = "ff1c1e17bd0b0c90ceb76747f66891be";
-        File chosenMap = hashMap.get(chosen);
-        System.out.println();
-        System.out.println(chosenMap.getName());
-        
 
+        System.out.println("\n" + hashMap.size() + " Beatmaps Available");
 
        /* System.out.println();
         System.out.println(hashMap);
@@ -87,7 +92,7 @@ public class Main extends Application {
         ArrayList<String> cleanArray = new ArrayList<>();
 
         for (String a: clean){
-            System.out.print(a + ",");
+            //System.out.print(a + ",");
             if (!a.equals("")){
                 cleanArray.add(a);
             }
@@ -95,7 +100,7 @@ public class Main extends Application {
 
         System.out.println("\n\n\n");
 
-        System.out.println(cleanArray);
+        //System.out.println(cleanArray);
 
         cleanArray.remove(0);
 
@@ -104,19 +109,61 @@ public class Main extends Application {
             cleanArray.set(i, cleanArray.get(i).substring(1) );
         }*/
 
-        System.out.println("\n\n\n");
+        //System.out.println("\n\n\n");
 
-        System.out.println(cleanArray);
+        //System.out.println(cleanArray);
 
 
         ArrayList<ArrayList<String>> CollectionList = new ArrayList<>();
 
-        /*for (int i=0; i<cleanArray.size(); i++){
-            if (cleanArray.get(i).length() < 32){
+
+        for (int i=0; i<cleanArray.size(); i++) {
+
+            if (cleanArray.get(i).length() < 32) {
                 int finalI = i;
-                CollectionList.add(new ArrayList<String>(){{add(cleanArray.get(finalI));}});
+                CollectionList.add(new ArrayList<String>() {{
+                    add(cleanArray.get(finalI));
+                }});
+            }else{
+                CollectionList.get(CollectionList.size()-1).add(cleanArray.get(i).replace(" ", ""));
             }
-        }*/
+        }
+
+
+
+
+        System.out.println(CollectionList);
+
+        System.out.println("\n\n\n");
+        int row = 0;
+        int col = 0;
+        for (ArrayList<String> collection: CollectionList){
+            if (collection.size() > 1){
+                System.out.println(collection.get(0));
+                controller.addToGrid(new Pane(){{getChildren().add(new Label(collection.get(0)));}}, col, row);
+                row++;
+                for (int i=1; i<collection.size(); i++){
+                    int finalI = i;
+
+                    controller.addToGrid(new Pane() {{
+                        String name = hashMap.get(collection.get(finalI)).getName();
+                        getChildren().add(new Label(name.substring(name.indexOf("["), name.indexOf("]")+1)));
+                    }}, col, row);
+
+                    row++;
+                }
+            }else {
+                if (collection.size() == 1) {
+                    System.out.println(collection.get(0));
+                    controller.addToGrid(new Pane() {{
+                        getChildren().add(new Label(collection.get(0)));
+                    }}, col, row);
+                }
+            }
+            System.out.println();
+            row=0;
+            col++;
+        }
 
 
         /*System.out.println();
