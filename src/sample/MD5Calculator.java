@@ -41,9 +41,8 @@ public class MD5Calculator {
         return sb.toString();
     }
 
-    public static void GetMD5Hash(File file) throws NoSuchAlgorithmException, IOException {
+    public static String GetMD5Hash(File file) throws NoSuchAlgorithmException, IOException {
         //Create checksum for this file
-        file = new File("D:\\Program Files\\osu!\\Songs\\532522 SakiZ - osu!memories\\SakiZ - osu!memories (DeRandom Otaku) [Happy Memories].osu");
 
         //Use MD5 algorithm
         MessageDigest md5Digest = MessageDigest.getInstance("MD5");
@@ -52,7 +51,7 @@ public class MD5Calculator {
         String checksum = getFileChecksum(md5Digest, file);
 
         //see checksum
-        System.out.println(checksum);
+        return checksum;
     }
 
 
