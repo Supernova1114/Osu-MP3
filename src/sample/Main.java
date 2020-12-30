@@ -6,18 +6,17 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
-import jdk.nashorn.internal.parser.JSONParser;
 
-import javax.swing.*;
 import java.io.File;
-import java.io.FileReader;
 import java.io.FilenameFilter;
 import java.nio.file.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Scanner;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class Main extends Application {
 
@@ -41,13 +40,7 @@ public class Main extends Application {
         File songFolder = new File(path);
 
 
-        //Filter to return only .osu files
-        FilenameFilter filenameFilter = new FilenameFilter() {
-            @Override
-            public boolean accept(File dir, String name) {
-                return name.endsWith(".osu");
-            }
-        };
+        FilenameFilter filenameFilter = getFilenameFilter(".osu");
 
 
 
@@ -137,6 +130,8 @@ public class Main extends Application {
         System.out.println("\n\n\n");
         int row = 0;
         int col = 0;
+
+
         for (ArrayList<String> collection: CollectionList){
             if (collection.size() > 1){
                 System.out.println(collection.get(0));
@@ -145,19 +140,14 @@ public class Main extends Application {
                 for (int i=1; i<collection.size(); i++){
                     int finalI = i;
 
-                    controller.addToGrid(new Pane() {{
-                        String name = hashMap.get(collection.get(finalI)).getName();
-                        getChildren().add(new Label(name.substring(name.indexOf("["), name.indexOf("]")+1)));
-                    }}, col, row);
+                    File temp = hashMap.get(collection.get(i));
+                    controller.addToGrid(new SongPane(temp.getName(), collection.get(i), temp), col, row);
 
                     row++;
                 }
             }else {
                 if (collection.size() == 1) {
-                    System.out.println(collection.get(0));
-                    controller.addToGrid(new Pane() {{
-                        getChildren().add(new Label(collection.get(0)));
-                    }}, col, row);
+                    controller.addToGrid(new Pane(){{getChildren().add(new Label(collection.get(0)));}}, col, row);
                 }
             }
             System.out.println();
@@ -199,6 +189,18 @@ public class Main extends Application {
 
 
 
+    }
+
+    //Create filenameFilter
+    public static FilenameFilter getFilenameFilter(String endsWith){
+        //will only return specified files
+        FilenameFilter filenameFilter = new FilenameFilter() {
+            @Override
+            public boolean accept(File dir, String name) {
+                return name.endsWith(".osu");
+            }
+        };
+        return filenameFilter;
     }
 
 

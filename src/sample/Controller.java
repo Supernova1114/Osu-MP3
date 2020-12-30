@@ -7,6 +7,8 @@ import javafx.scene.control.Label;
 import javafx.scene.effect.Effect;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
@@ -16,7 +18,9 @@ public class Controller {
     @FXML
     GridPane gridPane;
 
-    Pane pane = new Pane();
+    private boolean isPlaying = false;
+
+    public static MediaPlayer player;
 
     public void initialize(){
     }
