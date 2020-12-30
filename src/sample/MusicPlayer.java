@@ -12,6 +12,7 @@ public class MusicPlayer extends Application{
     public static MediaPlayer player;
     static boolean isPlaying = false;
     static SwingWorker worker;
+    static double volume = 0.5;
 
 
     public static void playMedia(Media media) throws InterruptedException {
@@ -19,6 +20,7 @@ public class MusicPlayer extends Application{
         if (!isPlaying) {
             isPlaying = true;
             player = new MediaPlayer(media);
+            player.setVolume(volume);
             player.play();
         }else {
             isPlaying = false;
@@ -26,6 +28,14 @@ public class MusicPlayer extends Application{
             playMedia(media);
         }
 
+    }
+
+
+    public static void setVolume(double percent){
+        volume = percent;
+
+        if (player != null)
+        player.setVolume(percent);
     }
 
 

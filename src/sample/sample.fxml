@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"  xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
-   <children>
-      <ScrollPane prefHeight="400.0" prefWidth="600.0" hbarPolicy="ALWAYS" pannable="true" maxHeight="Infinity" maxWidth="Infinity" minHeight="-Infinity" minWidth="-Infinity" vbarPolicy="ALWAYS" >
-         <content>
-            <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
-               <children>
-                  <GridPane fx:id="gridPane" alignment="TOP_RIGHT" gridLinesVisible="true">
-                  </GridPane>
-               </children>
-            </Pane>
-         </content>
-      </ScrollPane>
-   </children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" pannable="true" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <content>
+         <AnchorPane minHeight="0.0" minWidth="0.0">
+            <children>
+               <GridPane fx:id="gridPane" gridLinesVisible="true">
+               </GridPane>
+            </children></AnchorPane>
+      </content>
+   </ScrollPane>
+   <Slider fx:id="volumeSlider" layoutX="10.0" layoutY="210.0" orientation="VERTICAL" style="-fx-border-color: gray;" AnchorPane.bottomAnchor="50.0" />
+   <Button layoutX="8.0" layoutY="363.0" mnemonicParsing="false" onAction="#GetFiles" text="Get Files" />
+   <cursor>
+      <Cursor fx:constant="DEFAULT" />
+   </cursor>
 </AnchorPane>
