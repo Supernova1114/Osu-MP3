@@ -15,8 +15,8 @@ public class SongPane extends Pane {
     //Data
     public String name;
     public String md5Hash;
-    public File file;
-    public File musicFile;
+    private File file;
+    private File musicFile;
     public File imageFile;
     public Label label;
 
@@ -33,26 +33,33 @@ public class SongPane extends Pane {
 
 
 
-    public SongPane(String name, String md5Hash, File file) throws FileNotFoundException {
+    public SongPane(String name, String md5Hash, File file, File musicFile) throws Exception {
         this.name = name;
         this.md5Hash = md5Hash;
         this.file = file;
+        this.musicFile = musicFile;
         label = new Label(name);
+
+        /*System.out.println(name);
+        System.out.println(file);*/
 
         getChildren().add(label);
 
         //Find music file
-        Scanner scanner = new Scanner(file);//Scans beatmap diff file
-        while (scanner.hasNextLine()){
-            String scan = scanner.nextLine();
+        /*if (name.equals("Camellia feat. Nanahira - Amor De Verao (Tofu1222) [Regou's Another].osu") || name.equals("That Poppy - Altar (-NeBu-) [ChuuritsuTv's Old-Style Insane].osu"))
+        try {
+            System.out.println(file);
+            Scanner scanner = new Scanner(file);//Scans beatmap diff file
+            System.out.println(scanner.hasNext());
+            scanner.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }*/
 
-            if (scan.contains("AudioFilename")){
-                musicFile = new File(file.getParentFile().getPath() + File.separator + scan.substring(15));//15 is length of [AudioFilename: ]
-                break;
-            }
-            //System.out.println(scanner.nextLine());
-        }
 
+
+
+        //System.out.println();
 
 
         /*//Find image file
@@ -63,19 +70,17 @@ public class SongPane extends Pane {
             System.out.println(imageFile.getName());
         }*/
 
+
         //try to play music :)))
         setOnMouseClicked(event -> {
             ((Label) getChildren().get(0)).setTextFill(Color.DARKBLUE);
             try {
-                MusicPlayer.playMedia(new Media(musicFile.toURI().toString()));
+                MusicPlayer.playMedia(new Media(this.musicFile.toURI().toString()));
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         });
 
+
     }
-
-
-
-
 }

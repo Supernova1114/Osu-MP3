@@ -1,159 +1,51 @@
 package sample;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
-import java.io.File;
-import java.io.FilenameFilter;
+import javax.swing.*;
+import java.io.*;
 import java.nio.file.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.atomic.AtomicReference;
 
 public class Main extends Application {
 
+    public static Stage primaryStage;
+    public static Controller controller;
+    public static File osuFolder = null;//new File("D:\\Program Files\\osu!");
+
+
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage stage) throws Exception{
+        primaryStage = stage;
+
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(getClass().getResource("sample.fxml"));
 
         Parent root = fxmlLoader.load();
-        Controller controller = fxmlLoader.getController();
+        controller = fxmlLoader.getController();
 
 
-        primaryStage.setTitle("Hello World");
+        primaryStage.setTitle("Osu! MP3");
         primaryStage.setScene(new Scene(root, 600, 600));
         primaryStage.show();
 
+        //temp
+        //Begin();
 
         //Path to songs folder
-        String path = "D:\\Program Files\\osu!\\Songs\\";
+        //String path = "D:\\Program Files\\osu!\\Songs\\";
 
-        File songFolder = new File(path);
+        //File songFolder = new File(path);
 
-
-        FilenameFilter filenameFilter = getFilenameFilter(".osu");
-
-
-
-        Map <String, File> hashMap = new HashMap<>();
-        ArrayList<File[]> diffListList = new ArrayList<>();
-        File [] beatmapList = songFolder.listFiles();
-
-
-        //Adds lists of .osu files for each beatmap into an ArrayList;
-        for ( File beatmap: beatmapList ){
-            File [] difficultyList = beatmap.listFiles(filenameFilter);
-            diffListList.add(difficultyList);
-        }
-
-        for (File [] diffList: diffListList){
-            for (File difficulty: diffList){
-                String key = MD5Calculator.GetMD5Hash(difficulty);
-                hashMap.put(key, difficulty);
-                System.out.println(hashMap.size() + " " + key);
-            }
-        }
-
-
-        System.out.println("\n" + hashMap.size() + " Beatmaps Available");
-
-       /* System.out.println();
-        System.out.println(hashMap);
-        System.out.println();*/
-
-        File collectionsDB = new File("D:\\Program Files\\osu!\\collection.db");
-
-        String data = "";
-        data = new String(Files.readAllBytes(Paths.get("D:\\Program Files\\osu!\\collection.db")));
-        //System.out.println(data);
-
-        //System.out.println(data);
-
-        //String clean = data.replaceAll("\\P{Print}", " ");
-        //String [] cleanSplit = clean.split(" ");
-        String [] clean = data.split("\\P{Print}");
-
-        ArrayList<String> cleanArray = new ArrayList<>();
-
-        for (String a: clean){
-            //System.out.print(a + ",");
-            if (!a.equals("")){
-                cleanArray.add(a);
-            }
-        }
-
-        System.out.println("\n\n\n");
-
-        //System.out.println(cleanArray);
-
-        cleanArray.remove(0);
-
-        /*for (int i=0; i<cleanArray.size(); i++){
-            if ( String.valueOf(cleanArray.get(i).charAt(0)).equals(" ") )
-            cleanArray.set(i, cleanArray.get(i).substring(1) );
-        }*/
-
-        //System.out.println("\n\n\n");
-
-        //System.out.println(cleanArray);
-
-
-        ArrayList<ArrayList<String>> CollectionList = new ArrayList<>();
-
-
-        for (int i=0; i<cleanArray.size(); i++) {
-
-            if (cleanArray.get(i).length() < 32) {
-                int finalI = i;
-                CollectionList.add(new ArrayList<String>() {{
-                    add(cleanArray.get(finalI));
-                }});
-            }else{
-                CollectionList.get(CollectionList.size()-1).add(cleanArray.get(i).replace(" ", ""));
-            }
-        }
-
-
-
-
-        System.out.println(CollectionList);
-
-        System.out.println("\n\n\n");
-        int row = 0;
-        int col = 0;
-
-
-        for (ArrayList<String> collection: CollectionList){
-            if (collection.size() > 1){
-                System.out.println(collection.get(0));
-                controller.addToGrid(new Pane(){{getChildren().add(new Label(collection.get(0)));}}, col, row);
-                row++;
-                for (int i=1; i<collection.size(); i++){
-                    int finalI = i;
-
-                    File temp = hashMap.get(collection.get(i));
-                    controller.addToGrid(new SongPane(temp.getName(), collection.get(i), temp), col, row);
-
-                    row++;
-                }
-            }else {
-                if (collection.size() == 1) {
-                    controller.addToGrid(new Pane(){{getChildren().add(new Label(collection.get(0)));}}, col, row);
-                }
-            }
-            System.out.println();
-            row=0;
-            col++;
-        }
 
 
         /*System.out.println();
@@ -191,13 +83,203 @@ public class Main extends Application {
 
     }
 
+
+    //Main Processes after choosing files and pressing start
+    public static void Begin() throws Exception {
+
+        if (osuFolder != null) {
+
+            SwingWorker worker = new SwingWorker() {
+                @Override
+                protected Object doInBackground() throws Exception {
+
+                    FilenameFilter SONGSFOLDER = new FilenameFilter() {
+                        @Override
+                        public boolean accept(File dir, String name) {
+                            return name.equals("Songs");
+                        }
+                    };
+                    FilenameFilter COLLECTIONDB = new FilenameFilter() {
+                        @Override
+                        public boolean accept(File dir, String name) {
+                            return name.equals("collection.db");
+                        }
+                    };
+
+                    //GetSongsFolder
+                    File songFolder = osuFolder.listFiles(SONGSFOLDER)[0];
+                    File collectionsDB = osuFolder.listFiles(COLLECTIONDB)[0];
+
+                    FilenameFilter filenameFilter = getFilenameFilter(".osu");
+
+                    Map<String, File> hashMap = new HashMap<>();
+                    ArrayList<File[]> diffListList = new ArrayList<>();
+                    File[] beatmapList = songFolder.listFiles();
+
+
+                    //Adds lists of .osu files for each beatmap into an ArrayList;
+                    for (File beatmap : beatmapList) {
+                        File[] difficultyList = beatmap.listFiles(filenameFilter);
+                        diffListList.add(difficultyList);
+                    }
+
+                    for (File[] diffList : diffListList) {
+                        for (File difficulty : diffList) {
+                            String key = MD5Calculator.GetMD5Hash(difficulty);
+                            hashMap.put(key, difficulty);
+                            //System.out.println(hashMap.size() + " " + key);
+                            Platform.runLater(new Runnable() {
+                                @Override
+                                public void run() {
+                                    controller.label.setText(hashMap.size() + " " + key);
+                                }
+                            });
+
+                        }
+
+                    }
+
+
+                    System.out.println(hashMap.size() + " Beatmaps Available");
+
+
+                    //File collectionsDB = new File("D:\\Program Files\\osu!\\collection.db");
+
+                    //String data = "";
+                    String data = new String(Files.readAllBytes(Paths.get(collectionsDB.getPath())));
+
+                    String[] clean = data.split("\\P{Print}");
+
+                    ArrayList<String> cleanArray = new ArrayList<>();
+
+                    for (String a : clean) {
+                        //System.out.print(a + ",");
+                        if (!a.equals("")) {
+                            cleanArray.add(a);
+                        }
+                    }
+
+                    //System.out.println("\n\n\n");
+
+                    cleanArray.remove(0);
+
+                    ArrayList<ArrayList<String>> CollectionList = new ArrayList<>();
+
+
+                    for (int i = 0; i < cleanArray.size(); i++) {
+
+                        if (cleanArray.get(i).length() < 32) {
+                            int finalI = i;
+                            CollectionList.add(new ArrayList<String>() {{
+                                add(cleanArray.get(finalI));
+                            }});
+                        } else {
+                            CollectionList.get(CollectionList.size() - 1).add(cleanArray.get(i).replace(" ", ""));
+                        }
+                    }
+
+
+                    //System.out.println(CollectionList);
+
+                    //System.out.println("\n\n\n");
+                    int row = 0;
+                    int col = 0;
+
+                    for (ArrayList<String> collection : CollectionList) {//Add Songs and Title Panes
+                        if (collection.size() > 1) {
+                            //System.out.println(collection.get(0));
+
+                            int finalCol = col;
+                            int finalRow = row;
+
+                            //Put title pane
+                            Platform.runLater(new Runnable() {
+                                @Override
+                                public void run() {
+                                    controller.addToGrid(new Pane() {{
+                                        getChildren().add(new Label(collection.get(0)));
+                                    }}, finalCol, finalRow);
+                                }
+                            });
+
+                            row++;
+
+                            for (int i = 1; i < collection.size(); i++) {
+
+                                File musicFile = null;
+
+                                File file = hashMap.get(collection.get(i));
+
+                                BufferedReader reader = new BufferedReader(new FileReader(file));
+
+                                String line;
+                                while ((line = reader.readLine()) != null) {
+
+                                    if (line.contains("AudioFilename")) {
+                                        //System.out.println(line);
+                                        musicFile = new File(file.getParentFile().getPath() + File.separator + line.substring(15));//15 is length of [AudioFilename: ]
+                                        break;
+                                    }
+                                }
+
+                                SongPane songPane = new SongPane(file.getName(), collection.get(i), file, musicFile);
+
+                                int finalCol1 = col;
+                                int finalRow1 = row;
+
+                                //Add SongPane
+                                Platform.runLater(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        try {
+                                            controller.addToGrid(songPane, finalCol1, finalRow1);
+                                        } catch (Exception e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+                                });
+
+                                row++;
+                            }
+
+                        } else {
+                            if (collection.size() == 1) {
+
+                                int finalCol2 = col;
+                                int finalRow2 = row;
+
+                                //Only add title
+                                Platform.runLater(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        controller.addToGrid(new Pane() {{
+                                            getChildren().add(new Label(collection.get(0)));
+                                        }}, finalCol2, finalRow2);
+                                    }
+                                });
+                            }
+                        }
+                        //System.out.println();
+                        row = 0;
+                        col++;
+                    }
+
+                    return null;
+                }
+            };
+            worker.execute();
+
+        }
+
+    }
+
     //Create filenameFilter
     public static FilenameFilter getFilenameFilter(String endsWith){
         //will only return specified files
         FilenameFilter filenameFilter = new FilenameFilter() {
             @Override
             public boolean accept(File dir, String name) {
-                return name.endsWith(".osu");
+                return name.endsWith(endsWith);
             }
         };
         return filenameFilter;

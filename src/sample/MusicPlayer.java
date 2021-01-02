@@ -10,21 +10,30 @@ import javax.swing.*;
 public class MusicPlayer extends Application{
 
     public static MediaPlayer player;
-    static boolean isPlaying = false;
+    public static boolean isActive = false;
+    public static boolean isPaused = false;
     static SwingWorker worker;
     static double volume = 0.5;
 
 
     public static void playMedia(Media media) throws InterruptedException {
 
-        if (!isPlaying) {
-            isPlaying = true;
+        if (!isActive) {
+            isActive = true;
+            isPaused = false;
+
+            Main.controller.pauseButton.setText("| |");
+
             player = new MediaPlayer(media);
             player.setVolume(volume);
             player.play();
         }else {
-            isPlaying = false;
             player.stop();
+            isActive = false;
+            isPaused = true;
+
+            Main.controller.pauseButton.setText(">");
+
             playMedia(media);
         }
 
@@ -36,6 +45,24 @@ public class MusicPlayer extends Application{
 
         if (player != null)
         player.setVolume(percent);
+    }
+
+    //Pause Music
+    public static void pause(){
+        if (player != null && isActive){
+            player.pause();
+            isPaused = true;
+            Main.controller.pauseButton.setText(">");
+        }
+    }
+
+    //Play Music
+    public static void play(){
+        if (player != null && isActive){
+            player.play();
+            isPaused = false;
+            Main.controller.pauseButton.setText("| |");
+        }
     }
 
 
