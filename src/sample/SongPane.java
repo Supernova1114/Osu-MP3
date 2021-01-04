@@ -15,10 +15,13 @@ public class SongPane extends Pane {
     //Data
     public String name;
     public String md5Hash;
-    private File file;
-    private File musicFile;
+    public String collectionName;
+    public File file;
+    public File musicFile;
     public File imageFile;
     public Label label;
+    boolean isDragged = false;
+
 
     //temp
     //private boolean hasPlayed = false;
@@ -33,12 +36,13 @@ public class SongPane extends Pane {
 
 
 
-    public SongPane(String name, String md5Hash, File file, File musicFile) throws Exception {
+    public SongPane(String name, String md5Hash, File file, File musicFile, String collectionName) throws Exception {
         this.name = name;
         this.md5Hash = md5Hash;
         this.file = file;
         this.musicFile = musicFile;
-        label = new Label(name);
+        label = new Label(name.substring(0, name.indexOf(".osu")));
+        this.collectionName = collectionName;
 
         /*System.out.println(name);
         System.out.println(file);*/
@@ -71,16 +75,35 @@ public class SongPane extends Pane {
         }*/
 
 
+
         //try to play music :)))
         setOnMouseClicked(event -> {
-            ((Label) getChildren().get(0)).setTextFill(Color.DARKBLUE);
-            try {
-                MusicPlayer.playMedia(new Media(this.musicFile.toURI().toString()));
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+            if (!isDragged){
+                ((Label) getChildren().get(0)).setTextFill(Color.RED);
+                try {
+                    MusicPlayer.playMedia(this);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
+
+        });
+
+        setOnMouseDragged(event -> {
+            isDragged = true;
+        });
+
+        setOnMousePressed(event -> {
+            isDragged = false;
         });
 
 
     }
+
+
+    public String toString(){
+        return "SongPane: \n" + name + "\n" + md5Hash + "\n" + file + "\n" + musicFile;
+    }
+
+
 }

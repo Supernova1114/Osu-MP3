@@ -21,6 +21,7 @@ public class Main extends Application {
     public static Stage primaryStage;
     public static Controller controller;
     public static File osuFolder = null;//new File("D:\\Program Files\\osu!");
+    public static ArrayList<ArrayList<SongPane>> songPaneCollectionList = new ArrayList<>();
 
 
     @Override
@@ -109,8 +110,8 @@ public class Main extends Application {
                     //GetSongsFolder
                     File songFolder = osuFolder.listFiles(SONGSFOLDER)[0];
                     File collectionsDB = osuFolder.listFiles(COLLECTIONDB)[0];
+                    //collectionsDB = new File("C:\\Users\\Fart\\Downloads\\Osu MP4 test coll\\seal\\collection.db");
 
-                    FilenameFilter filenameFilter = getFilenameFilter(".osu");
 
                     Map<String, File> hashMap = new HashMap<>();
                     ArrayList<File[]> diffListList = new ArrayList<>();
@@ -119,7 +120,7 @@ public class Main extends Application {
 
                     //Adds lists of .osu files for each beatmap into an ArrayList;
                     for (File beatmap : beatmapList) {
-                        File[] difficultyList = beatmap.listFiles(filenameFilter);
+                        File[] difficultyList = beatmap.listFiles(getFilenameFilter(".osu"));
                         diffListList.add(difficultyList);
                     }
 
@@ -148,7 +149,18 @@ public class Main extends Application {
                     //String data = "";
                     String data = new String(Files.readAllBytes(Paths.get(collectionsDB.getPath())));
 
+                    /*BufferedReader collectionFileReader = new BufferedReader(new FileReader(collectionsDB.getPath()));
+
+                    String data = null;
+                    int j;
+                    while ((j = collectionFileReader.read()) != -1) {
+                        data += (char)j;
+                    }*/
+
+
                     String[] clean = data.split("\\P{Print}");
+
+
 
                     ArrayList<String> cleanArray = new ArrayList<>();
 
@@ -159,7 +171,7 @@ public class Main extends Application {
                         }
                     }
 
-                    //System.out.println("\n\n\n");
+                    System.out.println(cleanArray);
 
                     cleanArray.remove(0);
 
@@ -178,16 +190,30 @@ public class Main extends Application {
                         }
                     }
 
+                    //DEBUG////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    int count = 0;
+                    for (ArrayList<String> collection: CollectionList){
+                        System.out.println();
+                        count=0;
+                        for (String str: collection){
+                            count++;
+                            System.out.println(str);
+                        }
+                        System.out.println(count-1);//-1 because -the title
+                    }
+                    /////////////////////////////////////
 
-                    //System.out.println(CollectionList);
-
-                    //System.out.println("\n\n\n");
                     int row = 0;
                     int col = 0;
 
                     for (ArrayList<String> collection : CollectionList) {//Add Songs and Title Panes
                         if (collection.size() > 1) {
-                            //System.out.println(collection.get(0));
+
+                            //This for the songPaneCollectionList//////////////////////////////////
+                            ArrayList<SongPane> songPaneCollection = new ArrayList<>();
+
+
+                            String collectionName = collection.get(0);
 
                             int finalCol = col;
                             int finalRow = row;
@@ -210,36 +236,70 @@ public class Main extends Application {
 
                                 File file = hashMap.get(collection.get(i));
 
-                                BufferedReader reader = new BufferedReader(new FileReader(file));
 
-                                String line;
-                                while ((line = reader.readLine()) != null) {
+                                //////////////////////////////////////////////////////////////DEBUG
+                                //System.out.println(file);
 
-                                    if (line.contains("AudioFilename")) {
-                                        //System.out.println(line);
-                                        musicFile = new File(file.getParentFile().getPath() + File.separator + line.substring(15));//15 is length of [AudioFilename: ]
-                                        break;
-                                    }
-                                }
+                                if (file != null) {
 
-                                SongPane songPane = new SongPane(file.getName(), collection.get(i), file, musicFile);
+                                    BufferedReader beatmapFileReader = new BufferedReader(new FileReader(file));
 
-                                int finalCol1 = col;
-                                int finalRow1 = row;
+                                    String line;
+                                    while ((line = beatmapFileReader.readLine()) != null) {
 
-                                //Add SongPane
-                                Platform.runLater(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        try {
-                                            controller.addToGrid(songPane, finalCol1, finalRow1);
-                                        } catch (Exception e) {
-                                            e.printStackTrace();
+                                        if (line.contains("AudioFilename")) {
+                                            //System.out.println(line);
+                                            musicFile = new File(file.getParentFile().getPath() + File.separator + line.substring(15));//15 is length of [AudioFilename: ]
+                                            break;
                                         }
                                     }
-                                });
 
+                                    SongPane songPane = new SongPane(file.getName(), collection.get(i), file, musicFile, collectionName);
+                                    songPaneCollection.add(songPane);
+
+                                    //DEBUG
+                                    //System.out.println(songPane + "\n");
+
+
+                                    int finalCol1 = col;
+                                    int finalRow1 = row;
+
+                                    //Add SongPane
+                                    Platform.runLater(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            try {
+                                                controller.addToGrid(songPane, finalCol1, finalRow1);
+                                            } catch (Exception e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                    });
+
+                                    //row++
+
+                                }else {
+
+                                    int finalCol3 = col;
+                                    int finalRow3 = row;
+
+                                    Platform.runLater(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            controller.addToGrid(new Pane() {{
+                                                getChildren().add(new Label("<>"));
+                                            }}, finalCol3, finalRow3);
+                                        }
+                                    });
+                                }
                                 row++;
+                            }//for
+
+                            //add to map
+                            try {
+                                songPaneCollectionList.add(songPaneCollection);
+                            }catch (Exception e){
+                                e.printStackTrace();
                             }
 
                         } else {
