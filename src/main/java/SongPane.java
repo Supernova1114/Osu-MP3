@@ -1,14 +1,9 @@
-package sample;
-
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
-import javafx.scene.media.Media;
 import javafx.scene.paint.Color;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FilenameFilter;
-import java.util.Scanner;
 
 public class SongPane extends Pane {
 

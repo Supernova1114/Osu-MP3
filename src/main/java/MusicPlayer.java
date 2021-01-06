@@ -1,14 +1,8 @@
-package sample;
-
 import javafx.application.Application;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.scene.control.Label;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -59,6 +53,9 @@ public class MusicPlayer extends Application{
             isPaused = false;
 
             Main.controller.pauseButton.setText("| |");
+
+            if (player !=null)
+                player.dispose();
 
             player = new MediaPlayer(media);
 

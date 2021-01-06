@@ -1,11 +1,15 @@
-package sample;
-
+import com.tulskiy.keymaster.common.HotKey;
+import com.tulskiy.keymaster.common.HotKeyListener;
+import com.tulskiy.keymaster.common.MediaKey;
+import com.tulskiy.keymaster.common.Provider;
+import com.tulskiy.keymaster.windows.WindowsProvider;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -16,12 +20,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Main extends Application {
+public class Main extends Application implements HotKeyListener{
 
     public static Stage primaryStage;
     public static Controller controller;
     public static File osuFolder = null;//new File("D:\\Program Files\\osu!");
     public static ArrayList<ArrayList<SongPane>> songPaneCollectionList = new ArrayList<>();
+    public static Parent root;
 
 
     @Override
@@ -31,12 +36,52 @@ public class Main extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(getClass().getResource("sample.fxml"));
 
-        Parent root = fxmlLoader.load();
+        root = fxmlLoader.load();
         controller = fxmlLoader.getController();
+
+        /*root.addEventFilter(KeyEvent.KEY_RELEASED, k -> {
+            if ( k.getCode() == KeyCode.SPACE || k.getCode() == KeyCode.F7 || k.getCode().isMediaKey() ){
+                root.requestFocus();
+                controller.TogglePause();
+                k.consume();
+            }
+        });*/
+
+        root.setOnKeyReleased(k -> {
+            if ( k.getCode() == KeyCode.SPACE || k.getCode() == KeyCode.F7 || k.getCode() == KeyCode.UNDEFINED ){
+                root.requestFocus();
+                controller.TogglePause();
+                k.consume();
+            }
+        });
+
+        root.setOnKeyPressed(k -> {
+            if (k.getCode() == KeyCode.UP){
+                controller.volumeSlider.increment();
+            }
+            if (k.getCode() == KeyCode.DOWN){
+                controller.volumeSlider.decrement();
+            }
+        });
+
+        /*WindowsProvider provider = new WindowsProvider();
+
+        provider.register(MediaKey.MEDIA_PLAY_PAUSE, new HotKeyListener() {
+            @Override
+            public void onHotKey(HotKey hotKey) {
+                System.out.println(hotKey.toString());
+            }
+        });*/
+
+
+        Scene scene = new Scene(root, 600, 600);
+        /*scene.setOnKeyPressed(event -> {
+            System.out.println(event.getCode());
+        });*/
 
 
         primaryStage.setTitle("Osu! MP3");
-        primaryStage.setScene(new Scene(root, 600, 600));
+        primaryStage.setScene(scene);
         primaryStage.show();
 
         //temp
@@ -76,7 +121,6 @@ public class Main extends Application {
 
         System.out.println(" \u0001 \u0003 \u000B \u0006 \u0001 \u000B \u000B \u000B \u000B \u000B \u000B \u000B \u000B \u000B \u000B \u0007 \u000B \u000B \u000B " +
                 "\u000B \u000B \u000B \u000B  ");*/
-
 
 
 
@@ -132,7 +176,7 @@ public class Main extends Application {
                             Platform.runLater(new Runnable() {
                                 @Override
                                 public void run() {
-                                    controller.label.setText(hashMap.size() + " " + key);
+                                    controller.label.setText(hashMap.size() + "");
                                 }
                             });
 
@@ -348,5 +392,10 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
+    }
+
+    @Override
+    public void onHotKey(HotKey hotKey) {
+        System.out.println(hotKey.toString());
     }
 }

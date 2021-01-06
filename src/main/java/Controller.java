@@ -1,11 +1,10 @@
-package sample;
-
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Slider;
 import javafx.scene.layout.GridPane;
 import javafx.stage.DirectoryChooser;
@@ -22,6 +21,8 @@ public class Controller {
     Label label;
     @FXML
     Button pauseButton;
+    @FXML
+    ScrollPane scrollPane;
 
     @FXML
     public void GetOsuFolder() throws Exception {
@@ -35,6 +36,27 @@ public class Controller {
     }
 
     @FXML
+    public void CloseProgram(){
+        System.out.println("Closing Program");
+        Main.primaryStage.close();
+        System.exit(0);
+    }
+
+    @FXML
+    public void NextTrack(){
+
+    }
+
+    @FXML
+    public void PrevTrack(){
+
+    }
+
+    @FXML
+    public void TogglePauseAction(){
+        TogglePause();
+    }
+
     public void TogglePause(){
         if (MusicPlayer.isActive) {
             if (MusicPlayer.isPaused) {
@@ -50,6 +72,15 @@ public class Controller {
         label.setText("");
 
         pauseButton.setText("| |");
+
+        scrollPane.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if (newValue){
+                    Main.root.requestFocus();
+                }
+            }
+        });
 
         volumeSlider.setValue(50);
         volumeSlider.setBlockIncrement(10);

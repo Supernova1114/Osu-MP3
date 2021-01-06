@@ -1,2 +1,2 @@
-# Osu-Collection-Extractor
- Can copy songs and maps listed in Osu! Collections
+# Osu-MP3
+ Play Songs From Your Osu! Directory!
