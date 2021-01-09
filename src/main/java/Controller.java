@@ -23,6 +23,8 @@ public class Controller {
     Button pauseButton;
     @FXML
     ScrollPane scrollPane;
+    @FXML
+    Label songTitleLabel;
 
     @FXML
     public void GetOsuFolder() throws Exception {
@@ -70,6 +72,7 @@ public class Controller {
 
     public void initialize(){
         label.setText("");
+        songTitleLabel.setText("");
 
         pauseButton.setText("| |");
 
@@ -82,11 +85,13 @@ public class Controller {
             }
         });
 
-        volumeSlider.setValue(50);
-        volumeSlider.setBlockIncrement(10);
-        volumeSlider.setMajorTickUnit(50);
+        volumeSlider.setValue(25);
+        volumeSlider.setBlockIncrement(5);
+        volumeSlider.setMajorTickUnit(25);
         volumeSlider.setMinorTickCount(5);
         volumeSlider.setSnapToTicks(true);
+        volumeSlider.setMax(50);
+        volumeSlider.setMin(0);
 
         volumeSlider.valueProperty().addListener(new ChangeListener<Number>() {
             @Override

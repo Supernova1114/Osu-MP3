@@ -45,9 +45,10 @@
      </menus>
    </MenuBar>
    <Button fx:id="pauseButton" focusTraversable="false" layoutX="293.0" layoutY="4.0" mnemonicParsing="false" onAction="#TogglePauseAction" text="| |" />
-   <Label fx:id="label" layoutX="446.0" layoutY="4.0" text="Hash" AnchorPane.topAnchor="4.0" />
+   <Label fx:id="label" layoutX="554.0" layoutY="372.0" text="Hash" textAlignment="RIGHT" AnchorPane.bottomAnchor="11.0" AnchorPane.rightAnchor="19.0" />
    <Button focusTraversable="false" layoutX="333.0" layoutY="4.0" mnemonicParsing="false" onAction="#NextTrack" text="&gt;|" />
    <Button focusTraversable="false" layoutX="251.0" layoutY="4.0" mnemonicParsing="false" onAction="#PrevTrack" text="|&lt;" />
+   <Label fx:id="songTitleLabel" layoutX="385.0" layoutY="4.0" text="Song Title" />
    <cursor>
       <Cursor fx:constant="DEFAULT" />
    </cursor>

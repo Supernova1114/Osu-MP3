@@ -36,7 +36,15 @@ public class SongPane extends Pane {
         this.md5Hash = md5Hash;
         this.file = file;
         this.musicFile = musicFile;
-        label = new Label(name.substring(0, name.indexOf(".osu")));
+        //LiSA - Rising Hope (TV Size) (xChippy) [Hope]
+        int sub = name.indexOf(" - ");
+
+        try {
+            label = new Label(name.substring(sub + 3, name.substring(sub + 3).indexOf("(") + sub + 3));//name.indexOf(".osu")
+        }catch (Exception e){
+            System.out.println("err: Label Failed");
+            e.printStackTrace();
+        }
         this.collectionName = collectionName;
 
         /*System.out.println(name);

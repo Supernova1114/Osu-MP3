@@ -28,6 +28,8 @@ public class Main extends Application implements HotKeyListener{
     public static ArrayList<ArrayList<SongPane>> songPaneCollectionList = new ArrayList<>();
     public static Parent root;
 
+    public static String currentDirectory = System.getProperty("user.dir");
+
 
     @Override
     public void start(Stage stage) throws Exception{
@@ -162,7 +164,7 @@ public class Main extends Application implements HotKeyListener{
                     File[] beatmapList = songFolder.listFiles();
 
 
-                    //Adds lists of .osu files for each beatmap into an ArrayList;
+                        //Adds lists of .osu files for each beatmap into an ArrayList;
                     for (File beatmap : beatmapList) {
                         File[] difficultyList = beatmap.listFiles(getFilenameFilter(".osu"));
                         diffListList.add(difficultyList);
@@ -187,7 +189,29 @@ public class Main extends Application implements HotKeyListener{
 
                     System.out.println(hashMap.size() + " Beatmaps Available");
 
+                    /*// FIXME: 1/7/2021
 
+                    Path songMapHashPath = Paths.get(currentDirectory + File.separator + "SongMapHash.txt");
+                    Files.deleteIfExists(songMapHashPath);
+
+                    if (Files.exists(songMapHashPath)) {
+                        System.out.println("FILE EXISTS");
+
+                    } else {
+                        System.out.println("MISSING SONGHASHMAPFILE");
+                        Files.createFile(songMapHashPath);
+
+                        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(new File(songMapHashPath.toString())));
+                        bufferedWriter.write("#SONG AND HASH LIBRARY");
+                        bufferedWriter.newLine();
+                        bufferedWriter.write("SONGFOLDER_LASTCHANGED: " + songFolder.lastModified());
+                        bufferedWriter.newLine();
+                        bufferedWriter.newLine();
+                        bufferedWriter.write(hashMap.keySet().toString());
+
+
+                    }
+*/
                     //File collectionsDB = new File("D:\\Program Files\\osu!\\collection.db");
 
                     //String data = "";
@@ -259,6 +283,8 @@ public class Main extends Application implements HotKeyListener{
 
                             String collectionName = collection.get(0);
 
+
+
                             int finalCol = col;
                             int finalRow = row;
 
@@ -267,7 +293,7 @@ public class Main extends Application implements HotKeyListener{
                                 @Override
                                 public void run() {
                                     controller.addToGrid(new Pane() {{
-                                        getChildren().add(new Label(collection.get(0)));
+                                        getChildren().add(new Label(collection.get(0) + " " + (collection.size() - 1)));
                                     }}, finalCol, finalRow);
                                 }
                             });

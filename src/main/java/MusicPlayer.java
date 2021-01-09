@@ -1,4 +1,5 @@
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
@@ -89,6 +90,14 @@ public class MusicPlayer extends Application{
 
             player.setVolume(volume);
             player.play();
+
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+                    Main.controller.songTitleLabel.setText("Playing: " + pane.label.getText());
+                }
+            });
+
         }else {
             player.stop();
             isActive = false;
