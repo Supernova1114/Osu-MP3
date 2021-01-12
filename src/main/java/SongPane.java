@@ -40,7 +40,9 @@ public class SongPane extends Pane {
         int sub = name.indexOf(" - ");
 
         try {
-            label = new Label(name.substring(sub + 3, name.substring(sub + 3).indexOf("(") + sub + 3));//name.indexOf(".osu")
+            //label = new Label(name.substring(sub + 3, name.substring(sub + 3).indexOf("(") + sub + 3));//name.indexOf(".osu")
+            label = new Label(name.substring(0, name.lastIndexOf("(")));
+            //label = new Label(name);
         }catch (Exception e){
             System.out.println("err: Label Failed");
             e.printStackTrace();
