@@ -31,10 +31,13 @@ public class Controller {
         DirectoryChooser chooser = new DirectoryChooser();
         chooser.setTitle("Find Osu! Folder");
         File osuFolder = chooser.showDialog(Main.primaryStage);
-        Main.osuFolder = osuFolder;
         System.out.println(Main.osuFolder);
 
-        Main.Begin();
+        if (osuFolder != null) {
+            Main.setOsuFolder(osuFolder);
+
+            Main.Begin();
+        }
     }
 
     @FXML
@@ -45,13 +48,15 @@ public class Controller {
     }
 
     @FXML
-    public void NextTrack(){
-
+    public void NextTrack() throws InterruptedException {
+        if (MusicPlayer.isActive)
+        MusicPlayer.nextSong();
     }
 
     @FXML
-    public void PrevTrack(){
-
+    public void PrevTrack() throws InterruptedException {
+        if (MusicPlayer.isActive)
+        MusicPlayer.prevSong();
     }
 
     @FXML

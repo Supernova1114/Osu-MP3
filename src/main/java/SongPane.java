@@ -87,6 +87,7 @@ public class SongPane extends Pane {
                 ((Label) getChildren().get(0)).setTextFill(Color.RED);
                 try {
                     MusicPlayer.playMedia(this);
+                    MusicPlayer.insertSong(this);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
