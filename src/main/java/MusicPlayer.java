@@ -21,18 +21,26 @@ public class MusicPlayer extends Application{
     private static ArrayList<SongPane> currentCollection;
 
     public static ArrayList<SongPane> tempCollection = new ArrayList<>();//a copy of currentCollection so it can be edited
+    public static ArrayList<SongPane> timeline = new ArrayList<>();
+
+//    private static boolean createPlaylist = false;
+    private static boolean flag = false;
 
     private static SongPane currentSong;
     private static int songIndex = 0;
 
-
     public static void insertSong(SongPane pane){
-            tempCollection.remove(pane);
-            //songIndex++;
-            tempCollection.add(songIndex, pane);
-            System.out.println(songIndex);
-
-
+        assert tempCollection.size() == 87;
+        if (flag == false) {
+            if (tempCollection.indexOf(pane) != songIndex) {
+                tempCollection.remove(pane);
+                songIndex++;
+                tempCollection.add(songIndex, pane);
+                System.out.println("inserted at index: " + songIndex);
+                System.out.println();
+            }
+        }else
+            flag = false;
     }
 
     public static void playMedia(SongPane pane) throws InterruptedException {
@@ -53,19 +61,25 @@ public class MusicPlayer extends Application{
                     }
                     Collections.shuffle(tempCollection);
                     songIndex = 0;
-                    /*tempCollection.remove(pane);
-                    tempCollection.add(0, pane);*/
+                    tempCollection.remove(pane);
+                    tempCollection.add(0, pane);
 
 
                     System.out.println("Chosen New Collection!");
                     break;
                 }
             }
+
+            //createPlaylist = true;
+            flag = true;
+
         }
 
+        /*if (createPlaylist){
+            createPlaylist=false;
+        }else{
 
-        //
-
+        }*/
 
 
         if (!isActive) {
@@ -79,9 +93,17 @@ public class MusicPlayer extends Application{
 
             player = new MediaPlayer(media);
 
+            System.out.println("current index: " + songIndex);
+
             currentSong = pane;
 
-            System.out.println("Pane index: " + tempCollection.indexOf(pane));
+
+           /* if (timeline.contains(pane))//remove if already exists
+                timeline.remove(pane);
+
+            timeline.add(pane);//add song to dynamic timeline*/
+
+            //System.out.println("wowowoowo");
 
             //testing
             //player.setStopTime(Duration.seconds(0.05));
@@ -163,18 +185,24 @@ public class MusicPlayer extends Application{
     }
 
     public static void nextSong() throws InterruptedException {
-        if (songIndex < tempCollection.size()) {
-            songIndex++;
-            playMedia(tempCollection.get(songIndex));
+        if (isActive) {
+            if (songIndex < tempCollection.size()) {
+                songIndex++;
+                playMedia(tempCollection.get(songIndex));
 
+
+            }
         }
     }
 
     public static void prevSong() throws InterruptedException {
-        if (songIndex > 0) {
-            songIndex--;
-            playMedia(tempCollection.get(songIndex));
+        if (isActive) {
+            if (songIndex > 0) {
+                songIndex--;
+                playMedia(tempCollection.get(songIndex));
+                //playMedia(timeline.get(songIndex));
 
+            }
         }
     }
 

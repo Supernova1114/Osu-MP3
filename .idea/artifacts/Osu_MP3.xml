@@ -3,11 +3,7 @@
     <output-path>$PROJECT_DIR$/out/artifacts/Osu_MP3</output-path>
     <root id="archive" name="Osu-MP3.jar">
       <element id="module-output" name="Osu-MP3" />
-      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/github/tulskiy/jkeymaster/1.3/jkeymaster-1.3.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/net/java/dev/jna/jna-platform/5.4.0/jna-platform-5.4.0.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/slf4j/slf4j-api/1.7.13/slf4j-api-1.7.13.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/net/java/dev/jna/jna/5.4.0/jna-5.4.0.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/slf4j/slf4j-jdk14/1.7.13/slf4j-jdk14-1.7.13.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/melloware/jintellitype/1.3.9/jintellitype-1.3.9.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>

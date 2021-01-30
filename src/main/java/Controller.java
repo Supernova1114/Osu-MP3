@@ -49,13 +49,11 @@ public class Controller {
 
     @FXML
     public void NextTrack() throws InterruptedException {
-        if (MusicPlayer.isActive)
         MusicPlayer.nextSong();
     }
 
     @FXML
     public void PrevTrack() throws InterruptedException {
-        if (MusicPlayer.isActive)
         MusicPlayer.prevSong();
     }
 
@@ -64,7 +62,7 @@ public class Controller {
         TogglePause();
     }
 
-    public void TogglePause(){
+    public void TogglePause() {
         if (MusicPlayer.isActive) {
             if (MusicPlayer.isPaused) {
                 MusicPlayer.play();

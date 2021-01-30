@@ -1,17 +1,16 @@
-import com.tulskiy.keymaster.common.HotKey;
-import com.tulskiy.keymaster.common.HotKeyListener;
-import com.tulskiy.keymaster.common.MediaKey;
-import com.tulskiy.keymaster.common.Provider;
-import com.tulskiy.keymaster.windows.WindowsProvider;
+import com.melloware.jintellitype.JIntellitype;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 import javax.swing.*;
 import java.io.*;
@@ -19,7 +18,7 @@ import java.nio.file.*;
 import java.security.NoSuchAlgorithmException;
 import java.util.*;
 
-public class Main extends Application implements HotKeyListener{
+public class Main extends Application{
 
     public static Stage primaryStage;
     public static Controller controller;
@@ -39,11 +38,21 @@ public class Main extends Application implements HotKeyListener{
 
     public static Map<String, File> hashMap = new HashMap<>();
 
+    public static WindowsKeyListener keyListener;
+
 
 
     @Override
     public void start(Stage stage) throws Exception{
         primaryStage = stage;
+
+        primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent event) {
+                JIntellitype.getInstance().cleanUp();
+                System.exit(0);
+            }
+        });
 
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(getClass().getResource("sample.fxml"));
@@ -59,22 +68,21 @@ public class Main extends Application implements HotKeyListener{
             }
         });*/
 
-        root.setOnKeyReleased(k -> {
-            if ( k.getCode() == KeyCode.SPACE || k.getCode() == KeyCode.F7 || k.getCode() == KeyCode.UNDEFINED ){
-                root.requestFocus();
-                controller.TogglePause();
-                k.consume();
-            }
-        });
 
-        root.setOnKeyPressed(k -> {
-            if (k.getCode() == KeyCode.UP){
-                controller.volumeSlider.increment();
-            }
-            if (k.getCode() == KeyCode.DOWN){
-                controller.volumeSlider.decrement();
-            }
-        });
+       /* root.setOnKeyReleased(k -> {
+
+        });*/
+
+        /*root.setOnKeyPressed(k -> {
+            //System.out.println(k.getCode());
+
+        });*/
+
+
+
+        /*root.setOnKeyPressed(k -> {
+
+        });*/
 
         /*WindowsProvider provider = new WindowsProvider();
 
@@ -92,9 +100,39 @@ public class Main extends Application implements HotKeyListener{
         });*/
 
 
+        scene.addEventFilter(KeyEvent.KEY_PRESSED, (KeyEvent event) -> {
+            //System.out.println("Key pressed");
+
+            if (event.getCode() == KeyCode.UP){
+                controller.volumeSlider.increment();
+                event.consume();
+            }
+            if (event.getCode() == KeyCode.DOWN){
+                controller.volumeSlider.decrement();
+                event.consume();
+            }
+            event.consume();
+        });
+
+        scene.addEventFilter(KeyEvent.KEY_RELEASED, (KeyEvent event) -> {
+            if ( event.getCode() == KeyCode.SPACE ){
+                root.requestFocus();
+                controller.TogglePause();
+                event.consume();
+            }
+            event.consume();
+        });
+
+
+
         primaryStage.setTitle("Osu! MP3");
         primaryStage.setScene(scene);
         primaryStage.show();
+
+        //Start up JIntellitype
+        keyListener = new WindowsKeyListener();
+
+
 
         //
         if (Files.exists(Paths.get(settingsPath))) {
@@ -513,12 +551,7 @@ public class Main extends Application implements HotKeyListener{
     }
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         launch(args);
-    }
-
-    @Override
-    public void onHotKey(HotKey hotKey) {
-        System.out.println(hotKey.toString());
     }
 }
