@@ -4,6 +4,7 @@
 #Project Specific
 settings.conf
 SongMapHash.db
+target
 
 # User-specific stuff
 .idea/**/workspace.xml
