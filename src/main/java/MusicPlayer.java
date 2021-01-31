@@ -4,7 +4,6 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -28,7 +27,7 @@ public class MusicPlayer extends Application{
 //    private static boolean createPlaylist = false;
     private static boolean flag = false;
 
-    private static SongPane currentSong;
+    private static SongPane previousSong;
     private static int songIndex = 0;
 
     public static void insertSong(SongPane pane){
@@ -103,7 +102,7 @@ public class MusicPlayer extends Application{
 
             System.out.println("current index: " + songIndex);
 
-            currentSong = pane;
+            previousSong = pane;//current song
 
 
            /* if (timeline.contains(pane))//remove if already exists
@@ -159,7 +158,8 @@ public class MusicPlayer extends Application{
 
             Main.controller.pauseButton.setText(">");
 
-            currentSong.label.setTextFill(Color.DARKBLUE);
+            previousSong.label.setTextFill(Color.DARKBLUE);//previous song
+            pane.label.setTextFill(Color.RED);//current song
 
             playMedia(pane);
         }
