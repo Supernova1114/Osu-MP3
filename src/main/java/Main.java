@@ -508,20 +508,25 @@ public class Main extends Application{
             diffListList.add(difficultyList);
         }
 
-        for (File[] diffList : diffListList) {
-            for (File difficulty : diffList) {
-                String key = MD5Calculator.GetMD5Hash(difficulty);
-                hashMap.put(key, difficulty);
-                //System.out.println(hashMap.size() + " " + key);
-                Platform.runLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        controller.label.setText(hashMap.size() + "");
-                    }
-                });
+        try {
+            for (File[] diffList : diffListList) {
+                for (File difficulty : diffList) {
+                    System.out.println(difficulty.getPath());
+                    String key = MD5Calculator.GetMD5Hash(difficulty);
+                    hashMap.put(key, difficulty);
+                    //System.out.println(hashMap.size() + " " + key);
+                    Platform.runLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            controller.label.setText(hashMap.size() + "");
+                        }
+                    });
+
+                }
 
             }
-
+        }catch (Exception e){
+            e.printStackTrace();
         }
 
 
