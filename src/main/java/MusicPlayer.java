@@ -23,6 +23,8 @@ public class MusicPlayer extends Application{
     public static ArrayList<SongPane> tempCollection = new ArrayList<>();//a copy of currentCollection so it can be edited
     public static ArrayList<SongPane> timeline = new ArrayList<>();
 
+    private static int tempCollectionSize = 0;
+
 //    private static boolean createPlaylist = false;
     private static boolean flag = false;
 
@@ -30,11 +32,15 @@ public class MusicPlayer extends Application{
     private static int songIndex = 0;
 
     public static void insertSong(SongPane pane){
-        assert tempCollection.size() == 87;
         if (flag == false) {
             if (tempCollection.indexOf(pane) != songIndex) {
                 tempCollection.remove(pane);
                 songIndex++;
+
+                if (songIndex >= tempCollectionSize){//clamp index
+                    songIndex = tempCollectionSize-1;
+                }
+
                 tempCollection.add(songIndex, pane);
                 System.out.println("inserted at index: " + songIndex);
                 System.out.println();
@@ -59,6 +65,8 @@ public class MusicPlayer extends Application{
                     for (SongPane song: currentCollection){
                         tempCollection.add(song);
                     }
+                    tempCollectionSize = tempCollection.size();//get size
+
                     Collections.shuffle(tempCollection);
                     songIndex = 0;
                     tempCollection.remove(pane);
@@ -113,11 +121,11 @@ public class MusicPlayer extends Application{
                 public void run() {
                     System.out.println();
                     System.out.println("Finished Song!");
-                    if (songIndex < tempCollection.size()-1) {/////<<< Should i keep? was for the remove
+                    if (songIndex < tempCollectionSize-1) {/////<<< Should i keep? was for the remove
                         songIndex++;
 
                         System.out.println(songIndex);
-                        SongPane nextSong = tempCollection.get(songIndex);  //(int)(Math.random() * tempCollection.size()-1));
+                        SongPane nextSong = tempCollection.get(songIndex);  //(int)(Math.random() * tempCollectionSize-1));
                         System.out.println("Now Playing: " + nextSong.name + "\n In Collection: " + tempCollection.get(0).collectionName);
                         try {
                             playMedia(nextSong);
@@ -186,7 +194,7 @@ public class MusicPlayer extends Application{
 
     public static void nextSong() throws InterruptedException {
         if (isActive) {
-            if (songIndex < tempCollection.size()) {
+            if (songIndex + 1 < tempCollectionSize) {
                 songIndex++;
                 playMedia(tempCollection.get(songIndex));
 

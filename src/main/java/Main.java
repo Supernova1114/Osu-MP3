@@ -233,7 +233,8 @@ public class Main extends Application{
                     File collectionsDB = osuFolder.listFiles(COLLECTIONDB)[0];
                     //collectionsDB = new File("C:\\Users\\Fart\\Downloads\\Osu MP4 test coll\\seal\\collection.db");
 
-                    songFolderLastModified = songFolder.lastModified();
+                    //songFolderLastModified = songFolder.lastModified();
+                    songFolderLastModified = collectionsDB.lastModified();
 
                     if (Files.exists(songHashMapPath)) {
                         BufferedReader bufferedReader = new BufferedReader(new FileReader(songHashMapPath.toFile()));
@@ -255,7 +256,7 @@ public class Main extends Application{
                             System.out.println("Song Folder Was Modified!");
 
                             Files.deleteIfExists(songHashMapPath);
-                            getSongsNormally(songFolder);
+                            getSongsNormally(songFolder, collectionsDB);
                         }else {
 
                             //add to hashmap
@@ -270,7 +271,7 @@ public class Main extends Application{
                         }
 
                     }else {
-                        getSongsNormally(songFolder);
+                        getSongsNormally(songFolder, collectionsDB);
                     }
                     // FIXME: 1/7/2021
 
@@ -391,6 +392,8 @@ public class Main extends Application{
                                         }
                                     }
 
+                                    beatmapFileReader.close();
+
                                     SongPane songPane = new SongPane(file.getName(), collection.get(i), file, musicFile, collectionName);
                                     songPaneCollection.add(songPane);
 
@@ -493,7 +496,7 @@ public class Main extends Application{
     }
 
     //get songs by scanning through song folder
-    public static void getSongsNormally(File songFolder) throws IOException, NoSuchAlgorithmException {
+    public static void getSongsNormally(File songFolder, File collectiondb) throws IOException, NoSuchAlgorithmException {
 
         ArrayList<File[]> diffListList = new ArrayList<>();
         File[] beatmapList = songFolder.listFiles();
@@ -537,7 +540,7 @@ public class Main extends Application{
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(new File(songHashMapPath.toString())));
         bufferedWriter.write("#SONG AND HASH LIBRARY");
         bufferedWriter.newLine();
-        bufferedWriter.write(songFolder.lastModified() + "");
+        bufferedWriter.write(collectiondb.lastModified() + "");//
         bufferedWriter.newLine();
         bufferedWriter.newLine();
         System.out.println("hashset length: " + hashSet.length);
