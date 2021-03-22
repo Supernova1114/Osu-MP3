@@ -1,6 +1,8 @@
 # Osu-MP3
  Play Songs From Your Osu! Directory!
 
+!!Only able to play songs from Collections at this time!!
+
 -you can now play the next and prev songs in a playlist
 -you can now use keyboard media keys to control the program
 -you can control the program with media keys even when it is minimized
