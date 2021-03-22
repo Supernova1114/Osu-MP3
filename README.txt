@@ -8,4 +8,4 @@
 -It can now remember where your osu folder is so you dont have to input it everytime
 -It now remembers the locations of the song files in order to startup quickly, and will only reload the songs into the program once a song is added or removed from an osu collection
 
--Make sure to place the jar file into a folder somewhere and make a desktop shortcut because the program creates two file. You probably would not want it to create the files on your desktop so I highly recommend this
+*Make sure to place the jar file into a folder somewhere and make a desktop shortcut because the program creates two file. You probably would not want it to create the files on your desktop so I highly recommend this
