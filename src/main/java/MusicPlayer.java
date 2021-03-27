@@ -1,9 +1,14 @@
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.event.EventHandler;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -29,6 +34,11 @@ public class MusicPlayer extends Application{
 
     private static SongPane previousSong;
     private static int songIndex = 0;
+
+    public static Duration duration;
+    public static Duration startTime;
+
+
 
     public static void insertSong(SongPane pane){
         if (flag == false) {
@@ -99,6 +109,27 @@ public class MusicPlayer extends Application{
                 player.dispose();
 
             player = new MediaPlayer(media);
+
+            Main.controller.seekBar.setDisable(true);
+            Main.controller.seekBar.setValue(0);
+
+            //get start and stop times (ready == when it gets the data cause async)
+            player.setOnReady(new Runnable() {
+                @Override
+                public void run() {
+                    duration = player.getTotalDuration();
+
+                    Main.controller.refreshSeekBar(0, duration, false);
+                }
+            });
+
+            player.currentTimeProperty().addListener(new ChangeListener<Duration>() {
+                @Override
+                public void changed(ObservableValue<? extends Duration> observable, Duration oldValue, Duration newValue) {
+                    if (Main.controller.isSeekBarPressed == false)
+                    Main.controller.setCurrentSeekTime(newValue.toSeconds());
+                }
+            });
 
             System.out.println("current index: " + songIndex);
 
@@ -212,6 +243,10 @@ public class MusicPlayer extends Application{
 
             }
         }
+    }
+
+    public static void setSeek(double seconds){
+        player.seek(Duration.seconds(seconds));
     }
 
     @Override

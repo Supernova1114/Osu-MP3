@@ -147,7 +147,9 @@ public class Main extends Application{
             System.out.println("Settings File Does Not Exist");
             applicationProps = new Properties();
 
+            //Default Properties
             applicationProps.setProperty("osuFolderLocation", "null");
+            applicationProps.setProperty("showArtists", "true");
 
             FileOutputStream out = new FileOutputStream(settingsPath);
             applicationProps.store(out, "---No Comment---");
@@ -155,6 +157,11 @@ public class Main extends Application{
         }
 
         String osuFolderLocProp = applicationProps.getProperty("osuFolderLocation");
+        String showArtistsProp = applicationProps.getProperty("showArtists");
+
+//        controller.showArtists(Boolean.parseBoolean(showArtistsProp)); 
+        // FIXME: 2/6/2021 
+
 
         if (osuFolderLocProp != "null"){
             osuFolder = new File(osuFolderLocProp);
@@ -372,6 +379,7 @@ public class Main extends Application{
                             for (int i = 1; i < collection.size(); i++) {
 
                                 File musicFile = null;
+                                File imageFile = null;
 
                                 File file = hashMap.get(collection.get(i));
 
@@ -383,19 +391,35 @@ public class Main extends Application{
 
                                     BufferedReader beatmapFileReader = new BufferedReader(new FileReader(file));
 
+
+                                    int flag = 0;
                                     String line;
                                     while ((line = beatmapFileReader.readLine()) != null) {
 
                                         if (line.contains("AudioFilename")) {
                                             //System.out.println(line);
                                             musicFile = new File(file.getParentFile().getPath() + File.separator + line.substring(15));//15 is length of [AudioFilename: ]
-                                            break;
+                                            flag++;
+                                        }
+                                        if (line.contains("[Events]")){
+                                            beatmapFileReader.readLine();
+                                            String temp = beatmapFileReader.readLine();
+
+                                            String [] tempSplit = temp.split(",");
+
+                                            imageFile = new File(file.getParentFile().getPath() + File.separator + tempSplit[2].replace("\"", ""));
+
+                                            //System.out.println(imageFile.getName());
+
+
+
+
                                         }
                                     }
 
                                     beatmapFileReader.close();
 
-                                    SongPane songPane = new SongPane(file.getName(), collection.get(i), file, musicFile, collectionName);
+                                    SongPane songPane = new SongPane(file.getName(), collection.get(i), file, musicFile, imageFile, collectionName);
                                     songPaneCollection.add(songPane);
 
                                     //DEBUG

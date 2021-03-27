@@ -1,4 +1,6 @@
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
@@ -15,6 +17,7 @@ public class SongPane extends Pane {
     public File musicFile;
     public File imageFile;
     public Label label;
+    public Image image;
     boolean isDragged = false;
 
 
@@ -31,17 +34,22 @@ public class SongPane extends Pane {
 
 
 
-    public SongPane(String name, String md5Hash, File file, File musicFile, String collectionName) throws Exception {
+    public SongPane(String name, String md5Hash, File file, File musicFile, File imageFile, String collectionName) throws Exception {
         this.name = name;
         this.md5Hash = md5Hash;
         this.file = file;
         this.musicFile = musicFile;
+        this.imageFile = imageFile;
         //LiSA - Rising Hope (TV Size) (xChippy) [Hope]
         int sub = name.indexOf(" - ");
 
         try {
             //label = new Label(name.substring(sub + 3, name.substring(sub + 3).indexOf("(") + sub + 3));//name.indexOf(".osu")
             label = new Label(name.substring(0, name.lastIndexOf("(")));
+
+            /*label.setTextFill(Color.WHITE);
+            label.setWrapText(true);*/
+
             //label = new Label(name);
         }catch (Exception e){
             System.out.println("err: Label Failed");
@@ -52,7 +60,9 @@ public class SongPane extends Pane {
         /*System.out.println(name);
         System.out.println(file);*/
 
+
         getChildren().add(label);
+
 
         //Find music file
         /*if (name.equals("Camellia feat. Nanahira - Amor De Verao (Tofu1222) [Regou's Another].osu") || name.equals("That Poppy - Altar (-NeBu-) [ChuuritsuTv's Old-Style Insane].osu"))
