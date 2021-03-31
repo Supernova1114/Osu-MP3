@@ -165,7 +165,11 @@ public class Main extends Application{
 
         if (osuFolderLocProp != "null"){
             osuFolder = new File(osuFolderLocProp);
-            Begin();
+            try{
+                Begin();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
         }
 
 
@@ -254,7 +258,7 @@ public class Main extends Application{
                             //System.out.println(line);
                         }
                         bufferedReader.close();
-                        System.out.println("lines: " + lineList.size());
+                        //System.out.println("lines: " + lineList.size());
 
                         long lastModified = Long.parseLong(lineList.get(1));
 
@@ -281,12 +285,11 @@ public class Main extends Application{
                     }else {
                         getSongsNormally(songFolder, collectionsDB);
                     }
-                    // FIXME: 1/7/2021
 
 
                     // Files.deleteIfExists(songHashMapPath);//temppppppppp
 
-
+                    System.out.println();
 
                     //File collectionsDB = new File("D:\\Program Files\\osu!\\collection.db");
 
@@ -315,26 +318,31 @@ public class Main extends Application{
                         }
                     }
 
-                    System.out.println(cleanArray);
+                    //System.out.println(cleanArray);
 
                     cleanArray.remove(0);
 
                     ArrayList<ArrayList<String>> CollectionList = new ArrayList<>();
+                    //String [][] CollectionList = new String[][];
 
 
                     for (int i = 0; i < cleanArray.size(); i++) {
 
                         if (cleanArray.get(i).length() < 32) {
                             int finalI = i;
+                            ArrayList<String> finalCleanArray = cleanArray;//fuck
+
                             CollectionList.add(new ArrayList<String>() {{
-                                add(cleanArray.get(finalI));
+                                add(finalCleanArray.get(finalI));
                             }});
                         } else {
                             CollectionList.get(CollectionList.size() - 1).add(cleanArray.get(i).replace(" ", ""));
                         }
                     }
 
-                    //DEBUG////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    cleanArray = null;
+
+                    /*//DEBUG////////////////////////////////////////////////////////////////////////////////////////////////////////////
                     int count = 0;
                     for (ArrayList<String> collection: CollectionList){
                         System.out.println();
@@ -345,21 +353,22 @@ public class Main extends Application{
                         }
                         System.out.println(count-1);//-1 because -the title
                     }
-                    /////////////////////////////////////
+                    /////////////////////////////////////*/
 
                     int row = 0;
                     int col = 0;
 
+                    //System.out.println("CollSize = " + CollectionList.size());
+
+
                     for (ArrayList<String> collection : CollectionList) {//Add Songs and Title Panes
+
                         if (collection.size() > 1) {
-
-                            //This for the songPaneCollectionList//////////////////////////////////
-                            ArrayList<SongPane> songPaneCollection = new ArrayList<>();
-
 
                             String collectionName = collection.get(0);
 
-
+                            //This for the songPaneCollectionList//////////////////////////////////
+                            ArrayList<SongPane> songPaneCollection = new ArrayList<>();
 
                             int finalCol = col;
                             int finalRow = row;
@@ -467,6 +476,8 @@ public class Main extends Application{
                                 e.printStackTrace();
                             }
 
+                            //System.out.println("size: " + songPaneCollection.size());
+
                         } else {
                             if (collection.size() == 1) {
 
@@ -485,9 +496,14 @@ public class Main extends Application{
                             }
                         }
                         //System.out.println();
+
                         row = 0;
                         col++;
                     }
+                    CollectionList = null;
+
+
+                    System.out.println("Begin Worker Completed!");
 
                     return null;
                 }
@@ -521,7 +537,7 @@ public class Main extends Application{
     }
 
     //get songs by scanning through song folder
-    public static void getSongsNormally(File songFolder, File collectiondb) throws IOException, NoSuchAlgorithmException {
+    public static void getSongsNormally(File songFolder, File collectiondb) throws Exception, NoSuchAlgorithmException {
 
         ArrayList<File[]> diffListList = new ArrayList<>();
         File[] beatmapList = songFolder.listFiles();
@@ -573,13 +589,16 @@ public class Main extends Application{
         bufferedWriter.write(collectiondb.lastModified() + "");//
         bufferedWriter.newLine();
         bufferedWriter.newLine();
+
         System.out.println("hashset length: " + hashSet.length);
+
         for (int i=0; i<hashSet.length; i++){
             bufferedWriter.write(hashSet[i]);
             bufferedWriter.write(hashMapSplitChar);
             bufferedWriter.write(fileSet[i].toPath().toString());
             bufferedWriter.newLine();
         }
+
         bufferedWriter.close();
     }
 

@@ -25,7 +25,7 @@ public class MusicPlayer extends Application{
     private static ArrayList<SongPane> currentCollection;
 
     public static ArrayList<SongPane> tempCollection = new ArrayList<>();//a copy of currentCollection so it can be edited
-    public static ArrayList<SongPane> timeline = new ArrayList<>();
+    //public static ArrayList<SongPane> timeline = new ArrayList<>();
 
     private static int tempCollectionSize = 0;
 
@@ -37,6 +37,8 @@ public class MusicPlayer extends Application{
 
     public static Duration duration;
     public static Duration startTime;
+
+    public static boolean flag2 = true;
 
 
 
@@ -105,8 +107,10 @@ public class MusicPlayer extends Application{
 
             Main.controller.pauseButton.setText("| |");
 
-            if (player !=null)
+            /*if (player !=null){
                 player.dispose();
+                System.out.println("Disposed");
+            }*/
 
             player = new MediaPlayer(media);
 
@@ -191,6 +195,9 @@ public class MusicPlayer extends Application{
 
             previousSong.label.setTextFill(Color.DARKBLUE);//previous song
             pane.label.setTextFill(Color.RED);//current song
+
+            player.dispose();
+            //System.out.println("Disposed");
 
             playMedia(pane);
         }

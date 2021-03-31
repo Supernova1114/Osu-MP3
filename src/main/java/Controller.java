@@ -1,3 +1,5 @@
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
@@ -143,18 +145,16 @@ public class Controller {
             @Override
             public void handle(MouseEvent event) {
                 if (MusicPlayer.isActive){
-                    isSeekBarPressed = false;
                     MusicPlayer.setSeek(seekTime);
                 }
+                isSeekBarPressed = false;
             }
         });
 
         seekBar.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                if (MusicPlayer.isActive){
-                    isSeekBarPressed = true;
-                }
+                isSeekBarPressed = true;
             }
         });
 
@@ -172,7 +172,7 @@ public class Controller {
         int minutes = (int)((currSeconds % 3600) / 60);
         int seconds = (int)(currSeconds % 60);
 
-        seekCurrentLabel.setText(hours + ":" + minutes + ":" + seconds);
+        seekCurrentLabel.setText(hours + ":" + minutes + ":" + (seconds < 10 ? "0" + seconds : seconds));
 
         /*if (currSeconds >= MusicPlayer.duration.toSeconds() - 10 && isSeekBarPressed)
             seekBar.setValue(currSeconds - 10);
@@ -193,7 +193,7 @@ public class Controller {
         int minutes = (int)((max.toSeconds() % 3600) / 60);
         int seconds = (int)(max.toSeconds() % 60);
 
-        seekMaxLabel.setText(hours + ":" + minutes + ":" + seconds);
+        seekMaxLabel.setText(hours + ":" + minutes + ":" + (seconds < 10 ? "0" + seconds : seconds));
 
         seekBar.setDisable(false);
     }
