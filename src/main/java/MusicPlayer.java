@@ -197,6 +197,7 @@ public class MusicPlayer extends Application{
             pane.label.setTextFill(Color.RED);//current song
 
             player.dispose();
+            player = null;
             //System.out.println("Disposed");
 
             playMedia(pane);

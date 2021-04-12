@@ -212,9 +212,7 @@ public class Main extends Application{
                 "\u000B \u000B \u000B \u000B  ");*/
 
 
-
-
-
+        //System.out.println("gay");
     }
 
 
@@ -278,6 +276,13 @@ public class Main extends Application{
                                 File file = new File(lineList.get(i).substring(32 + hashMapSplitChar.length()));
                                 //System.out.println(hash);
                                 hashMap.put(hash, file);
+
+                                Platform.runLater(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        controller.label.setText(hashMap.size() + "");
+                                    }
+                                });
 
                             }
                         }
@@ -502,6 +507,7 @@ public class Main extends Application{
                     }
                     CollectionList = null;
 
+                    System.out.println("Hashset length: " + hashMap.size());
 
                     System.out.println("Begin Worker Completed!");
 

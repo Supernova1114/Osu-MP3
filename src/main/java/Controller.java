@@ -41,6 +41,11 @@ public class Controller {
     public static boolean isSeekBarPressed = false;
 
     @FXML
+    public void collectGarbo(){
+        System.gc();
+    }
+
+    @FXML
     public void GetOsuFolder() throws Exception {
         DirectoryChooser chooser = new DirectoryChooser();
         chooser.setTitle("Find Osu! Folder");

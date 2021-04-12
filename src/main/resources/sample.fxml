@@ -44,12 +44,11 @@
        </Menu>
        <Menu mnemonicParsing="false" text="Help">
          <items>
-           <MenuItem mnemonicParsing="false" text="About" />
+           <MenuItem mnemonicParsing="false" onAction="#collectGarbo" text="About" />
          </items>
        </Menu>
      </menus>
    </MenuBar>
-   <Label fx:id="label" layoutX="554.0" layoutY="372.0" text="Hash" textAlignment="RIGHT" AnchorPane.bottomAnchor="11.0" AnchorPane.rightAnchor="19.0" />
    <ToolBar layoutY="360.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
       <items>
          <Slider fx:id="volumeSlider" focusTraversable="false" prefHeight="14.0" prefWidth="90.0" rotate="180.0">
@@ -80,6 +79,7 @@
       </items>
    </ToolBar>
    <Label fx:id="songTitleLabel" layoutX="529.0" layoutY="347.0" text="Song Title" textAlignment="RIGHT" AnchorPane.bottomAnchor="36.0" AnchorPane.rightAnchor="18.0" />
+   <Label fx:id="label" layoutX="568.0" layoutY="4.0" text="Hash" textAlignment="RIGHT" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="4.0" />
    <cursor>
       <Cursor fx:constant="DEFAULT" />
    </cursor>
