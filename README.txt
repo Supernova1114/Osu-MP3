@@ -1,7 +1,8 @@
 # Osu-MP3
 Play Songs From Your Osu! Directory!
 
-*Make sure to place the jar file into a folder somewhere and make a desktop shortcut because the program creates two file. You probably would not want it to create the files on your desktop so I highly recommend this
+*Make sure to place the jar file into a folder somewhere and make a desktop shortcut because the program creates two file. 
+You probably would not want it to create the files on your desktop so I highly recommend this
 
 !!Only able to play songs from Collections at this time!!
 
