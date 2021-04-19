@@ -3,6 +3,9 @@
 
 !!Only able to play songs from Collections at this time!!
 
+-Recommended Java version: 8
+-Java 11 does not work at this time
+
 -you can now play the next and prev songs in a playlist
 -you can now use keyboard media keys to control the program
 -you can control the program with media keys even when it is minimized

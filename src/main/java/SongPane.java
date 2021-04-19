@@ -1,6 +1,5 @@
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
@@ -34,14 +33,14 @@ public class SongPane extends Pane {
 
 
 
-    public SongPane(String name, String md5Hash, File file, File musicFile, File imageFile, String collectionName) throws Exception {
+    public SongPane(String name, String md5Hash, File file, File musicFile, File imageFile, String collectionName) {
         this.name = name;
         this.md5Hash = md5Hash;
         this.file = file;
         this.musicFile = musicFile;
         this.imageFile = imageFile;
         //LiSA - Rising Hope (TV Size) (xChippy) [Hope]
-        int sub = name.indexOf(" - ");
+        //int sub = name.indexOf(" - ");
 
         try {
             //label = new Label(name.substring(sub + 3, name.substring(sub + 3).indexOf("(") + sub + 3));//name.indexOf(".osu")
@@ -62,20 +61,6 @@ public class SongPane extends Pane {
 
 
         getChildren().add(label);
-
-
-        //Find music file
-        /*if (name.equals("Camellia feat. Nanahira - Amor De Verao (Tofu1222) [Regou's Another].osu") || name.equals("That Poppy - Altar (-NeBu-) [ChuuritsuTv's Old-Style Insane].osu"))
-        try {
-            System.out.println(file);
-            Scanner scanner = new Scanner(file);//Scans beatmap diff file
-            System.out.println(scanner.hasNext());
-            scanner.close();
-        }catch (Exception e){
-            e.printStackTrace();
-        }*/
-
-
 
 
         //System.out.println();

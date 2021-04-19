@@ -1,4 +1,3 @@
-import com.melloware.jintellitype.JIntellitype;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
@@ -14,7 +13,9 @@ import javafx.stage.WindowEvent;
 
 import javax.swing.*;
 import java.io.*;
-import java.nio.file.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.security.NoSuchAlgorithmException;
 import java.util.*;
 
@@ -34,11 +35,11 @@ public class Main extends Application{
 
     static long songFolderLastModified = -1;
 
-    private static String hashMapSplitChar = " [] ";
+    private static final String hashMapSplitChar = " [] ";
 
     public static Map<String, File> hashMap = new HashMap<>();
 
-    public static WindowsKeyListener keyListener;
+    GlobalKeyListener globalKeyListener;
 
 
 
@@ -50,7 +51,7 @@ public class Main extends Application{
             @Override
             public void handle(WindowEvent event) {
                 primaryStage.close();
-                JIntellitype.getInstance().cleanUp();
+                globalKeyListener.cleaUp();
                 System.exit(0);
             }
         });
@@ -61,44 +62,8 @@ public class Main extends Application{
         root = fxmlLoader.load();
         controller = fxmlLoader.getController();
 
-        /*root.addEventFilter(KeyEvent.KEY_RELEASED, k -> {
-            if ( k.getCode() == KeyCode.SPACE || k.getCode() == KeyCode.F7 || k.getCode().isMediaKey() ){
-                root.requestFocus();
-                controller.TogglePause();
-                k.consume();
-            }
-        });*/
-
-
-       /* root.setOnKeyReleased(k -> {
-
-        });*/
-
-        /*root.setOnKeyPressed(k -> {
-            //System.out.println(k.getCode());
-
-        });*/
-
-
-
-        /*root.setOnKeyPressed(k -> {
-
-        });*/
-
-        /*WindowsProvider provider = new WindowsProvider();
-
-        provider.register(MediaKey.MEDIA_PLAY_PAUSE, new HotKeyListener() {
-            @Override
-            public void onHotKey(HotKey hotKey) {
-                System.out.println(hotKey.toString());
-            }
-        });*/
-
 
         Scene scene = new Scene(root, 600, 600);
-        /*scene.setOnKeyPressed(event -> {
-            System.out.println(event.getCode());
-        });*/
 
 
         scene.addEventFilter(KeyEvent.KEY_PRESSED, (KeyEvent event) -> {
@@ -130,9 +95,6 @@ public class Main extends Application{
         primaryStage.setScene(scene);
         primaryStage.show();
 
-        //Start up JIntellitype
-        keyListener = new WindowsKeyListener();
-
 
 
         //
@@ -157,13 +119,13 @@ public class Main extends Application{
         }
 
         String osuFolderLocProp = applicationProps.getProperty("osuFolderLocation");
-        String showArtistsProp = applicationProps.getProperty("showArtists");
+        //String showArtistsProp = applicationProps.getProperty("showArtists");
 
 //        controller.showArtists(Boolean.parseBoolean(showArtistsProp)); 
         // FIXME: 2/6/2021 
 
 
-        if (osuFolderLocProp != "null"){
+        if (!osuFolderLocProp.equals("null")){
             osuFolder = new File(osuFolderLocProp);
             try{
                 Begin();
@@ -212,8 +174,12 @@ public class Main extends Application{
                 "\u000B \u000B \u000B \u000B  ");*/
 
 
-        //System.out.println("gay");
-    }
+
+
+
+        globalKeyListener = new GlobalKeyListener();
+
+    }//start()
 
 
     //Main Processes after choosing files and pressing start
@@ -239,9 +205,9 @@ public class Main extends Application{
                     };
 
                     //GetSongsFolder
-                    File songFolder = osuFolder.listFiles(SONGSFOLDER)[0];
-                    File collectionsDB = osuFolder.listFiles(COLLECTIONDB)[0];
-                    //collectionsDB = new File("C:\\Users\\Fart\\Downloads\\Osu MP4 test coll\\seal\\collection.db");
+                    File songFolder = Objects.requireNonNull(osuFolder.listFiles(SONGSFOLDER))[0];
+                    File collectionsDB = Objects.requireNonNull(osuFolder.listFiles(COLLECTIONDB))[0];
+
 
                     //songFolderLastModified = songFolder.lastModified();
                     songFolderLastModified = collectionsDB.lastModified();
@@ -296,18 +262,7 @@ public class Main extends Application{
 
                     System.out.println();
 
-                    //File collectionsDB = new File("D:\\Program Files\\osu!\\collection.db");
-
-                    //String data = "";
                     String data = new String(Files.readAllBytes(Paths.get(collectionsDB.getPath())));
-
-                    /*BufferedReader collectionFileReader = new BufferedReader(new FileReader(collectionsDB.getPath()));
-
-                    String data = null;
-                    int j;
-                    while ((j = collectionFileReader.read()) != -1) {
-                        data += (char)j;
-                    }*/
 
 
                     String[] clean = data.split("\\P{Print}");
@@ -345,7 +300,6 @@ public class Main extends Application{
                         }
                     }
 
-                    cleanArray = null;
 
                     /*//DEBUG////////////////////////////////////////////////////////////////////////////////////////////////////////////
                     int count = 0;
@@ -406,14 +360,13 @@ public class Main extends Application{
                                     BufferedReader beatmapFileReader = new BufferedReader(new FileReader(file));
 
 
-                                    int flag = 0;
+
                                     String line;
                                     while ((line = beatmapFileReader.readLine()) != null) {
 
                                         if (line.contains("AudioFilename")) {
                                             //System.out.println(line);
                                             musicFile = new File(file.getParentFile().getPath() + File.separator + line.substring(15));//15 is length of [AudioFilename: ]
-                                            flag++;
                                         }
                                         if (line.contains("[Events]")){
                                             beatmapFileReader.readLine();
@@ -505,7 +458,6 @@ public class Main extends Application{
                         row = 0;
                         col++;
                     }
-                    CollectionList = null;
 
                     System.out.println("Hashset length: " + hashMap.size());
 
@@ -543,7 +495,7 @@ public class Main extends Application{
     }
 
     //get songs by scanning through song folder
-    public static void getSongsNormally(File songFolder, File collectiondb) throws Exception, NoSuchAlgorithmException {
+    public static void getSongsNormally(File songFolder, File collectiondb) throws Exception {
 
         ArrayList<File[]> diffListList = new ArrayList<>();
         File[] beatmapList = songFolder.listFiles();
@@ -589,7 +541,7 @@ public class Main extends Application{
 
         assert hashSet.length == fileSet.length;
 
-        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(new File(songHashMapPath.toString())));
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(songHashMapPath.toString()));
         bufferedWriter.write("#SONG AND HASH LIBRARY");
         bufferedWriter.newLine();
         bufferedWriter.write(collectiondb.lastModified() + "");//
@@ -606,6 +558,13 @@ public class Main extends Application{
         }
 
         bufferedWriter.close();
+    }//getSongsNormally()
+
+
+    //moved out of GlobalKeyListener
+    public static void togglePause(){
+        root.requestFocus();
+        controller.TogglePause();
     }
 
 

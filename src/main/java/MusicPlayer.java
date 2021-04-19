@@ -1,25 +1,20 @@
-import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.event.EventHandler;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class MusicPlayer extends Application{
+public class MusicPlayer {
 
     public static MediaPlayer player;
     public static boolean isActive = false;
     public static boolean isPaused = false;
-    static SwingWorker worker;
+    //static SwingWorker worker;
     static double volume = 0.5;
 
     private static ArrayList<SongPane> currentCollection;
@@ -29,7 +24,7 @@ public class MusicPlayer extends Application{
 
     private static int tempCollectionSize = 0;
 
-//    private static boolean createPlaylist = false;
+    //private static boolean createPlaylist = false;
     private static boolean flag = false;
 
     private static SongPane previousSong;
@@ -38,10 +33,154 @@ public class MusicPlayer extends Application{
     public static Duration duration;
     public static Duration startTime;
 
-    public static boolean flag2 = true;
+
+    public static void playMedia(SongPane pane) throws InterruptedException {
+
+        //gets media file
+        Media media = new Media(pane.musicFile.toURI().toString());
+
+        //Makes shuffled playlist when new playlist is clicked.
+        if (currentCollection == null || !currentCollection.get(0).collectionName.equals(pane.collectionName)) {
+            //search for collection
+            for (int i = 0; i < Main.songPaneCollectionList.size(); i++) {
+                if (Main.songPaneCollectionList.get(i).get(0).collectionName.equals(pane.collectionName)) {
+                    currentCollection = Main.songPaneCollectionList.get(i);
+
+                    System.out.println(pane.name);
+
+                    //copy currentCollection to tempCollection
+                    tempCollection.clear();
+
+                    tempCollection.addAll(currentCollection);
+
+                    tempCollectionSize = tempCollection.size();//get size
+
+                    Collections.shuffle(tempCollection);
+                    songIndex = 0;
+                    tempCollection.remove(pane);
+                    tempCollection.add(0, pane);
 
 
+                    System.out.println("Chosen New Collection!");
+                    break;
+                }
+            }
 
+            flag = true;
+
+        }
+
+
+        if (!isActive) {
+            isActive = true;
+
+            //creates new media player and inserts media
+            player = new MediaPlayer(media);
+
+            Main.controller.seekBar.setDisable(true);
+            Main.controller.seekBar.setValue(0);
+
+
+            //Changes seekbar currentTime as music progresses.
+            player.currentTimeProperty().addListener(new ChangeListener<Duration>() {
+                @Override
+                public void changed(ObservableValue<? extends Duration> observable, Duration oldValue, Duration newValue) {
+                    if (Main.controller.isSeekBarPressed == false)
+                    Main.controller.setCurrentSeekTime(newValue.toSeconds());
+                }
+            });
+
+            System.out.println("current index: " + songIndex);
+
+            previousSong = pane;//current song
+
+
+            //On end of media
+            player.setOnEndOfMedia(new Runnable() {
+                @Override
+                public void run() {
+                    System.out.println();
+                    System.out.println("Finished Song!");
+
+                    if (songIndex < tempCollectionSize-1) {/////<<< Should i keep? was for the remove //Fix < dont mind this rn
+                        //increase index
+                        songIndex++;
+
+                        System.out.println(songIndex);
+
+                        //get next song in list
+                        SongPane nextSong = tempCollection.get(songIndex);  //(int)(Math.random() * tempCollectionSize-1));
+                        System.out.println("Now Playing: " + nextSong.name + "\n In Collection: " + tempCollection.get(0).collectionName);
+
+                        try {
+                            //play next song
+                            playMedia(nextSong);
+
+                            nextSong.label.setTextFill(Color.RED);
+                            pane.label.setTextFill(Color.DARKBLUE);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+
+                }//run()
+            });
+
+
+            //get start and stop times (ready == when it gets the data cause it is async)
+            player.setOnReady(new Runnable() {
+                @Override
+                public void run() {
+                    duration = player.getTotalDuration();
+
+                    Main.controller.refreshSeekBar(0, duration, false);
+
+                    player.setVolume(volume);
+                    player.play();
+
+                    isPaused = false;
+                    Main.controller.pauseButton.setText("| |");
+
+                    Platform.runLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            Main.controller.songTitleLabel.setText("Playing: " + pane.label.getText());
+                        }
+                    });
+
+
+                }
+            });
+
+        //if !Active
+        }else {
+            //else if Active (will run when setOnEndOfMedia runs because media player is active at that time)
+
+            player.stop();
+            isActive = false;
+            isPaused = true;
+
+            Main.controller.pauseButton.setText(">");
+
+            previousSong.label.setTextFill(Color.DARKBLUE);//previous song
+            pane.label.setTextFill(Color.RED);//current song
+
+            //HELP
+            player.dispose();
+
+            //System.out.println(player.getStatus());
+
+            player = null;
+
+            //play new song
+            playMedia(pane);
+        }
+
+    }//playMedia()
+
+
+    //inserts a songs at current list index when clicked and removes it from its previous location
     public static void insertSong(SongPane pane){
         if (flag == false) {
             if (tempCollection.indexOf(pane) != songIndex) {
@@ -60,152 +199,8 @@ public class MusicPlayer extends Application{
             flag = false;
     }
 
-    public static void playMedia(SongPane pane) throws InterruptedException {
-        Media media = new Media(pane.musicFile.toURI().toString());
 
-        if (currentCollection == null || currentCollection.get(0).collectionName != pane.collectionName) {
-            //search for collection
-            for (int i = 0; i < Main.songPaneCollectionList.size(); i++) {
-                if (Main.songPaneCollectionList.get(i).get(0).collectionName.equals(pane.collectionName)) {
-                    currentCollection = Main.songPaneCollectionList.get(i);
-                    //
-                    System.out.println(currentCollection.get(0).name);
-
-                    //copy currentCollection to tempCollection
-                    tempCollection.clear();
-                    for (SongPane song: currentCollection){
-                        tempCollection.add(song);
-                    }
-                    tempCollectionSize = tempCollection.size();//get size
-
-                    Collections.shuffle(tempCollection);
-                    songIndex = 0;
-                    tempCollection.remove(pane);
-                    tempCollection.add(0, pane);
-
-
-                    System.out.println("Chosen New Collection!");
-                    break;
-                }
-            }
-
-            //createPlaylist = true;
-            flag = true;
-
-        }
-
-        /*if (createPlaylist){
-            createPlaylist=false;
-        }else{
-
-        }*/
-
-
-        if (!isActive) {
-            isActive = true;
-            isPaused = false;
-
-            Main.controller.pauseButton.setText("| |");
-
-            /*if (player !=null){
-                player.dispose();
-                System.out.println("Disposed");
-            }*/
-
-            player = new MediaPlayer(media);
-
-            Main.controller.seekBar.setDisable(true);
-            Main.controller.seekBar.setValue(0);
-
-            //get start and stop times (ready == when it gets the data cause async)
-            player.setOnReady(new Runnable() {
-                @Override
-                public void run() {
-                    duration = player.getTotalDuration();
-
-                    Main.controller.refreshSeekBar(0, duration, false);
-                }
-            });
-
-            player.currentTimeProperty().addListener(new ChangeListener<Duration>() {
-                @Override
-                public void changed(ObservableValue<? extends Duration> observable, Duration oldValue, Duration newValue) {
-                    if (Main.controller.isSeekBarPressed == false)
-                    Main.controller.setCurrentSeekTime(newValue.toSeconds());
-                }
-            });
-
-            System.out.println("current index: " + songIndex);
-
-            previousSong = pane;//current song
-
-
-           /* if (timeline.contains(pane))//remove if already exists
-                timeline.remove(pane);
-
-            timeline.add(pane);//add song to dynamic timeline*/
-
-            //System.out.println("wowowoowo");
-
-            //testing
-            //player.setStopTime(Duration.seconds(0.05));
-
-            player.setOnEndOfMedia(new Runnable() {
-                @Override
-                public void run() {
-                    System.out.println();
-                    System.out.println("Finished Song!");
-                    if (songIndex < tempCollectionSize-1) {/////<<< Should i keep? was for the remove
-                        songIndex++;
-
-                        System.out.println(songIndex);
-                        SongPane nextSong = tempCollection.get(songIndex);  //(int)(Math.random() * tempCollectionSize-1));
-                        System.out.println("Now Playing: " + nextSong.name + "\n In Collection: " + tempCollection.get(0).collectionName);
-                        try {
-                            playMedia(nextSong);
-                        /*int index = Main.controller.gridPane.getChildren().indexOf(nextSong);
-                        ((SongPane)Main.controller.gridPane.getChildren().get(index)).label.setTextFill(Color.RED);
-                        int index2 = Main.controller.gridPane.getChildren().indexOf(pane);
-                        ((SongPane)Main.controller.gridPane.getChildren().get(index2)).label.setTextFill(Color.DARKBLUE);*/
-                            nextSong.label.setTextFill(Color.RED);
-                            pane.label.setTextFill(Color.DARKBLUE);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }
-            });
-
-            player.setVolume(volume);
-            player.play();
-
-            Platform.runLater(new Runnable() {
-                @Override
-                public void run() {
-                    Main.controller.songTitleLabel.setText("Playing: " + pane.label.getText());
-                }
-            });
-
-        }else {
-            player.stop();
-            isActive = false;
-            isPaused = true;
-
-            Main.controller.pauseButton.setText(">");
-
-            previousSong.label.setTextFill(Color.DARKBLUE);//previous song
-            pane.label.setTextFill(Color.RED);//current song
-
-            player.dispose();
-            player = null;
-            //System.out.println("Disposed");
-
-            playMedia(pane);
-        }
-
-    }
-
-
+    //sets volume of media player
     public static void setVolume(double percent){
         volume = percent;
 
@@ -231,6 +226,7 @@ public class MusicPlayer extends Application{
         }
     }
 
+    //plays next song
     public static void nextSong() throws InterruptedException {
         if (isActive) {
             if (songIndex + 1 < tempCollectionSize) {
@@ -242,6 +238,7 @@ public class MusicPlayer extends Application{
         }
     }
 
+    //plays prev song
     public static void prevSong() throws InterruptedException {
         if (isActive) {
             if (songIndex > 0) {
@@ -253,14 +250,11 @@ public class MusicPlayer extends Application{
         }
     }
 
+    //set seekbar media position
     public static void setSeek(double seconds){
         player.seek(Duration.seconds(seconds));
     }
 
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-
-    }
 
 }
 

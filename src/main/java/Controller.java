@@ -42,7 +42,7 @@ public class Controller {
 
     @FXML
     public void collectGarbo(){
-        System.gc();
+        //System.gc();
     }
 
     @FXML
@@ -178,11 +178,6 @@ public class Controller {
         int seconds = (int)(currSeconds % 60);
 
         seekCurrentLabel.setText(hours + ":" + minutes + ":" + (seconds < 10 ? "0" + seconds : seconds));
-
-        /*if (currSeconds >= MusicPlayer.duration.toSeconds() - 10 && isSeekBarPressed)
-            seekBar.setValue(currSeconds - 10);
-        else
-            seekBar.setValue(currSeconds);*/
         
         seekBar.setValue(currSeconds);
         // FIXME: 3/27/2021 fix clickable seekBar asjdlkasjdljaslkdj
