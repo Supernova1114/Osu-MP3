@@ -23,3 +23,4 @@ Notes:
 -for headphones with one media button the controls are usually: double-click = next song, tripple-click = prev song, single-click = play/pause
 -program will reimport ALL songs when a song is added or removed from Collections. (This will be changed soon :) )
 -Osu! saves to its "Collections" file when you close the game.
+-When a song in a collection (column) is clicked, this will create a shuffled playlist of that collection.
