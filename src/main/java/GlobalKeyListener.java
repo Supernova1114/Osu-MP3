@@ -4,7 +4,6 @@ import com.tulskiy.keymaster.common.MediaKey;
 import com.tulskiy.keymaster.common.Provider;
 import javafx.application.Platform;
 
-import static org.junit.Assert.assertNotNull;
 
 public class GlobalKeyListener {
 
@@ -45,7 +44,7 @@ public class GlobalKeyListener {
 
         provider = Provider.getCurrentProvider(false);//useSwingThread = false
 
-        assertNotNull(provider);
+        assert provider != null;
 
         provider.register(MediaKey.MEDIA_PLAY_PAUSE, hotKeyListener);
 

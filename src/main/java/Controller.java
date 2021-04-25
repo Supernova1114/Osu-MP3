@@ -1,5 +1,3 @@
-import javafx.beans.InvalidationListener;
-import javafx.beans.Observable;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
@@ -36,7 +34,7 @@ public class Controller {
     @FXML
     Label seekCurrentLabel;
 
-    public static double seekTime = 0.0;
+    public static double seekBarValue = 0.0;
 
     public static boolean isSeekBarPressed = false;
 
@@ -102,6 +100,8 @@ public class Controller {
 
 
     public void initialize(){
+        gridPane.setDisable(true);
+
         label.setText("");
         songTitleLabel.setText("Song Title");
 
@@ -123,7 +123,7 @@ public class Controller {
         volumeSlider.setBlockIncrement(5);
         volumeSlider.setMajorTickUnit(25);
         volumeSlider.setMinorTickCount(5);
-        volumeSlider.setSnapToTicks(true);
+        //volumeSlider.setSnapToTicks(true);
         volumeSlider.setMax(50);
         volumeSlider.setMin(0);
 
@@ -137,35 +137,19 @@ public class Controller {
 
         seekBar.setValue(0);
 
-        seekBar.valueProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                if (MusicPlayer.isActive){
-                    seekTime = newValue.doubleValue();
-                }
-            }
-        });
-
-        seekBar.setOnMouseReleased(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                if (MusicPlayer.isActive){
-                    MusicPlayer.setSeek(seekTime);
-                }
-                isSeekBarPressed = false;
-            }
-        });
-
         seekBar.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                isSeekBarPressed = true;
+                MusicPlayer.player.seek(Duration.seconds(seekBar.getValue()));
             }
         });
 
-
-
-
+        seekBar.setOnMouseDragged(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                MusicPlayer.player.seek(Duration.seconds(seekBar.getValue()));
+            }
+        });
 
 
 
@@ -173,21 +157,23 @@ public class Controller {
 
 
     public void setCurrentSeekTime(double currSeconds){
-        int hours = (int)(currSeconds / 3600);
-        int minutes = (int)((currSeconds % 3600) / 60);
-        int seconds = (int)(currSeconds % 60);
-
-        seekCurrentLabel.setText(hours + ":" + minutes + ":" + (seconds < 10 ? "0" + seconds : seconds));
-        
         seekBar.setValue(currSeconds);
-        // FIXME: 3/27/2021 fix clickable seekBar asjdlkasjdljaslkdj
+
+        double hours = (currSeconds / 3600);
+        double minutes = ((currSeconds % 3600) / 60);
+        double seconds = (currSeconds % 60);
+        //System.out.println("CurrSec: " + currSeconds + " sec: " + seconds);
+
+        seekCurrentLabel.setText((int)hours + ":" + (int)minutes + ":" + (seconds < 10 ? "0" + (int)seconds : (int)seconds));
+
 
     }
 
-    public void refreshSeekBar(double min, Duration max, boolean disable){
-        seekBar.setMin(min);
+    public void refreshSeekBar(Duration max){
+        seekBar.setMin(0);
+        seekBar.setValue(0);
         seekBar.setMax(max.toSeconds());
-        seekBar.setValue(min);
+
 
         int hours = (int)(max.toSeconds() / 3600);
         int minutes = (int)((max.toSeconds() % 3600) / 60);

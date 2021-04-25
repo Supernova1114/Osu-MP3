@@ -21,6 +21,9 @@ import java.util.*;
 
 public class Main extends Application{
 
+    private  String version = "0.6.1";
+    private String stageTitle = "Osu! MP3 v" + version;
+
     public static Stage primaryStage;
     public static Controller controller;
     public static File osuFolder = null;//new File("D:\\Program Files\\osu!");
@@ -50,8 +53,8 @@ public class Main extends Application{
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent event) {
-                primaryStage.close();
                 globalKeyListener.cleaUp();
+                primaryStage.close();
                 System.exit(0);
             }
         });
@@ -91,7 +94,7 @@ public class Main extends Application{
 
 
 
-        primaryStage.setTitle("Osu! MP3");
+        primaryStage.setTitle(stageTitle);
         primaryStage.setScene(scene);
         primaryStage.show();
 
@@ -121,8 +124,7 @@ public class Main extends Application{
         String osuFolderLocProp = applicationProps.getProperty("osuFolderLocation");
         //String showArtistsProp = applicationProps.getProperty("showArtists");
 
-//        controller.showArtists(Boolean.parseBoolean(showArtistsProp)); 
-        // FIXME: 2/6/2021 
+        //controller.showArtists(Boolean.parseBoolean(showArtistsProp));
 
 
         if (!osuFolderLocProp.equals("null")){
@@ -462,6 +464,8 @@ public class Main extends Application{
                     System.out.println("Hashset length: " + hashMap.size());
 
                     System.out.println("Begin Worker Completed!");
+
+                    controller.gridPane.setDisable(false);
 
                     return null;
                 }

@@ -30,7 +30,7 @@ public class MusicPlayer {
     private static SongPane previousSong;
     private static int songIndex = 0;
 
-    public static Duration duration;
+    public static Duration totalDuration;
     public static Duration startTime;
 
 
@@ -46,7 +46,7 @@ public class MusicPlayer {
                 if (Main.songPaneCollectionList.get(i).get(0).collectionName.equals(pane.collectionName)) {
                     currentCollection = Main.songPaneCollectionList.get(i);
 
-                    System.out.println(pane.name);
+                    //System.out.println(pane.name);
 
                     //copy currentCollection to tempCollection
                     tempCollection.clear();
@@ -78,19 +78,19 @@ public class MusicPlayer {
             player = new MediaPlayer(media);
 
             Main.controller.seekBar.setDisable(true);
-            Main.controller.seekBar.setValue(0);
 
 
             //Changes seekbar currentTime as music progresses.
             player.currentTimeProperty().addListener(new ChangeListener<Duration>() {
                 @Override
                 public void changed(ObservableValue<? extends Duration> observable, Duration oldValue, Duration newValue) {
-                    if (Main.controller.isSeekBarPressed == false)
                     Main.controller.setCurrentSeekTime(newValue.toSeconds());
                 }
             });
 
-            System.out.println("current index: " + songIndex);
+
+
+            //System.out.println("current index: " + songIndex + " Duration: " + player.getTotalDuration().toSeconds());
 
             previousSong = pane;//current song
 
@@ -99,18 +99,18 @@ public class MusicPlayer {
             player.setOnEndOfMedia(new Runnable() {
                 @Override
                 public void run() {
-                    System.out.println();
-                    System.out.println("Finished Song!");
+                    //System.out.println();
+                    //System.out.println("Finished Song!");
 
                     if (songIndex < tempCollectionSize-1) {/////<<< Should i keep? was for the remove //Fix < dont mind this rn
                         //increase index
                         songIndex++;
 
-                        System.out.println(songIndex);
+                        //System.out.println(songIndex);
 
                         //get next song in list
                         SongPane nextSong = tempCollection.get(songIndex);  //(int)(Math.random() * tempCollectionSize-1));
-                        System.out.println("Now Playing: " + nextSong.name + "\n In Collection: " + tempCollection.get(0).collectionName);
+                        //System.out.println("Now Playing: " + nextSong.name + "\n In Collection: " + tempCollection.get(0).collectionName);
 
                         try {
                             //play next song
@@ -132,9 +132,9 @@ public class MusicPlayer {
             player.setOnReady(new Runnable() {
                 @Override
                 public void run() {
-                    duration = player.getTotalDuration();
+                    totalDuration = media.getDuration();
 
-                    Main.controller.refreshSeekBar(0, duration, false);
+                    Main.controller.refreshSeekBar(totalDuration);
 
                     player.setVolume(volume);
                     player.play();
@@ -149,9 +149,13 @@ public class MusicPlayer {
                         }
                     });
 
+                    //System.out.println("current index: " + songIndex + " Duration: " + player.getTotalDuration().toSeconds());
+
 
                 }
             });
+
+
 
         //if !Active
         }else {
@@ -192,8 +196,7 @@ public class MusicPlayer {
                 }
 
                 tempCollection.add(songIndex, pane);
-                System.out.println("inserted at index: " + songIndex);
-                System.out.println();
+                //System.out.println("inserted at index: " + songIndex);
             }
         }else
             flag = false;
@@ -253,6 +256,12 @@ public class MusicPlayer {
     //set seekbar media position
     public static void setSeek(double seconds){
         player.seek(Duration.seconds(seconds));
+
+        //System.out.println(player.getStatus());
+
+        //System.out.println("-seekPos = " + (int)player.currentTimeProperty().get().toSeconds() + " -seconds: " + (int)seconds);
+        //System.out.println("Curr Time = " + player.getCurrentTime().toSeconds());
+
     }
 
 
