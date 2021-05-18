@@ -9,19 +9,19 @@ You probably would not want it to create the files on your desktop so I highly r
 **!!Has only been tested on Windows 10!!**
 
 **How to use:**
-* -go to (File > Get Osu! Folder) and select your Osu! folder (not songs folder)
-* -the number of songs imported will be shown in the top right
-* -click a song name to begin playing a shuffled playlist of the selected collection (column)
+* go to (File > Get Osu! Folder) and select your Osu! folder (not songs folder)
+* the number of songs imported will be shown in the top right
+* click a song name to begin playing a shuffled playlist of the selected collection (column)
 
 **Controls:**
-* -up/down arrow for volume
-* -keyboard and headphone media keys for audio playback
-* -drag mouse to move song panel around
+* up/down arrow for volume
+* keyboard and headphone media keys for audio playback
+* drag mouse to move song panel around
 
 **Notes:**
-* -you can now use keyboard and headphone media keys to control the program (even while minimized)
-* -for headphones with one media button the controls are usually: double-click = next song, tripple-click = prev song, single-click = play/pause
-* -program will reimport ALL songs when a song is added or removed from Collections. (This will be changed soon)
-* -Osu! saves to its "Collections" file when you close the game.
+* you can now use keyboard and headphone media keys to control the program (even while minimized)
+* for headphones with one media button the controls are usually: double-click = next song, tripple-click = prev song, single-click = play/pause
+* program will reimport ALL songs when a song is added or removed from Collections. (This will be changed soon)
+* Osu! saves to its "Collections" file when you close the game.
 
 ![](repoimages/appv0.6.1.png)
