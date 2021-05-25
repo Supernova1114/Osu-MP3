@@ -466,6 +466,7 @@ public class Main extends Application{
                     System.out.println("Begin Worker Completed!");
 
                     controller.gridPane.setDisable(false);
+                    controller.exportSongListMenuItem.setDisable(false);
 
                     return null;
                 }

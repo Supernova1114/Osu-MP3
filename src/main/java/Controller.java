@@ -7,9 +7,17 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.DirectoryChooser;
+import javafx.stage.FileChooser;
 import javafx.util.Duration;
 
+import javax.swing.*;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 
 public class Controller {
 
@@ -33,6 +41,8 @@ public class Controller {
     Label seekMaxLabel;
     @FXML
     Label seekCurrentLabel;
+    @FXML
+    MenuItem exportSongListMenuItem;
 
     public static double seekBarValue = 0.0;
 
@@ -42,6 +52,58 @@ public class Controller {
     public void collectGarbo(){
         //System.gc();
     }
+
+    @FXML
+    public void ExportSongList(){
+        FileChooser chooser = new FileChooser();
+        chooser.setTitle("Choose Export Location");
+        chooser.setInitialFileName("SongList-OsuMP3");
+        chooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Text File", "*.txt"));
+
+        File exportDirectory = chooser.showSaveDialog(Main.primaryStage);
+        System.out.println(exportDirectory);
+
+        if (exportDirectory != null){
+
+            SwingWorker worker = new SwingWorker() {
+                @Override
+                protected Object doInBackground() throws Exception {
+
+                    Path songListFile = Files.createFile(Paths.get(exportDirectory.getPath()));
+                    System.out.println("Created: " + songListFile);
+
+                    BufferedWriter bufferedWriter = null;
+
+                    try {
+                        bufferedWriter = new BufferedWriter(new FileWriter(songListFile.toFile()));
+
+                        bufferedWriter.write("Osu-MP3 Exported Song List");
+                        bufferedWriter.newLine();
+                        bufferedWriter.newLine();
+
+                        for (ArrayList<SongPane> songCollection: Main.songPaneCollectionList){
+                            for (SongPane song: songCollection){
+                                bufferedWriter.write(song.name);
+                                bufferedWriter.newLine();
+                            }
+                        }
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }finally {
+                        if (bufferedWriter != null)
+                        bufferedWriter.close();
+                    }
+
+
+
+
+                    return null;
+                }
+            };
+            worker.execute();
+
+        }//if
+    }//ExportSongList()
 
     @FXML
     public void GetOsuFolder() throws Exception {
@@ -101,6 +163,7 @@ public class Controller {
 
     public void initialize(){
         gridPane.setDisable(true);
+        exportSongListMenuItem.setDisable(true);
 
         label.setText("");
         songTitleLabel.setText("Song Title");

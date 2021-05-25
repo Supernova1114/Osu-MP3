@@ -32,6 +32,11 @@
        <Menu mnemonicParsing="false" text="File">
          <items>
            <MenuItem mnemonicParsing="false" onAction="#GetOsuFolder" text="Get Osu! Folder" />
+               <Menu mnemonicParsing="false" text="Export">
+                 <items>
+                   <MenuItem fx:id="exportSongListMenuItem" mnemonicParsing="false" onAction="#ExportSongList" text="Song List (.txt)" />
+                 </items>
+               </Menu>
                <SeparatorMenuItem mnemonicParsing="false" />
                <MenuItem mnemonicParsing="false" onAction="#CloseProgram" text="Close" />
          </items>
@@ -78,7 +83,7 @@
       </items>
    </ToolBar>
    <Label fx:id="songTitleLabel" layoutX="529.0" layoutY="347.0" text="Song Title" textAlignment="RIGHT" AnchorPane.bottomAnchor="36.0" AnchorPane.rightAnchor="18.0" />
-   <Label fx:id="label" layoutX="568.0" layoutY="4.0" text="Hash" textAlignment="RIGHT" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="4.0" />
+   <Label fx:id="label" layoutX="568.0" layoutY="4.0" style="-fx-font-weight: bold;" text="Hash" textAlignment="RIGHT" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="4.0" />
    <cursor>
       <Cursor fx:constant="DEFAULT" />
    </cursor>
