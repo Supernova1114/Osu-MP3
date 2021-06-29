@@ -26,4 +26,6 @@ You probably would not want it to create the files on your desktop so I highly r
 * program will reimport ALL songs when a song is added or removed from Collections. (This will be changed soon)
 * Osu! saves to its "Collections" file when you close the game.
 
+Uses library: https://github.com/tulskiy/jkeymaster for media keystrokes
+
 ![](repoimages/appv0.6.1.png)
