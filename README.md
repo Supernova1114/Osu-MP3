@@ -1,6 +1,8 @@
 # Osu-MP3
 Play Songs From Your Osu! Directory!
 
+![GitHub Version](https://img.shields.io/github/v/release/Supernova1114/Osu-MP3)
+
 *Make sure to place the jar file into a folder somewhere and make a desktop shortcut because the program creates two files. 
 You probably would not want it to create the files on your desktop so I highly recommend this!*
 
