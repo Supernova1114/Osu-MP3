@@ -16,6 +16,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.security.NoSuchAlgorithmException;
 import java.util.*;
 
 public class Main extends Application{
@@ -236,8 +237,12 @@ public class Main extends Application{
                                 System.out.println("Songs folder was modified!");
 
                                 // FIXME: 8/17/2021 Look for which beatmap folder was modified and then replace the info, look for new or missing song folders
-                                Files.deleteIfExists(songsDatabaseFilePath);
-                                getSongsFromSongFolder(songFolder, collectionsDB);
+                                while ((line = bufferedReader.readLine()) != null){
+                                    lineList.add(line);
+                                }
+
+                                bufferedReader.close();
+                                getSongsFromDatabase(lineList, songFolder, true);
                             }else {
                                 //if Songs folder was not modified
                                 while ((line = bufferedReader.readLine()) != null){
@@ -245,7 +250,7 @@ public class Main extends Application{
                                 }
 
                                 bufferedReader.close();
-                                getSongsFromDatabase(lineList);
+                                getSongsFromDatabase(lineList, songFolder, false);
 
                             }
 
@@ -256,7 +261,7 @@ public class Main extends Application{
                             }
                             bufferedReader.close();
 
-                            getSongsFromDatabase(lineList);
+                            getSongsFromDatabase(lineList, songFolder, false);
                         }
 
 
@@ -267,65 +272,9 @@ public class Main extends Application{
                         getSongsFromSongFolder(songFolder, collectionsDB);
                     }
 
-                    /*if (Files.exists(songHashMapPath)) {
-                        BufferedReader bufferedReader = new BufferedReader(new FileReader(songHashMapPath.toFile()));
-                        String line;
-                        ArrayList<String> lineList = new ArrayList();
-                        while ((line = bufferedReader.readLine()) != null) {
-                            //System.out.println(line);
-                            lineList.add(line);
-                            //System.out.println(line);
-                        }
-                        bufferedReader.close();
-                        //System.out.println("lines: " + lineList.size());
-
-                        for (String lineasdasds: lineList){//DEBUG
-                            System.out.println(lineasdasds);
-                        }
-
-
-
-                        //System.out.println("Last Modified:\n[" + collectionDBLastModified + "\n" + lastModified + "]");
-
-                        if (collectionDBLastModified != collectionDBPrevLastMod){
-                            System.out.println("Collections.db File was Modified!");
-                            
-                            if (songsFolderLastModified != songsFolderPrevLastMod){
-
-                            }
-                            System.out.println("Song Folder was Modified!");
-
-                            Files.deleteIfExists(songHashMapPath);
-                            getSongsFromSongFolder(songFolder, collectionsDB);
-                        }else {
-
-                            //add to hashmap
-                            for (int i = 3; i < lineList.size(); i++) {//i=3 is 4th line to begin at
-                                //System.out.println(lineList.get(i));
-                                String hash = lineList.get(i).substring(0, 32);//32 = hash size
-                                File file = new File(lineList.get(i).substring(32 + hashMapSplitChar.length()));
-                                //System.out.println(hash);
-                                hashMap.put(hash, file);
-
-                                Platform.runLater(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        controller.label.setText(hashMap.size() + "");
-                                    }
-                                });
-
-                            }
-                        }
-
-                    }else {
-                        getSongsFromSongFolder(songFolder, collectionsDB);
-                    }*/
-
-
-                    // Files.deleteIfExists(songHashMapPath);//temppppppppp
-
                     System.out.println();
 
+                    //Get collectionDB info
                     String data = new String(Files.readAllBytes(Paths.get(collectionsDB.getPath())));
 
 
@@ -561,28 +510,108 @@ public class Main extends Application{
         out.close();
     }
 
+
     //read Songs from Database file
-    public static void getSongsFromDatabase(ArrayList<String> lineList){
+    public static void getSongsFromDatabase(ArrayList<String> lineList, File songFolder, boolean isSongsFolderModified) throws IOException, NoSuchAlgorithmException {
 
-        for (int i=5; i<lineList.size(); i++) {
+        if (isSongsFolderModified == false) {
+            for (int i = 5; i < lineList.size(); i++) {
 
-            String temp = lineList.get(i);
-            temp = temp.replaceAll("\\{ ", "").replaceAll("}", "");
+                String temp = lineList.get(i);
+                temp = temp.replaceAll("\\{ ", "").replaceAll("}", "");
 
-            //Split main into beatmap folder location, beatmap folder lastModified, and String Array of beatmaps with MD5;
-            String[] firstSplit = temp.split(" \\| ");
+                //Split main line into beatmap folder location, beatmap folder lastModified, and String Array of beatmaps with MD5;
+                String[] firstSplit = temp.split(" \\| ");
 
-            //Split String Array of beatmaps with MD5 into an actual array;
-            String[] secondSplit = firstSplit[2].split(" ; ");
+                //Split String Array of beatmaps with MD5 into an actual array;
+                String[] secondSplit = firstSplit[2].split(" ; ");
 
-            //Split each into MD5, and beatmap difficulty location
-            for (String str : secondSplit) {
-                String[] tempArray = str.split(" = ");
+                //Split each into MD5, and beatmap difficulty location
+                for (String str : secondSplit) {
+                    String[] tempArray = str.split(" = ");
 
-                hashMap.put(tempArray[0], new File(tempArray[1]));//key, difficulty
+                    hashMap.put(tempArray[0], new File(tempArray[1]));//key, difficulty
+                }
+
+            }//for
+        }else {
+
+            Files.deleteIfExists(songsDatabaseFilePath);
+            Files.createFile(songsDatabaseFilePath);
+
+            BufferedWriter writer = new BufferedWriter(new FileWriter(songsDatabaseFilePath.toFile()));
+
+
+            ArrayList<String> tempLineList = new ArrayList<>();
+            //Make temp list with only beatmap database entries
+            for (int i=5; i<lineList.size(); i++){
+                tempLineList.add(lineList.get(i));
             }
 
-        }//for
+            File[] beatmapList = songFolder.listFiles();
+            ArrayList<String> bmFolderPaths = new ArrayList<>();
+
+            for (int i=0; i< beatmapList.length; i++){
+                bmFolderPaths.add(beatmapList[i].toPath().toString());
+            }
+
+
+            if (lineList.size() == bmFolderPaths.size()){
+
+                for (int i=0; i< bmFolderPaths.size(); i++){
+                    //check each folder to see whether it was modified or not
+
+                    //Split main into beatmap folder location, beatmap folder lastModified, and String Array of beatmaps with MD5;
+                    String[] firstSplit = tempLineList.get(i).split(" \\| ");
+
+
+                    if ( bmFolderPaths.contains(firstSplit[0]) ){
+                        //System.out.println("Success");
+                        //System.out.println(bmFolderPaths.get(bmFolderPaths.indexOf(firstSplit[0])));
+
+                        int index = bmFolderPaths.indexOf(firstSplit[0]);
+
+                        long beatmapFolderLastMod = new File(bmFolderPaths.get(index)).lastModified();//from beatmap folder itself
+                        long dbBeatmapFolderLastMod = Long.parseLong(firstSplit[1]);//from database
+
+
+                        if ( beatmapFolderLastMod != dbBeatmapFolderLastMod ){
+                            System.out.println("This beatmap folder was modified");
+
+                            String entry = "";
+
+                            entry += beatmapList[i].getPath().toString() + " | " + beatmapList[i].lastModified() + " | { ";
+
+                            File[] difficultyList = beatmapList[i].listFiles(getFilenameFilter(".osu"));
+
+                            for (File difficulty: difficultyList){
+                                String key = MD5Calculator.GetMD5Hash(difficulty);
+
+                                entry += key + " = " + difficulty.getPath().toString() + " ; ";
+                            }
+
+                            entry += "}";
+
+                            tempLineList.set(i, entry);
+                        }
+
+                    }else {
+                        tempLineList.remove(i);
+                    }
+
+
+                }
+            }//lineList.size() == bmFolderPaths.size()
+
+            // FIXME: 8/17/2021 make < and > now
+
+        }
+
+
+
+
+
+
 
     }
 
