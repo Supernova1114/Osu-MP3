@@ -71,7 +71,7 @@ public class Main extends Application{
 
 
         scene.addEventFilter(KeyEvent.KEY_PRESSED, (KeyEvent event) -> {
-            //System.out.println("Key pressed");
+
 
             if (event.getCode() == KeyCode.UP){
                 controller.volumeSlider.increment();
@@ -103,14 +103,14 @@ public class Main extends Application{
 
         //
         if (Files.exists(Paths.get(settingsPath))) {
-            System.out.println("Settings File Exists");
+            System.out.println("Settings File Exists\n");
             applicationProps = new Properties();
 
             FileInputStream in = new FileInputStream(settingsPath);
             applicationProps.load(in);
             in.close();
         }else {
-            System.out.println("Settings File Does Not Exist");
+            System.out.println("Settings File Does Not Exist\n");
             applicationProps = new Properties();
 
             //Default Properties
@@ -230,13 +230,16 @@ public class Main extends Application{
                         long collectionDBPrevLastMod = Long.parseLong(lineList.get(1));
                         long songsFolderPrevLastMod = Long.parseLong(lineList.get(2));
 
+                        //System.out.println("collection.db\ncurr: " + collectionDBLastModified + "\nprev: " + collectionDBPrevLastMod);
+                        //System.out.println("Songs folder\ncurr: " + songsFolderLastModified + "\nprev: " + songsFolderPrevLastMod + "\n");
+
+
                         if (collectionDBLastModified != collectionDBPrevLastMod){
                             System.out.println("collection.db was modified!");
 
                             if (songsFolderLastModified != songsFolderPrevLastMod){
                                 System.out.println("Songs folder was modified!");
 
-                                // FIXME: 8/17/2021 Look for which beatmap folder was modified and then replace the info, look for new or missing song folders
                                 while ((line = bufferedReader.readLine()) != null){
                                     lineList.add(line);
                                 }
@@ -269,10 +272,11 @@ public class Main extends Application{
 
 
                     }else {
+                        System.out.println("Database does not exist! ... Creating Database");
                         getSongsFromSongFolder(songFolder, collectionsDB);
                     }
 
-                    System.out.println();
+
 
                     //Get collectionDB info
                     String data = new String(Files.readAllBytes(Paths.get(collectionsDB.getPath())));
@@ -314,18 +318,18 @@ public class Main extends Application{
                     }
 
 
-                    /*//DEBUG////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    //DEBUG////////////////////////////////////////////////////////////////////////////////////////////////////////////
                     int count = 0;
                     for (ArrayList<String> collection: CollectionList){
                         System.out.println();
                         count=0;
                         for (String str: collection){
                             count++;
-                            //System.out.println(str);
+                            System.out.println(str);
                         }
                         System.out.println(count-1);//-1 because -the title
                     }
-                    /////////////////////////////////////*/
+                    /////////////////////////////////////
 
                     int row = 0;
                     int col = 0;
@@ -515,6 +519,9 @@ public class Main extends Application{
     public static void getSongsFromDatabase(ArrayList<String> lineList, File songFolder, boolean isSongsFolderModified) throws IOException, NoSuchAlgorithmException {
 
         if (isSongsFolderModified == false) {
+
+            System.out.println("Getting beatmaps from Database...");
+
             for (int i = 5; i < lineList.size(); i++) {
 
                 String temp = lineList.get(i);
@@ -536,80 +543,104 @@ public class Main extends Application{
             }//for
         }else {
 
+            System.out.println("Modifying Database...");
+
+            File[] beatmapFolderList = songFolder.listFiles();
+
+            ArrayList<String> beatmapFolderPathList = new ArrayList<>();
+
+            for (int i=0; i<beatmapFolderList.length; i++){
+                beatmapFolderPathList.add(beatmapFolderList[i].getPath());
+            }
+
+
+            ArrayList<String> tempLineList = new ArrayList<>(beatmapFolderList.length);
+            ArrayList<String> tempPathList = new ArrayList<>(beatmapFolderList.length);
+            ArrayList<String> tempModList = new ArrayList<>(beatmapFolderList.length);
+            //Make temp list with only beatmap database entries
+            //Make temp list with only paths from database
+            //make temp list with only modification times from database
+            for (int i=5; i<lineList.size(); i++){
+                tempLineList.add(lineList.get(i));
+
+                //Split main line into beatmap folder location, beatmap folder lastModified, and String Array of beatmaps with MD5;
+                String[] temp = lineList.get(i).split(" \\| ");
+
+                tempPathList.add(temp[0]);
+                tempModList.add(temp[1]);
+            }
+
+            for (int i=0; i<beatmapFolderList.length; i++){
+
+                //if (database contains beatmapFolder[i] path (as String))
+                if (tempPathList.contains(beatmapFolderList[i].getPath())){
+                    //check for modifications
+                    long currentModTime = beatmapFolderList[i].lastModified();
+                    long prevModTime = Long.parseLong(tempModList.get(tempPathList.indexOf(beatmapFolderList[i].getPath())));
+
+                    if (currentModTime != prevModTime){
+                        System.out.println("Found Modified Folder: " + beatmapFolderList[i].getPath());
+
+                        tempLineList.set(i, createEntry(beatmapFolderList[i]));
+                    }
+
+                }else {
+                    //add entry to tempLineList
+                    tempPathList.add(beatmapFolderList[i].getPath());
+                    tempLineList.add(createEntry(beatmapFolderList[i]));
+                }
+
+
+
+            }//for
+
+            //check for beatmap folders that are listed in database but do not exist in song folder
+            int length = tempLineList.size();
+            for (int i=0; i<length; i++){
+                if (!beatmapFolderPathList.contains(tempPathList.get(i))){
+                    tempLineList.remove(i);
+                }
+            }
+
+            //System.out.println("New Beatmap Count: " + tempLineList.size());
+
+            //use BufferedWriter to write a new database file with the modifications
+
             Files.deleteIfExists(songsDatabaseFilePath);
             Files.createFile(songsDatabaseFilePath);
 
-            BufferedWriter writer = new BufferedWriter(new FileWriter(songsDatabaseFilePath.toFile()));
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(songsDatabaseFilePath.toString()));
 
+            bufferedWriter.write("#DATABASE");
+            bufferedWriter.newLine();
+            bufferedWriter.write(collectionDBLastModified + "");
+            bufferedWriter.newLine();
+            bufferedWriter.write(songsFolderLastModified + "");
+            bufferedWriter.newLine();
+            bufferedWriter.newLine();
 
-            ArrayList<String> tempLineList = new ArrayList<>();
-            //Make temp list with only beatmap database entries
-            for (int i=5; i<lineList.size(); i++){
-                tempLineList.add(lineList.get(i));
+            for (int i=0; i<tempLineList.size(); i++){
+
+                bufferedWriter.newLine();
+                bufferedWriter.write(tempLineList.get(i));
+
+            }//for
+
+            bufferedWriter.close();
+
+            //read new File
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(songsDatabaseFilePath.toString()));
+            ArrayList<String> newLineList = new ArrayList<>();
+            String line;
+
+            while ((line = bufferedReader.readLine()) != null){
+                newLineList.add(line);
             }
 
-            File[] beatmapList = songFolder.listFiles();
-            ArrayList<String> bmFolderPaths = new ArrayList<>();
+            bufferedReader.close();
 
-            for (int i=0; i< beatmapList.length; i++){
-                bmFolderPaths.add(beatmapList[i].toPath().toString());
-            }
-
-
-            if (lineList.size() == bmFolderPaths.size()){
-
-                for (int i=0; i< bmFolderPaths.size(); i++){
-                    //check each folder to see whether it was modified or not
-
-                    //Split main into beatmap folder location, beatmap folder lastModified, and String Array of beatmaps with MD5;
-                    String[] firstSplit = tempLineList.get(i).split(" \\| ");
-
-
-                    if ( bmFolderPaths.contains(firstSplit[0]) ){
-                        //System.out.println("Success");
-                        //System.out.println(bmFolderPaths.get(bmFolderPaths.indexOf(firstSplit[0])));
-
-                        int index = bmFolderPaths.indexOf(firstSplit[0]);
-
-                        long beatmapFolderLastMod = new File(bmFolderPaths.get(index)).lastModified();//from beatmap folder itself
-                        long dbBeatmapFolderLastMod = Long.parseLong(firstSplit[1]);//from database
-
-
-                        if ( beatmapFolderLastMod != dbBeatmapFolderLastMod ){
-                            System.out.println("This beatmap folder was modified");
-
-                            String entry = "";
-
-                            entry += beatmapList[i].getPath().toString() + " | " + beatmapList[i].lastModified() + " | { ";
-
-                            File[] difficultyList = beatmapList[i].listFiles(getFilenameFilter(".osu"));
-
-                            for (File difficulty: difficultyList){
-                                String key = MD5Calculator.GetMD5Hash(difficulty);
-
-                                entry += key + " = " + difficulty.getPath().toString() + " ; ";
-                            }
-
-                            entry += "}";
-
-                            tempLineList.set(i, entry);
-                        }
-
-                    }else {
-                        tempLineList.remove(i);
-                    }
-
-
-                }
-            }//lineList.size() == bmFolderPaths.size()
-
-            // FIXME: 8/17/2021 make < and > now
-
+            getSongsFromDatabase(newLineList, songFolder, false);
         }
-
-
-
-
 
 
 
@@ -619,10 +650,10 @@ public class Main extends Application{
     public static void getSongsFromSongFolder(File songFolder, File collectiondb) throws Exception {
 
         File[] beatmapList = songFolder.listFiles();
-        System.out.println("BeatmapFoldersTotal: " + beatmapList.length);
+        //System.out.println("BeatmapFoldersTotal: " + beatmapList.length);
 
         //A list of lists of beatmap difficulties (.osu)
-        ArrayList<File[]> difficultyListList = new ArrayList<>();
+        //ArrayList<File[]> difficultyListList = new ArrayList<>();
 
         ArrayList<String> databaseEntries = new ArrayList<>();
 
@@ -631,15 +662,15 @@ public class Main extends Application{
         for (int i=0; i<beatmapList.length; i++){
             String entry = "";
 
-            entry += beatmapList[i].getPath().toString() + " | " + beatmapList[i].lastModified() + " | { ";
+            entry += beatmapList[i].getPath() + " | " + beatmapList[i].lastModified() + " | { ";
 
             File[] difficultyList = beatmapList[i].listFiles(getFilenameFilter(".osu"));
-            difficultyListList.add(difficultyList);
+            //difficultyListList.add(difficultyList);
 
             for (File difficulty: difficultyList){
                 String key = MD5Calculator.GetMD5Hash(difficulty);
 
-                entry += key + " = " + difficulty.getPath().toString() + " ; ";
+                entry += key + " = " + difficulty.getPath() + " ; ";
 
                 hashMap.put(key, difficulty);
             }
@@ -673,6 +704,25 @@ public class Main extends Application{
         bufferedWriter.close();
 
     }//getSongsNormally()
+
+
+    public static String createEntry(File beatmapFolder) throws NoSuchAlgorithmException, IOException {
+        String entry = "";
+
+        entry += beatmapFolder.getPath() + " | " + beatmapFolder.lastModified() + " | { ";
+
+        File[] difficultyList = beatmapFolder.listFiles(getFilenameFilter(".osu"));
+
+        for (File difficulty: difficultyList){
+            String key = MD5Calculator.GetMD5Hash(difficulty);
+
+            entry += key + " = " + difficulty.getPath() + " ; ";
+        }
+
+        entry += "}";
+
+        return entry;
+    }
 
 
     //moved out of GlobalKeyListener
