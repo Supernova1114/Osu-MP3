@@ -318,7 +318,7 @@ public class Main extends Application{
                     }
 
 
-                    //DEBUG////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    /*//DEBUG////////////////////////////////////////////////////////////////////////////////////////////////////////////
                     int count = 0;
                     for (ArrayList<String> collection: CollectionList){
                         System.out.println();
@@ -329,7 +329,7 @@ public class Main extends Application{
                         }
                         System.out.println(count-1);//-1 because -the title
                     }
-                    /////////////////////////////////////
+                    /////////////////////////////////////*/
 
                     int row = 0;
                     int col = 0;
@@ -367,6 +367,7 @@ public class Main extends Application{
                                 File imageFile = null;
 
                                 File file = hashMap.get(collection.get(i));
+                                //System.out.println(hashMap.get(collection.get(i)));
 
 
                                 //////////////////////////////////////////////////////////////DEBUG
@@ -425,10 +426,13 @@ public class Main extends Application{
                                         }
                                     });
 
-                                    //row++
+                                    // FIXME: 8/18/2021 and then comment row++ after the fixme below
+                                    row++;
 
-                                }else {
+                                }
+                                /*else {
 
+                                    // FIXME: 8/18/2021 only put this back once osu stops being stupid and keeping md5 hashes from deleted songs
                                     int finalCol3 = col;
                                     int finalRow3 = row;
 
@@ -441,7 +445,7 @@ public class Main extends Application{
                                         }
                                     });
                                 }
-                                row++;
+                                row++;*/
                             }//for
 
                             //add to map
@@ -477,6 +481,10 @@ public class Main extends Application{
                     }
 
                     System.out.println("Hashset length: " + hashMap.size());
+
+                    /*for (int i=0; i<hashMap.size(); i++){
+                        System.out.println(hashMap.toString());
+                    }*/
 
                     System.out.println("Begin Worker Completed!");
 
@@ -537,6 +545,10 @@ public class Main extends Application{
                 for (String str : secondSplit) {
                     String[] tempArray = str.split(" = ");
 
+                    //System.out.println(tempArray[0] + tempArray[1]);
+
+
+
                     hashMap.put(tempArray[0], new File(tempArray[1]));//key, difficulty
                 }
 
@@ -581,7 +593,9 @@ public class Main extends Application{
                     if (currentModTime != prevModTime){
                         System.out.println("Found Modified Folder: " + beatmapFolderList[i].getPath());
 
+                        tempPathList.set(i, beatmapFolderList[i].getPath());
                         tempLineList.set(i, createEntry(beatmapFolderList[i]));
+
                     }
 
                 }else {
@@ -594,6 +608,8 @@ public class Main extends Application{
 
             }//for
 
+            System.out.println("tempLineList: " + tempLineList.size());
+            System.out.println("tempPathList: " + tempPathList.size());
             //check for beatmap folders that are listed in database but do not exist in song folder
             int length = tempLineList.size();
             for (int i=0; i<length; i++){
