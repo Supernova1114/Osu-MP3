@@ -21,7 +21,7 @@ import java.util.*;
 
 public class Main extends Application{
 
-    private  String version = "0.6.1";
+    private String version = "0.7.0";
     private String stageTitle = "Osu! MP3 v" + version;
 
     public static Stage primaryStage;
@@ -45,7 +45,7 @@ public class Main extends Application{
 
     GlobalKeyListener globalKeyListener;
 
-
+// FIXME: 8/18/2021 make a version line in database so that it will delete old database and create new one
 
     @Override
     public void start(Stage stage) throws Exception{
@@ -608,8 +608,8 @@ public class Main extends Application{
 
             }//for
 
-            System.out.println("tempLineList: " + tempLineList.size());
-            System.out.println("tempPathList: " + tempPathList.size());
+            //System.out.println("tempLineList: " + tempLineList.size());
+            //System.out.println("tempPathList: " + tempPathList.size());
             //check for beatmap folders that are listed in database but do not exist in song folder
             int length = tempLineList.size();
             for (int i=0; i<length; i++){
