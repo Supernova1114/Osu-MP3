@@ -6,6 +6,8 @@ Play Songs From Your Osu! Directory!
 *Make sure to place the jar file into a folder somewhere and make a desktop shortcut because the program creates two files. 
 You probably would not want it to create the files on your desktop so I highly recommend this!*
 
+## Requires: Java 8
+
 **!!Only able to play songs from Collections at this time!!**
 
 **!!Has only been tested on Windows 10!!**
