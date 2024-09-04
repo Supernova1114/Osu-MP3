@@ -14,9 +14,10 @@ Play Songs From Your Osu! Directory!
 4. Click a song name to begin playing a shuffled playlist of the selected collection (column).
 
 **Controls:**
-* Up and down arrow keys for volume
+* Up and down arrow keys for volume.
+* Space key to play/pause.
 * Keyboard and headphone media keys for audio playback (Play/Pause, SkipNext/SkipPrev).
-* Click and drag mouse to move song panel around
+* Click and drag mouse to move song panel around.
 
 **Notes:**
 * You can now use keyboard and headphone media keys to control the program (even while minimized)
