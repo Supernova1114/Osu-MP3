@@ -21,7 +21,7 @@ import java.util.*;
 
 public class Main extends Application{
 
-    private  String version = "0.6.1";
+    private String version = "0.7.0";
     private String stageTitle = "Osu! MP3 v" + version;
 
     public static Stage primaryStage;
@@ -31,12 +31,13 @@ public class Main extends Application{
     public static Parent root;
 
     public static String currentDirectory = System.getProperty("user.dir");
-    public static Path songHashMapPath = Paths.get(currentDirectory + File.separator + "SongMapHash.db");
+    public static Path songsDatabaseFilePath = Paths.get(currentDirectory + File.separator + "SongMapHash.db");
     public static String settingsPath = currentDirectory + File.separator + "settings.conf";
 
     public static Properties applicationProps;
 
-    static long songFolderLastModified = -1;
+    static long collectionDBLastModified = -1;
+    static long songsFolderLastModified = -1;
 
     private static final String hashMapSplitChar = " [] ";
 
@@ -44,7 +45,7 @@ public class Main extends Application{
 
     GlobalKeyListener globalKeyListener;
 
-
+// FIXME: 8/18/2021 make a version line in database so that it will delete old database and create new one
 
     @Override
     public void start(Stage stage) throws Exception{
@@ -70,7 +71,7 @@ public class Main extends Application{
 
 
         scene.addEventFilter(KeyEvent.KEY_PRESSED, (KeyEvent event) -> {
-            //System.out.println("Key pressed");
+
 
             if (event.getCode() == KeyCode.UP){
                 controller.volumeSlider.increment();
@@ -102,14 +103,14 @@ public class Main extends Application{
 
         //
         if (Files.exists(Paths.get(settingsPath))) {
-            System.out.println("Settings File Exists");
+            System.out.println("Settings File Exists\n");
             applicationProps = new Properties();
 
             FileInputStream in = new FileInputStream(settingsPath);
             applicationProps.load(in);
             in.close();
         }else {
-            System.out.println("Settings File Does Not Exist");
+            System.out.println("Settings File Does Not Exist\n");
             applicationProps = new Properties();
 
             //Default Properties
@@ -211,59 +212,73 @@ public class Main extends Application{
                     File collectionsDB = Objects.requireNonNull(osuFolder.listFiles(COLLECTIONDB))[0];
 
 
-                    //songFolderLastModified = songFolder.lastModified();
-                    songFolderLastModified = collectionsDB.lastModified();
+                    songsFolderLastModified = songFolder.lastModified();
+                    collectionDBLastModified = collectionsDB.lastModified();
 
-                    if (Files.exists(songHashMapPath)) {
-                        BufferedReader bufferedReader = new BufferedReader(new FileReader(songHashMapPath.toFile()));
+                    if (Files.exists(songsDatabaseFilePath)){
+
+                        BufferedReader bufferedReader = new BufferedReader(new FileReader(songsDatabaseFilePath.toFile()));
+                        ArrayList<String> lineList = new ArrayList<>();
                         String line;
-                        ArrayList<String> lineList = new ArrayList();
-                        while ((line = bufferedReader.readLine()) != null) {
-                            //System.out.println(line);
-                            lineList.add(line);
-                            //System.out.println(line);
+
+                        //Read first 3 lines of Database file
+                        for (int i=0; i<3; i++){
+                            if ((line = bufferedReader.readLine()) != null)
+                                lineList.add(line);
                         }
-                        bufferedReader.close();
-                        //System.out.println("lines: " + lineList.size());
 
-                        long lastModified = Long.parseLong(lineList.get(1));
+                        long collectionDBPrevLastMod = Long.parseLong(lineList.get(1));
+                        long songsFolderPrevLastMod = Long.parseLong(lineList.get(2));
 
-                        System.out.println("Last Modified:\n[" + songFolderLastModified + "\n" + lastModified + "]");
+                        //System.out.println("collection.db\ncurr: " + collectionDBLastModified + "\nprev: " + collectionDBPrevLastMod);
+                        //System.out.println("Songs folder\ncurr: " + songsFolderLastModified + "\nprev: " + songsFolderPrevLastMod + "\n");
 
-                        if (songFolderLastModified != lastModified){
-                            System.out.println("Song Folder Was Modified!");
 
-                            Files.deleteIfExists(songHashMapPath);
-                            getSongsNormally(songFolder, collectionsDB);
-                        }else {
+                        if (collectionDBLastModified != collectionDBPrevLastMod){
+                            System.out.println("collection.db was modified!");
 
-                            //add to hashmap
-                            for (int i = 3; i < lineList.size(); i++) {//i=3 is 4th line to begin at
-                                //System.out.println(lineList.get(i));
-                                String hash = lineList.get(i).substring(0, 32);//32 = hash size
-                                File file = new File(lineList.get(i).substring(32 + hashMapSplitChar.length()));
-                                //System.out.println(hash);
-                                hashMap.put(hash, file);
+                            if (songsFolderLastModified != songsFolderPrevLastMod){
+                                System.out.println("Songs folder was modified!");
 
-                                Platform.runLater(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        controller.label.setText(hashMap.size() + "");
-                                    }
-                                });
+                                while ((line = bufferedReader.readLine()) != null){
+                                    lineList.add(line);
+                                }
+
+                                bufferedReader.close();
+                                getSongsFromDatabase(lineList, songFolder, true);
+                            }else {
+                                //if Songs folder was not modified
+                                while ((line = bufferedReader.readLine()) != null){
+                                    lineList.add(line);
+                                }
+
+                                bufferedReader.close();
+                                getSongsFromDatabase(lineList, songFolder, false);
 
                             }
+
+                        }else {
+                            //if collection.db was not modified
+                            while ((line = bufferedReader.readLine()) != null){
+                                lineList.add(line);
+                            }
+                            bufferedReader.close();
+
+                            getSongsFromDatabase(lineList, songFolder, false);
                         }
 
+
+
+
+
                     }else {
-                        getSongsNormally(songFolder, collectionsDB);
+                        System.out.println("Database does not exist! ... Creating Database");
+                        getSongsFromSongFolder(songFolder, collectionsDB);
                     }
 
 
-                    // Files.deleteIfExists(songHashMapPath);//temppppppppp
 
-                    System.out.println();
-
+                    //Get collectionDB info
                     String data = new String(Files.readAllBytes(Paths.get(collectionsDB.getPath())));
 
 
@@ -310,7 +325,7 @@ public class Main extends Application{
                         count=0;
                         for (String str: collection){
                             count++;
-                            //System.out.println(str);
+                            System.out.println(str);
                         }
                         System.out.println(count-1);//-1 because -the title
                     }
@@ -352,6 +367,7 @@ public class Main extends Application{
                                 File imageFile = null;
 
                                 File file = hashMap.get(collection.get(i));
+                                //System.out.println(hashMap.get(collection.get(i)));
 
 
                                 //////////////////////////////////////////////////////////////DEBUG
@@ -410,10 +426,13 @@ public class Main extends Application{
                                         }
                                     });
 
-                                    //row++
+                                    // FIXME: 8/18/2021 and then comment row++ after the fixme below
+                                    row++;
 
-                                }else {
+                                }
+                                /*else {
 
+                                    // FIXME: 8/18/2021 only put this back once osu stops being stupid and keeping md5 hashes from deleted songs
                                     int finalCol3 = col;
                                     int finalRow3 = row;
 
@@ -426,7 +445,7 @@ public class Main extends Application{
                                         }
                                     });
                                 }
-                                row++;
+                                row++;*/
                             }//for
 
                             //add to map
@@ -462,6 +481,10 @@ public class Main extends Application{
                     }
 
                     System.out.println("Hashset length: " + hashMap.size());
+
+                    /*for (int i=0; i<hashMap.size(); i++){
+                        System.out.println(hashMap.toString());
+                    }*/
 
                     System.out.println("Begin Worker Completed!");
 
@@ -499,71 +522,223 @@ public class Main extends Application{
         out.close();
     }
 
-    //get songs by scanning through song folder
-    public static void getSongsNormally(File songFolder, File collectiondb) throws Exception {
 
-        ArrayList<File[]> diffListList = new ArrayList<>();
-        File[] beatmapList = songFolder.listFiles();
+    //read Songs from Database file
+    public static void getSongsFromDatabase(ArrayList<String> lineList, File songFolder, boolean isSongsFolderModified) throws IOException, NoSuchAlgorithmException {
+
+        if (isSongsFolderModified == false) {
+
+            System.out.println("Getting beatmaps from Database...");
+
+            for (int i = 5; i < lineList.size(); i++) {
+
+                String temp = lineList.get(i);
+                temp = temp.replaceAll("\\{ ", "").replaceAll("}", "");
+
+                //Split main line into beatmap folder location, beatmap folder lastModified, and String Array of beatmaps with MD5;
+                String[] firstSplit = temp.split(" \\| ");
+
+                //Split String Array of beatmaps with MD5 into an actual array;
+                String[] secondSplit = firstSplit[2].split(" ; ");
+
+                //Split each into MD5, and beatmap difficulty location
+                for (String str : secondSplit) {
+                    String[] tempArray = str.split(" = ");
+
+                    //System.out.println(tempArray[0] + tempArray[1]);
 
 
-        //Adds lists of .osu files for each beatmap into an ArrayList;
-        for (File beatmap : beatmapList) {
-            File[] difficultyList = beatmap.listFiles(getFilenameFilter(".osu"));
-            diffListList.add(difficultyList);
-        }
 
-        try {
-            for (File[] diffList : diffListList) {
-                for (File difficulty : diffList) {
-                    System.out.println(difficulty.getPath());
-                    String key = MD5Calculator.GetMD5Hash(difficulty);
-                    hashMap.put(key, difficulty);
-                    //System.out.println(hashMap.size() + " " + key);
-                    Platform.runLater(new Runnable() {
-                        @Override
-                        public void run() {
-                            controller.label.setText(hashMap.size() + "");
-                        }
-                    });
-
+                    hashMap.put(tempArray[0], new File(tempArray[1]));//key, difficulty
                 }
 
+            }//for
+        }else {
+
+            System.out.println("Modifying Database...");
+
+            File[] beatmapFolderList = songFolder.listFiles();
+
+            ArrayList<String> beatmapFolderPathList = new ArrayList<>();
+
+            for (int i=0; i<beatmapFolderList.length; i++){
+                beatmapFolderPathList.add(beatmapFolderList[i].getPath());
             }
-        }catch (Exception e){
-            e.printStackTrace();
-        }
 
 
-        System.out.println(hashMap.size() + " Beatmaps Available");
+            ArrayList<String> tempLineList = new ArrayList<>(beatmapFolderList.length);
+            ArrayList<String> tempPathList = new ArrayList<>(beatmapFolderList.length);
+            ArrayList<String> tempModList = new ArrayList<>(beatmapFolderList.length);
+            //Make temp list with only beatmap database entries
+            //Make temp list with only paths from database
+            //make temp list with only modification times from database
+            for (int i=5; i<lineList.size(); i++){
+                tempLineList.add(lineList.get(i));
+
+                //Split main line into beatmap folder location, beatmap folder lastModified, and String Array of beatmaps with MD5;
+                String[] temp = lineList.get(i).split(" \\| ");
+
+                tempPathList.add(temp[0]);
+                tempModList.add(temp[1]);
+            }
+
+            for (int i=0; i<beatmapFolderList.length; i++){
+
+                //if (database contains beatmapFolder[i] path (as String))
+                if (tempPathList.contains(beatmapFolderList[i].getPath())){
+                    //check for modifications
+                    long currentModTime = beatmapFolderList[i].lastModified();
+                    long prevModTime = Long.parseLong(tempModList.get(tempPathList.indexOf(beatmapFolderList[i].getPath())));
+
+                    if (currentModTime != prevModTime){
+                        System.out.println("Found Modified Folder: " + beatmapFolderList[i].getPath());
+
+                        tempPathList.set(i, beatmapFolderList[i].getPath());
+                        tempLineList.set(i, createEntry(beatmapFolderList[i]));
+
+                    }
+
+                }else {
+                    //add entry to tempLineList
+                    tempPathList.add(beatmapFolderList[i].getPath());
+                    tempLineList.add(createEntry(beatmapFolderList[i]));
+                }
 
 
-        System.out.println("MISSING SONGHASHMAPFILE");
-        Files.createFile(songHashMapPath);
 
-        String [] hashSet = hashMap.keySet().toArray(new String[0]);
-        File [] fileSet = hashMap.values().toArray(new File[0]);
+            }//for
 
+            //System.out.println("tempLineList: " + tempLineList.size());
+            //System.out.println("tempPathList: " + tempPathList.size());
+            //check for beatmap folders that are listed in database but do not exist in song folder
+            int length = tempLineList.size();
+            for (int i=0; i<length; i++){
+                if (!beatmapFolderPathList.contains(tempPathList.get(i))){
+                    tempLineList.remove(i);
+                }
+            }
 
-        assert hashSet.length == fileSet.length;
+            //System.out.println("New Beatmap Count: " + tempLineList.size());
 
-        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(songHashMapPath.toString()));
-        bufferedWriter.write("#SONG AND HASH LIBRARY");
-        bufferedWriter.newLine();
-        bufferedWriter.write(collectiondb.lastModified() + "");//
-        bufferedWriter.newLine();
-        bufferedWriter.newLine();
+            //use BufferedWriter to write a new database file with the modifications
 
-        System.out.println("hashset length: " + hashSet.length);
+            Files.deleteIfExists(songsDatabaseFilePath);
+            Files.createFile(songsDatabaseFilePath);
 
-        for (int i=0; i<hashSet.length; i++){
-            bufferedWriter.write(hashSet[i]);
-            bufferedWriter.write(hashMapSplitChar);
-            bufferedWriter.write(fileSet[i].toPath().toString());
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(songsDatabaseFilePath.toString()));
+
+            bufferedWriter.write("#DATABASE");
             bufferedWriter.newLine();
+            bufferedWriter.write(collectionDBLastModified + "");
+            bufferedWriter.newLine();
+            bufferedWriter.write(songsFolderLastModified + "");
+            bufferedWriter.newLine();
+            bufferedWriter.newLine();
+
+            for (int i=0; i<tempLineList.size(); i++){
+
+                bufferedWriter.newLine();
+                bufferedWriter.write(tempLineList.get(i));
+
+            }//for
+
+            bufferedWriter.close();
+
+            //read new File
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(songsDatabaseFilePath.toString()));
+            ArrayList<String> newLineList = new ArrayList<>();
+            String line;
+
+            while ((line = bufferedReader.readLine()) != null){
+                newLineList.add(line);
+            }
+
+            bufferedReader.close();
+
+            getSongsFromDatabase(newLineList, songFolder, false);
         }
+
+
+
+    }
+
+    //get songs by scanning through song folder and create Database file
+    public static void getSongsFromSongFolder(File songFolder, File collectiondb) throws Exception {
+
+        File[] beatmapList = songFolder.listFiles();
+        //System.out.println("BeatmapFoldersTotal: " + beatmapList.length);
+
+        //A list of lists of beatmap difficulties (.osu)
+        //ArrayList<File[]> difficultyListList = new ArrayList<>();
+
+        ArrayList<String> databaseEntries = new ArrayList<>();
+
+
+
+        for (int i=0; i<beatmapList.length; i++){
+            String entry = "";
+
+            entry += beatmapList[i].getPath() + " | " + beatmapList[i].lastModified() + " | { ";
+
+            File[] difficultyList = beatmapList[i].listFiles(getFilenameFilter(".osu"));
+            //difficultyListList.add(difficultyList);
+
+            for (File difficulty: difficultyList){
+                String key = MD5Calculator.GetMD5Hash(difficulty);
+
+                entry += key + " = " + difficulty.getPath() + " ; ";
+
+                hashMap.put(key, difficulty);
+            }
+
+            entry += "}";
+
+            databaseEntries.add(entry);
+            System.out.println(i + " " + entry);
+
+        }
+
+        Files.createFile(songsDatabaseFilePath);
+
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(songsDatabaseFilePath.toString()));
+
+        bufferedWriter.write("#DATABASE");
+        bufferedWriter.newLine();
+        bufferedWriter.write(collectionDBLastModified + "");
+        bufferedWriter.newLine();
+        bufferedWriter.write(songsFolderLastModified + "");
+        bufferedWriter.newLine();
+        bufferedWriter.newLine();
+
+        for (int i=0; i<beatmapList.length; i++){
+
+            bufferedWriter.newLine();
+            bufferedWriter.write(databaseEntries.get(i));
+
+        }//for
 
         bufferedWriter.close();
+
     }//getSongsNormally()
+
+
+    public static String createEntry(File beatmapFolder) throws NoSuchAlgorithmException, IOException {
+        String entry = "";
+
+        entry += beatmapFolder.getPath() + " | " + beatmapFolder.lastModified() + " | { ";
+
+        File[] difficultyList = beatmapFolder.listFiles(getFilenameFilter(".osu"));
+
+        for (File difficulty: difficultyList){
+            String key = MD5Calculator.GetMD5Hash(difficulty);
+
+            entry += key + " = " + difficulty.getPath() + " ; ";
+        }
+
+        entry += "}";
+
+        return entry;
+    }
 
 
     //moved out of GlobalKeyListener

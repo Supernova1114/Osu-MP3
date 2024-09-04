@@ -4,6 +4,10 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.DirectoryChooser;
@@ -11,9 +15,11 @@ import javafx.stage.FileChooser;
 import javafx.util.Duration;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
+import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -49,8 +55,15 @@ public class Controller {
     public static boolean isSeekBarPressed = false;
 
     @FXML
-    public void collectGarbo(){
-        //System.gc();
+    public void GotoGithub(){
+        Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
+        if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
+            try {
+                desktop.browse(URI.create("https://github.com/Supernova1114/Osu-MP3"));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @FXML
@@ -203,14 +216,16 @@ public class Controller {
         seekBar.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                MusicPlayer.player.seek(Duration.seconds(seekBar.getValue()));
+                if (MusicPlayer.isActive)
+                    MusicPlayer.player.seek(Duration.seconds(seekBar.getValue()));
             }
         });
 
         seekBar.setOnMouseDragged(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                MusicPlayer.player.seek(Duration.seconds(seekBar.getValue()));
+                if (MusicPlayer.isActive)
+                    MusicPlayer.player.seek(Duration.seconds(seekBar.getValue()));
             }
         });
 

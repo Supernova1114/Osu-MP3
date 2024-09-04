@@ -48,7 +48,7 @@
        </Menu>
        <Menu mnemonicParsing="false" text="Help">
          <items>
-           <MenuItem disable="true" mnemonicParsing="false" onAction="#collectGarbo" text="About" />
+           <MenuItem mnemonicParsing="false" onAction="#GotoGithub" text="About" />
          </items>
        </Menu>
      </menus>
