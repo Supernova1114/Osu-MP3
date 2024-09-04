@@ -217,14 +217,15 @@ public class Controller {
             @Override
             public void handle(MouseEvent event) {
                 if (MusicPlayer.isActive)
-                MusicPlayer.player.seek(Duration.seconds(seekBar.getValue()));
+                    MusicPlayer.player.seek(Duration.seconds(seekBar.getValue()));
             }
         });
 
         seekBar.setOnMouseDragged(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                MusicPlayer.player.seek(Duration.seconds(seekBar.getValue()));
+                if (MusicPlayer.isActive)
+                    MusicPlayer.player.seek(Duration.seconds(seekBar.getValue()));
             }
         });
 
