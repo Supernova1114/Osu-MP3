@@ -2,9 +2,11 @@
 Play Songs From Your Osu! Directory!
 
 ![GitHub Version](https://img.shields.io/github/v/release/Supernova1114/Osu-MP3)
-
+ 
 *Make sure to place the jar file into a folder somewhere and make a desktop shortcut because the program creates two files. 
 You probably would not want it to create the files on your desktop so I highly recommend this!*
+
+## Requires: Java 8
 
 **!!Only able to play songs from Collections at this time!!**
 
@@ -23,7 +25,6 @@ You probably would not want it to create the files on your desktop so I highly r
 **Notes:**
 * you can now use keyboard and headphone media keys to control the program (even while minimized)
 * for headphones with one media button the controls are usually: double-click = next song, tripple-click = prev song, single-click = play/pause
-* program will reimport ALL songs when a song is added or removed from Collections. (This will be changed soon)
 * Osu! saves to its "Collections" file when you close the game.
 
 Uses library: https://github.com/tulskiy/jkeymaster for media keystrokes
