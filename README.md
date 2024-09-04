@@ -1,32 +1,28 @@
 # Osu-MP3
 Play Songs From Your Osu! Directory!
 
-![GitHub Version](https://img.shields.io/github/v/release/Supernova1114/Osu-MP3)
+![Release Version](https://img.shields.io/github/v/release/Supernova1114/Osu-MP3)
  
-*Make sure to place the jar file into a folder somewhere and make a desktop shortcut because the program creates two files. 
-You probably would not want it to create the files on your desktop so I highly recommend this!*
-
-## Requires: Java 8
-
-**!!Only able to play songs from Collections at this time!!**
-
-**!!Has only been tested on Windows 10!!**
+**Requires: Java 8**
+<br>
+**Tested on Windows 10.**
 
 **How to use:**
-* go to (File > Get Osu! Folder) and select your Osu! folder (not songs folder)
-* the number of songs imported will be shown in the top right
-* click a song name to begin playing a shuffled playlist of the selected collection (column)
+1. Place jar file in folder, as the program will create two files within same directory.
+2. Go to (File > Get Osu! Folder) and select your Osu! folder (not songs folder).
+3. Click a song name to begin playing a shuffled playlist of the selected collection (column).
 
 **Controls:**
-* up/down arrow for volume
-* keyboard and headphone media keys for audio playback
-* drag mouse to move song panel around
+* Up and down arrow keys for volume
+* Keyboard and headphone media keys for audio playback (Play/Pause, SkipNext/SkipPrev).
+* Click and drag mouse to move song panel around
 
 **Notes:**
-* you can now use keyboard and headphone media keys to control the program (even while minimized)
-* for headphones with one media button the controls are usually: double-click = next song, tripple-click = prev song, single-click = play/pause
+* You can now use keyboard and headphone media keys to control the program (even while minimized)
+* For headphones with one media button the controls are usually: double-click = next song, tripple-click = prev song, single-click = play/pause
+* Only capable of playing songs added to Osu! collections at this time.
 * Osu! saves to its "Collections" file when you close the game.
 
 Uses library: https://github.com/tulskiy/jkeymaster for media keystrokes
 
-![](repoimages/appv0.6.1.png)
+![Application Image](repoimages/appv0.6.1.png)
