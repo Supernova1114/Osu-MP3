@@ -9,8 +9,9 @@ Play Songs From Your Osu! Directory!
 
 **How to use:**
 1. Place jar file in folder, as the program will create two files within same directory.
-2. Go to (File > Get Osu! Folder) and select your Osu! folder (not songs folder).
-3. Click a song name to begin playing a shuffled playlist of the selected collection (column).
+2. Add Osu! beatmaps to a collection to be used as a playlist. Close Osu! to apply collection changes.
+3. Within OsuMP3 go to (File > Get Osu! Folder) and select your Osu! folder (not songs folder).
+4. Click a song name to begin playing a shuffled playlist of the selected collection (column).
 
 **Controls:**
 * Up and down arrow keys for volume
