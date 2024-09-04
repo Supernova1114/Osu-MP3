@@ -21,7 +21,7 @@ import java.util.*;
 
 public class Main extends Application{
 
-    private String version = "0.7.0";
+    private String version = "0.7.1";
     private String stageTitle = "Osu! MP3 v" + version;
 
     public static Stage primaryStage;
