@@ -73,7 +73,7 @@ public class Controller {
         chooser.setInitialFileName("SongList-OsuMP3");
         chooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Text File", "*.txt"));
 
-        File exportDirectory = chooser.showSaveDialog(Main.primaryStage);
+        File exportDirectory = chooser.showSaveDialog(App.primaryStage);
         System.out.println(exportDirectory);
 
         if (exportDirectory != null){
@@ -94,7 +94,7 @@ public class Controller {
                         bufferedWriter.newLine();
                         bufferedWriter.newLine();
 
-                        for (ArrayList<SongPane> songCollection: Main.songPaneCollectionList){
+                        for (ArrayList<SongPane> songCollection: App.songPaneCollectionList){
                             for (SongPane song: songCollection){
                                 bufferedWriter.write(song.name);
                                 bufferedWriter.newLine();
@@ -122,20 +122,20 @@ public class Controller {
     public void GetOsuFolder() throws Exception {
         DirectoryChooser chooser = new DirectoryChooser();
         chooser.setTitle("Find Osu! Folder");
-        File osuFolder = chooser.showDialog(Main.primaryStage);
-        System.out.println(Main.osuFolder);
+        File osuFolder = chooser.showDialog(App.primaryStage);
+        System.out.println(App.osuFolder);
 
         if (osuFolder != null) {
-            Main.setOsuFolder(osuFolder);
+            App.setOsuFolder(osuFolder);
 
-            Main.Begin();
+            App.Begin();
         }
     }
 
     @FXML
     public void CloseProgram(){
         System.out.println("Closing Program");
-        Main.primaryStage.close();
+        App.primaryStage.close();
         System.exit(0);
     }
 
@@ -190,7 +190,7 @@ public class Controller {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
                 if (newValue){
-                    Main.root.requestFocus();
+                    App.root.requestFocus();
                 }
             }
         });

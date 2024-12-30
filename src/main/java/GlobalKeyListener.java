@@ -20,7 +20,7 @@ public class GlobalKeyListener {
                     public void run() {
                         switch (hotKey.mediaKey){
                             case MEDIA_PLAY_PAUSE:
-                                Main.togglePause();
+                                App.togglePause();
                                 break;
                             case MEDIA_NEXT_TRACK:
                                 try {
