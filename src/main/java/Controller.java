@@ -32,7 +32,7 @@ public class Controller {
     @FXML
     Slider volumeSlider;
     @FXML
-    Label label;
+    Label songCountLabel;
     @FXML
     Button pauseButton;
     @FXML
@@ -178,7 +178,7 @@ public class Controller {
         gridPane.setDisable(true);
         exportSongListMenuItem.setDisable(true);
 
-        label.setText("");
+        songCountLabel.setText("");
         songTitleLabel.setText("Song Title");
 
         pauseButton.setText("| |");
