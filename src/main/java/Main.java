@@ -694,7 +694,7 @@ public class Main extends Application{
             entry += "}";
 
             databaseEntries.add(entry);
-            System.out.println(i + " " + entry);
+            //System.out.println(i + " " + entry);
 
         }
 
