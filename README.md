@@ -3,7 +3,7 @@ Play Songs From Your Osu! Directory!
 
 ![Release Version](https://img.shields.io/github/v/release/Supernova1114/Osu-MP3)
  
-**Requires: Java 8**
+**Requires: Java 23**
 <br>
 **Tested on Windows 10.**
 
