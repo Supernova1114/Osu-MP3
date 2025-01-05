@@ -1,0 +1,1 @@
+"C:\Program Files\Java\jdk-23.0.1\bin\java.exe" -jar OsuMP3-0.7.2.jar

@@ -1,0 +1,1 @@
+jpackage --name OsuMP3 --app-version 0.7.2 --type exe --input . --dest . --main-jar OsuMP3-0.7.2.jar --main-class Main --win-dir-chooser --win-shortcut-prompt --win-shortcut --win-menu

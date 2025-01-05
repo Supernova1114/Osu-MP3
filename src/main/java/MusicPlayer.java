@@ -42,9 +42,9 @@ public class MusicPlayer {
         //Makes shuffled playlist when new playlist is clicked.
         if (currentCollection == null || !currentCollection.get(0).collectionName.equals(pane.collectionName)) {
             //search for collection
-            for (int i = 0; i < Main.songPaneCollectionList.size(); i++) {
-                if (Main.songPaneCollectionList.get(i).get(0).collectionName.equals(pane.collectionName)) {
-                    currentCollection = Main.songPaneCollectionList.get(i);
+            for (int i = 0; i < App.songPaneCollectionList.size(); i++) {
+                if (App.songPaneCollectionList.get(i).get(0).collectionName.equals(pane.collectionName)) {
+                    currentCollection = App.songPaneCollectionList.get(i);
 
                     //System.out.println(pane.name);
 
@@ -77,14 +77,14 @@ public class MusicPlayer {
             //creates new media player and inserts media
             player = new MediaPlayer(media);
 
-            Main.controller.seekBar.setDisable(true);
+            App.controller.seekBar.setDisable(true);
 
 
             //Changes seekbar currentTime as music progresses.
             player.currentTimeProperty().addListener(new ChangeListener<Duration>() {
                 @Override
                 public void changed(ObservableValue<? extends Duration> observable, Duration oldValue, Duration newValue) {
-                    Main.controller.setCurrentSeekTime(newValue.toSeconds());
+                    App.controller.setCurrentSeekTime(newValue.toSeconds());
                 }
             });
 
@@ -134,18 +134,18 @@ public class MusicPlayer {
                 public void run() {
                     totalDuration = media.getDuration();
 
-                    Main.controller.refreshSeekBar(totalDuration);
+                    App.controller.refreshSeekBar(totalDuration);
 
                     player.setVolume(volume);
                     player.play();
 
                     isPaused = false;
-                    Main.controller.pauseButton.setText("| |");
+                    App.controller.pauseButton.setText("| |");
 
                     Platform.runLater(new Runnable() {
                         @Override
                         public void run() {
-                            Main.controller.songTitleLabel.setText("Playing: " + pane.label.getText());
+                            App.controller.songTitleLabel.setText("Playing: " + pane.label.getText());
                         }
                     });
 
@@ -165,7 +165,7 @@ public class MusicPlayer {
             isActive = false;
             isPaused = true;
 
-            Main.controller.pauseButton.setText(">");
+            App.controller.pauseButton.setText(">");
 
             previousSong.label.setTextFill(Color.DARKBLUE);//previous song
             pane.label.setTextFill(Color.RED);//current song
@@ -216,7 +216,7 @@ public class MusicPlayer {
         if (player != null && isActive){
             player.pause();
             isPaused = true;
-            Main.controller.pauseButton.setText(">");
+            App.controller.pauseButton.setText(">");
         }
     }
 
@@ -225,7 +225,7 @@ public class MusicPlayer {
         if (player != null && isActive){
             player.play();
             isPaused = false;
-            Main.controller.pauseButton.setText("| |");
+            App.controller.pauseButton.setText("| |");
         }
     }
 

@@ -83,7 +83,7 @@
       </items>
    </ToolBar>
    <Label fx:id="songTitleLabel" layoutX="529.0" layoutY="347.0" text="Song Title" textAlignment="RIGHT" AnchorPane.bottomAnchor="36.0" AnchorPane.rightAnchor="18.0" />
-   <Label fx:id="label" layoutX="568.0" layoutY="4.0" style="-fx-font-weight: bold;" text="Hash" textAlignment="RIGHT" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="4.0" />
+   <Label fx:id="songCountLabel" layoutX="568.0" layoutY="4.0" style="-fx-font-weight: bold;" text="Song Count: 0" textAlignment="RIGHT" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="4.0" />
    <cursor>
       <Cursor fx:constant="DEFAULT" />
    </cursor>
