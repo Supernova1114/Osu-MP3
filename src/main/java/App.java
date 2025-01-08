@@ -374,34 +374,7 @@ public class App extends Application{
 
                                 if (file != null) {
 
-                                    BufferedReader beatmapFileReader = new BufferedReader(new FileReader(file));
 
-
-
-                                    String line;
-                                    while ((line = beatmapFileReader.readLine()) != null) {
-
-                                        if (line.contains("AudioFilename")) {
-                                            //System.out.println(line);
-                                            musicFile = new File(file.getParentFile().getPath() + File.separator + line.substring(15));//15 is length of [AudioFilename: ]
-                                        }
-                                        if (line.contains("[Events]")){
-                                            beatmapFileReader.readLine();
-                                            String temp = beatmapFileReader.readLine();
-
-                                            String [] tempSplit = temp.split(",");
-
-                                            imageFile = new File(file.getParentFile().getPath() + File.separator + tempSplit[2].replace("\"", ""));
-
-                                            //System.out.println(imageFile.getName());
-
-
-
-
-                                        }
-                                    }
-
-                                    beatmapFileReader.close();
 
                                     SongPane songPane = new SongPane(file.getName(), collection.get(i), file, musicFile, imageFile, collectionName);
                                     songPaneCollection.add(songPane);

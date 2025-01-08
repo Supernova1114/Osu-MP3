@@ -59,7 +59,7 @@ public class DatabaseManager {
     }
 
 
-    public static void deserializeDatabase(File songsDatabaseFilePath)
+    public static void syncDatabase(File songsDatabaseFilePath)
     {
         System.out.println("Reading Database...");
 
