@@ -6,5 +6,5 @@ public class BeatmapDatabase {
     public long collectionDBLastModified;
     public long songsFolderLastModified;
 
-    public List<BeatmapFolder> beatmapFolderList = new ArrayList<BeatmapFolder>();
+    public List<BeatmapArchive> beatmapArchiveList = new ArrayList<BeatmapArchive>();
 }

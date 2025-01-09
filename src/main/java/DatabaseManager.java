@@ -8,34 +8,34 @@ import org.json.*;
 public class DatabaseManager {
 
 
-    private static Database database;
+    private static BeatmapDatabase database;
 
     public static void createDatabase(File songsFolder) {
 
-        File[] beatmapList = songsFolder.listFiles();
+        File[] beatmapArchiveList = songsFolder.listFiles();
 
         JSONObject mainObject = new JSONObject();
         JSONArray beatmapFolderList = new JSONArray();
 
-        for (File beatmap : beatmapList)
+        for (File beatmapArchive : beatmapArchiveList)
         {
             JSONObject beatmapFolder = new JSONObject();
 
-            beatmapFolder.put("beatmapFolderPath", beatmap.getPath());
-            beatmapFolder.put("beatmapFolderLastModified", beatmap.lastModified());
+            beatmapFolder.put("beatmapFolderPath", beatmapArchive.getPath());
+            beatmapFolder.put("beatmapFolderLastModified", beatmapArchive.lastModified());
 
-            File[] difficultyList = beatmap.listFiles(getFilenameFilter(".osu"));
+            File[] beatmapList = beatmapArchive.listFiles(getFilenameFilter(".osu"));
 
             JSONArray osuFileList = new JSONArray();
 
-            for (File difficulty: difficultyList){
+            for (File beatmap: beatmapList){
 
                 JSONObject osuFile = new JSONObject();
 
-                String hash = MD5Calculator.GetMD5Hash(difficulty);
+                String hash = MD5Calculator.GetMD5Hash(beatmap);
 
                 osuFile.put("MD5Hash", hash);
-                osuFile.put("osuFilePath", difficulty.getPath());
+                osuFile.put("osuFilePath", beatmap.getPath());
 
                 osuFileList.put(osuFile);
             }

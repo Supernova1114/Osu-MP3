@@ -1,13 +1,13 @@
 import java.util.List;
 
-public class BeatmapFolder {
+public class BeatmapArchive {
 
     private String folderPath;
     private long folderLastModified;
-    private List<BeatmapFile> beatmapFileList;
+    private List<Beatmap> beatmapFileList;
 
 
-    public BeatmapFolder(String folderPath, long folderLastModified, List<BeatmapFile> beatmapFileList) {
+    public BeatmapArchive(String folderPath, long folderLastModified, List<Beatmap> beatmapFileList) {
         this.folderPath = folderPath;
         this.folderLastModified = folderLastModified;
         this.beatmapFileList = beatmapFileList;
@@ -21,7 +21,7 @@ public class BeatmapFolder {
         return folderLastModified;
     }
 
-    public List<BeatmapFile> getBeatmapFileList() {
+    public List<Beatmap> getBeatmapFileList() {
         return beatmapFileList;
     }
 }
