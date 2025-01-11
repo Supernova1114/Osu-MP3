@@ -5,6 +5,7 @@
 settings.conf
 SongMapHash.db
 target
+test.db
 
 # User-specific stuff
 .idea/**/workspace.xml
