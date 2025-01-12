@@ -86,7 +86,7 @@ public class Beatmap {
         return beatmap;
     }
 
-    public static Beatmap deserializeBeatmap(File beatmapFile) {
+    public static Beatmap parseBeatmapFile(File beatmapFile) {
 
         SongData songData = new SongData();
 

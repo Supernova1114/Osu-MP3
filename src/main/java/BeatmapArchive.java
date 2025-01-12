@@ -64,13 +64,13 @@ public class BeatmapArchive {
         );
     }
 
-    public static BeatmapArchive deserializeArchive(File archiveFile) {
+    public static BeatmapArchive parseBeatmapArchive(File archiveFile) {
 
         List<Beatmap> beatmapList = new ArrayList<>();
 
         File[] beatmapFileList = archiveFile.listFiles(getFilenameFilter(".osu"));
         for (File beatmapFile : beatmapFileList) {
-            Beatmap beatmap = Beatmap.deserializeBeatmap(beatmapFile);
+            Beatmap beatmap = Beatmap.parseBeatmapFile(beatmapFile);
             beatmapList.add(beatmap);
         }
 
@@ -83,5 +83,11 @@ public class BeatmapArchive {
 
     private static FilenameFilter getFilenameFilter(String endsWith){
         return (dir, name) -> name.endsWith(endsWith);
+    }
+
+    public String toString() {
+        return ("BeatmapArchive:\n" +
+               "folderPath = " + folderPath + "\n" +
+               "folderLastModified = " + folderLastModified + "\n");
     }
 }
