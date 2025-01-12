@@ -244,7 +244,7 @@ public class App extends Application{
                                 }
 
                                 bufferedReader.close();
-                                getSongsFromDatabase(lineList, songFolder, true);
+                                //getSongsFromDatabase(lineList, songFolder, true);
                             }else {
                                 //if Songs folder was not modified
                                 while ((line = bufferedReader.readLine()) != null){
@@ -252,7 +252,7 @@ public class App extends Application{
                                 }
 
                                 bufferedReader.close();
-                                getSongsFromDatabase(lineList, songFolder, false);
+                                //getSongsFromDatabase(lineList, songFolder, false);
 
                             }
 
@@ -263,7 +263,7 @@ public class App extends Application{
                             }
                             bufferedReader.close();
 
-                            getSongsFromDatabase(lineList, songFolder, false);
+                            //getSongsFromDatabase(lineList, songFolder, false);
                         }
 
 
@@ -272,7 +272,7 @@ public class App extends Application{
 
                     }else {
                         System.out.println("Database does not exist! ... Creating Database");
-                        getSongsFromSongFolder(songFolder, collectionsDB);
+                        //getSongsFromSongFolder(songFolder, collectionsDB);
                     }
 
 
@@ -473,16 +473,7 @@ public class App extends Application{
     }
 
     //Create filenameFilter
-    public static FilenameFilter getFilenameFilter(String endsWith){
-        //will only return specified files
-        FilenameFilter filenameFilter = new FilenameFilter() {
-            @Override
-            public boolean accept(File dir, String name) {
-                return name.endsWith(endsWith);
-            }
-        };
-        return filenameFilter;
-    }
+
 
 
     public static void setOsuFolder(File osuFolderFile) throws IOException {
@@ -492,24 +483,6 @@ public class App extends Application{
         FileOutputStream out = new FileOutputStream(settingsPath);
         applicationProps.store(out, "---No Comment---");
         out.close();
-    }
-
-    public static String createEntry(File beatmapFolder) throws NoSuchAlgorithmException, IOException {
-        String entry = "";
-
-        entry += beatmapFolder.getPath() + " | " + beatmapFolder.lastModified() + " | { ";
-
-        File[] difficultyList = beatmapFolder.listFiles(getFilenameFilter(".osu"));
-
-        for (File difficulty: difficultyList){
-            String key = MD5Calculator.GetMD5Hash(difficulty);
-
-            entry += key + " = " + difficulty.getPath() + " ; ";
-        }
-
-        entry += "}";
-
-        return entry;
     }
 
 
