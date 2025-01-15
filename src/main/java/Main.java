@@ -16,19 +16,31 @@ public class Main {
     public static void test() {
 
         final String DATABASE_FILE_NAME = "Beatmaps.db";
-        Path DATABASE_FILE_PATH = Path.of(System.getProperty("user.dir"), DATABASE_FILE_NAME);
-        Path songsFolderPath = Path.of("D:\\Program Files\\osu!\\Songs");
+        final Path DATABASE_FILE_PATH = Path.of(System.getProperty("user.dir"), DATABASE_FILE_NAME);
+        final Path SONGS_FOLDER_PATH = Path.of("D:\\Program Files\\osu!\\Songs");
+        final Path COLLECTIONS_FILE_PATH = Path.of("D:\\Program Files\\osu!\\collection.db");
 
-        DatabaseManager databaseManager = new DatabaseManager(songsFolderPath, DATABASE_FILE_PATH);
+//        DatabaseManager databaseManager = new DatabaseManager(SONGS_FOLDER_PATH, DATABASE_FILE_PATH);
+//
+//        //databaseManager.createDatabase();
+//        databaseManager.readDatabase();
+//        databaseManager.syncDatabase();
+//
+//        System.out.println("Database Size: " + databaseManager.getBeatmapArchiveCount());
 
-        String songsFolder = "D:\\Program Files\\osu!\\Songs";
-        databaseManager.createDatabase(new File(songsFolder));
-        databaseManager.readDatabase();
+        BeatmapCollectionDecoder beatmapCollectionDecoder = new BeatmapCollectionDecoder(COLLECTIONS_FILE_PATH);
+        beatmapCollectionDecoder.readCollections();
 
-        BeatmapArchive archive = databaseManager.getBeatmapArchiveList().get(0);
-        System.out.println(archive);
-        System.out.println();
-        System.out.println(archive.getBeatmapList().get(0));
+        for (BeatmapCollection collection : beatmapCollectionDecoder.getBeatmapCollectionList()) {
+            System.out.println("Collection Name: " + collection.getName());
+            System.out.println("Collection Size: " + collection.size());
+            System.out.println();
+        }
+
+//        BeatmapArchive archive = databaseManager.getBeatmapArchiveList().get(0);
+//        System.out.println(archive);
+//        System.out.println();
+//        System.out.println(archive.getBeatmapList().get(0));
     }
 
 }

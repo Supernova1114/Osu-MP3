@@ -137,49 +137,6 @@ public class App extends Application{
             }
         }
 
-
-        //temp
-        //Begin();
-
-        //Path to songs folder
-        //String path = "D:\\Program Files\\osu!\\Songs\\";
-
-        //File songFolder = new File(path);
-
-
-
-        /*System.out.println();
-        String realclean = data.replaceAll("\\P{Print}", " ");
-        System.out.println(realclean);*/
-
-       /* ArrayList<String> cleanerArray = new ArrayList<>();
-        for (String a: cleanSplit){
-            if (!a.equals(" ")){
-                cleanerArray.add(a);
-            }
-
-        }*/
-
-
-        /*for(String e: cleanSplit){
-            System.out.print(e + "");
-        }
-        System.out.println();
-        System.out.println();
-
-        System.out.println(cleanerArray);*/
-
-       /* data.split("\u0001");
-        data.split("\u000B");
-
-
-        System.out.println(" \u0001 \u0003 \u000B \u0006 \u0001 \u000B \u000B \u000B \u000B \u000B \u000B \u000B \u000B \u000B \u000B \u0007 \u000B \u000B \u000B " +
-                "\u000B \u000B \u000B \u000B  ");*/
-
-
-
-
-
         globalKeyListener = new GlobalKeyListener();
 
     }//start()
@@ -214,72 +171,8 @@ public class App extends Application{
                     songsFolderLastModified = songFolder.lastModified();
                     collectionDBLastModified = collectionsDB.lastModified();
 
-                    if (Files.exists(songsDatabaseFilePath)){
-
-                        BufferedReader bufferedReader = new BufferedReader(new FileReader(songsDatabaseFilePath.toFile()));
-                        ArrayList<String> lineList = new ArrayList<>();
-                        String line;
-
-                        //Read first 3 lines of Database file
-                        for (int i=0; i<3; i++){
-                            if ((line = bufferedReader.readLine()) != null)
-                                lineList.add(line);
-                        }
-
-                        long collectionDBPrevLastMod = Long.parseLong(lineList.get(1));
-                        long songsFolderPrevLastMod = Long.parseLong(lineList.get(2));
-
-                        //System.out.println("collection.db\ncurr: " + collectionDBLastModified + "\nprev: " + collectionDBPrevLastMod);
-                        //System.out.println("Songs folder\ncurr: " + songsFolderLastModified + "\nprev: " + songsFolderPrevLastMod + "\n");
-
-
-                        if (collectionDBLastModified != collectionDBPrevLastMod){
-                            System.out.println("collection.db was modified!");
-
-                            if (songsFolderLastModified != songsFolderPrevLastMod){
-                                System.out.println("Songs folder was modified!");
-
-                                while ((line = bufferedReader.readLine()) != null){
-                                    lineList.add(line);
-                                }
-
-                                bufferedReader.close();
-                                //getSongsFromDatabase(lineList, songFolder, true);
-                            }else {
-                                //if Songs folder was not modified
-                                while ((line = bufferedReader.readLine()) != null){
-                                    lineList.add(line);
-                                }
-
-                                bufferedReader.close();
-                                //getSongsFromDatabase(lineList, songFolder, false);
-
-                            }
-
-                        }else {
-                            //if collection.db was not modified
-                            while ((line = bufferedReader.readLine()) != null){
-                                lineList.add(line);
-                            }
-                            bufferedReader.close();
-
-                            //getSongsFromDatabase(lineList, songFolder, false);
-                        }
-
-
-
-
-
-                    }else {
-                        System.out.println("Database does not exist! ... Creating Database");
-                        //getSongsFromSongFolder(songFolder, collectionsDB);
-                    }
-
-
-
                     //Get collectionDB info
                     String data = new String(Files.readAllBytes(Paths.get(collectionsDB.getPath())));
-
 
                     String[] clean = data.split("\\P{Print}");
 
@@ -316,19 +209,6 @@ public class App extends Application{
                         }
                     }
 
-
-                    /*//DEBUG////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                    int count = 0;
-                    for (ArrayList<String> collection: CollectionList){
-                        System.out.println();
-                        count=0;
-                        for (String str: collection){
-                            count++;
-                            System.out.println(str);
-                        }
-                        System.out.println(count-1);//-1 because -the title
-                    }
-                    /////////////////////////////////////*/
 
                     int row = 0;
                     int col = 0;
@@ -398,13 +278,11 @@ public class App extends Application{
                                         }
                                     });
 
-                                    // FIXME: 8/18/2021 and then comment row++ after the fixme below
                                     row++;
 
                                 }
                                 /*else {
 
-                                    // FIXME: 8/18/2021 only put this back once osu stops being stupid and keeping md5 hashes from deleted songs
                                     int finalCol3 = col;
                                     int finalRow3 = row;
 

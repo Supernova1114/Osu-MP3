@@ -19,11 +19,11 @@ public class BeatmapArchive {
         this.beatmapList = beatmapList;
     }
 
-    public String getBeatmapFolderPath() {
+    public String getFolderPath() {
         return folderPath;
     }
 
-    public long getBeatmapFolderLastModified() {
+    public long getFolderLastModified() {
         return folderLastModified;
     }
 

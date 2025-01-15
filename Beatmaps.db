@@ -19963,62 +19963,6 @@
             ]
         },
         {
-            "folderPath": "D:\\Program Files\\osu!\\Songs\\1279298 Inugami Korone & Nekomata Okayu - Hyadain's Jojo Yujo [no video]",
-            "folderLastModified": 1641705736808,
-            "beatmapList": [
-                {
-                    "songData": {
-                        "songName": "Hyadain's Jojo Yujo",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\1279298 Inugami Korone & Nekomata Okayu - Hyadain's Jojo Yujo [no video]\\audio.mp3",
-                        "artistName": "Inugami Korone & Nekomata Okayu"
-                    },
-                    "fileLastModified": 1641705736704,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\1279298 Inugami Korone & Nekomata Okayu - Hyadain's Jojo Yujo [no video]\\Inugami Korone & Nekomata Okayu - Hyadain's Jojo Yujo (Yuuma) [Extra].osu",
-                    "hash": "78862a6e4b1c149338e390c98d13fb81"
-                },
-                {
-                    "songData": {
-                        "songName": "Hyadain's Jojo Yujo",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\1279298 Inugami Korone & Nekomata Okayu - Hyadain's Jojo Yujo [no video]\\audio.mp3",
-                        "artistName": "Inugami Korone & Nekomata Okayu"
-                    },
-                    "fileLastModified": 1641705736705,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\1279298 Inugami Korone & Nekomata Okayu - Hyadain's Jojo Yujo [no video]\\Inugami Korone & Nekomata Okayu - Hyadain's Jojo Yujo (Yuuma) [Korone].osu",
-                    "hash": "e41d418f56f9374811157892e225a4e0"
-                },
-                {
-                    "songData": {
-                        "songName": "Hyadain's Jojo Yujo",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\1279298 Inugami Korone & Nekomata Okayu - Hyadain's Jojo Yujo [no video]\\audio.mp3",
-                        "artistName": "Inugami Korone & Nekomata Okayu"
-                    },
-                    "fileLastModified": 1641705736706,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\1279298 Inugami Korone & Nekomata Okayu - Hyadain's Jojo Yujo [no video]\\Inugami Korone & Nekomata Okayu - Hyadain's Jojo Yujo (Yuuma) [Okayu].osu",
-                    "hash": "38df9eaa71c8ecbb1ecb266c663f756f"
-                },
-                {
-                    "songData": {
-                        "songName": "Hyadain's Jojo Yujo",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\1279298 Inugami Korone & Nekomata Okayu - Hyadain's Jojo Yujo [no video]\\audio.mp3",
-                        "artistName": "Inugami Korone & Nekomata Okayu"
-                    },
-                    "fileLastModified": 1641705736708,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\1279298 Inugami Korone & Nekomata Okayu - Hyadain's Jojo Yujo [no video]\\Inugami Korone & Nekomata Okayu - Hyadain's Jojo Yujo (Yuuma) [xidorn's Hard].osu",
-                    "hash": "2d5faed207f03e938bbd4ffee1edb886"
-                },
-                {
-                    "songData": {
-                        "songName": "Hyadain's Jojo Yujo",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\1279298 Inugami Korone & Nekomata Okayu - Hyadain's Jojo Yujo [no video]\\audio.mp3",
-                        "artistName": "Inugami Korone & Nekomata Okayu"
-                    },
-                    "fileLastModified": 1641705736707,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\1279298 Inugami Korone & Nekomata Okayu - Hyadain's Jojo Yujo [no video]\\Inugami Korone & Nekomata Okayu - Hyadain's Jojo Yujo (Yuuma) [Yuuma & Amateurre's Insane].osu",
-                    "hash": "44333c867ad80dc1b2657a087cecdb90"
-                }
-            ]
-        },
-        {
             "folderPath": "D:\\Program Files\\osu!\\Songs\\1280426",
             "folderLastModified": 1640066756971,
             "beatmapList": [
@@ -21729,52 +21673,6 @@
             }]
         },
         {
-            "folderPath": "D:\\Program Files\\osu!\\Songs\\1575096 Shimoji Shino - God Save The Girls (TV Size)",
-            "folderLastModified": 1690157773718,
-            "beatmapList": [
-                {
-                    "songData": {
-                        "songName": "God Save The Girls (TV Size)",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\1575096 Shimoji Shino - God Save The Girls (TV Size)\\audio.mp3",
-                        "artistName": "Shimoji Shino"
-                    },
-                    "fileLastModified": 1690157773667,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\1575096 Shimoji Shino - God Save The Girls (TV Size)\\Shimoji Shino - God Save The Girls (TV Size) (Maimaing) [Futsuu].osu",
-                    "hash": "9e69c1195538d7cd69073bbeff9c062f"
-                },
-                {
-                    "songData": {
-                        "songName": "God Save The Girls (TV Size)",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\1575096 Shimoji Shino - God Save The Girls (TV Size)\\audio.mp3",
-                        "artistName": "Shimoji Shino"
-                    },
-                    "fileLastModified": 1690157773668,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\1575096 Shimoji Shino - God Save The Girls (TV Size)\\Shimoji Shino - God Save The Girls (TV Size) (Maimaing) [Kantan].osu",
-                    "hash": "6e18d800f9e0139e47c058f005d9a7f8"
-                },
-                {
-                    "songData": {
-                        "songName": "God Save The Girls (TV Size)",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\1575096 Shimoji Shino - God Save The Girls (TV Size)\\audio.mp3",
-                        "artistName": "Shimoji Shino"
-                    },
-                    "fileLastModified": 1690157773668,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\1575096 Shimoji Shino - God Save The Girls (TV Size)\\Shimoji Shino - God Save The Girls (TV Size) (Maimaing) [Muzukashii].osu",
-                    "hash": "97274a9e40d5786384e729f275379620"
-                },
-                {
-                    "songData": {
-                        "songName": "God Save The Girls (TV Size)",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\1575096 Shimoji Shino - God Save The Girls (TV Size)\\audio.mp3",
-                        "artistName": "Shimoji Shino"
-                    },
-                    "fileLastModified": 1690157773669,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\1575096 Shimoji Shino - God Save The Girls (TV Size)\\Shimoji Shino - God Save The Girls (TV Size) (Maimaing) [Oni].osu",
-                    "hash": "ede4274afd8b63938ea9746b4dadc1ff"
-                }
-            ]
-        },
-        {
             "folderPath": "D:\\Program Files\\osu!\\Songs\\163078 LiSA - Rising Hope (TV Size) [no video]",
             "folderLastModified": 1640066767684,
             "beatmapList": [
@@ -21989,62 +21887,6 @@
             ]
         },
         {
-            "folderPath": "D:\\Program Files\\osu!\\Songs\\1843213 Ferb (VO_ Danny Jacob) - Backyard Beach (TV Size)",
-            "folderLastModified": 1690157785365,
-            "beatmapList": [
-                {
-                    "songData": {
-                        "songName": "Backyard Beach (TV Size)",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\1843213 Ferb (VO_ Danny Jacob) - Backyard Beach (TV Size)\\audio.mp3",
-                        "artistName": "Ferb (VO"
-                    },
-                    "fileLastModified": 1690157785296,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\1843213 Ferb (VO_ Danny Jacob) - Backyard Beach (TV Size)\\Ferb (VO Danny Jacob) - Backyard Beach (TV Size) (-Starlight) [Futsuu].osu",
-                    "hash": "9ebe4865eeb3f6d3d174e679fda87ea9"
-                },
-                {
-                    "songData": {
-                        "songName": "Backyard Beach (TV Size)",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\1843213 Ferb (VO_ Danny Jacob) - Backyard Beach (TV Size)\\audio.mp3",
-                        "artistName": "Ferb (VO"
-                    },
-                    "fileLastModified": 1690157785297,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\1843213 Ferb (VO_ Danny Jacob) - Backyard Beach (TV Size)\\Ferb (VO Danny Jacob) - Backyard Beach (TV Size) (-Starlight) [h3oCharles' Oni].osu",
-                    "hash": "5a2aa3c7364d152c1b4a2d98ece0fbf4"
-                },
-                {
-                    "songData": {
-                        "songName": "Backyard Beach (TV Size)",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\1843213 Ferb (VO_ Danny Jacob) - Backyard Beach (TV Size)\\audio.mp3",
-                        "artistName": "Ferb (VO"
-                    },
-                    "fileLastModified": 1690157785298,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\1843213 Ferb (VO_ Danny Jacob) - Backyard Beach (TV Size)\\Ferb (VO Danny Jacob) - Backyard Beach (TV Size) (-Starlight) [iamveryfat's Muzukashii].osu",
-                    "hash": "0fbb820b852752b76e939fad093d3b25"
-                },
-                {
-                    "songData": {
-                        "songName": "Backyard Beach (TV Size)",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\1843213 Ferb (VO_ Danny Jacob) - Backyard Beach (TV Size)\\audio.mp3",
-                        "artistName": "Ferb (VO"
-                    },
-                    "fileLastModified": 1690157785298,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\1843213 Ferb (VO_ Danny Jacob) - Backyard Beach (TV Size)\\Ferb (VO Danny Jacob) - Backyard Beach (TV Size) (-Starlight) [liku's Kantan].osu",
-                    "hash": "678eb9604285a40f7377a5255d1a37d3"
-                },
-                {
-                    "songData": {
-                        "songName": "Backyard Beach (TV Size)",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\1843213 Ferb (VO_ Danny Jacob) - Backyard Beach (TV Size)\\audio.mp3",
-                        "artistName": "Ferb (VO"
-                    },
-                    "fileLastModified": 1690157785297,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\1843213 Ferb (VO_ Danny Jacob) - Backyard Beach (TV Size)\\Ferb (VO Danny Jacob) - Backyard Beach (TV Size) (-Starlight) [Moyai].osu",
-                    "hash": "0f7ad17217c6cf23351610b30281725d"
-                }
-            ]
-        },
-        {
             "folderPath": "D:\\Program Files\\osu!\\Songs\\185250 ALiCE'S EMOTiON - Dark Flight Dreamer",
             "folderLastModified": 1640066768191,
             "beatmapList": [
@@ -22121,98 +21963,6 @@
             ]
         },
         {
-            "folderPath": "D:\\Program Files\\osu!\\Songs\\1862313 ShinRa-Bansho - Zenryoku Happy Life",
-            "folderLastModified": 1690157785478,
-            "beatmapList": [
-                {
-                    "songData": {
-                        "songName": "Zenryoku Happy Life",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\1862313 ShinRa-Bansho - Zenryoku Happy Life\\audio.mp3",
-                        "artistName": "ShinRa-Bansho"
-                    },
-                    "fileLastModified": 1690157785383,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\1862313 ShinRa-Bansho - Zenryoku Happy Life\\ShinRa-Bansho - Zenryoku Happy Life (-Maruko-) [Let's be Happy!].osu",
-                    "hash": "2028e13a9d5fff98d142065fbb5d4387"
-                },
-                {
-                    "songData": {
-                        "songName": "Zenryoku Happy Life",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\1862313 ShinRa-Bansho - Zenryoku Happy Life\\audio.mp3",
-                        "artistName": "ShinRa-Bansho"
-                    },
-                    "fileLastModified": 1690157785384,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\1862313 ShinRa-Bansho - Zenryoku Happy Life\\ShinRa-Bansho - Zenryoku Happy Life (-Maruko-) [Muzukashii].osu",
-                    "hash": "235a78154ff7b6f3c605fb1b327a0a90"
-                },
-                {
-                    "songData": {
-                        "songName": "Zenryoku Happy Life",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\1862313 ShinRa-Bansho - Zenryoku Happy Life\\audio.mp3",
-                        "artistName": "ShinRa-Bansho"
-                    },
-                    "fileLastModified": 1690157785384,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\1862313 ShinRa-Bansho - Zenryoku Happy Life\\ShinRa-Bansho - Zenryoku Happy Life (-Maruko-) [Oni].osu",
-                    "hash": "01aa25084599c9c338e8ad9ffdd16f7e"
-                }
-            ]
-        },
-        {
-            "folderPath": "D:\\Program Files\\osu!\\Songs\\1876808 Vivy (VO_ Yagi Kairi) - Sing My Pleasure (TV Size)",
-            "folderLastModified": 1690157785954,
-            "beatmapList": [
-                {
-                    "songData": {
-                        "songName": "Sing My Pleasure (TV Size)",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\1876808 Vivy (VO_ Yagi Kairi) - Sing My Pleasure (TV Size)\\audio.mp3",
-                        "artistName": "Vivy (VO"
-                    },
-                    "fileLastModified": 1690157785493,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\1876808 Vivy (VO_ Yagi Kairi) - Sing My Pleasure (TV Size)\\Vivy (VO Yagi Kairi) - Sing My Pleasure (TV Size) (BlackBN) [Futsuu].osu",
-                    "hash": "e795c67f4e53cb0247193d6b9d55601d"
-                },
-                {
-                    "songData": {
-                        "songName": "Sing My Pleasure (TV Size)",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\1876808 Vivy (VO_ Yagi Kairi) - Sing My Pleasure (TV Size)\\audio.mp3",
-                        "artistName": "Vivy (VO"
-                    },
-                    "fileLastModified": 1690157785494,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\1876808 Vivy (VO_ Yagi Kairi) - Sing My Pleasure (TV Size)\\Vivy (VO Yagi Kairi) - Sing My Pleasure (TV Size) (BlackBN) [Inner Oni].osu",
-                    "hash": "ef4d15e163c1b7e40346ce5c3107a345"
-                },
-                {
-                    "songData": {
-                        "songName": "Sing My Pleasure (TV Size)",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\1876808 Vivy (VO_ Yagi Kairi) - Sing My Pleasure (TV Size)\\audio.mp3",
-                        "artistName": "Vivy (VO"
-                    },
-                    "fileLastModified": 1690157785496,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\1876808 Vivy (VO_ Yagi Kairi) - Sing My Pleasure (TV Size)\\Vivy (VO Yagi Kairi) - Sing My Pleasure (TV Size) (BlackBN) [iRedi's Oni].osu",
-                    "hash": "a704b1b0b5764c742b26f57647169e62"
-                },
-                {
-                    "songData": {
-                        "songName": "Sing My Pleasure (TV Size)",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\1876808 Vivy (VO_ Yagi Kairi) - Sing My Pleasure (TV Size)\\audio.mp3",
-                        "artistName": "Vivy (VO"
-                    },
-                    "fileLastModified": 1690157785495,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\1876808 Vivy (VO_ Yagi Kairi) - Sing My Pleasure (TV Size)\\Vivy (VO Yagi Kairi) - Sing My Pleasure (TV Size) (BlackBN) [Maruko's Kantan].osu",
-                    "hash": "68cc873a16321fa5e62fce564acb346e"
-                },
-                {
-                    "songData": {
-                        "songName": "Sing My Pleasure (TV Size)",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\1876808 Vivy (VO_ Yagi Kairi) - Sing My Pleasure (TV Size)\\audio.mp3",
-                        "artistName": "Vivy (VO"
-                    },
-                    "fileLastModified": 1690157785495,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\1876808 Vivy (VO_ Yagi Kairi) - Sing My Pleasure (TV Size)\\Vivy (VO Yagi Kairi) - Sing My Pleasure (TV Size) (BlackBN) [Muzukashii].osu",
-                    "hash": "e7b4a0cc419dffb51835ea375b0dd94a"
-                }
-            ]
-        },
-        {
             "folderPath": "D:\\Program Files\\osu!\\Songs\\1881301 paraoka feat haru_nya - Oniyuri-tachi no Natsu",
             "folderLastModified": 1690157786083,
             "beatmapList": [
@@ -22265,52 +22015,6 @@
                     "fileLastModified": 1690157786065,
                     "filePath": "D:\\Program Files\\osu!\\Songs\\1881301 paraoka feat haru_nya - Oniyuri-tachi no Natsu\\paraoka feat. harunya - Oniyuri-tachi no Natsu (paz08) [Summer of Tiger Lillies].osu",
                     "hash": "7c86dcdfa4059f793960b6ef50d1ce3a"
-                }
-            ]
-        },
-        {
-            "folderPath": "D:\\Program Files\\osu!\\Songs\\1899277 Indila - Derniere Danse",
-            "folderLastModified": 1690157777457,
-            "beatmapList": [
-                {
-                    "songData": {
-                        "songName": "Derniere Danse",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\1899277 Indila - Derniere Danse\\01 - Derniere Danse.ogg",
-                        "artistName": "Indila"
-                    },
-                    "fileLastModified": 1690157777439,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\1899277 Indila - Derniere Danse\\Indila - Derniere Danse (Slyme) [Hap's Muzukashii].osu",
-                    "hash": "2a14589eb90d8120cb8103eeda3065da"
-                },
-                {
-                    "songData": {
-                        "songName": "Derniere Danse",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\1899277 Indila - Derniere Danse\\01 - Derniere Danse.ogg",
-                        "artistName": "Indila"
-                    },
-                    "fileLastModified": 1690157777443,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\1899277 Indila - Derniere Danse\\Indila - Derniere danse (Slyme) [rox's Futsuu].osu",
-                    "hash": "1071711d41460ab76962065f0f8d824f"
-                },
-                {
-                    "songData": {
-                        "songName": "Derniere Danse",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\1899277 Indila - Derniere Danse\\01 - Derniere Danse.ogg",
-                        "artistName": "Indila"
-                    },
-                    "fileLastModified": 1690157777442,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\1899277 Indila - Derniere Danse\\Indila - Derniere danse (Slyme) [Sen's Kantan].osu",
-                    "hash": "fb445e5761632c846d23158c6a932763"
-                },
-                {
-                    "songData": {
-                        "songName": "Derniere Danse",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\1899277 Indila - Derniere Danse\\01 - Derniere Danse.ogg",
-                        "artistName": "Indila"
-                    },
-                    "fileLastModified": 1690157777442,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\1899277 Indila - Derniere Danse\\Indila - Derniere Danse (Slyme) [Un peu d'amour].osu",
-                    "hash": "f86e80dad4aace337ae90d925a94797e"
                 }
             ]
         },
@@ -22697,118 +22401,6 @@
                     "fileLastModified": 1690157786666,
                     "filePath": "D:\\Program Files\\osu!\\Songs\\1947455 Akina - Cat Loving\\Akina - Cat Loving (liku) [Oni].osu",
                     "hash": "4553bb26be3b9f3ddb66cc9e435e2ded"
-                }
-            ]
-        },
-        {
-            "folderPath": "D:\\Program Files\\osu!\\Songs\\1958087 GARZI - PARANOIA (with FEVER 333 & Point North) (Remix) [feat Jason Aalon Butler]",
-            "folderLastModified": 1690157786787,
-            "beatmapList": [
-                {
-                    "songData": {
-                        "songName": "PARANOIA (with FEVER 333 & Point North) (Remix) [feat. Jason Aalon Butler]",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\1958087 GARZI - PARANOIA (with FEVER 333 & Point North) (Remix) [feat Jason Aalon Butler]\\paranoia better.ogg",
-                        "artistName": "GARZI"
-                    },
-                    "fileLastModified": 1690157786733,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\1958087 GARZI - PARANOIA (with FEVER 333 & Point North) (Remix) [feat Jason Aalon Butler]\\GARZI - PARANOIA (with FEVER 333 & Point North) (Remix) [feat. Jason Aalon Butler] (Slim-san) [2199's Oni].osu",
-                    "hash": "d0c39ac867bb88a2f7dd4490bcaaacc6"
-                },
-                {
-                    "songData": {
-                        "songName": "PARANOIA (with FEVER 333 & Point North) (Remix) [feat. Jason Aalon Butler]",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\1958087 GARZI - PARANOIA (with FEVER 333 & Point North) (Remix) [feat Jason Aalon Butler]\\paranoia better.ogg",
-                        "artistName": "GARZI"
-                    },
-                    "fileLastModified": 1690157786734,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\1958087 GARZI - PARANOIA (with FEVER 333 & Point North) (Remix) [feat Jason Aalon Butler]\\GARZI - PARANOIA (with FEVER 333 & Point North) (Remix) [feat. Jason Aalon Butler] (Slim-san) [I'm Stuck with Paranoia in My Head.].osu",
-                    "hash": "aea7e56d0ce690fa2ab53606ec880e17"
-                },
-                {
-                    "songData": {
-                        "songName": "PARANOIA (with FEVER 333 & Point North) (Remix) [feat. Jason Aalon Butler]",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\1958087 GARZI - PARANOIA (with FEVER 333 & Point North) (Remix) [feat Jason Aalon Butler]\\paranoia better.ogg",
-                        "artistName": "GARZI"
-                    },
-                    "fileLastModified": 1690157786735,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\1958087 GARZI - PARANOIA (with FEVER 333 & Point North) (Remix) [feat Jason Aalon Butler]\\GARZI - PARANOIA (with FEVER 333 & Point North) (Remix) [feat. Jason Aalon Butler] (Slim-san) [Kantan].osu",
-                    "hash": "41d967eeba7059317dd698af1bd78369"
-                },
-                {
-                    "songData": {
-                        "songName": "PARANOIA (with FEVER 333 & Point North) (Remix) [feat. Jason Aalon Butler]",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\1958087 GARZI - PARANOIA (with FEVER 333 & Point North) (Remix) [feat Jason Aalon Butler]\\paranoia better.ogg",
-                        "artistName": "GARZI"
-                    },
-                    "fileLastModified": 1690157786736,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\1958087 GARZI - PARANOIA (with FEVER 333 & Point North) (Remix) [feat Jason Aalon Butler]\\GARZI - PARANOIA (with FEVER 333 & Point North) (Remix) [feat. Jason Aalon Butler] (Slim-san) [skolodojko's Muzukashii].osu",
-                    "hash": "92b37ebaf7dcedc4217e7aa76027c6f1"
-                },
-                {
-                    "songData": {
-                        "songName": "PARANOIA (with FEVER 333 & Point North) (Remix) [feat. Jason Aalon Butler]",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\1958087 GARZI - PARANOIA (with FEVER 333 & Point North) (Remix) [feat Jason Aalon Butler]\\paranoia better.ogg",
-                        "artistName": "GARZI"
-                    },
-                    "fileLastModified": 1690157786735,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\1958087 GARZI - PARANOIA (with FEVER 333 & Point North) (Remix) [feat Jason Aalon Butler]\\GARZI - PARANOIA (with FEVER 333 & Point North) (Remix) [feat. Jason Aalon Butler] (Slim-san) [Tsukani's Futsuu].osu",
-                    "hash": "7aa5320e5fb3eabb1f5c673ab141b877"
-                }
-            ]
-        },
-        {
-            "folderPath": "D:\\Program Files\\osu!\\Songs\\1958189 POLKADOT STINGRAY - SURF",
-            "folderLastModified": 1690157786878,
-            "beatmapList": [
-                {
-                    "songData": {
-                        "songName": "SURF",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\1958189 POLKADOT STINGRAY - SURF\\audio.mp3",
-                        "artistName": "POLKADOT STINGRAY"
-                    },
-                    "fileLastModified": 1690157786803,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\1958189 POLKADOT STINGRAY - SURF\\Polkadot Stingray - SURF (MicSup08) [Down the Milky Way!].osu",
-                    "hash": "637eb098687a5a88cdd986f56e46105a"
-                },
-                {
-                    "songData": {
-                        "songName": "SURF",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\1958189 POLKADOT STINGRAY - SURF\\audio.mp3",
-                        "artistName": "POLKADOT STINGRAY"
-                    },
-                    "fileLastModified": 1690157786804,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\1958189 POLKADOT STINGRAY - SURF\\Polkadot Stingray - SURF (MicSup08) [Futsuu].osu",
-                    "hash": "9a0748bfdf26ae8314d037c2c2371d8b"
-                },
-                {
-                    "songData": {
-                        "songName": "SURF",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\1958189 POLKADOT STINGRAY - SURF\\audio.mp3",
-                        "artistName": "POLKADOT STINGRAY"
-                    },
-                    "fileLastModified": 1690157786806,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\1958189 POLKADOT STINGRAY - SURF\\Polkadot Stingray - SURF (MicSup08) [imyx's Muzukashii].osu",
-                    "hash": "bc56109fdbb1fcf66720c9b05a55262c"
-                },
-                {
-                    "songData": {
-                        "songName": "SURF",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\1958189 POLKADOT STINGRAY - SURF\\audio.mp3",
-                        "artistName": "POLKADOT STINGRAY"
-                    },
-                    "fileLastModified": 1690157786806,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\1958189 POLKADOT STINGRAY - SURF\\Polkadot Stingray - SURF (MicSup08) [imyx's Oni].osu",
-                    "hash": "17d4ac6148ec2ff65422be506674aea2"
-                },
-                {
-                    "songData": {
-                        "songName": "SURF",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\1958189 POLKADOT STINGRAY - SURF\\audio.mp3",
-                        "artistName": "POLKADOT STINGRAY"
-                    },
-                    "fileLastModified": 1690157786805,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\1958189 POLKADOT STINGRAY - SURF\\Polkadot Stingray - SURF (MicSup08) [Kantan].osu",
-                    "hash": "36d0d794d3349ec8f32a2854ced95212"
                 }
             ]
         },
@@ -23795,6 +23387,118 @@
                     "fileLastModified": 1598073571305,
                     "filePath": "D:\\Program Files\\osu!\\Songs\\220785 Hanatan - Tengaku\\Hanatan - Tengaku (Rakuen) [[ -Scarlet- ]'s Extra].osu",
                     "hash": "15ed179ecffc64884d818c49f3a3ebc1"
+                }
+            ]
+        },
+        {
+            "folderPath": "D:\\Program Files\\osu!\\Songs\\2275559 Inori Minase - Winter Wonder Wander",
+            "folderLastModified": 1736888791831,
+            "beatmapList": [
+                {
+                    "songData": {
+                        "songName": "Winter Wonder Wander",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\2275559 Inori Minase - Winter Wonder Wander\\audio.mp3",
+                        "artistName": "Inori Minase"
+                    },
+                    "fileLastModified": 1736888791729,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\2275559 Inori Minase - Winter Wonder Wander\\Inori Minase - Winter Wonder Wander (Pyra-san) [Beginner].osu",
+                    "hash": "8076d3175db083acd197804f1febb519"
+                },
+                {
+                    "songData": {
+                        "songName": "Winter Wonder Wander",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\2275559 Inori Minase - Winter Wonder Wander\\audio.mp3",
+                        "artistName": "Inori Minase"
+                    },
+                    "fileLastModified": 1736888791729,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\2275559 Inori Minase - Winter Wonder Wander\\Inori Minase - Winter Wonder Wander (Pyra-san) [Easy].osu",
+                    "hash": "33b6b677753684b85924c806577349a2"
+                },
+                {
+                    "songData": {
+                        "songName": "Winter Wonder Wander",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\2275559 Inori Minase - Winter Wonder Wander\\audio.mp3",
+                        "artistName": "Inori Minase"
+                    },
+                    "fileLastModified": 1736888791730,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\2275559 Inori Minase - Winter Wonder Wander\\Inori Minase - Winter Wonder Wander (Pyra-san) [Hard].osu",
+                    "hash": "719e1645c1a3e7b5c2ad80aefdfc6170"
+                },
+                {
+                    "songData": {
+                        "songName": "Winter Wonder Wander",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\2275559 Inori Minase - Winter Wonder Wander\\audio.mp3",
+                        "artistName": "Inori Minase"
+                    },
+                    "fileLastModified": 1736888791731,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\2275559 Inori Minase - Winter Wonder Wander\\Inori Minase - Winter Wonder Wander (Pyra-san) [Normal].osu",
+                    "hash": "a7dbb6b57e06404041acb72723f28ecc"
+                },
+                {
+                    "songData": {
+                        "songName": "Winter Wonder Wander",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\2275559 Inori Minase - Winter Wonder Wander\\audio.mp3",
+                        "artistName": "Inori Minase"
+                    },
+                    "fileLastModified": 1736888791732,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\2275559 Inori Minase - Winter Wonder Wander\\Inori Minase - Winter Wonder Wander (Pyra-san) [Winter Magic].osu",
+                    "hash": "c45d464f8c683734209d3c5f8c075ed5"
+                }
+            ]
+        },
+        {
+            "folderPath": "D:\\Program Files\\osu!\\Songs\\2291962 Kano - Kimiiro Hanabi (Album Ver)",
+            "folderLastModified": 1736888777190,
+            "beatmapList": [
+                {
+                    "songData": {
+                        "songName": "Kimiiro Hanabi (Album Ver.)",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\2291962 Kano - Kimiiro Hanabi (Album Ver)\\audio.ogg",
+                        "artistName": "Kano"
+                    },
+                    "fileLastModified": 1736888776790,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\2291962 Kano - Kimiiro Hanabi (Album Ver)\\Kano - Kimiiro Hanabi (Album Ver.) (bucky) [3].osu",
+                    "hash": "31ed51489580494528345eca22b32381"
+                },
+                {
+                    "songData": {
+                        "songName": "Kimiiro Hanabi (Album Ver.)",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\2291962 Kano - Kimiiro Hanabi (Album Ver)\\audio.ogg",
+                        "artistName": "Kano"
+                    },
+                    "fileLastModified": 1736888776792,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\2291962 Kano - Kimiiro Hanabi (Album Ver)\\Kano - Kimiiro Hanabi (Album Ver.) (bucky) [Hard].osu",
+                    "hash": "09f06ca336f1d37f716031dcd1bc3000"
+                },
+                {
+                    "songData": {
+                        "songName": "Kimiiro Hanabi (Album Ver.)",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\2291962 Kano - Kimiiro Hanabi (Album Ver)\\audio.ogg",
+                        "artistName": "Kano"
+                    },
+                    "fileLastModified": 1736888776793,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\2291962 Kano - Kimiiro Hanabi (Album Ver)\\Kano - Kimiiro Hanabi (Album Ver.) (bucky) [Koori's Extra].osu",
+                    "hash": "2781defcb9b58ce258e616a716246405"
+                },
+                {
+                    "songData": {
+                        "songName": "Kimiiro Hanabi (Album Ver.)",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\2291962 Kano - Kimiiro Hanabi (Album Ver)\\audio.ogg",
+                        "artistName": "Kano"
+                    },
+                    "fileLastModified": 1736888776794,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\2291962 Kano - Kimiiro Hanabi (Album Ver)\\Kano - Kimiiro Hanabi (Album Ver.) (bucky) [Normal].osu",
+                    "hash": "3db61ed79eea5cd43a69a8b5dfc1a519"
+                },
+                {
+                    "songData": {
+                        "songName": "Kimiiro Hanabi (Album Ver.)",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\2291962 Kano - Kimiiro Hanabi (Album Ver)\\audio.ogg",
+                        "artistName": "Kano"
+                    },
+                    "fileLastModified": 1736888776795,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\2291962 Kano - Kimiiro Hanabi (Album Ver)\\Kano - Kimiiro Hanabi (Album Ver.) (bucky) [Yumenexa's Insane].osu",
+                    "hash": "3dcd71d79044941ace54d1f28481a2e1"
                 }
             ]
         },
@@ -25712,7 +25416,7 @@
         },
         {
             "folderPath": "D:\\Program Files\\osu!\\Songs\\350295 yak_won - Sewing Machine",
-            "folderLastModified": 1640066781129,
+            "folderLastModified": 1736890275107,
             "beatmapList": [
                 {
                     "songData": {
@@ -25854,7 +25558,7 @@
         },
         {
             "folderPath": "D:\\Program Files\\osu!\\Songs\\357777 NOMA - Brain Power",
-            "folderLastModified": 1640066781666,
+            "folderLastModified": 1736890198755,
             "beatmapList": [
                 {
                     "songData": {
@@ -33105,42 +32809,6 @@
             ]
         },
         {
-            "folderPath": "D:\\Program Files\\osu!\\Songs\\700486 Chino (CV_ Minase Inori) - Mahou Shoujo Chino (nenpulse bootleg remix)",
-            "folderLastModified": 1690157759161,
-            "beatmapList": [
-                {
-                    "songData": {
-                        "songName": "Mahou Shoujo Chino (nenpulse bootleg remix)",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\700486 Chino (CV_ Minase Inori) - Mahou Shoujo Chino (nenpulse bootleg remix)\\audio.mp3",
-                        "artistName": "Chino (CV"
-                    },
-                    "fileLastModified": 1690157759036,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\700486 Chino (CV_ Minase Inori) - Mahou Shoujo Chino (nenpulse bootleg remix)\\Chino (CV Minase Inori) - Mahou Shoujo Chino (nenpulse bootleg remix) (K-2) [Infinite Spell -EX-].osu",
-                    "hash": "5b4b97dc9dffa224a457c6cbee2d868f"
-                },
-                {
-                    "songData": {
-                        "songName": "Mahou Shoujo Chino (nenpulse bootleg remix)",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\700486 Chino (CV_ Minase Inori) - Mahou Shoujo Chino (nenpulse bootleg remix)\\audio.mp3",
-                        "artistName": "Chino (CV"
-                    },
-                    "fileLastModified": 1690157759038,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\700486 Chino (CV_ Minase Inori) - Mahou Shoujo Chino (nenpulse bootleg remix)\\Chino (CV Minase Inori) - Mahou Shoujo Chino (nenpulse bootleg remix) (K-2) [Innocent Heart].osu",
-                    "hash": "91967793d153b82461ea53bd2f17a356"
-                },
-                {
-                    "songData": {
-                        "songName": "Mahou Shoujo Chino (nenpulse bootleg remix)",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\700486 Chino (CV_ Minase Inori) - Mahou Shoujo Chino (nenpulse bootleg remix)\\audio.mp3",
-                        "artistName": "Chino (CV"
-                    },
-                    "fileLastModified": 1690157759039,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\700486 Chino (CV_ Minase Inori) - Mahou Shoujo Chino (nenpulse bootleg remix)\\Chino (CV Minase Inori) - Mahou Shoujo Chino (nenpulse bootleg remix) (K-2) [Magical Blast].osu",
-                    "hash": "5239125da5a3c34c5aed1238d7880e01"
-                }
-            ]
-        },
-        {
             "folderPath": "D:\\Program Files\\osu!\\Songs\\703568 Igorrr - Houmous",
             "folderLastModified": 1640066829232,
             "beatmapList": [
@@ -36707,62 +36375,6 @@
                     "fileLastModified": 1543906470948,
                     "filePath": "D:\\Program Files\\osu!\\Songs\\772093 Ayaponzu_ - Shiroi Yuki no Princess wa\\Ayaponzu - Shiroi Yuki no Princess wa (bossandy) [Normal].osu",
                     "hash": "31c54860001561289a24df498b3208f9"
-                }
-            ]
-        },
-        {
-            "folderPath": "D:\\Program Files\\osu!\\Songs\\773801 supercell - Kimi no Shiranai Monogatari -TV Edit-",
-            "folderLastModified": 1644128770842,
-            "beatmapList": [
-                {
-                    "songData": {
-                        "songName": "Kimi no Shiranai Monogatari -TV Edit-",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\773801 supercell - Kimi no Shiranai Monogatari -TV Edit-\\mp3.mp3",
-                        "artistName": "supercell"
-                    },
-                    "fileLastModified": 1543131158058,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\773801 supercell - Kimi no Shiranai Monogatari -TV Edit-\\supercell - Kimi no Shiranai Monogatari -TV Edit- (Nevo) [A r M i N's Light Insane].osu",
-                    "hash": "3d793f80325a5fe515608123a15afabc"
-                },
-                {
-                    "songData": {
-                        "songName": "Kimi no Shiranai Monogatari -TV Edit-",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\773801 supercell - Kimi no Shiranai Monogatari -TV Edit-\\mp3.mp3",
-                        "artistName": "supercell"
-                    },
-                    "fileLastModified": 1644128770840,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\773801 supercell - Kimi no Shiranai Monogatari -TV Edit-\\supercell - Kimi no Shiranai Monogatari -TV Edit- (Nevo) [Constellation].osu",
-                    "hash": "df635b37a3a8fac063643182f2ffc611"
-                },
-                {
-                    "songData": {
-                        "songName": "Kimi no Shiranai Monogatari -TV Edit-",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\773801 supercell - Kimi no Shiranai Monogatari -TV Edit-\\mp3.mp3",
-                        "artistName": "supercell"
-                    },
-                    "fileLastModified": 1543131158061,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\773801 supercell - Kimi no Shiranai Monogatari -TV Edit-\\supercell - Kimi no Shiranai Monogatari -TV Edit- (Nevo) [Nao's Normal].osu",
-                    "hash": "9193d6d89a7651569a1f797642902ddd"
-                },
-                {
-                    "songData": {
-                        "songName": "Kimi no Shiranai Monogatari -TV Edit-",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\773801 supercell - Kimi no Shiranai Monogatari -TV Edit-\\mp3.mp3",
-                        "artistName": "supercell"
-                    },
-                    "fileLastModified": 1543131158065,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\773801 supercell - Kimi no Shiranai Monogatari -TV Edit-\\supercell - Kimi no Shiranai Monogatari -TV Edit- (Nevo) [Shira's Insane].osu",
-                    "hash": "991904d1813f4d257773bc1e5c2e0419"
-                },
-                {
-                    "songData": {
-                        "songName": "Kimi no Shiranai Monogatari -TV Edit-",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\773801 supercell - Kimi no Shiranai Monogatari -TV Edit-\\mp3.mp3",
-                        "artistName": "supercell"
-                    },
-                    "fileLastModified": 1543131158069,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\773801 supercell - Kimi no Shiranai Monogatari -TV Edit-\\supercell - Kimi no Shiranai Monogatari -TV Edit- (Nevo) [Shunao's Hard].osu",
-                    "hash": "70e169ef35d4530aa7aa1e10c18b7808"
                 }
             ]
         },
@@ -49713,72 +49325,6 @@
             }]
         },
         {
-            "folderPath": "D:\\Program Files\\osu!\\Songs\\908087 toby fox - Bergentrueckung_ASGORE",
-            "folderLastModified": 1734764351128,
-            "beatmapList": [
-                {
-                    "songData": {
-                        "songName": "Bergentrueckung/ASGORE",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\908087 toby fox - Bergentrueckung_ASGORE\\audio.mp3",
-                        "artistName": "toby fox"
-                    },
-                    "fileLastModified": 1734764351109,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\908087 toby fox - Bergentrueckung_ASGORE\\toby fox - BergentrueckungASGORE (Kaitjuh) [Determination].osu",
-                    "hash": "440b3c62c6e79c9c110ab22ca7d4256b"
-                },
-                {
-                    "songData": {
-                        "songName": "Bergentrueckung/ASGORE",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\908087 toby fox - Bergentrueckung_ASGORE\\audio.mp3",
-                        "artistName": "toby fox"
-                    },
-                    "fileLastModified": 1734764351110,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\908087 toby fox - Bergentrueckung_ASGORE\\toby fox - BergentrueckungASGORE (Kaitjuh) [DeviousPanda's Extra].osu",
-                    "hash": "e2d3dc2018ebe54c3beca400fd716c41"
-                },
-                {
-                    "songData": {
-                        "songName": "Bergentrueckung/ASGORE",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\908087 toby fox - Bergentrueckung_ASGORE\\audio.mp3",
-                        "artistName": "toby fox"
-                    },
-                    "fileLastModified": 1734764351111,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\908087 toby fox - Bergentrueckung_ASGORE\\toby fox - BergentrueckungASGORE (Kaitjuh) [Glaceon's Normal].osu",
-                    "hash": "70635d520c24336bb7cb3e4875a51aea"
-                },
-                {
-                    "songData": {
-                        "songName": "Bergentrueckung/ASGORE",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\908087 toby fox - Bergentrueckung_ASGORE\\audio.mp3",
-                        "artistName": "toby fox"
-                    },
-                    "fileLastModified": 1734764351112,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\908087 toby fox - Bergentrueckung_ASGORE\\toby fox - BergentrueckungASGORE (Kaitjuh) [Keitaro's Insane].osu",
-                    "hash": "ebd0075ffa567871002498b3ace3435f"
-                },
-                {
-                    "songData": {
-                        "songName": "Bergentrueckung/ASGORE",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\908087 toby fox - Bergentrueckung_ASGORE\\audio.mp3",
-                        "artistName": "toby fox"
-                    },
-                    "fileLastModified": 1734764351112,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\908087 toby fox - Bergentrueckung_ASGORE\\toby fox - BergentrueckungASGORE (Kaitjuh) [Kowari's Hard].osu",
-                    "hash": "5074ae84604f8c5db334cf2f79d47acb"
-                },
-                {
-                    "songData": {
-                        "songName": "Bergentrueckung/ASGORE",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\908087 toby fox - Bergentrueckung_ASGORE\\audio.mp3",
-                        "artistName": "toby fox"
-                    },
-                    "fileLastModified": 1734764351113,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\908087 toby fox - Bergentrueckung_ASGORE\\toby fox - BergentrueckungASGORE (Kaitjuh) [Mindmaster's Expert].osu",
-                    "hash": "40ea1af9295700844a594f3bf605e877"
-                }
-            ]
-        },
-        {
             "folderPath": "D:\\Program Files\\osu!\\Songs\\909826 Imai Asami - World-Line (TV Size)",
             "folderLastModified": 1640066936018,
             "beatmapList": [
@@ -57925,112 +57471,6 @@
             ]
         },
         {
-            "folderPath": "D:\\Program Files\\osu!\\Songs\\985170 Yousei Teikoku - Shinteki Souzou",
-            "folderLastModified": 1640066986194,
-            "beatmapList": [
-                {
-                    "songData": {
-                        "songName": "Shinteki Souzou",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\985170 Yousei Teikoku - Shinteki Souzou\\audio.mp3",
-                        "artistName": "Yousei Teikoku"
-                    },
-                    "fileLastModified": 1570169078363,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\985170 Yousei Teikoku - Shinteki Souzou\\Yousei Teikoku - Shinteki Souzou (-Keitaro) [Alphabet's Extreme].osu",
-                    "hash": "4bf4e650e504070631191957ac2aabe7"
-                },
-                {
-                    "songData": {
-                        "songName": "Shinteki Souzou",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\985170 Yousei Teikoku - Shinteki Souzou\\audio.mp3",
-                        "artistName": "Yousei Teikoku"
-                    },
-                    "fileLastModified": 1570169078365,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\985170 Yousei Teikoku - Shinteki Souzou\\Yousei Teikoku - Shinteki Souzou (-Keitaro) [AncuL's Extra].osu",
-                    "hash": "a2f1edbdc6daefafcd6a00ccc14667a7"
-                },
-                {
-                    "songData": {
-                        "songName": "Shinteki Souzou",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\985170 Yousei Teikoku - Shinteki Souzou\\audio.mp3",
-                        "artistName": "Yousei Teikoku"
-                    },
-                    "fileLastModified": 1570169078367,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\985170 Yousei Teikoku - Shinteki Souzou\\Yousei Teikoku - Shinteki Souzou (-Keitaro) [Divine].osu",
-                    "hash": "51d9dff07851b88a55e61ae670897521"
-                },
-                {
-                    "songData": {
-                        "songName": "Shinteki Souzou",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\985170 Yousei Teikoku - Shinteki Souzou\\audio.mp3",
-                        "artistName": "Yousei Teikoku"
-                    },
-                    "fileLastModified": 1570169078370,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\985170 Yousei Teikoku - Shinteki Souzou\\Yousei Teikoku - Shinteki Souzou (-Keitaro) [Easy].osu",
-                    "hash": "4e3f4346e94113a990d1775cb5fcdbda"
-                },
-                {
-                    "songData": {
-                        "songName": "Shinteki Souzou",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\985170 Yousei Teikoku - Shinteki Souzou\\audio.mp3",
-                        "artistName": "Yousei Teikoku"
-                    },
-                    "fileLastModified": 1570169078372,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\985170 Yousei Teikoku - Shinteki Souzou\\Yousei Teikoku - Shinteki Souzou (-Keitaro) [Expert].osu",
-                    "hash": "f4ce945f30ff15d703b5a739b2b98fc5"
-                },
-                {
-                    "songData": {
-                        "songName": "Shinteki Souzou",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\985170 Yousei Teikoku - Shinteki Souzou\\audio.mp3",
-                        "artistName": "Yousei Teikoku"
-                    },
-                    "fileLastModified": 1570169078375,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\985170 Yousei Teikoku - Shinteki Souzou\\Yousei Teikoku - Shinteki Souzou (-Keitaro) [Hard].osu",
-                    "hash": "2500ce9e3f571b4deef9b868d847c282"
-                },
-                {
-                    "songData": {
-                        "songName": "Shinteki Souzou",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\985170 Yousei Teikoku - Shinteki Souzou\\audio.mp3",
-                        "artistName": "Yousei Teikoku"
-                    },
-                    "fileLastModified": 1570169078377,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\985170 Yousei Teikoku - Shinteki Souzou\\Yousei Teikoku - Shinteki Souzou (-Keitaro) [Insane].osu",
-                    "hash": "51a3b28fe80bc1cc87b763596d210465"
-                },
-                {
-                    "songData": {
-                        "songName": "Shinteki Souzou",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\985170 Yousei Teikoku - Shinteki Souzou\\audio.mp3",
-                        "artistName": "Yousei Teikoku"
-                    },
-                    "fileLastModified": 1570169078380,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\985170 Yousei Teikoku - Shinteki Souzou\\Yousei Teikoku - Shinteki Souzou (-Keitaro) [Normal].osu",
-                    "hash": "94345fd3204241f0dc88ba32ea0caab3"
-                },
-                {
-                    "songData": {
-                        "songName": "Shinteki Souzou",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\985170 Yousei Teikoku - Shinteki Souzou\\audio.mp3",
-                        "artistName": "Yousei Teikoku"
-                    },
-                    "fileLastModified": 1570169078385,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\985170 Yousei Teikoku - Shinteki Souzou\\Yousei Teikoku - Shinteki Souzou (-Keitaro) [Shurelia's Ultimate].osu",
-                    "hash": "08f5a670b3b8eea8ca98cd769ea549e6"
-                },
-                {
-                    "songData": {
-                        "songName": "Shinteki Souzou",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\985170 Yousei Teikoku - Shinteki Souzou\\audio.mp3",
-                        "artistName": "Yousei Teikoku"
-                    },
-                    "fileLastModified": 1570169078382,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\985170 Yousei Teikoku - Shinteki Souzou\\Yousei Teikoku - Shinteki Souzou (-Keitaro) [SMOKELIND's Extreme].osu",
-                    "hash": "29e301dd120cc34b6537cfb72893b3e7"
-                }
-            ]
-        },
-        {
             "folderPath": "D:\\Program Files\\osu!\\Songs\\985385 Fractal Dreamers - Gardens Under A Spring Sky",
             "folderLastModified": 1640066986266,
             "beatmapList": [
@@ -58361,8 +57801,1254 @@
             ]
         },
         {
+            "folderPath": "D:\\Program Files\\osu!\\Songs\\989347 Wakeshima Kanon - World's End, Girl's Rondo (Asterisk DnB Remix)",
+            "folderLastModified": 1736890495765,
+            "beatmapList": [{
+                "songData": {
+                    "songName": "World's End, Girl's Rondo (Asterisk DnB Remix)",
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\989347 Wakeshima Kanon - World's End, Girl's Rondo (Asterisk DnB Remix)\\audio.mp3",
+                    "artistName": "Wakeshima Kanon"
+                },
+                "fileLastModified": 1589687672009,
+                "filePath": "D:\\Program Files\\osu!\\Songs\\989347 Wakeshima Kanon - World's End, Girl's Rondo (Asterisk DnB Remix)\\Wakeshima Kanon - World's End, Girl's Rondo (Asterisk DnB Remix) (Moecho) [Re Owari no Sekai].osu",
+                "hash": "0c70f4d057d82b2da5f9badf1e76140f"
+            }]
+        },
+        {
+            "folderPath": "D:\\Program Files\\osu!\\Songs\\989467 Hanatan - Orange",
+            "folderLastModified": 1736890495801,
+            "beatmapList": [
+                {
+                    "songData": {
+                        "songName": "Orange",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\989467 Hanatan - Orange\\audio.mp3",
+                        "artistName": "Hanatan"
+                    },
+                    "fileLastModified": 1572669513475,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\989467 Hanatan - Orange\\Hanatan - Orange (Hishiro Chizuru) [AIR's Insane].osu",
+                    "hash": "44a13548c6ea224f184f6cb81462f479"
+                },
+                {
+                    "songData": {
+                        "songName": "Orange",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\989467 Hanatan - Orange\\audio.mp3",
+                        "artistName": "Hanatan"
+                    },
+                    "fileLastModified": 1572669513477,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\989467 Hanatan - Orange\\Hanatan - Orange (Hishiro Chizuru) [Another].osu",
+                    "hash": "c573248ea4d0f871d17b2efaa838595a"
+                },
+                {
+                    "songData": {
+                        "songName": "Orange",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\989467 Hanatan - Orange\\audio.mp3",
+                        "artistName": "Hanatan"
+                    },
+                    "fileLastModified": 1572669513479,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\989467 Hanatan - Orange\\Hanatan - Orange (Hishiro Chizuru) [Ayaya's Extra].osu",
+                    "hash": "ebb33860ed2fbb5288a2c508bdb3ed70"
+                },
+                {
+                    "songData": {
+                        "songName": "Orange",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\989467 Hanatan - Orange\\audio.mp3",
+                        "artistName": "Hanatan"
+                    },
+                    "fileLastModified": 1572669513480,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\989467 Hanatan - Orange\\Hanatan - Orange (Hishiro Chizuru) [Hard].osu",
+                    "hash": "dc8d23f96960afceb98bb39e1d49d0ef"
+                }
+            ]
+        },
+        {
+            "folderPath": "D:\\Program Files\\osu!\\Songs\\990035 Feryquitous - Quon",
+            "folderLastModified": 1736890495868,
+            "beatmapList": [
+                {
+                    "songData": {
+                        "songName": "Quon",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\990035 Feryquitous - Quon\\audio.mp3",
+                        "artistName": "Feryquitous"
+                    },
+                    "fileLastModified": 1572669551155,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\990035 Feryquitous - Quon\\Feryquitous - Quon (-[Pino]-) [Celestial Crown].osu",
+                    "hash": "3a70e902dbd1dbc064bfc660652a5b6d"
+                },
+                {
+                    "songData": {
+                        "songName": "Quon",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\990035 Feryquitous - Quon\\audio.mp3",
+                        "artistName": "Feryquitous"
+                    },
+                    "fileLastModified": 1572669551156,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\990035 Feryquitous - Quon\\Feryquitous - Quon (-[Pino]-) [Cub's Aethereal Extra].osu",
+                    "hash": "5384bfbdabba5134849459af80e07199"
+                },
+                {
+                    "songData": {
+                        "songName": "Quon",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\990035 Feryquitous - Quon\\audio.mp3",
+                        "artistName": "Feryquitous"
+                    },
+                    "fileLastModified": 1572669551157,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\990035 Feryquitous - Quon\\Feryquitous - Quon (-[Pino]-) [Hard].osu",
+                    "hash": "7ed6e708d90524b3a2078f7072fc24c8"
+                },
+                {
+                    "songData": {
+                        "songName": "Quon",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\990035 Feryquitous - Quon\\audio.mp3",
+                        "artistName": "Feryquitous"
+                    },
+                    "fileLastModified": 1572669551158,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\990035 Feryquitous - Quon\\Feryquitous - Quon (-[Pino]-) [Ky's Easy].osu",
+                    "hash": "ee571cc1cbb97127f08a3c34d26bb7f2"
+                },
+                {
+                    "songData": {
+                        "songName": "Quon",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\990035 Feryquitous - Quon\\audio.mp3",
+                        "artistName": "Feryquitous"
+                    },
+                    "fileLastModified": 1572669551159,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\990035 Feryquitous - Quon\\Feryquitous - Quon (-[Pino]-) [Necho's Insane].osu",
+                    "hash": "3e8bc67ada592093dffbdfb504c9f43f"
+                },
+                {
+                    "songData": {
+                        "songName": "Quon",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\990035 Feryquitous - Quon\\audio.mp3",
+                        "artistName": "Feryquitous"
+                    },
+                    "fileLastModified": 1572669551159,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\990035 Feryquitous - Quon\\Feryquitous - Quon (-[Pino]-) [Normal].osu",
+                    "hash": "4b3f363402e43a57ec7cebb62221df4b"
+                }
+            ]
+        },
+        {
+            "folderPath": "D:\\Program Files\\osu!\\Songs\\990308 Little Glee Monster - Kimi ni Todoku made (TV Size)",
+            "folderLastModified": 1736890495912,
+            "beatmapList": [
+                {
+                    "songData": {
+                        "songName": "Kimi ni Todoku made (TV Size)",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\990308 Little Glee Monster - Kimi ni Todoku made (TV Size)\\Kimi ni Todoku made.mp3",
+                        "artistName": "Little Glee Monster"
+                    },
+                    "fileLastModified": 1570169078604,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\990308 Little Glee Monster - Kimi ni Todoku made (TV Size)\\Little Glee Monster - Kimi ni Todoku made (TV Size) (kunka) [7ka's Insane].osu",
+                    "hash": "f7654c55b6ab5c3e93993b5679322093"
+                },
+                {
+                    "songData": {
+                        "songName": "Kimi ni Todoku made (TV Size)",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\990308 Little Glee Monster - Kimi ni Todoku made (TV Size)\\Kimi ni Todoku made.mp3",
+                        "artistName": "Little Glee Monster"
+                    },
+                    "fileLastModified": 1570169078606,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\990308 Little Glee Monster - Kimi ni Todoku made (TV Size)\\Little Glee Monster - Kimi ni Todoku made (TV Size) (kunka) [Dubturt's Hard].osu",
+                    "hash": "c9f9cbbfb6620f66acad3c16ddf5e65e"
+                },
+                {
+                    "songData": {
+                        "songName": "Kimi ni Todoku made (TV Size)",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\990308 Little Glee Monster - Kimi ni Todoku made (TV Size)\\Kimi ni Todoku made.mp3",
+                        "artistName": "Little Glee Monster"
+                    },
+                    "fileLastModified": 1570169078607,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\990308 Little Glee Monster - Kimi ni Todoku made (TV Size)\\Little Glee Monster - Kimi ni Todoku made (TV Size) (kunka) [Easy].osu",
+                    "hash": "dd29f84e26a26e24b8687fcdc7f7c293"
+                },
+                {
+                    "songData": {
+                        "songName": "Kimi ni Todoku made (TV Size)",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\990308 Little Glee Monster - Kimi ni Todoku made (TV Size)\\Kimi ni Todoku made.mp3",
+                        "artistName": "Little Glee Monster"
+                    },
+                    "fileLastModified": 1570169078609,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\990308 Little Glee Monster - Kimi ni Todoku made (TV Size)\\Little Glee Monster - Kimi ni Todoku made (TV Size) (kunka) [MEISEI STORY].osu",
+                    "hash": "2c0b00e271ce7c47a02f72acbd895773"
+                },
+                {
+                    "songData": {
+                        "songName": "Kimi ni Todoku made (TV Size)",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\990308 Little Glee Monster - Kimi ni Todoku made (TV Size)\\Kimi ni Todoku made.mp3",
+                        "artistName": "Little Glee Monster"
+                    },
+                    "fileLastModified": 1570169078610,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\990308 Little Glee Monster - Kimi ni Todoku made (TV Size)\\Little Glee Monster - Kimi ni Todoku made (TV Size) (kunka) [Normal].osu",
+                    "hash": "fc6d638aaf093639b6b4fbeab6674812"
+                }
+            ]
+        },
+        {
+            "folderPath": "D:\\Program Files\\osu!\\Songs\\991222 FictionJunction feat LiSA - from the edge (TV Size)",
+            "folderLastModified": 1736890495975,
+            "beatmapList": [
+                {
+                    "songData": {
+                        "songName": "from the edge (TV Size)",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\991222 FictionJunction feat LiSA - from the edge (TV Size)\\audio.mp3",
+                        "artistName": "FictionJunction feat. LiSA"
+                    },
+                    "fileLastModified": 1570335096316,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\991222 FictionJunction feat LiSA - from the edge (TV Size)\\FictionJunction feat. LiSA - from the edge (TV Size) (Flask) [Ex].osu",
+                    "hash": "0ad24d48fa1ccc0d4fd309620422f445"
+                },
+                {
+                    "songData": {
+                        "songName": "from the edge (TV Size)",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\991222 FictionJunction feat LiSA - from the edge (TV Size)\\audio.mp3",
+                        "artistName": "FictionJunction feat. LiSA"
+                    },
+                    "fileLastModified": 1570335096318,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\991222 FictionJunction feat LiSA - from the edge (TV Size)\\FictionJunction feat. LiSA - from the edge (TV Size) (Flask) [GfMRT's Easy].osu",
+                    "hash": "b924fe60b194bddb2561e5705f29e791"
+                },
+                {
+                    "songData": {
+                        "songName": "from the edge (TV Size)",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\991222 FictionJunction feat LiSA - from the edge (TV Size)\\audio.mp3",
+                        "artistName": "FictionJunction feat. LiSA"
+                    },
+                    "fileLastModified": 1570335096320,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\991222 FictionJunction feat LiSA - from the edge (TV Size)\\FictionJunction feat. LiSA - from the edge (TV Size) (Flask) [Hard].osu",
+                    "hash": "c5a00171f11a2df6f2a60e04a3dbe33c"
+                },
+                {
+                    "songData": {
+                        "songName": "from the edge (TV Size)",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\991222 FictionJunction feat LiSA - from the edge (TV Size)\\audio.mp3",
+                        "artistName": "FictionJunction feat. LiSA"
+                    },
+                    "fileLastModified": 1570335096321,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\991222 FictionJunction feat LiSA - from the edge (TV Size)\\FictionJunction feat. LiSA - from the edge (TV Size) (Flask) [Normal].osu",
+                    "hash": "c0d9c92c638c29ea747ef9ee75b612ca"
+                },
+                {
+                    "songData": {
+                        "songName": "from the edge (TV Size)",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\991222 FictionJunction feat LiSA - from the edge (TV Size)\\audio.mp3",
+                        "artistName": "FictionJunction feat. LiSA"
+                    },
+                    "fileLastModified": 1570335096323,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\991222 FictionJunction feat LiSA - from the edge (TV Size)\\FictionJunction feat. LiSA - from the edge (TV Size) (Flask) [toybot's Insane].osu",
+                    "hash": "fc9dadc2fe6afdcfb4296a5b4ba48733"
+                }
+            ]
+        },
+        {
+            "folderPath": "D:\\Program Files\\osu!\\Songs\\993004 Watanabe Saki (CV_ Taneda Risa) - Wareta Ringo (TV Size)",
+            "folderLastModified": 1736890495993,
+            "beatmapList": [
+                {
+                    "songData": {
+                        "songName": "Wareta Ringo (TV Size)",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\993004 Watanabe Saki (CV_ Taneda Risa) - Wareta Ringo (TV Size)\\audio.mp3",
+                        "artistName": "Watanabe Saki (CV"
+                    },
+                    "fileLastModified": 1575699910023,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\993004 Watanabe Saki (CV_ Taneda Risa) - Wareta Ringo (TV Size)\\Watanabe Saki (CV Taneda Risa) - Wareta Ringo (TV Size) (-Sylvari) [Hard].osu",
+                    "hash": "c6a3cbce33b7dfe26513025d655523b8"
+                },
+                {
+                    "songData": {
+                        "songName": "Wareta Ringo (TV Size)",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\993004 Watanabe Saki (CV_ Taneda Risa) - Wareta Ringo (TV Size)\\audio.mp3",
+                        "artistName": "Watanabe Saki (CV"
+                    },
+                    "fileLastModified": 1575699910024,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\993004 Watanabe Saki (CV_ Taneda Risa) - Wareta Ringo (TV Size)\\Watanabe Saki (CV Taneda Risa) - Wareta Ringo (TV Size) (-Sylvari) [New World].osu",
+                    "hash": "46effff61885b1ca08ad939131264ba3"
+                },
+                {
+                    "songData": {
+                        "songName": "Wareta Ringo (TV Size)",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\993004 Watanabe Saki (CV_ Taneda Risa) - Wareta Ringo (TV Size)\\audio.mp3",
+                        "artistName": "Watanabe Saki (CV"
+                    },
+                    "fileLastModified": 1575699910024,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\993004 Watanabe Saki (CV_ Taneda Risa) - Wareta Ringo (TV Size)\\Watanabe Saki (CV Taneda Risa) - Wareta Ringo (TV Size) (-Sylvari) [Normal].osu",
+                    "hash": "47ecaa2903dec63067077dea7fcde52c"
+                }
+            ]
+        },
+        {
+            "folderPath": "D:\\Program Files\\osu!\\Songs\\993306 ryu5150 - Louder than steel",
+            "folderLastModified": 1736890497288,
+            "beatmapList": [
+                {
+                    "songData": {
+                        "songName": "Louder than steel",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\993306 ryu5150 - Louder than steel\\audio.mp3",
+                        "artistName": "ryu5150"
+                    },
+                    "fileLastModified": 1568433389116,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\993306 ryu5150 - Louder than steel\\ryu5150 - Louder than steel (Sotarks) [NiNo's Extreme].osu",
+                    "hash": "3e5026cf1319029c07d0c61e3361b2ad"
+                },
+                {
+                    "songData": {
+                        "songName": "Louder than steel",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\993306 ryu5150 - Louder than steel\\audio.mp3",
+                        "artistName": "ryu5150"
+                    },
+                    "fileLastModified": 1568433389118,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\993306 ryu5150 - Louder than steel\\ryu5150 - Louder than steel (Sotarks) [Onlybiscuit's Extra].osu",
+                    "hash": "2070d7a0d1d878f3f46625daeef7a086"
+                },
+                {
+                    "songData": {
+                        "songName": "Louder than steel",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\993306 ryu5150 - Louder than steel\\audio.mp3",
+                        "artistName": "ryu5150"
+                    },
+                    "fileLastModified": 1568433389119,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\993306 ryu5150 - Louder than steel\\ryu5150 - Louder than steel (Sotarks) [Reform's Insane].osu",
+                    "hash": "b105fd5b295bd1f97d96bc99129c6ed3"
+                },
+                {
+                    "songData": {
+                        "songName": "Louder than steel",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\993306 ryu5150 - Louder than steel\\audio.mp3",
+                        "artistName": "ryu5150"
+                    },
+                    "fileLastModified": 1568433389121,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\993306 ryu5150 - Louder than steel\\ryu5150 - Louder than steel (Sotarks) [Stainless Heart].osu",
+                    "hash": "4f622d6aac1f2dfaadc3be51ab0b51db"
+                }
+            ]
+        },
+        {
+            "folderPath": "D:\\Program Files\\osu!\\Songs\\993307 AKINO from bless4 - MIIRO (TV Size)",
+            "folderLastModified": 1736890497321,
+            "beatmapList": [
+                {
+                    "songData": {
+                        "songName": "MIIRO (TV Size)",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\993307 AKINO from bless4 - MIIRO (TV Size)\\audio.mp3",
+                        "artistName": "AKINO from bless4"
+                    },
+                    "fileLastModified": 1562992357734,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\993307 AKINO from bless4 - MIIRO (TV Size)\\AKINO from bless4 - MIIRO (TV Size) (Sotarks) [Kowari's HARD].osu",
+                    "hash": "d2dc285da9e543c7c021096382170700"
+                },
+                {
+                    "songData": {
+                        "songName": "MIIRO (TV Size)",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\993307 AKINO from bless4 - MIIRO (TV Size)\\audio.mp3",
+                        "artistName": "AKINO from bless4"
+                    },
+                    "fileLastModified": 1562992357760,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\993307 AKINO from bless4 - MIIRO (TV Size)\\AKINO from bless4 - MIIRO (TV Size) (Sotarks) [Reform's INSANE].osu",
+                    "hash": "aea57f5b5860a35ded699364ead573cc"
+                },
+                {
+                    "songData": {
+                        "songName": "MIIRO (TV Size)",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\993307 AKINO from bless4 - MIIRO (TV Size)\\audio.mp3",
+                        "artistName": "AKINO from bless4"
+                    },
+                    "fileLastModified": 1562992357787,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\993307 AKINO from bless4 - MIIRO (TV Size)\\AKINO from bless4 - MIIRO (TV Size) (Sotarks) [Ren's NORMAL].osu",
+                    "hash": "904a735878a7febfb99e6d4cab3909b7"
+                },
+                {
+                    "songData": {
+                        "songName": "MIIRO (TV Size)",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\993307 AKINO from bless4 - MIIRO (TV Size)\\audio.mp3",
+                        "artistName": "AKINO from bless4"
+                    },
+                    "fileLastModified": 1562992357804,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\993307 AKINO from bless4 - MIIRO (TV Size)\\AKINO from bless4 - MIIRO (TV Size) (Sotarks) [SMOKELIND's EXPERT].osu",
+                    "hash": "d94af7c9e39002655a34fe48560886bb"
+                },
+                {
+                    "songData": {
+                        "songName": "MIIRO (TV Size)",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\993307 AKINO from bless4 - MIIRO (TV Size)\\audio.mp3",
+                        "artistName": "AKINO from bless4"
+                    },
+                    "fileLastModified": 1562992357831,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\993307 AKINO from bless4 - MIIRO (TV Size)\\AKINO from bless4 - MIIRO (TV Size) (Sotarks) [Tatoe].osu",
+                    "hash": "91e09618f1370b3df01849389afa91d4"
+                }
+            ]
+        },
+        {
+            "folderPath": "D:\\Program Files\\osu!\\Songs\\993864 Roselia - Neo-Aspect",
+            "folderLastModified": 1736890497356,
+            "beatmapList": [{
+                "songData": {
+                    "songName": "Neo-Aspect",
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\993864 Roselia - Neo-Aspect\\audio.mp3",
+                    "artistName": "Roselia"
+                },
+                "fileLastModified": 1573871518451,
+                "filePath": "D:\\Program Files\\osu!\\Songs\\993864 Roselia - Neo-Aspect\\Roselia - Neo-Aspect (Sladkoru) [Anfang].osu",
+                "hash": "42fbf8fc95d584b88459a3a0410e810b"
+            }]
+        },
+        {
+            "folderPath": "D:\\Program Files\\osu!\\Songs\\994104 James Landino - Reaction feat Slyleaf",
+            "folderLastModified": 1736890497392,
+            "beatmapList": [
+                {
+                    "songData": {
+                        "songName": "Reaction feat. Slyleaf",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\994104 James Landino - Reaction feat Slyleaf\\audio.mp3",
+                        "artistName": "James Landino"
+                    },
+                    "fileLastModified": 1607072947803,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\994104 James Landino - Reaction feat Slyleaf\\James Landino - Reaction feat. Slyleaf (AncuL) [Advanced].osu",
+                    "hash": "bb4f3cd6159b359df64323b679821df5"
+                },
+                {
+                    "songData": {
+                        "songName": "Reaction feat. Slyleaf",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\994104 James Landino - Reaction feat Slyleaf\\audio.mp3",
+                        "artistName": "James Landino"
+                    },
+                    "fileLastModified": 1607072947812,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\994104 James Landino - Reaction feat Slyleaf\\James Landino - Reaction feat. Slyleaf (AncuL) [Chemistry].osu",
+                    "hash": "5d2fe3e622f42958aa8eef90097e045a"
+                },
+                {
+                    "songData": {
+                        "songName": "Reaction feat. Slyleaf",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\994104 James Landino - Reaction feat Slyleaf\\audio.mp3",
+                        "artistName": "James Landino"
+                    },
+                    "fileLastModified": 1607072947822,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\994104 James Landino - Reaction feat Slyleaf\\James Landino - Reaction feat. Slyleaf (AncuL) [Hard].osu",
+                    "hash": "6641bb4e0c1334af33eb92b57f25ac10"
+                },
+                {
+                    "songData": {
+                        "songName": "Reaction feat. Slyleaf",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\994104 James Landino - Reaction feat Slyleaf\\audio.mp3",
+                        "artistName": "James Landino"
+                    },
+                    "fileLastModified": 1607072947831,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\994104 James Landino - Reaction feat Slyleaf\\James Landino - Reaction feat. Slyleaf (AncuL) [Normal].osu",
+                    "hash": "892ca955b7705e5b738c96da572745f0"
+                }
+            ]
+        },
+        {
+            "folderPath": "D:\\Program Files\\osu!\\Songs\\994378 Kawada Mami - Hishoku no Sora",
+            "folderLastModified": 1736890497416,
+            "beatmapList": [
+                {
+                    "songData": {
+                        "songName": "Hishoku no Sora",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\994378 Kawada Mami - Hishoku no Sora\\audio.mp3",
+                        "artistName": "Kawada Mami"
+                    },
+                    "fileLastModified": 1571021645547,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\994378 Kawada Mami - Hishoku no Sora\\Kawada Mami - Hishoku no Sora (Akitoshi) [Easy].osu",
+                    "hash": "fe236b388005cfcb8ebea780a9f67213"
+                },
+                {
+                    "songData": {
+                        "songName": "Hishoku no Sora",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\994378 Kawada Mami - Hishoku no Sora\\audio.mp3",
+                        "artistName": "Kawada Mami"
+                    },
+                    "fileLastModified": 1571021645548,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\994378 Kawada Mami - Hishoku no Sora\\Kawada Mami - Hishoku no Sora (Akitoshi) [Expert].osu",
+                    "hash": "c0c9f483338af3c13081409758e31da6"
+                },
+                {
+                    "songData": {
+                        "songName": "Hishoku no Sora",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\994378 Kawada Mami - Hishoku no Sora\\audio.mp3",
+                        "artistName": "Kawada Mami"
+                    },
+                    "fileLastModified": 1571021645550,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\994378 Kawada Mami - Hishoku no Sora\\Kawada Mami - Hishoku no Sora (Akitoshi) [Hard].osu",
+                    "hash": "613d33a600a32694c232a67307dd2a6d"
+                },
+                {
+                    "songData": {
+                        "songName": "Hishoku no Sora",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\994378 Kawada Mami - Hishoku no Sora\\audio.mp3",
+                        "artistName": "Kawada Mami"
+                    },
+                    "fileLastModified": 1571021645551,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\994378 Kawada Mami - Hishoku no Sora\\Kawada Mami - Hishoku no Sora (Akitoshi) [Insane].osu",
+                    "hash": "510139346f56db91db95c8268de95a15"
+                },
+                {
+                    "songData": {
+                        "songName": "Hishoku no Sora",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\994378 Kawada Mami - Hishoku no Sora\\audio.mp3",
+                        "artistName": "Kawada Mami"
+                    },
+                    "fileLastModified": 1571021645552,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\994378 Kawada Mami - Hishoku no Sora\\Kawada Mami - Hishoku no Sora (Akitoshi) [Makitoshi's Normal].osu",
+                    "hash": "722debee7b9ca84871ba279f1b92c4aa"
+                }
+            ]
+        },
+        {
+            "folderPath": "D:\\Program Files\\osu!\\Songs\\994389 SawanoHiroyuki[nZk]_Tielle & Gemie - sh0ut (TV Size)",
+            "folderLastModified": 1736890497466,
+            "beatmapList": [
+                {
+                    "songData": {
+                        "songName": "sh0ut (TV Size)",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\994389 SawanoHiroyuki[nZk]_Tielle & Gemie - sh0ut (TV Size)\\audio.mp3",
+                        "artistName": "SawanoHiroyuki[nZk]"
+                    },
+                    "fileLastModified": 1572669833442,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\994389 SawanoHiroyuki[nZk]_Tielle & Gemie - sh0ut (TV Size)\\SawanoHiroyuki[nZk]Tielle & Gemie - sh0ut (TV Size) (Teky) [Easy].osu",
+                    "hash": "c6a92c35c7c7ac459df3e8d6adfdae8f"
+                },
+                {
+                    "songData": {
+                        "songName": "sh0ut (TV Size)",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\994389 SawanoHiroyuki[nZk]_Tielle & Gemie - sh0ut (TV Size)\\audio.mp3",
+                        "artistName": "SawanoHiroyuki[nZk]"
+                    },
+                    "fileLastModified": 1572669833443,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\994389 SawanoHiroyuki[nZk]_Tielle & Gemie - sh0ut (TV Size)\\SawanoHiroyuki[nZk]Tielle & Gemie - sh0ut (TV Size) (Teky) [Extra].osu",
+                    "hash": "887efc113c4f9554fe1e2a3ddf7f7e0c"
+                },
+                {
+                    "songData": {
+                        "songName": "sh0ut (TV Size)",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\994389 SawanoHiroyuki[nZk]_Tielle & Gemie - sh0ut (TV Size)\\audio.mp3",
+                        "artistName": "SawanoHiroyuki[nZk]"
+                    },
+                    "fileLastModified": 1572669833443,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\994389 SawanoHiroyuki[nZk]_Tielle & Gemie - sh0ut (TV Size)\\SawanoHiroyuki[nZk]Tielle & Gemie - sh0ut (TV Size) (Teky) [Hard].osu",
+                    "hash": "87e0fdd34af903aac496d60abc48efd7"
+                },
+                {
+                    "songData": {
+                        "songName": "sh0ut (TV Size)",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\994389 SawanoHiroyuki[nZk]_Tielle & Gemie - sh0ut (TV Size)\\audio.mp3",
+                        "artistName": "SawanoHiroyuki[nZk]"
+                    },
+                    "fileLastModified": 1572669833445,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\994389 SawanoHiroyuki[nZk]_Tielle & Gemie - sh0ut (TV Size)\\SawanoHiroyuki[nZk]Tielle & Gemie - sh0ut (TV Size) (Teky) [Insane].osu",
+                    "hash": "9c9a4451e2e12985d6031df4060141af"
+                },
+                {
+                    "songData": {
+                        "songName": "sh0ut (TV Size)",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\994389 SawanoHiroyuki[nZk]_Tielle & Gemie - sh0ut (TV Size)\\audio.mp3",
+                        "artistName": "SawanoHiroyuki[nZk]"
+                    },
+                    "fileLastModified": 1572669833446,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\994389 SawanoHiroyuki[nZk]_Tielle & Gemie - sh0ut (TV Size)\\SawanoHiroyuki[nZk]Tielle & Gemie - sh0ut (TV Size) (Teky) [Normal].osu",
+                    "hash": "64be072a557ee3f21ce7f14ff1751b97"
+                }
+            ]
+        },
+        {
+            "folderPath": "D:\\Program Files\\osu!\\Songs\\996444 OxT - Silent Solitude",
+            "folderLastModified": 1736890312984,
+            "beatmapList": [
+                {
+                    "songData": {
+                        "songName": "Silent Solitude",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\996444 OxT - Silent Solitude\\audio.mp3",
+                        "artistName": "OxT"
+                    },
+                    "fileLastModified": 1571021633549,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\996444 OxT - Silent Solitude\\OxT - Silent Solitude (Seto Kousuke) [Asuka_-'s Hard].osu",
+                    "hash": "7b645d498ff42001371158b771ee149b"
+                },
+                {
+                    "songData": {
+                        "songName": "Silent Solitude",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\996444 OxT - Silent Solitude\\audio.mp3",
+                        "artistName": "OxT"
+                    },
+                    "fileLastModified": 1571021633550,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\996444 OxT - Silent Solitude\\OxT - Silent Solitude (Seto Kousuke) [Extra].osu",
+                    "hash": "99915fdeca59162b1ec0e2e6e65567f1"
+                },
+                {
+                    "songData": {
+                        "songName": "Silent Solitude",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\996444 OxT - Silent Solitude\\audio.mp3",
+                        "artistName": "OxT"
+                    },
+                    "fileLastModified": 1571021633551,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\996444 OxT - Silent Solitude\\OxT - Silent Solitude (Seto Kousuke) [Ipas' Insane].osu",
+                    "hash": "e2abfc147bf586c41ba49a4463a61194"
+                },
+                {
+                    "songData": {
+                        "songName": "Silent Solitude",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\996444 OxT - Silent Solitude\\audio.mp3",
+                        "artistName": "OxT"
+                    },
+                    "fileLastModified": 1571021633552,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\996444 OxT - Silent Solitude\\OxT - Silent Solitude (Seto Kousuke) [Normal].osu",
+                    "hash": "266b0420ce68e14e9a5e412ee0973901"
+                },
+                {
+                    "songData": {
+                        "songName": "Silent Solitude",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\996444 OxT - Silent Solitude\\audio.mp3",
+                        "artistName": "OxT"
+                    },
+                    "fileLastModified": 1571021633554,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\996444 OxT - Silent Solitude\\OxT - Silent Solitude (Seto Kousuke) [Senhor's Expert].osu",
+                    "hash": "1f72b55921605bbede5a92af740e4cb3"
+                }
+            ]
+        },
+        {
+            "folderPath": "D:\\Program Files\\osu!\\Songs\\997192 Yamamoto Mineko - Rinne",
+            "folderLastModified": 1736890496036,
+            "beatmapList": [
+                {
+                    "songData": {
+                        "songName": "Rinne",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\997192 Yamamoto Mineko - Rinne\\audio.mp3",
+                        "artistName": "Yamamoto Mineko"
+                    },
+                    "fileLastModified": 1573871518654,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\997192 Yamamoto Mineko - Rinne\\Yamamoto Mineko - Rinne (Left) [Civil oath's Hard].osu",
+                    "hash": "a68fa59818bc117568e7d25873c7adc9"
+                },
+                {
+                    "songData": {
+                        "songName": "Rinne",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\997192 Yamamoto Mineko - Rinne\\audio.mp3",
+                        "artistName": "Yamamoto Mineko"
+                    },
+                    "fileLastModified": 1573871518658,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\997192 Yamamoto Mineko - Rinne\\Yamamoto Mineko - Rinne (Left) [Left & KittyAdventure's Insane].osu",
+                    "hash": "c65c310bc7a124c0f96030f793f9c94e"
+                },
+                {
+                    "songData": {
+                        "songName": "Rinne",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\997192 Yamamoto Mineko - Rinne\\audio.mp3",
+                        "artistName": "Yamamoto Mineko"
+                    },
+                    "fileLastModified": 1573871518660,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\997192 Yamamoto Mineko - Rinne\\Yamamoto Mineko - Rinne (Left) [Left & Mirash's Last Bullet].osu",
+                    "hash": "d54a6f77b39d5b48bc5ab328609c9000"
+                }
+            ]
+        },
+        {
+            "folderPath": "D:\\Program Files\\osu!\\Songs\\1279298 Inugami Korone & Nekomata Okayu - Hyadain's Jojo Yujo [no video]",
+            "folderLastModified": 1736891510529,
+            "beatmapList": [
+                {
+                    "songData": {
+                        "songName": "Hyadain's Jojo Yujo",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\1279298 Inugami Korone & Nekomata Okayu - Hyadain's Jojo Yujo [no video]\\audio.mp3",
+                        "artistName": "Inugami Korone & Nekomata Okayu"
+                    },
+                    "fileLastModified": 1641705736704,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\1279298 Inugami Korone & Nekomata Okayu - Hyadain's Jojo Yujo [no video]\\Inugami Korone & Nekomata Okayu - Hyadain's Jojo Yujo (Yuuma) [Extra].osu",
+                    "hash": "78862a6e4b1c149338e390c98d13fb81"
+                },
+                {
+                    "songData": {
+                        "songName": "Hyadain's Jojo Yujo",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\1279298 Inugami Korone & Nekomata Okayu - Hyadain's Jojo Yujo [no video]\\audio.mp3",
+                        "artistName": "Inugami Korone & Nekomata Okayu"
+                    },
+                    "fileLastModified": 1641705736705,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\1279298 Inugami Korone & Nekomata Okayu - Hyadain's Jojo Yujo [no video]\\Inugami Korone & Nekomata Okayu - Hyadain's Jojo Yujo (Yuuma) [Korone].osu",
+                    "hash": "e41d418f56f9374811157892e225a4e0"
+                },
+                {
+                    "songData": {
+                        "songName": "Hyadain's Jojo Yujo",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\1279298 Inugami Korone & Nekomata Okayu - Hyadain's Jojo Yujo [no video]\\audio.mp3",
+                        "artistName": "Inugami Korone & Nekomata Okayu"
+                    },
+                    "fileLastModified": 1641705736706,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\1279298 Inugami Korone & Nekomata Okayu - Hyadain's Jojo Yujo [no video]\\Inugami Korone & Nekomata Okayu - Hyadain's Jojo Yujo (Yuuma) [Okayu].osu",
+                    "hash": "38df9eaa71c8ecbb1ecb266c663f756f"
+                },
+                {
+                    "songData": {
+                        "songName": "Hyadain's Jojo Yujo",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\1279298 Inugami Korone & Nekomata Okayu - Hyadain's Jojo Yujo [no video]\\audio.mp3",
+                        "artistName": "Inugami Korone & Nekomata Okayu"
+                    },
+                    "fileLastModified": 1641705736708,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\1279298 Inugami Korone & Nekomata Okayu - Hyadain's Jojo Yujo [no video]\\Inugami Korone & Nekomata Okayu - Hyadain's Jojo Yujo (Yuuma) [xidorn's Hard].osu",
+                    "hash": "2d5faed207f03e938bbd4ffee1edb886"
+                },
+                {
+                    "songData": {
+                        "songName": "Hyadain's Jojo Yujo",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\1279298 Inugami Korone & Nekomata Okayu - Hyadain's Jojo Yujo [no video]\\audio.mp3",
+                        "artistName": "Inugami Korone & Nekomata Okayu"
+                    },
+                    "fileLastModified": 1641705736707,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\1279298 Inugami Korone & Nekomata Okayu - Hyadain's Jojo Yujo [no video]\\Inugami Korone & Nekomata Okayu - Hyadain's Jojo Yujo (Yuuma) [Yuuma & Amateurre's Insane].osu",
+                    "hash": "44333c867ad80dc1b2657a087cecdb90"
+                }
+            ]
+        },
+        {
+            "folderPath": "D:\\Program Files\\osu!\\Songs\\1575096 Shimoji Shino - God Save The Girls (TV Size)",
+            "folderLastModified": 1736891510444,
+            "beatmapList": [
+                {
+                    "songData": {
+                        "songName": "God Save The Girls (TV Size)",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\1575096 Shimoji Shino - God Save The Girls (TV Size)\\audio.mp3",
+                        "artistName": "Shimoji Shino"
+                    },
+                    "fileLastModified": 1690157773667,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\1575096 Shimoji Shino - God Save The Girls (TV Size)\\Shimoji Shino - God Save The Girls (TV Size) (Maimaing) [Futsuu].osu",
+                    "hash": "9e69c1195538d7cd69073bbeff9c062f"
+                },
+                {
+                    "songData": {
+                        "songName": "God Save The Girls (TV Size)",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\1575096 Shimoji Shino - God Save The Girls (TV Size)\\audio.mp3",
+                        "artistName": "Shimoji Shino"
+                    },
+                    "fileLastModified": 1690157773668,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\1575096 Shimoji Shino - God Save The Girls (TV Size)\\Shimoji Shino - God Save The Girls (TV Size) (Maimaing) [Kantan].osu",
+                    "hash": "6e18d800f9e0139e47c058f005d9a7f8"
+                },
+                {
+                    "songData": {
+                        "songName": "God Save The Girls (TV Size)",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\1575096 Shimoji Shino - God Save The Girls (TV Size)\\audio.mp3",
+                        "artistName": "Shimoji Shino"
+                    },
+                    "fileLastModified": 1690157773668,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\1575096 Shimoji Shino - God Save The Girls (TV Size)\\Shimoji Shino - God Save The Girls (TV Size) (Maimaing) [Muzukashii].osu",
+                    "hash": "97274a9e40d5786384e729f275379620"
+                },
+                {
+                    "songData": {
+                        "songName": "God Save The Girls (TV Size)",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\1575096 Shimoji Shino - God Save The Girls (TV Size)\\audio.mp3",
+                        "artistName": "Shimoji Shino"
+                    },
+                    "fileLastModified": 1690157773669,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\1575096 Shimoji Shino - God Save The Girls (TV Size)\\Shimoji Shino - God Save The Girls (TV Size) (Maimaing) [Oni].osu",
+                    "hash": "ede4274afd8b63938ea9746b4dadc1ff"
+                }
+            ]
+        },
+        {
+            "folderPath": "D:\\Program Files\\osu!\\Songs\\1843213 Ferb (VO_ Danny Jacob) - Backyard Beach (TV Size)",
+            "folderLastModified": 1736891510361,
+            "beatmapList": [
+                {
+                    "songData": {
+                        "songName": "Backyard Beach (TV Size)",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\1843213 Ferb (VO_ Danny Jacob) - Backyard Beach (TV Size)\\audio.mp3",
+                        "artistName": "Ferb (VO"
+                    },
+                    "fileLastModified": 1690157785296,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\1843213 Ferb (VO_ Danny Jacob) - Backyard Beach (TV Size)\\Ferb (VO Danny Jacob) - Backyard Beach (TV Size) (-Starlight) [Futsuu].osu",
+                    "hash": "9ebe4865eeb3f6d3d174e679fda87ea9"
+                },
+                {
+                    "songData": {
+                        "songName": "Backyard Beach (TV Size)",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\1843213 Ferb (VO_ Danny Jacob) - Backyard Beach (TV Size)\\audio.mp3",
+                        "artistName": "Ferb (VO"
+                    },
+                    "fileLastModified": 1690157785297,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\1843213 Ferb (VO_ Danny Jacob) - Backyard Beach (TV Size)\\Ferb (VO Danny Jacob) - Backyard Beach (TV Size) (-Starlight) [h3oCharles' Oni].osu",
+                    "hash": "5a2aa3c7364d152c1b4a2d98ece0fbf4"
+                },
+                {
+                    "songData": {
+                        "songName": "Backyard Beach (TV Size)",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\1843213 Ferb (VO_ Danny Jacob) - Backyard Beach (TV Size)\\audio.mp3",
+                        "artistName": "Ferb (VO"
+                    },
+                    "fileLastModified": 1690157785298,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\1843213 Ferb (VO_ Danny Jacob) - Backyard Beach (TV Size)\\Ferb (VO Danny Jacob) - Backyard Beach (TV Size) (-Starlight) [iamveryfat's Muzukashii].osu",
+                    "hash": "0fbb820b852752b76e939fad093d3b25"
+                },
+                {
+                    "songData": {
+                        "songName": "Backyard Beach (TV Size)",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\1843213 Ferb (VO_ Danny Jacob) - Backyard Beach (TV Size)\\audio.mp3",
+                        "artistName": "Ferb (VO"
+                    },
+                    "fileLastModified": 1690157785298,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\1843213 Ferb (VO_ Danny Jacob) - Backyard Beach (TV Size)\\Ferb (VO Danny Jacob) - Backyard Beach (TV Size) (-Starlight) [liku's Kantan].osu",
+                    "hash": "678eb9604285a40f7377a5255d1a37d3"
+                },
+                {
+                    "songData": {
+                        "songName": "Backyard Beach (TV Size)",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\1843213 Ferb (VO_ Danny Jacob) - Backyard Beach (TV Size)\\audio.mp3",
+                        "artistName": "Ferb (VO"
+                    },
+                    "fileLastModified": 1690157785297,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\1843213 Ferb (VO_ Danny Jacob) - Backyard Beach (TV Size)\\Ferb (VO Danny Jacob) - Backyard Beach (TV Size) (-Starlight) [Moyai].osu",
+                    "hash": "0f7ad17217c6cf23351610b30281725d"
+                }
+            ]
+        },
+        {
+            "folderPath": "D:\\Program Files\\osu!\\Songs\\1862313 ShinRa-Bansho - Zenryoku Happy Life",
+            "folderLastModified": 1736891510379,
+            "beatmapList": [
+                {
+                    "songData": {
+                        "songName": "Zenryoku Happy Life",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\1862313 ShinRa-Bansho - Zenryoku Happy Life\\audio.mp3",
+                        "artistName": "ShinRa-Bansho"
+                    },
+                    "fileLastModified": 1690157785383,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\1862313 ShinRa-Bansho - Zenryoku Happy Life\\ShinRa-Bansho - Zenryoku Happy Life (-Maruko-) [Let's be Happy!].osu",
+                    "hash": "2028e13a9d5fff98d142065fbb5d4387"
+                },
+                {
+                    "songData": {
+                        "songName": "Zenryoku Happy Life",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\1862313 ShinRa-Bansho - Zenryoku Happy Life\\audio.mp3",
+                        "artistName": "ShinRa-Bansho"
+                    },
+                    "fileLastModified": 1690157785384,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\1862313 ShinRa-Bansho - Zenryoku Happy Life\\ShinRa-Bansho - Zenryoku Happy Life (-Maruko-) [Muzukashii].osu",
+                    "hash": "235a78154ff7b6f3c605fb1b327a0a90"
+                },
+                {
+                    "songData": {
+                        "songName": "Zenryoku Happy Life",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\1862313 ShinRa-Bansho - Zenryoku Happy Life\\audio.mp3",
+                        "artistName": "ShinRa-Bansho"
+                    },
+                    "fileLastModified": 1690157785384,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\1862313 ShinRa-Bansho - Zenryoku Happy Life\\ShinRa-Bansho - Zenryoku Happy Life (-Maruko-) [Oni].osu",
+                    "hash": "01aa25084599c9c338e8ad9ffdd16f7e"
+                }
+            ]
+        },
+        {
+            "folderPath": "D:\\Program Files\\osu!\\Songs\\1876808 Vivy (VO_ Yagi Kairi) - Sing My Pleasure (TV Size)",
+            "folderLastModified": 1736891510403,
+            "beatmapList": [
+                {
+                    "songData": {
+                        "songName": "Sing My Pleasure (TV Size)",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\1876808 Vivy (VO_ Yagi Kairi) - Sing My Pleasure (TV Size)\\audio.mp3",
+                        "artistName": "Vivy (VO"
+                    },
+                    "fileLastModified": 1690157785493,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\1876808 Vivy (VO_ Yagi Kairi) - Sing My Pleasure (TV Size)\\Vivy (VO Yagi Kairi) - Sing My Pleasure (TV Size) (BlackBN) [Futsuu].osu",
+                    "hash": "e795c67f4e53cb0247193d6b9d55601d"
+                },
+                {
+                    "songData": {
+                        "songName": "Sing My Pleasure (TV Size)",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\1876808 Vivy (VO_ Yagi Kairi) - Sing My Pleasure (TV Size)\\audio.mp3",
+                        "artistName": "Vivy (VO"
+                    },
+                    "fileLastModified": 1690157785494,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\1876808 Vivy (VO_ Yagi Kairi) - Sing My Pleasure (TV Size)\\Vivy (VO Yagi Kairi) - Sing My Pleasure (TV Size) (BlackBN) [Inner Oni].osu",
+                    "hash": "ef4d15e163c1b7e40346ce5c3107a345"
+                },
+                {
+                    "songData": {
+                        "songName": "Sing My Pleasure (TV Size)",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\1876808 Vivy (VO_ Yagi Kairi) - Sing My Pleasure (TV Size)\\audio.mp3",
+                        "artistName": "Vivy (VO"
+                    },
+                    "fileLastModified": 1690157785496,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\1876808 Vivy (VO_ Yagi Kairi) - Sing My Pleasure (TV Size)\\Vivy (VO Yagi Kairi) - Sing My Pleasure (TV Size) (BlackBN) [iRedi's Oni].osu",
+                    "hash": "a704b1b0b5764c742b26f57647169e62"
+                },
+                {
+                    "songData": {
+                        "songName": "Sing My Pleasure (TV Size)",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\1876808 Vivy (VO_ Yagi Kairi) - Sing My Pleasure (TV Size)\\audio.mp3",
+                        "artistName": "Vivy (VO"
+                    },
+                    "fileLastModified": 1690157785495,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\1876808 Vivy (VO_ Yagi Kairi) - Sing My Pleasure (TV Size)\\Vivy (VO Yagi Kairi) - Sing My Pleasure (TV Size) (BlackBN) [Maruko's Kantan].osu",
+                    "hash": "68cc873a16321fa5e62fce564acb346e"
+                },
+                {
+                    "songData": {
+                        "songName": "Sing My Pleasure (TV Size)",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\1876808 Vivy (VO_ Yagi Kairi) - Sing My Pleasure (TV Size)\\audio.mp3",
+                        "artistName": "Vivy (VO"
+                    },
+                    "fileLastModified": 1690157785495,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\1876808 Vivy (VO_ Yagi Kairi) - Sing My Pleasure (TV Size)\\Vivy (VO Yagi Kairi) - Sing My Pleasure (TV Size) (BlackBN) [Muzukashii].osu",
+                    "hash": "e7b4a0cc419dffb51835ea375b0dd94a"
+                }
+            ]
+        },
+        {
+            "folderPath": "D:\\Program Files\\osu!\\Songs\\1899277 Indila - Derniere Danse",
+            "folderLastModified": 1736891510425,
+            "beatmapList": [
+                {
+                    "songData": {
+                        "songName": "Derniere Danse",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\1899277 Indila - Derniere Danse\\01 - Derniere Danse.ogg",
+                        "artistName": "Indila"
+                    },
+                    "fileLastModified": 1690157777439,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\1899277 Indila - Derniere Danse\\Indila - Derniere Danse (Slyme) [Hap's Muzukashii].osu",
+                    "hash": "2a14589eb90d8120cb8103eeda3065da"
+                },
+                {
+                    "songData": {
+                        "songName": "Derniere Danse",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\1899277 Indila - Derniere Danse\\01 - Derniere Danse.ogg",
+                        "artistName": "Indila"
+                    },
+                    "fileLastModified": 1690157777443,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\1899277 Indila - Derniere Danse\\Indila - Derniere danse (Slyme) [rox's Futsuu].osu",
+                    "hash": "1071711d41460ab76962065f0f8d824f"
+                },
+                {
+                    "songData": {
+                        "songName": "Derniere Danse",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\1899277 Indila - Derniere Danse\\01 - Derniere Danse.ogg",
+                        "artistName": "Indila"
+                    },
+                    "fileLastModified": 1690157777442,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\1899277 Indila - Derniere Danse\\Indila - Derniere danse (Slyme) [Sen's Kantan].osu",
+                    "hash": "fb445e5761632c846d23158c6a932763"
+                },
+                {
+                    "songData": {
+                        "songName": "Derniere Danse",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\1899277 Indila - Derniere Danse\\01 - Derniere Danse.ogg",
+                        "artistName": "Indila"
+                    },
+                    "fileLastModified": 1690157777442,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\1899277 Indila - Derniere Danse\\Indila - Derniere Danse (Slyme) [Un peu d'amour].osu",
+                    "hash": "f86e80dad4aace337ae90d925a94797e"
+                }
+            ]
+        },
+        {
+            "folderPath": "D:\\Program Files\\osu!\\Songs\\1958087 GARZI - PARANOIA (with FEVER 333 & Point North) (Remix) [feat Jason Aalon Butler]",
+            "folderLastModified": 1736891510314,
+            "beatmapList": [
+                {
+                    "songData": {
+                        "songName": "PARANOIA (with FEVER 333 & Point North) (Remix) [feat. Jason Aalon Butler]",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\1958087 GARZI - PARANOIA (with FEVER 333 & Point North) (Remix) [feat Jason Aalon Butler]\\paranoia better.ogg",
+                        "artistName": "GARZI"
+                    },
+                    "fileLastModified": 1690157786733,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\1958087 GARZI - PARANOIA (with FEVER 333 & Point North) (Remix) [feat Jason Aalon Butler]\\GARZI - PARANOIA (with FEVER 333 & Point North) (Remix) [feat. Jason Aalon Butler] (Slim-san) [2199's Oni].osu",
+                    "hash": "d0c39ac867bb88a2f7dd4490bcaaacc6"
+                },
+                {
+                    "songData": {
+                        "songName": "PARANOIA (with FEVER 333 & Point North) (Remix) [feat. Jason Aalon Butler]",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\1958087 GARZI - PARANOIA (with FEVER 333 & Point North) (Remix) [feat Jason Aalon Butler]\\paranoia better.ogg",
+                        "artistName": "GARZI"
+                    },
+                    "fileLastModified": 1690157786734,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\1958087 GARZI - PARANOIA (with FEVER 333 & Point North) (Remix) [feat Jason Aalon Butler]\\GARZI - PARANOIA (with FEVER 333 & Point North) (Remix) [feat. Jason Aalon Butler] (Slim-san) [I'm Stuck with Paranoia in My Head.].osu",
+                    "hash": "aea7e56d0ce690fa2ab53606ec880e17"
+                },
+                {
+                    "songData": {
+                        "songName": "PARANOIA (with FEVER 333 & Point North) (Remix) [feat. Jason Aalon Butler]",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\1958087 GARZI - PARANOIA (with FEVER 333 & Point North) (Remix) [feat Jason Aalon Butler]\\paranoia better.ogg",
+                        "artistName": "GARZI"
+                    },
+                    "fileLastModified": 1690157786735,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\1958087 GARZI - PARANOIA (with FEVER 333 & Point North) (Remix) [feat Jason Aalon Butler]\\GARZI - PARANOIA (with FEVER 333 & Point North) (Remix) [feat. Jason Aalon Butler] (Slim-san) [Kantan].osu",
+                    "hash": "41d967eeba7059317dd698af1bd78369"
+                },
+                {
+                    "songData": {
+                        "songName": "PARANOIA (with FEVER 333 & Point North) (Remix) [feat. Jason Aalon Butler]",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\1958087 GARZI - PARANOIA (with FEVER 333 & Point North) (Remix) [feat Jason Aalon Butler]\\paranoia better.ogg",
+                        "artistName": "GARZI"
+                    },
+                    "fileLastModified": 1690157786736,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\1958087 GARZI - PARANOIA (with FEVER 333 & Point North) (Remix) [feat Jason Aalon Butler]\\GARZI - PARANOIA (with FEVER 333 & Point North) (Remix) [feat. Jason Aalon Butler] (Slim-san) [skolodojko's Muzukashii].osu",
+                    "hash": "92b37ebaf7dcedc4217e7aa76027c6f1"
+                },
+                {
+                    "songData": {
+                        "songName": "PARANOIA (with FEVER 333 & Point North) (Remix) [feat. Jason Aalon Butler]",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\1958087 GARZI - PARANOIA (with FEVER 333 & Point North) (Remix) [feat Jason Aalon Butler]\\paranoia better.ogg",
+                        "artistName": "GARZI"
+                    },
+                    "fileLastModified": 1690157786735,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\1958087 GARZI - PARANOIA (with FEVER 333 & Point North) (Remix) [feat Jason Aalon Butler]\\GARZI - PARANOIA (with FEVER 333 & Point North) (Remix) [feat. Jason Aalon Butler] (Slim-san) [Tsukani's Futsuu].osu",
+                    "hash": "7aa5320e5fb3eabb1f5c673ab141b877"
+                }
+            ]
+        },
+        {
+            "folderPath": "D:\\Program Files\\osu!\\Songs\\1958189 POLKADOT STINGRAY - SURF",
+            "folderLastModified": 1736891510337,
+            "beatmapList": [
+                {
+                    "songData": {
+                        "songName": "SURF",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\1958189 POLKADOT STINGRAY - SURF\\audio.mp3",
+                        "artistName": "POLKADOT STINGRAY"
+                    },
+                    "fileLastModified": 1690157786803,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\1958189 POLKADOT STINGRAY - SURF\\Polkadot Stingray - SURF (MicSup08) [Down the Milky Way!].osu",
+                    "hash": "637eb098687a5a88cdd986f56e46105a"
+                },
+                {
+                    "songData": {
+                        "songName": "SURF",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\1958189 POLKADOT STINGRAY - SURF\\audio.mp3",
+                        "artistName": "POLKADOT STINGRAY"
+                    },
+                    "fileLastModified": 1690157786804,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\1958189 POLKADOT STINGRAY - SURF\\Polkadot Stingray - SURF (MicSup08) [Futsuu].osu",
+                    "hash": "9a0748bfdf26ae8314d037c2c2371d8b"
+                },
+                {
+                    "songData": {
+                        "songName": "SURF",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\1958189 POLKADOT STINGRAY - SURF\\audio.mp3",
+                        "artistName": "POLKADOT STINGRAY"
+                    },
+                    "fileLastModified": 1690157786806,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\1958189 POLKADOT STINGRAY - SURF\\Polkadot Stingray - SURF (MicSup08) [imyx's Muzukashii].osu",
+                    "hash": "bc56109fdbb1fcf66720c9b05a55262c"
+                },
+                {
+                    "songData": {
+                        "songName": "SURF",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\1958189 POLKADOT STINGRAY - SURF\\audio.mp3",
+                        "artistName": "POLKADOT STINGRAY"
+                    },
+                    "fileLastModified": 1690157786806,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\1958189 POLKADOT STINGRAY - SURF\\Polkadot Stingray - SURF (MicSup08) [imyx's Oni].osu",
+                    "hash": "17d4ac6148ec2ff65422be506674aea2"
+                },
+                {
+                    "songData": {
+                        "songName": "SURF",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\1958189 POLKADOT STINGRAY - SURF\\audio.mp3",
+                        "artistName": "POLKADOT STINGRAY"
+                    },
+                    "fileLastModified": 1690157786805,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\1958189 POLKADOT STINGRAY - SURF\\Polkadot Stingray - SURF (MicSup08) [Kantan].osu",
+                    "hash": "36d0d794d3349ec8f32a2854ced95212"
+                }
+            ]
+        },
+        {
+            "folderPath": "D:\\Program Files\\osu!\\Songs\\700486 Chino (CV_ Minase Inori) - Mahou Shoujo Chino (nenpulse bootleg remix)",
+            "folderLastModified": 1736891510462,
+            "beatmapList": [
+                {
+                    "songData": {
+                        "songName": "Mahou Shoujo Chino (nenpulse bootleg remix)",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\700486 Chino (CV_ Minase Inori) - Mahou Shoujo Chino (nenpulse bootleg remix)\\audio.mp3",
+                        "artistName": "Chino (CV"
+                    },
+                    "fileLastModified": 1690157759036,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\700486 Chino (CV_ Minase Inori) - Mahou Shoujo Chino (nenpulse bootleg remix)\\Chino (CV Minase Inori) - Mahou Shoujo Chino (nenpulse bootleg remix) (K-2) [Infinite Spell -EX-].osu",
+                    "hash": "5b4b97dc9dffa224a457c6cbee2d868f"
+                },
+                {
+                    "songData": {
+                        "songName": "Mahou Shoujo Chino (nenpulse bootleg remix)",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\700486 Chino (CV_ Minase Inori) - Mahou Shoujo Chino (nenpulse bootleg remix)\\audio.mp3",
+                        "artistName": "Chino (CV"
+                    },
+                    "fileLastModified": 1690157759038,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\700486 Chino (CV_ Minase Inori) - Mahou Shoujo Chino (nenpulse bootleg remix)\\Chino (CV Minase Inori) - Mahou Shoujo Chino (nenpulse bootleg remix) (K-2) [Innocent Heart].osu",
+                    "hash": "91967793d153b82461ea53bd2f17a356"
+                },
+                {
+                    "songData": {
+                        "songName": "Mahou Shoujo Chino (nenpulse bootleg remix)",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\700486 Chino (CV_ Minase Inori) - Mahou Shoujo Chino (nenpulse bootleg remix)\\audio.mp3",
+                        "artistName": "Chino (CV"
+                    },
+                    "fileLastModified": 1690157759039,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\700486 Chino (CV_ Minase Inori) - Mahou Shoujo Chino (nenpulse bootleg remix)\\Chino (CV Minase Inori) - Mahou Shoujo Chino (nenpulse bootleg remix) (K-2) [Magical Blast].osu",
+                    "hash": "5239125da5a3c34c5aed1238d7880e01"
+                }
+            ]
+        },
+        {
+            "folderPath": "D:\\Program Files\\osu!\\Songs\\773801 supercell - Kimi no Shiranai Monogatari -TV Edit-",
+            "folderLastModified": 1736891510497,
+            "beatmapList": [
+                {
+                    "songData": {
+                        "songName": "Kimi no Shiranai Monogatari -TV Edit-",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\773801 supercell - Kimi no Shiranai Monogatari -TV Edit-\\mp3.mp3",
+                        "artistName": "supercell"
+                    },
+                    "fileLastModified": 1543131158058,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\773801 supercell - Kimi no Shiranai Monogatari -TV Edit-\\supercell - Kimi no Shiranai Monogatari -TV Edit- (Nevo) [A r M i N's Light Insane].osu",
+                    "hash": "3d793f80325a5fe515608123a15afabc"
+                },
+                {
+                    "songData": {
+                        "songName": "Kimi no Shiranai Monogatari -TV Edit-",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\773801 supercell - Kimi no Shiranai Monogatari -TV Edit-\\mp3.mp3",
+                        "artistName": "supercell"
+                    },
+                    "fileLastModified": 1644128770840,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\773801 supercell - Kimi no Shiranai Monogatari -TV Edit-\\supercell - Kimi no Shiranai Monogatari -TV Edit- (Nevo) [Constellation].osu",
+                    "hash": "df635b37a3a8fac063643182f2ffc611"
+                },
+                {
+                    "songData": {
+                        "songName": "Kimi no Shiranai Monogatari -TV Edit-",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\773801 supercell - Kimi no Shiranai Monogatari -TV Edit-\\mp3.mp3",
+                        "artistName": "supercell"
+                    },
+                    "fileLastModified": 1543131158061,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\773801 supercell - Kimi no Shiranai Monogatari -TV Edit-\\supercell - Kimi no Shiranai Monogatari -TV Edit- (Nevo) [Nao's Normal].osu",
+                    "hash": "9193d6d89a7651569a1f797642902ddd"
+                },
+                {
+                    "songData": {
+                        "songName": "Kimi no Shiranai Monogatari -TV Edit-",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\773801 supercell - Kimi no Shiranai Monogatari -TV Edit-\\mp3.mp3",
+                        "artistName": "supercell"
+                    },
+                    "fileLastModified": 1543131158065,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\773801 supercell - Kimi no Shiranai Monogatari -TV Edit-\\supercell - Kimi no Shiranai Monogatari -TV Edit- (Nevo) [Shira's Insane].osu",
+                    "hash": "991904d1813f4d257773bc1e5c2e0419"
+                },
+                {
+                    "songData": {
+                        "songName": "Kimi no Shiranai Monogatari -TV Edit-",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\773801 supercell - Kimi no Shiranai Monogatari -TV Edit-\\mp3.mp3",
+                        "artistName": "supercell"
+                    },
+                    "fileLastModified": 1543131158069,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\773801 supercell - Kimi no Shiranai Monogatari -TV Edit-\\supercell - Kimi no Shiranai Monogatari -TV Edit- (Nevo) [Shunao's Hard].osu",
+                    "hash": "70e169ef35d4530aa7aa1e10c18b7808"
+                }
+            ]
+        },
+        {
+            "folderPath": "D:\\Program Files\\osu!\\Songs\\985170 Yousei Teikoku - Shinteki Souzou",
+            "folderLastModified": 1736891510291,
+            "beatmapList": [
+                {
+                    "songData": {
+                        "songName": "Shinteki Souzou",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\985170 Yousei Teikoku - Shinteki Souzou\\audio.mp3",
+                        "artistName": "Yousei Teikoku"
+                    },
+                    "fileLastModified": 1570169078363,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\985170 Yousei Teikoku - Shinteki Souzou\\Yousei Teikoku - Shinteki Souzou (-Keitaro) [Alphabet's Extreme].osu",
+                    "hash": "4bf4e650e504070631191957ac2aabe7"
+                },
+                {
+                    "songData": {
+                        "songName": "Shinteki Souzou",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\985170 Yousei Teikoku - Shinteki Souzou\\audio.mp3",
+                        "artistName": "Yousei Teikoku"
+                    },
+                    "fileLastModified": 1570169078365,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\985170 Yousei Teikoku - Shinteki Souzou\\Yousei Teikoku - Shinteki Souzou (-Keitaro) [AncuL's Extra].osu",
+                    "hash": "a2f1edbdc6daefafcd6a00ccc14667a7"
+                },
+                {
+                    "songData": {
+                        "songName": "Shinteki Souzou",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\985170 Yousei Teikoku - Shinteki Souzou\\audio.mp3",
+                        "artistName": "Yousei Teikoku"
+                    },
+                    "fileLastModified": 1570169078367,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\985170 Yousei Teikoku - Shinteki Souzou\\Yousei Teikoku - Shinteki Souzou (-Keitaro) [Divine].osu",
+                    "hash": "51d9dff07851b88a55e61ae670897521"
+                },
+                {
+                    "songData": {
+                        "songName": "Shinteki Souzou",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\985170 Yousei Teikoku - Shinteki Souzou\\audio.mp3",
+                        "artistName": "Yousei Teikoku"
+                    },
+                    "fileLastModified": 1570169078370,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\985170 Yousei Teikoku - Shinteki Souzou\\Yousei Teikoku - Shinteki Souzou (-Keitaro) [Easy].osu",
+                    "hash": "4e3f4346e94113a990d1775cb5fcdbda"
+                },
+                {
+                    "songData": {
+                        "songName": "Shinteki Souzou",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\985170 Yousei Teikoku - Shinteki Souzou\\audio.mp3",
+                        "artistName": "Yousei Teikoku"
+                    },
+                    "fileLastModified": 1570169078372,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\985170 Yousei Teikoku - Shinteki Souzou\\Yousei Teikoku - Shinteki Souzou (-Keitaro) [Expert].osu",
+                    "hash": "f4ce945f30ff15d703b5a739b2b98fc5"
+                },
+                {
+                    "songData": {
+                        "songName": "Shinteki Souzou",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\985170 Yousei Teikoku - Shinteki Souzou\\audio.mp3",
+                        "artistName": "Yousei Teikoku"
+                    },
+                    "fileLastModified": 1570169078375,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\985170 Yousei Teikoku - Shinteki Souzou\\Yousei Teikoku - Shinteki Souzou (-Keitaro) [Hard].osu",
+                    "hash": "2500ce9e3f571b4deef9b868d847c282"
+                },
+                {
+                    "songData": {
+                        "songName": "Shinteki Souzou",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\985170 Yousei Teikoku - Shinteki Souzou\\audio.mp3",
+                        "artistName": "Yousei Teikoku"
+                    },
+                    "fileLastModified": 1570169078377,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\985170 Yousei Teikoku - Shinteki Souzou\\Yousei Teikoku - Shinteki Souzou (-Keitaro) [Insane].osu",
+                    "hash": "51a3b28fe80bc1cc87b763596d210465"
+                },
+                {
+                    "songData": {
+                        "songName": "Shinteki Souzou",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\985170 Yousei Teikoku - Shinteki Souzou\\audio.mp3",
+                        "artistName": "Yousei Teikoku"
+                    },
+                    "fileLastModified": 1570169078380,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\985170 Yousei Teikoku - Shinteki Souzou\\Yousei Teikoku - Shinteki Souzou (-Keitaro) [Normal].osu",
+                    "hash": "94345fd3204241f0dc88ba32ea0caab3"
+                },
+                {
+                    "songData": {
+                        "songName": "Shinteki Souzou",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\985170 Yousei Teikoku - Shinteki Souzou\\audio.mp3",
+                        "artistName": "Yousei Teikoku"
+                    },
+                    "fileLastModified": 1570169078385,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\985170 Yousei Teikoku - Shinteki Souzou\\Yousei Teikoku - Shinteki Souzou (-Keitaro) [Shurelia's Ultimate].osu",
+                    "hash": "08f5a670b3b8eea8ca98cd769ea549e6"
+                },
+                {
+                    "songData": {
+                        "songName": "Shinteki Souzou",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\985170 Yousei Teikoku - Shinteki Souzou\\audio.mp3",
+                        "artistName": "Yousei Teikoku"
+                    },
+                    "fileLastModified": 1570169078382,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\985170 Yousei Teikoku - Shinteki Souzou\\Yousei Teikoku - Shinteki Souzou (-Keitaro) [SMOKELIND's Extreme].osu",
+                    "hash": "29e301dd120cc34b6537cfb72893b3e7"
+                }
+            ]
+        },
+        {
             "folderPath": "D:\\Program Files\\osu!\\Songs\\986612 Shikata Akiko - Class__CIEL_NOSURGE;",
-            "folderLastModified": 1640066987486,
+            "folderLastModified": 1736891511846,
             "beatmapList": [
                 {
                     "songData": {
@@ -58388,7 +59074,7 @@
         },
         {
             "folderPath": "D:\\Program Files\\osu!\\Songs\\986799 Duca - Tsuki no Kanata de Aimashou",
-            "folderLastModified": 1640066987594,
+            "folderLastModified": 1736891511894,
             "beatmapList": [
                 {
                     "songData": {
@@ -58444,7 +59130,7 @@
         },
         {
             "folderPath": "D:\\Program Files\\osu!\\Songs\\987389 Perfume - Lovefool (30 Byou Ver)",
-            "folderLastModified": 1640066987669,
+            "folderLastModified": 1736891511928,
             "beatmapList": [
                 {
                     "songData": {
@@ -58540,7 +59226,7 @@
         },
         {
             "folderPath": "D:\\Program Files\\osu!\\Songs\\989342 Denkishiki Karen Ongaku Shuudan - Aoki Kotou no Anguis",
-            "folderLastModified": 1640066987923,
+            "folderLastModified": 1736891512025,
             "beatmapList": [
                 {
                     "songData": {
@@ -58565,612 +59251,8 @@
             ]
         },
         {
-            "folderPath": "D:\\Program Files\\osu!\\Songs\\989347 Wakeshima Kanon - World's End, Girl's Rondo (Asterisk DnB Remix)",
-            "folderLastModified": 1640066988084,
-            "beatmapList": [{
-                "songData": {
-                    "songName": "World's End, Girl's Rondo (Asterisk DnB Remix)",
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\989347 Wakeshima Kanon - World's End, Girl's Rondo (Asterisk DnB Remix)\\audio.mp3",
-                    "artistName": "Wakeshima Kanon"
-                },
-                "fileLastModified": 1589687672009,
-                "filePath": "D:\\Program Files\\osu!\\Songs\\989347 Wakeshima Kanon - World's End, Girl's Rondo (Asterisk DnB Remix)\\Wakeshima Kanon - World's End, Girl's Rondo (Asterisk DnB Remix) (Moecho) [Re Owari no Sekai].osu",
-                "hash": "0c70f4d057d82b2da5f9badf1e76140f"
-            }]
-        },
-        {
-            "folderPath": "D:\\Program Files\\osu!\\Songs\\989467 Hanatan - Orange",
-            "folderLastModified": 1640066988246,
-            "beatmapList": [
-                {
-                    "songData": {
-                        "songName": "Orange",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\989467 Hanatan - Orange\\audio.mp3",
-                        "artistName": "Hanatan"
-                    },
-                    "fileLastModified": 1572669513475,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\989467 Hanatan - Orange\\Hanatan - Orange (Hishiro Chizuru) [AIR's Insane].osu",
-                    "hash": "44a13548c6ea224f184f6cb81462f479"
-                },
-                {
-                    "songData": {
-                        "songName": "Orange",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\989467 Hanatan - Orange\\audio.mp3",
-                        "artistName": "Hanatan"
-                    },
-                    "fileLastModified": 1572669513477,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\989467 Hanatan - Orange\\Hanatan - Orange (Hishiro Chizuru) [Another].osu",
-                    "hash": "c573248ea4d0f871d17b2efaa838595a"
-                },
-                {
-                    "songData": {
-                        "songName": "Orange",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\989467 Hanatan - Orange\\audio.mp3",
-                        "artistName": "Hanatan"
-                    },
-                    "fileLastModified": 1572669513479,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\989467 Hanatan - Orange\\Hanatan - Orange (Hishiro Chizuru) [Ayaya's Extra].osu",
-                    "hash": "ebb33860ed2fbb5288a2c508bdb3ed70"
-                },
-                {
-                    "songData": {
-                        "songName": "Orange",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\989467 Hanatan - Orange\\audio.mp3",
-                        "artistName": "Hanatan"
-                    },
-                    "fileLastModified": 1572669513480,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\989467 Hanatan - Orange\\Hanatan - Orange (Hishiro Chizuru) [Hard].osu",
-                    "hash": "dc8d23f96960afceb98bb39e1d49d0ef"
-                }
-            ]
-        },
-        {
-            "folderPath": "D:\\Program Files\\osu!\\Songs\\990035 Feryquitous - Quon",
-            "folderLastModified": 1640066988469,
-            "beatmapList": [
-                {
-                    "songData": {
-                        "songName": "Quon",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\990035 Feryquitous - Quon\\audio.mp3",
-                        "artistName": "Feryquitous"
-                    },
-                    "fileLastModified": 1572669551155,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\990035 Feryquitous - Quon\\Feryquitous - Quon (-[Pino]-) [Celestial Crown].osu",
-                    "hash": "3a70e902dbd1dbc064bfc660652a5b6d"
-                },
-                {
-                    "songData": {
-                        "songName": "Quon",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\990035 Feryquitous - Quon\\audio.mp3",
-                        "artistName": "Feryquitous"
-                    },
-                    "fileLastModified": 1572669551156,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\990035 Feryquitous - Quon\\Feryquitous - Quon (-[Pino]-) [Cub's Aethereal Extra].osu",
-                    "hash": "5384bfbdabba5134849459af80e07199"
-                },
-                {
-                    "songData": {
-                        "songName": "Quon",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\990035 Feryquitous - Quon\\audio.mp3",
-                        "artistName": "Feryquitous"
-                    },
-                    "fileLastModified": 1572669551157,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\990035 Feryquitous - Quon\\Feryquitous - Quon (-[Pino]-) [Hard].osu",
-                    "hash": "7ed6e708d90524b3a2078f7072fc24c8"
-                },
-                {
-                    "songData": {
-                        "songName": "Quon",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\990035 Feryquitous - Quon\\audio.mp3",
-                        "artistName": "Feryquitous"
-                    },
-                    "fileLastModified": 1572669551158,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\990035 Feryquitous - Quon\\Feryquitous - Quon (-[Pino]-) [Ky's Easy].osu",
-                    "hash": "ee571cc1cbb97127f08a3c34d26bb7f2"
-                },
-                {
-                    "songData": {
-                        "songName": "Quon",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\990035 Feryquitous - Quon\\audio.mp3",
-                        "artistName": "Feryquitous"
-                    },
-                    "fileLastModified": 1572669551159,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\990035 Feryquitous - Quon\\Feryquitous - Quon (-[Pino]-) [Necho's Insane].osu",
-                    "hash": "3e8bc67ada592093dffbdfb504c9f43f"
-                },
-                {
-                    "songData": {
-                        "songName": "Quon",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\990035 Feryquitous - Quon\\audio.mp3",
-                        "artistName": "Feryquitous"
-                    },
-                    "fileLastModified": 1572669551159,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\990035 Feryquitous - Quon\\Feryquitous - Quon (-[Pino]-) [Normal].osu",
-                    "hash": "4b3f363402e43a57ec7cebb62221df4b"
-                }
-            ]
-        },
-        {
-            "folderPath": "D:\\Program Files\\osu!\\Songs\\990308 Little Glee Monster - Kimi ni Todoku made (TV Size)",
-            "folderLastModified": 1640066988627,
-            "beatmapList": [
-                {
-                    "songData": {
-                        "songName": "Kimi ni Todoku made (TV Size)",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\990308 Little Glee Monster - Kimi ni Todoku made (TV Size)\\Kimi ni Todoku made.mp3",
-                        "artistName": "Little Glee Monster"
-                    },
-                    "fileLastModified": 1570169078604,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\990308 Little Glee Monster - Kimi ni Todoku made (TV Size)\\Little Glee Monster - Kimi ni Todoku made (TV Size) (kunka) [7ka's Insane].osu",
-                    "hash": "f7654c55b6ab5c3e93993b5679322093"
-                },
-                {
-                    "songData": {
-                        "songName": "Kimi ni Todoku made (TV Size)",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\990308 Little Glee Monster - Kimi ni Todoku made (TV Size)\\Kimi ni Todoku made.mp3",
-                        "artistName": "Little Glee Monster"
-                    },
-                    "fileLastModified": 1570169078606,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\990308 Little Glee Monster - Kimi ni Todoku made (TV Size)\\Little Glee Monster - Kimi ni Todoku made (TV Size) (kunka) [Dubturt's Hard].osu",
-                    "hash": "c9f9cbbfb6620f66acad3c16ddf5e65e"
-                },
-                {
-                    "songData": {
-                        "songName": "Kimi ni Todoku made (TV Size)",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\990308 Little Glee Monster - Kimi ni Todoku made (TV Size)\\Kimi ni Todoku made.mp3",
-                        "artistName": "Little Glee Monster"
-                    },
-                    "fileLastModified": 1570169078607,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\990308 Little Glee Monster - Kimi ni Todoku made (TV Size)\\Little Glee Monster - Kimi ni Todoku made (TV Size) (kunka) [Easy].osu",
-                    "hash": "dd29f84e26a26e24b8687fcdc7f7c293"
-                },
-                {
-                    "songData": {
-                        "songName": "Kimi ni Todoku made (TV Size)",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\990308 Little Glee Monster - Kimi ni Todoku made (TV Size)\\Kimi ni Todoku made.mp3",
-                        "artistName": "Little Glee Monster"
-                    },
-                    "fileLastModified": 1570169078609,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\990308 Little Glee Monster - Kimi ni Todoku made (TV Size)\\Little Glee Monster - Kimi ni Todoku made (TV Size) (kunka) [MEISEI STORY].osu",
-                    "hash": "2c0b00e271ce7c47a02f72acbd895773"
-                },
-                {
-                    "songData": {
-                        "songName": "Kimi ni Todoku made (TV Size)",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\990308 Little Glee Monster - Kimi ni Todoku made (TV Size)\\Kimi ni Todoku made.mp3",
-                        "artistName": "Little Glee Monster"
-                    },
-                    "fileLastModified": 1570169078610,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\990308 Little Glee Monster - Kimi ni Todoku made (TV Size)\\Little Glee Monster - Kimi ni Todoku made (TV Size) (kunka) [Normal].osu",
-                    "hash": "fc6d638aaf093639b6b4fbeab6674812"
-                }
-            ]
-        },
-        {
-            "folderPath": "D:\\Program Files\\osu!\\Songs\\991222 FictionJunction feat LiSA - from the edge (TV Size)",
-            "folderLastModified": 1640066988931,
-            "beatmapList": [
-                {
-                    "songData": {
-                        "songName": "from the edge (TV Size)",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\991222 FictionJunction feat LiSA - from the edge (TV Size)\\audio.mp3",
-                        "artistName": "FictionJunction feat. LiSA"
-                    },
-                    "fileLastModified": 1570335096316,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\991222 FictionJunction feat LiSA - from the edge (TV Size)\\FictionJunction feat. LiSA - from the edge (TV Size) (Flask) [Ex].osu",
-                    "hash": "0ad24d48fa1ccc0d4fd309620422f445"
-                },
-                {
-                    "songData": {
-                        "songName": "from the edge (TV Size)",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\991222 FictionJunction feat LiSA - from the edge (TV Size)\\audio.mp3",
-                        "artistName": "FictionJunction feat. LiSA"
-                    },
-                    "fileLastModified": 1570335096318,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\991222 FictionJunction feat LiSA - from the edge (TV Size)\\FictionJunction feat. LiSA - from the edge (TV Size) (Flask) [GfMRT's Easy].osu",
-                    "hash": "b924fe60b194bddb2561e5705f29e791"
-                },
-                {
-                    "songData": {
-                        "songName": "from the edge (TV Size)",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\991222 FictionJunction feat LiSA - from the edge (TV Size)\\audio.mp3",
-                        "artistName": "FictionJunction feat. LiSA"
-                    },
-                    "fileLastModified": 1570335096320,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\991222 FictionJunction feat LiSA - from the edge (TV Size)\\FictionJunction feat. LiSA - from the edge (TV Size) (Flask) [Hard].osu",
-                    "hash": "c5a00171f11a2df6f2a60e04a3dbe33c"
-                },
-                {
-                    "songData": {
-                        "songName": "from the edge (TV Size)",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\991222 FictionJunction feat LiSA - from the edge (TV Size)\\audio.mp3",
-                        "artistName": "FictionJunction feat. LiSA"
-                    },
-                    "fileLastModified": 1570335096321,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\991222 FictionJunction feat LiSA - from the edge (TV Size)\\FictionJunction feat. LiSA - from the edge (TV Size) (Flask) [Normal].osu",
-                    "hash": "c0d9c92c638c29ea747ef9ee75b612ca"
-                },
-                {
-                    "songData": {
-                        "songName": "from the edge (TV Size)",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\991222 FictionJunction feat LiSA - from the edge (TV Size)\\audio.mp3",
-                        "artistName": "FictionJunction feat. LiSA"
-                    },
-                    "fileLastModified": 1570335096323,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\991222 FictionJunction feat LiSA - from the edge (TV Size)\\FictionJunction feat. LiSA - from the edge (TV Size) (Flask) [toybot's Insane].osu",
-                    "hash": "fc9dadc2fe6afdcfb4296a5b4ba48733"
-                }
-            ]
-        },
-        {
-            "folderPath": "D:\\Program Files\\osu!\\Songs\\993004 Watanabe Saki (CV_ Taneda Risa) - Wareta Ringo (TV Size)",
-            "folderLastModified": 1640066988965,
-            "beatmapList": [
-                {
-                    "songData": {
-                        "songName": "Wareta Ringo (TV Size)",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\993004 Watanabe Saki (CV_ Taneda Risa) - Wareta Ringo (TV Size)\\audio.mp3",
-                        "artistName": "Watanabe Saki (CV"
-                    },
-                    "fileLastModified": 1575699910023,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\993004 Watanabe Saki (CV_ Taneda Risa) - Wareta Ringo (TV Size)\\Watanabe Saki (CV Taneda Risa) - Wareta Ringo (TV Size) (-Sylvari) [Hard].osu",
-                    "hash": "c6a3cbce33b7dfe26513025d655523b8"
-                },
-                {
-                    "songData": {
-                        "songName": "Wareta Ringo (TV Size)",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\993004 Watanabe Saki (CV_ Taneda Risa) - Wareta Ringo (TV Size)\\audio.mp3",
-                        "artistName": "Watanabe Saki (CV"
-                    },
-                    "fileLastModified": 1575699910024,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\993004 Watanabe Saki (CV_ Taneda Risa) - Wareta Ringo (TV Size)\\Watanabe Saki (CV Taneda Risa) - Wareta Ringo (TV Size) (-Sylvari) [New World].osu",
-                    "hash": "46effff61885b1ca08ad939131264ba3"
-                },
-                {
-                    "songData": {
-                        "songName": "Wareta Ringo (TV Size)",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\993004 Watanabe Saki (CV_ Taneda Risa) - Wareta Ringo (TV Size)\\audio.mp3",
-                        "artistName": "Watanabe Saki (CV"
-                    },
-                    "fileLastModified": 1575699910024,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\993004 Watanabe Saki (CV_ Taneda Risa) - Wareta Ringo (TV Size)\\Watanabe Saki (CV Taneda Risa) - Wareta Ringo (TV Size) (-Sylvari) [Normal].osu",
-                    "hash": "47ecaa2903dec63067077dea7fcde52c"
-                }
-            ]
-        },
-        {
-            "folderPath": "D:\\Program Files\\osu!\\Songs\\993306 ryu5150 - Louder than steel",
-            "folderLastModified": 1640066989120,
-            "beatmapList": [
-                {
-                    "songData": {
-                        "songName": "Louder than steel",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\993306 ryu5150 - Louder than steel\\audio.mp3",
-                        "artistName": "ryu5150"
-                    },
-                    "fileLastModified": 1568433389116,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\993306 ryu5150 - Louder than steel\\ryu5150 - Louder than steel (Sotarks) [NiNo's Extreme].osu",
-                    "hash": "3e5026cf1319029c07d0c61e3361b2ad"
-                },
-                {
-                    "songData": {
-                        "songName": "Louder than steel",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\993306 ryu5150 - Louder than steel\\audio.mp3",
-                        "artistName": "ryu5150"
-                    },
-                    "fileLastModified": 1568433389118,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\993306 ryu5150 - Louder than steel\\ryu5150 - Louder than steel (Sotarks) [Onlybiscuit's Extra].osu",
-                    "hash": "2070d7a0d1d878f3f46625daeef7a086"
-                },
-                {
-                    "songData": {
-                        "songName": "Louder than steel",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\993306 ryu5150 - Louder than steel\\audio.mp3",
-                        "artistName": "ryu5150"
-                    },
-                    "fileLastModified": 1568433389119,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\993306 ryu5150 - Louder than steel\\ryu5150 - Louder than steel (Sotarks) [Reform's Insane].osu",
-                    "hash": "b105fd5b295bd1f97d96bc99129c6ed3"
-                },
-                {
-                    "songData": {
-                        "songName": "Louder than steel",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\993306 ryu5150 - Louder than steel\\audio.mp3",
-                        "artistName": "ryu5150"
-                    },
-                    "fileLastModified": 1568433389121,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\993306 ryu5150 - Louder than steel\\ryu5150 - Louder than steel (Sotarks) [Stainless Heart].osu",
-                    "hash": "4f622d6aac1f2dfaadc3be51ab0b51db"
-                }
-            ]
-        },
-        {
-            "folderPath": "D:\\Program Files\\osu!\\Songs\\993307 AKINO from bless4 - MIIRO (TV Size)",
-            "folderLastModified": 1640066989193,
-            "beatmapList": [
-                {
-                    "songData": {
-                        "songName": "MIIRO (TV Size)",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\993307 AKINO from bless4 - MIIRO (TV Size)\\audio.mp3",
-                        "artistName": "AKINO from bless4"
-                    },
-                    "fileLastModified": 1562992357734,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\993307 AKINO from bless4 - MIIRO (TV Size)\\AKINO from bless4 - MIIRO (TV Size) (Sotarks) [Kowari's HARD].osu",
-                    "hash": "d2dc285da9e543c7c021096382170700"
-                },
-                {
-                    "songData": {
-                        "songName": "MIIRO (TV Size)",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\993307 AKINO from bless4 - MIIRO (TV Size)\\audio.mp3",
-                        "artistName": "AKINO from bless4"
-                    },
-                    "fileLastModified": 1562992357760,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\993307 AKINO from bless4 - MIIRO (TV Size)\\AKINO from bless4 - MIIRO (TV Size) (Sotarks) [Reform's INSANE].osu",
-                    "hash": "aea57f5b5860a35ded699364ead573cc"
-                },
-                {
-                    "songData": {
-                        "songName": "MIIRO (TV Size)",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\993307 AKINO from bless4 - MIIRO (TV Size)\\audio.mp3",
-                        "artistName": "AKINO from bless4"
-                    },
-                    "fileLastModified": 1562992357787,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\993307 AKINO from bless4 - MIIRO (TV Size)\\AKINO from bless4 - MIIRO (TV Size) (Sotarks) [Ren's NORMAL].osu",
-                    "hash": "904a735878a7febfb99e6d4cab3909b7"
-                },
-                {
-                    "songData": {
-                        "songName": "MIIRO (TV Size)",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\993307 AKINO from bless4 - MIIRO (TV Size)\\audio.mp3",
-                        "artistName": "AKINO from bless4"
-                    },
-                    "fileLastModified": 1562992357804,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\993307 AKINO from bless4 - MIIRO (TV Size)\\AKINO from bless4 - MIIRO (TV Size) (Sotarks) [SMOKELIND's EXPERT].osu",
-                    "hash": "d94af7c9e39002655a34fe48560886bb"
-                },
-                {
-                    "songData": {
-                        "songName": "MIIRO (TV Size)",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\993307 AKINO from bless4 - MIIRO (TV Size)\\audio.mp3",
-                        "artistName": "AKINO from bless4"
-                    },
-                    "fileLastModified": 1562992357831,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\993307 AKINO from bless4 - MIIRO (TV Size)\\AKINO from bless4 - MIIRO (TV Size) (Sotarks) [Tatoe].osu",
-                    "hash": "91e09618f1370b3df01849389afa91d4"
-                }
-            ]
-        },
-        {
-            "folderPath": "D:\\Program Files\\osu!\\Songs\\993864 Roselia - Neo-Aspect",
-            "folderLastModified": 1640066989291,
-            "beatmapList": [{
-                "songData": {
-                    "songName": "Neo-Aspect",
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\993864 Roselia - Neo-Aspect\\audio.mp3",
-                    "artistName": "Roselia"
-                },
-                "fileLastModified": 1573871518451,
-                "filePath": "D:\\Program Files\\osu!\\Songs\\993864 Roselia - Neo-Aspect\\Roselia - Neo-Aspect (Sladkoru) [Anfang].osu",
-                "hash": "42fbf8fc95d584b88459a3a0410e810b"
-            }]
-        },
-        {
-            "folderPath": "D:\\Program Files\\osu!\\Songs\\994104 James Landino - Reaction feat Slyleaf",
-            "folderLastModified": 1640066989382,
-            "beatmapList": [
-                {
-                    "songData": {
-                        "songName": "Reaction feat. Slyleaf",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\994104 James Landino - Reaction feat Slyleaf\\audio.mp3",
-                        "artistName": "James Landino"
-                    },
-                    "fileLastModified": 1607072947803,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\994104 James Landino - Reaction feat Slyleaf\\James Landino - Reaction feat. Slyleaf (AncuL) [Advanced].osu",
-                    "hash": "bb4f3cd6159b359df64323b679821df5"
-                },
-                {
-                    "songData": {
-                        "songName": "Reaction feat. Slyleaf",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\994104 James Landino - Reaction feat Slyleaf\\audio.mp3",
-                        "artistName": "James Landino"
-                    },
-                    "fileLastModified": 1607072947812,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\994104 James Landino - Reaction feat Slyleaf\\James Landino - Reaction feat. Slyleaf (AncuL) [Chemistry].osu",
-                    "hash": "5d2fe3e622f42958aa8eef90097e045a"
-                },
-                {
-                    "songData": {
-                        "songName": "Reaction feat. Slyleaf",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\994104 James Landino - Reaction feat Slyleaf\\audio.mp3",
-                        "artistName": "James Landino"
-                    },
-                    "fileLastModified": 1607072947822,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\994104 James Landino - Reaction feat Slyleaf\\James Landino - Reaction feat. Slyleaf (AncuL) [Hard].osu",
-                    "hash": "6641bb4e0c1334af33eb92b57f25ac10"
-                },
-                {
-                    "songData": {
-                        "songName": "Reaction feat. Slyleaf",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\994104 James Landino - Reaction feat Slyleaf\\audio.mp3",
-                        "artistName": "James Landino"
-                    },
-                    "fileLastModified": 1607072947831,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\994104 James Landino - Reaction feat Slyleaf\\James Landino - Reaction feat. Slyleaf (AncuL) [Normal].osu",
-                    "hash": "892ca955b7705e5b738c96da572745f0"
-                }
-            ]
-        },
-        {
-            "folderPath": "D:\\Program Files\\osu!\\Songs\\994378 Kawada Mami - Hishoku no Sora",
-            "folderLastModified": 1640066989459,
-            "beatmapList": [
-                {
-                    "songData": {
-                        "songName": "Hishoku no Sora",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\994378 Kawada Mami - Hishoku no Sora\\audio.mp3",
-                        "artistName": "Kawada Mami"
-                    },
-                    "fileLastModified": 1571021645547,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\994378 Kawada Mami - Hishoku no Sora\\Kawada Mami - Hishoku no Sora (Akitoshi) [Easy].osu",
-                    "hash": "fe236b388005cfcb8ebea780a9f67213"
-                },
-                {
-                    "songData": {
-                        "songName": "Hishoku no Sora",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\994378 Kawada Mami - Hishoku no Sora\\audio.mp3",
-                        "artistName": "Kawada Mami"
-                    },
-                    "fileLastModified": 1571021645548,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\994378 Kawada Mami - Hishoku no Sora\\Kawada Mami - Hishoku no Sora (Akitoshi) [Expert].osu",
-                    "hash": "c0c9f483338af3c13081409758e31da6"
-                },
-                {
-                    "songData": {
-                        "songName": "Hishoku no Sora",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\994378 Kawada Mami - Hishoku no Sora\\audio.mp3",
-                        "artistName": "Kawada Mami"
-                    },
-                    "fileLastModified": 1571021645550,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\994378 Kawada Mami - Hishoku no Sora\\Kawada Mami - Hishoku no Sora (Akitoshi) [Hard].osu",
-                    "hash": "613d33a600a32694c232a67307dd2a6d"
-                },
-                {
-                    "songData": {
-                        "songName": "Hishoku no Sora",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\994378 Kawada Mami - Hishoku no Sora\\audio.mp3",
-                        "artistName": "Kawada Mami"
-                    },
-                    "fileLastModified": 1571021645551,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\994378 Kawada Mami - Hishoku no Sora\\Kawada Mami - Hishoku no Sora (Akitoshi) [Insane].osu",
-                    "hash": "510139346f56db91db95c8268de95a15"
-                },
-                {
-                    "songData": {
-                        "songName": "Hishoku no Sora",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\994378 Kawada Mami - Hishoku no Sora\\audio.mp3",
-                        "artistName": "Kawada Mami"
-                    },
-                    "fileLastModified": 1571021645552,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\994378 Kawada Mami - Hishoku no Sora\\Kawada Mami - Hishoku no Sora (Akitoshi) [Makitoshi's Normal].osu",
-                    "hash": "722debee7b9ca84871ba279f1b92c4aa"
-                }
-            ]
-        },
-        {
-            "folderPath": "D:\\Program Files\\osu!\\Songs\\994389 SawanoHiroyuki[nZk]_Tielle & Gemie - sh0ut (TV Size)",
-            "folderLastModified": 1640066989795,
-            "beatmapList": [
-                {
-                    "songData": {
-                        "songName": "sh0ut (TV Size)",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\994389 SawanoHiroyuki[nZk]_Tielle & Gemie - sh0ut (TV Size)\\audio.mp3",
-                        "artistName": "SawanoHiroyuki[nZk]"
-                    },
-                    "fileLastModified": 1572669833442,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\994389 SawanoHiroyuki[nZk]_Tielle & Gemie - sh0ut (TV Size)\\SawanoHiroyuki[nZk]Tielle & Gemie - sh0ut (TV Size) (Teky) [Easy].osu",
-                    "hash": "c6a92c35c7c7ac459df3e8d6adfdae8f"
-                },
-                {
-                    "songData": {
-                        "songName": "sh0ut (TV Size)",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\994389 SawanoHiroyuki[nZk]_Tielle & Gemie - sh0ut (TV Size)\\audio.mp3",
-                        "artistName": "SawanoHiroyuki[nZk]"
-                    },
-                    "fileLastModified": 1572669833443,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\994389 SawanoHiroyuki[nZk]_Tielle & Gemie - sh0ut (TV Size)\\SawanoHiroyuki[nZk]Tielle & Gemie - sh0ut (TV Size) (Teky) [Extra].osu",
-                    "hash": "887efc113c4f9554fe1e2a3ddf7f7e0c"
-                },
-                {
-                    "songData": {
-                        "songName": "sh0ut (TV Size)",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\994389 SawanoHiroyuki[nZk]_Tielle & Gemie - sh0ut (TV Size)\\audio.mp3",
-                        "artistName": "SawanoHiroyuki[nZk]"
-                    },
-                    "fileLastModified": 1572669833443,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\994389 SawanoHiroyuki[nZk]_Tielle & Gemie - sh0ut (TV Size)\\SawanoHiroyuki[nZk]Tielle & Gemie - sh0ut (TV Size) (Teky) [Hard].osu",
-                    "hash": "87e0fdd34af903aac496d60abc48efd7"
-                },
-                {
-                    "songData": {
-                        "songName": "sh0ut (TV Size)",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\994389 SawanoHiroyuki[nZk]_Tielle & Gemie - sh0ut (TV Size)\\audio.mp3",
-                        "artistName": "SawanoHiroyuki[nZk]"
-                    },
-                    "fileLastModified": 1572669833445,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\994389 SawanoHiroyuki[nZk]_Tielle & Gemie - sh0ut (TV Size)\\SawanoHiroyuki[nZk]Tielle & Gemie - sh0ut (TV Size) (Teky) [Insane].osu",
-                    "hash": "9c9a4451e2e12985d6031df4060141af"
-                },
-                {
-                    "songData": {
-                        "songName": "sh0ut (TV Size)",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\994389 SawanoHiroyuki[nZk]_Tielle & Gemie - sh0ut (TV Size)\\audio.mp3",
-                        "artistName": "SawanoHiroyuki[nZk]"
-                    },
-                    "fileLastModified": 1572669833446,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\994389 SawanoHiroyuki[nZk]_Tielle & Gemie - sh0ut (TV Size)\\SawanoHiroyuki[nZk]Tielle & Gemie - sh0ut (TV Size) (Teky) [Normal].osu",
-                    "hash": "64be072a557ee3f21ce7f14ff1751b97"
-                }
-            ]
-        },
-        {
-            "folderPath": "D:\\Program Files\\osu!\\Songs\\996444 OxT - Silent Solitude",
-            "folderLastModified": 1640066989912,
-            "beatmapList": [
-                {
-                    "songData": {
-                        "songName": "Silent Solitude",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\996444 OxT - Silent Solitude\\audio.mp3",
-                        "artistName": "OxT"
-                    },
-                    "fileLastModified": 1571021633549,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\996444 OxT - Silent Solitude\\OxT - Silent Solitude (Seto Kousuke) [Asuka_-'s Hard].osu",
-                    "hash": "7b645d498ff42001371158b771ee149b"
-                },
-                {
-                    "songData": {
-                        "songName": "Silent Solitude",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\996444 OxT - Silent Solitude\\audio.mp3",
-                        "artistName": "OxT"
-                    },
-                    "fileLastModified": 1571021633550,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\996444 OxT - Silent Solitude\\OxT - Silent Solitude (Seto Kousuke) [Extra].osu",
-                    "hash": "99915fdeca59162b1ec0e2e6e65567f1"
-                },
-                {
-                    "songData": {
-                        "songName": "Silent Solitude",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\996444 OxT - Silent Solitude\\audio.mp3",
-                        "artistName": "OxT"
-                    },
-                    "fileLastModified": 1571021633551,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\996444 OxT - Silent Solitude\\OxT - Silent Solitude (Seto Kousuke) [Ipas' Insane].osu",
-                    "hash": "e2abfc147bf586c41ba49a4463a61194"
-                },
-                {
-                    "songData": {
-                        "songName": "Silent Solitude",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\996444 OxT - Silent Solitude\\audio.mp3",
-                        "artistName": "OxT"
-                    },
-                    "fileLastModified": 1571021633552,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\996444 OxT - Silent Solitude\\OxT - Silent Solitude (Seto Kousuke) [Normal].osu",
-                    "hash": "266b0420ce68e14e9a5e412ee0973901"
-                },
-                {
-                    "songData": {
-                        "songName": "Silent Solitude",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\996444 OxT - Silent Solitude\\audio.mp3",
-                        "artistName": "OxT"
-                    },
-                    "fileLastModified": 1571021633554,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\996444 OxT - Silent Solitude\\OxT - Silent Solitude (Seto Kousuke) [Senhor's Expert].osu",
-                    "hash": "1f72b55921605bbede5a92af740e4cb3"
-                }
-            ]
-        },
-        {
             "folderPath": "D:\\Program Files\\osu!\\Songs\\996628 OISHII - ONIGIRI FREEWAY",
-            "folderLastModified": 1640066990039,
+            "folderLastModified": 1736891511494,
             "beatmapList": [
                 {
                     "songData": {
@@ -59256,7 +59338,7 @@
         },
         {
             "folderPath": "D:\\Program Files\\osu!\\Songs\\996798 mafumafu - Sacrifice [no video]",
-            "folderLastModified": 1640066990143,
+            "folderLastModified": 1736891511530,
             "beatmapList": [
                 {
                     "songData": {
@@ -59302,7 +59384,7 @@
         },
         {
             "folderPath": "D:\\Program Files\\osu!\\Songs\\996898 HyuN - White Aura",
-            "folderLastModified": 1640066990237,
+            "folderLastModified": 1736891511568,
             "beatmapList": [
                 {
                     "songData": {
@@ -59368,7 +59450,7 @@
         },
         {
             "folderPath": "D:\\Program Files\\osu!\\Songs\\996959 Minase Inori - TRUST IN ETERNITY",
-            "folderLastModified": 1640066990333,
+            "folderLastModified": 1736891511596,
             "beatmapList": [
                 {
                     "songData": {
@@ -59403,44 +59485,8 @@
             ]
         },
         {
-            "folderPath": "D:\\Program Files\\osu!\\Songs\\997192 Yamamoto Mineko - Rinne",
-            "folderLastModified": 1640066990498,
-            "beatmapList": [
-                {
-                    "songData": {
-                        "songName": "Rinne",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\997192 Yamamoto Mineko - Rinne\\audio.mp3",
-                        "artistName": "Yamamoto Mineko"
-                    },
-                    "fileLastModified": 1573871518654,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\997192 Yamamoto Mineko - Rinne\\Yamamoto Mineko - Rinne (Left) [Civil oath's Hard].osu",
-                    "hash": "a68fa59818bc117568e7d25873c7adc9"
-                },
-                {
-                    "songData": {
-                        "songName": "Rinne",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\997192 Yamamoto Mineko - Rinne\\audio.mp3",
-                        "artistName": "Yamamoto Mineko"
-                    },
-                    "fileLastModified": 1573871518658,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\997192 Yamamoto Mineko - Rinne\\Yamamoto Mineko - Rinne (Left) [Left & KittyAdventure's Insane].osu",
-                    "hash": "c65c310bc7a124c0f96030f793f9c94e"
-                },
-                {
-                    "songData": {
-                        "songName": "Rinne",
-                        "filePath": "D:\\Program Files\\osu!\\Songs\\997192 Yamamoto Mineko - Rinne\\audio.mp3",
-                        "artistName": "Yamamoto Mineko"
-                    },
-                    "fileLastModified": 1573871518660,
-                    "filePath": "D:\\Program Files\\osu!\\Songs\\997192 Yamamoto Mineko - Rinne\\Yamamoto Mineko - Rinne (Left) [Left & Mirash's Last Bullet].osu",
-                    "hash": "d54a6f77b39d5b48bc5ab328609c9000"
-                }
-            ]
-        },
-        {
             "folderPath": "D:\\Program Files\\osu!\\Songs\\997439 Wakeshima Kanon - world's end, girl's rondo",
-            "folderLastModified": 1640066996353,
+            "folderLastModified": 1736891511007,
             "beatmapList": [
                 {
                     "songData": {
@@ -59466,7 +59512,7 @@
         },
         {
             "folderPath": "D:\\Program Files\\osu!\\Songs\\998335 Hana - Kuukirikigaku Shoujo to Shounen no Uta",
-            "folderLastModified": 1640066997768,
+            "folderLastModified": 1736891510939,
             "beatmapList": [
                 {
                     "songData": {
@@ -59512,7 +59558,7 @@
         },
         {
             "folderPath": "D:\\Program Files\\osu!\\Songs\\998378 Hirasawa Ui (CV_ Yonezawa Madoka) - Oui! Ai Kotoba",
-            "folderLastModified": 1640066997994,
+            "folderLastModified": 1736891510967,
             "beatmapList": [{
                 "songData": {
                     "songName": "Oui! Ai Kotoba",
@@ -59526,7 +59572,7 @@
         },
         {
             "folderPath": "D:\\Program Files\\osu!\\Songs\\998531 Latina (CV_ Takao Kanon) - I'm with you (TV Size)",
-            "folderLastModified": 1640066998140,
+            "folderLastModified": 1736891510655,
             "beatmapList": [
                 {
                     "songData": {
@@ -59582,7 +59628,7 @@
         },
         {
             "folderPath": "D:\\Program Files\\osu!\\Songs\\998836 zts - Umineko no Naku Koro ni Compilation",
-            "folderLastModified": 1640066998780,
+            "folderLastModified": 1736891510718,
             "beatmapList": [
                 {
                     "songData": {
@@ -59608,7 +59654,7 @@
         },
         {
             "folderPath": "D:\\Program Files\\osu!\\Songs\\999126 Mrs GREEN APPLE - Inferno (TV Size)",
-            "folderLastModified": 1640067000112,
+            "folderLastModified": 1736891510583,
             "beatmapList": [
                 {
                     "songData": {
@@ -59754,7 +59800,7 @@
         },
         {
             "folderPath": "D:\\Program Files\\osu!\\Songs\\999616 Ohara Yuiko - Zero Centimeter (TV Size)",
-            "folderLastModified": 1640067000267,
+            "folderLastModified": 1736891510618,
             "beatmapList": [
                 {
                     "songData": {
@@ -59787,7 +59833,73 @@
                     "hash": "6fcc6683833a023eb289aca2ba9e1ed4"
                 }
             ]
+        },
+        {
+            "folderPath": "D:\\Program Files\\osu!\\Songs\\908087 toby fox - Bergentrueckung_ASGORE",
+            "folderLastModified": 1736891638112,
+            "beatmapList": [
+                {
+                    "songData": {
+                        "songName": "Bergentrueckung/ASGORE",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\908087 toby fox - Bergentrueckung_ASGORE\\audio.mp3",
+                        "artistName": "toby fox"
+                    },
+                    "fileLastModified": 1734764351109,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\908087 toby fox - Bergentrueckung_ASGORE\\toby fox - BergentrueckungASGORE (Kaitjuh) [Determination].osu",
+                    "hash": "440b3c62c6e79c9c110ab22ca7d4256b"
+                },
+                {
+                    "songData": {
+                        "songName": "Bergentrueckung/ASGORE",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\908087 toby fox - Bergentrueckung_ASGORE\\audio.mp3",
+                        "artistName": "toby fox"
+                    },
+                    "fileLastModified": 1734764351110,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\908087 toby fox - Bergentrueckung_ASGORE\\toby fox - BergentrueckungASGORE (Kaitjuh) [DeviousPanda's Extra].osu",
+                    "hash": "e2d3dc2018ebe54c3beca400fd716c41"
+                },
+                {
+                    "songData": {
+                        "songName": "Bergentrueckung/ASGORE",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\908087 toby fox - Bergentrueckung_ASGORE\\audio.mp3",
+                        "artistName": "toby fox"
+                    },
+                    "fileLastModified": 1734764351111,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\908087 toby fox - Bergentrueckung_ASGORE\\toby fox - BergentrueckungASGORE (Kaitjuh) [Glaceon's Normal].osu",
+                    "hash": "70635d520c24336bb7cb3e4875a51aea"
+                },
+                {
+                    "songData": {
+                        "songName": "Bergentrueckung/ASGORE",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\908087 toby fox - Bergentrueckung_ASGORE\\audio.mp3",
+                        "artistName": "toby fox"
+                    },
+                    "fileLastModified": 1734764351112,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\908087 toby fox - Bergentrueckung_ASGORE\\toby fox - BergentrueckungASGORE (Kaitjuh) [Keitaro's Insane].osu",
+                    "hash": "ebd0075ffa567871002498b3ace3435f"
+                },
+                {
+                    "songData": {
+                        "songName": "Bergentrueckung/ASGORE",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\908087 toby fox - Bergentrueckung_ASGORE\\audio.mp3",
+                        "artistName": "toby fox"
+                    },
+                    "fileLastModified": 1734764351112,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\908087 toby fox - Bergentrueckung_ASGORE\\toby fox - BergentrueckungASGORE (Kaitjuh) [Kowari's Hard].osu",
+                    "hash": "5074ae84604f8c5db334cf2f79d47acb"
+                },
+                {
+                    "songData": {
+                        "songName": "Bergentrueckung/ASGORE",
+                        "filePath": "D:\\Program Files\\osu!\\Songs\\908087 toby fox - Bergentrueckung_ASGORE\\audio.mp3",
+                        "artistName": "toby fox"
+                    },
+                    "fileLastModified": 1734764351113,
+                    "filePath": "D:\\Program Files\\osu!\\Songs\\908087 toby fox - Bergentrueckung_ASGORE\\toby fox - BergentrueckungASGORE (Kaitjuh) [Mindmaster's Expert].osu",
+                    "hash": "40ea1af9295700844a594f3bf605e877"
+                }
+            ]
         }
     ],
-    "songsFolderLastModified": 1734766396210
+    "songsFolderLastModified": 1736891638088
 }
