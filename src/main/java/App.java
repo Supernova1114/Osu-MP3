@@ -171,172 +171,41 @@ public class App extends Application{
                     songsFolderLastModified = songFolder.lastModified();
                     collectionDBLastModified = collectionsDB.lastModified();
 
-                    //Get collectionDB info
-                    String data = new String(Files.readAllBytes(Paths.get(collectionsDB.getPath())));
 
-                    String[] clean = data.split("\\P{Print}");
+                    // Temp stuffs ------------------------------------------------------------------------------------
 
+//                    //Put title pane
+//                    Platform.runLater(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            controller.addToGrid(new Pane() {{
+//                                getChildren().add(new Label(collection.get(0) + " " + (collection.size() - 1)));
+//                            }}, finalCol, finalRow);
+//                        }
+//                    });
+//
+//                    //Add SongPane
+//                    Platform.runLater(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            try {
+//                                controller.addToGrid(songPane, finalCol1, finalRow1);
+//                            } catch (Exception e) {
+//                                e.printStackTrace();
+//                            }
+//                        }
+//                    });
+//
+//                    Platform.runLater(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            controller.addToGrid(new Pane() {{
+//                                getChildren().add(new Label(collection.get(0)));
+//                            }}, finalCol2, finalRow2);
+//                        }
+//                    });
 
-
-                    ArrayList<String> cleanArray = new ArrayList<>();
-
-                    for (String a : clean) {
-                        //System.out.print(a + ",");
-                        if (!a.equals("")) {
-                            cleanArray.add(a);
-                        }
-                    }
-
-                    //System.out.println(cleanArray);
-
-                    cleanArray.remove(0);
-
-                    ArrayList<ArrayList<String>> CollectionList = new ArrayList<>();
-                    //String [][] CollectionList = new String[][];
-
-
-                    for (int i = 0; i < cleanArray.size(); i++) {
-
-                        if (cleanArray.get(i).length() < 32) {
-                            int finalI = i;
-                            ArrayList<String> finalCleanArray = cleanArray;//fuck
-
-                            CollectionList.add(new ArrayList<String>() {{
-                                add(finalCleanArray.get(finalI));
-                            }});
-                        } else {
-                            CollectionList.get(CollectionList.size() - 1).add(cleanArray.get(i).replace(" ", ""));
-                        }
-                    }
-
-
-                    int row = 0;
-                    int col = 0;
-
-                    //System.out.println("CollSize = " + CollectionList.size());
-
-
-                    for (ArrayList<String> collection : CollectionList) {//Add Songs and Title Panes
-
-                        if (collection.size() > 1) {
-
-                            String collectionName = collection.get(0);
-
-                            //This for the songPaneCollectionList//////////////////////////////////
-                            ArrayList<SongPane> songPaneCollection = new ArrayList<>();
-
-                            int finalCol = col;
-                            int finalRow = row;
-
-                            //Put title pane
-                            Platform.runLater(new Runnable() {
-                                @Override
-                                public void run() {
-                                    controller.addToGrid(new Pane() {{
-                                        getChildren().add(new Label(collection.get(0) + " " + (collection.size() - 1)));
-                                    }}, finalCol, finalRow);
-                                }
-                            });
-
-                            row++;
-
-                            for (int i = 1; i < collection.size(); i++) {
-
-                                File musicFile = null;
-                                File imageFile = null;
-
-                                File file = hashMap.get(collection.get(i));
-                                //System.out.println(hashMap.get(collection.get(i)));
-
-
-                                //////////////////////////////////////////////////////////////DEBUG
-                                //System.out.println(file);
-
-                                if (file != null) {
-
-
-
-                                    SongPane songPane = new SongPane(file.getName(), collection.get(i), file, musicFile, imageFile, collectionName);
-                                    songPaneCollection.add(songPane);
-
-                                    //DEBUG
-                                    //System.out.println(songPane + "\n");
-
-
-                                    int finalCol1 = col;
-                                    int finalRow1 = row;
-
-                                    //Add SongPane
-                                    Platform.runLater(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            try {
-                                                controller.addToGrid(songPane, finalCol1, finalRow1);
-                                            } catch (Exception e) {
-                                                e.printStackTrace();
-                                            }
-                                        }
-                                    });
-
-                                    row++;
-
-                                }
-                                /*else {
-
-                                    int finalCol3 = col;
-                                    int finalRow3 = row;
-
-                                    Platform.runLater(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            controller.addToGrid(new Pane() {{
-                                                getChildren().add(new Label("<>"));
-                                            }}, finalCol3, finalRow3);
-                                        }
-                                    });
-                                }
-                                row++;*/
-                            }//for
-
-                            //add to map
-                            try {
-                                songPaneCollectionList.add(songPaneCollection);
-                            }catch (Exception e){
-                                e.printStackTrace();
-                            }
-
-                            //System.out.println("size: " + songPaneCollection.size());
-
-                        } else {
-                            if (collection.size() == 1) {
-
-                                int finalCol2 = col;
-                                int finalRow2 = row;
-
-                                //Only add title
-                                Platform.runLater(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        controller.addToGrid(new Pane() {{
-                                            getChildren().add(new Label(collection.get(0)));
-                                        }}, finalCol2, finalRow2);
-                                    }
-                                });
-                            }
-                        }
-                        //System.out.println();
-
-                        row = 0;
-                        col++;
-                    }
-
-                    System.out.println("Hashset length: " + hashMap.size());
-
-                    /*for (int i=0; i<hashMap.size(); i++){
-                        System.out.println(hashMap.toString());
-                    }*/
-
-                    System.out.println("Begin Worker Completed!");
+                    // --------------------------------------------------------------------------
 
                     controller.gridPane.setDisable(false);
                     controller.exportSongListMenuItem.setDisable(false);

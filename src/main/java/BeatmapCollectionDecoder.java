@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 // Reference: https://github.com/ppy/osu/blob/master/osu.Game/Database/LegacyCollectionImporter.cs
+
 public class BeatmapCollectionDecoder {
 
     private Path collectionFilePath;
