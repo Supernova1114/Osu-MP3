@@ -22,11 +22,11 @@ public class BeatmapCollection {
         return name;
     }
 
-    public List<String> getHashList() {
-        return hashList;
-    }
-
     public int size() {
         return hashList.size();
+    }
+
+    public String getHash(int index) {
+        return hashList.get(index);
     }
 }

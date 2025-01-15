@@ -1,14 +1,15 @@
 import java.io.*;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 // Reference: https://github.com/ppy/osu/blob/master/osu.Game/Database/LegacyCollectionImporter.cs
 
 public class BeatmapCollectionDecoder {
 
     private Path collectionFilePath;
-
     private List<BeatmapCollection> beatmapCollectionList = new ArrayList<>();
 
 

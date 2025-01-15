@@ -1,5 +1,6 @@
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -7,7 +8,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
@@ -16,36 +16,28 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.security.NoSuchAlgorithmException;
 import java.util.*;
 
 public class App extends Application{
 
-    private String version = "0.7.2";
-    private String stageTitle = "Osu! MP3 v" + version;
+    private final String APP_VERSION = "0.7.2";
+    private final String APP_TITLE = "Osu! MP3 v" + APP_VERSION;
+    private static final String DATABASE_FILE_NAME = "Beatmaps.db";
+    private static final String SETTINGS_FILE_NAME = "settings.conf";
+    private static final String SONGS_FOLDER_NAME = "Songs";
+    private static final String COLLECTIONS_FILE_NAME = "collection.db";
+
+    private static final String currentDirectory = System.getProperty("user.dir");
+    private static final Path databaseFilePath = Path.of(currentDirectory, DATABASE_FILE_NAME);
+    private static final Path settingsPath = Path.of(currentDirectory, SETTINGS_FILE_NAME);
 
     public static Stage primaryStage;
     public static Controller controller;
-    public static File osuFolder = null;//new File("D:\\Program Files\\osu!");
+    public static File osuFolder = null;
     public static ArrayList<ArrayList<SongPane>> songPaneCollectionList = new ArrayList<>();
     public static Parent root;
-
-    public static String currentDirectory = System.getProperty("user.dir");
-    public static Path songsDatabaseFilePath = Paths.get(currentDirectory + File.separator + "SongMapHash.db");
-    public static String settingsPath = currentDirectory + File.separator + "settings.conf";
-
     public static Properties applicationProps;
-
-    static long collectionDBLastModified = -1;
-    static long songsFolderLastModified = -1;
-
-    private static final String hashMapSplitChar = " [] ";
-
-    public static Map<String, File> hashMap = new HashMap<>();
-
-    GlobalKeyListener globalKeyListener;
-
-// FIXME: 8/18/2021 make a version line in database so that it will delete old database and create new one
+    private static GlobalKeyListener globalKeyListener;
 
     @Override
     public void start(Stage stage) throws Exception{
@@ -93,20 +85,15 @@ public class App extends Application{
             event.consume();
         });
 
-
-
-        primaryStage.setTitle(stageTitle);
+        primaryStage.setTitle(APP_TITLE);
         primaryStage.setScene(scene);
         primaryStage.show();
 
-
-
-        //
-        if (Files.exists(Paths.get(settingsPath))) {
+        if (Files.exists(settingsPath)) {
             System.out.println("Settings File Exists\n");
             applicationProps = new Properties();
 
-            FileInputStream in = new FileInputStream(settingsPath);
+            FileInputStream in = new FileInputStream(settingsPath.toFile());
             applicationProps.load(in);
             in.close();
         }else {
@@ -117,16 +104,12 @@ public class App extends Application{
             applicationProps.setProperty("osuFolderLocation", "null");
             applicationProps.setProperty("showArtists", "true");
 
-            FileOutputStream out = new FileOutputStream(settingsPath);
+            FileOutputStream out = new FileOutputStream(settingsPath.toFile());
             applicationProps.store(out, "---No Comment---");
             out.close();
         }
 
         String osuFolderLocProp = applicationProps.getProperty("osuFolderLocation");
-        //String showArtistsProp = applicationProps.getProperty("showArtists");
-
-        //controller.showArtists(Boolean.parseBoolean(showArtistsProp));
-
 
         if (!osuFolderLocProp.equals("null")){
             osuFolder = new File(osuFolderLocProp);
@@ -143,91 +126,114 @@ public class App extends Application{
 
 
     //Main Processes after choosing files and pressing start
-    public static void Begin() throws Exception {
+    public static void Begin() {
 
         if (osuFolder != null) {
 
-            SwingWorker worker = new SwingWorker() {
+            Task<Void> task = new Task<Void>() {
                 @Override
-                protected Object doInBackground() throws Exception {
+                protected Void call() throws Exception {
 
-                    FilenameFilter SONGSFOLDER = new FilenameFilter() {
-                        @Override
-                        public boolean accept(File dir, String name) {
-                            return name.equals("Songs");
-                        }
-                    };
-                    FilenameFilter COLLECTIONDB = new FilenameFilter() {
-                        @Override
-                        public boolean accept(File dir, String name) {
-                            return name.equals("collection.db");
-                        }
-                    };
-
-                    //GetSongsFolder
-                    File songFolder = Objects.requireNonNull(osuFolder.listFiles(SONGSFOLDER))[0];
-                    File collectionsDB = Objects.requireNonNull(osuFolder.listFiles(COLLECTIONDB))[0];
-
-                    songsFolderLastModified = songFolder.lastModified();
-                    collectionDBLastModified = collectionsDB.lastModified();
-
-
-                    // Temp stuffs ------------------------------------------------------------------------------------
-
-//                    //Put title pane
-//                    Platform.runLater(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            controller.addToGrid(new Pane() {{
-//                                getChildren().add(new Label(collection.get(0) + " " + (collection.size() - 1)));
-//                            }}, finalCol, finalRow);
-//                        }
-//                    });
-//
-//                    //Add SongPane
-//                    Platform.runLater(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            try {
-//                                controller.addToGrid(songPane, finalCol1, finalRow1);
-//                            } catch (Exception e) {
-//                                e.printStackTrace();
-//                            }
-//                        }
-//                    });
-//
-//                    Platform.runLater(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            controller.addToGrid(new Pane() {{
-//                                getChildren().add(new Label(collection.get(0)));
-//                            }}, finalCol2, finalRow2);
-//                        }
-//                    });
-
-                    // --------------------------------------------------------------------------
-
-                    controller.gridPane.setDisable(false);
-                    controller.exportSongListMenuItem.setDisable(false);
+                    loadSongsAsync();
 
                     return null;
                 }
             };
-            worker.execute();
 
+            new Thread(task).start();
         }
 
     }
 
-    //Create filenameFilter
+    private static void loadSongsAsync() {
 
+        Path songsFolderPath = Path.of(osuFolder.getPath(), SONGS_FOLDER_NAME);
+        Path collectionsFilePath = Path.of(osuFolder.getPath(), COLLECTIONS_FILE_NAME);
 
+        DatabaseManager databaseManager = new DatabaseManager(songsFolderPath, databaseFilePath);
+
+        if (Files.exists(databaseFilePath)) {
+            databaseManager.readDatabase();
+            databaseManager.syncDatabase();
+        } else {
+            databaseManager.createDatabase();
+            databaseManager.readDatabase();
+        }
+
+        BeatmapCollectionDecoder beatmapCollectionDecoder = new BeatmapCollectionDecoder(collectionsFilePath);
+        beatmapCollectionDecoder.readCollections();
+
+        List<BeatmapCollection> beatmapCollectionList = beatmapCollectionDecoder.getBeatmapCollectionList();
+        HashMap<String, Beatmap> beatmapHashDict = databaseManager.buildBeatmapHashDict();
+
+        for (int i = 0; i < beatmapCollectionList.size(); i++){
+
+            final int currentCol = i; // A final var is necessary for Platform.runLater threads.
+
+            BeatmapCollection beatmapCollection = beatmapCollectionList.get(i);
+
+            int collectionSize = beatmapCollection.size();
+
+            if (collectionSize == 0) {
+                continue;
+            }
+
+            // Add column title.
+            Platform.runLater(
+                    ()-> controller.addToGrid(
+                            new Label(beatmapCollection.getName() + " (" + collectionSize + ")"),
+                            currentCol,
+                            0
+                    )
+            );
+
+            // Add rows
+            int rowOffset = 0;
+            for (int j = 0; j < collectionSize; j++) {
+
+                final int currentRow = j + rowOffset + 1; // A final var is necessary for Platform.runLater threads.
+
+                String hash = beatmapCollection.getHash(j);
+                boolean isValidHash = beatmapHashDict.containsKey(hash);
+
+                if (isValidHash) {
+                    Beatmap beatmap = beatmapHashDict.get(hash);
+                    SongData songData = beatmap.getSongData();
+
+                    SongPane songPane = new SongPane(
+                            songData.artistName + " - " + songData.songName,
+                            hash,
+                            new File(beatmap.getFilePath()),
+                            new File(songData.filePath),
+                            null,
+                            beatmapCollection.getName()
+                    );
+
+                    // Add song pane to row.
+                    Platform.runLater(
+                            () -> controller.addToGrid(songPane, currentCol, currentRow)
+                    );
+
+                } else {
+                    rowOffset--; // Stay on same row until a valid hash is found.
+                }
+            }
+        }
+
+        Platform.runLater(
+            ()-> {
+                controller.gridPane.setDisable(false);
+                controller.exportSongListMenuItem.setDisable(false);
+            }
+        );
+
+    }
 
     public static void setOsuFolder(File osuFolderFile) throws IOException {
         osuFolder = osuFolderFile;
         applicationProps.setProperty("osuFolderLocation", osuFolder.getPath());
 
-        FileOutputStream out = new FileOutputStream(settingsPath);
+        FileOutputStream out = new FileOutputStream(settingsPath.toFile());
         applicationProps.store(out, "---No Comment---");
         out.close();
     }

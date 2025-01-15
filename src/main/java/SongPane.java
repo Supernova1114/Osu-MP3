@@ -42,18 +42,7 @@ public class SongPane extends Pane {
         //LiSA - Rising Hope (TV Size) (xChippy) [Hope]
         //int sub = name.indexOf(" - ");
 
-        try {
-            //label = new Label(name.substring(sub + 3, name.substring(sub + 3).indexOf("(") + sub + 3));//name.indexOf(".osu")
-            label = new Label(name.substring(0, name.lastIndexOf("(")));
-
-            /*label.setTextFill(Color.WHITE);
-            label.setWrapText(true);*/
-
-            //label = new Label(name);
-        }catch (Exception e){
-            System.out.println("err: Label Failed");
-            e.printStackTrace();
-        }
+        label = new Label(name);
         this.collectionName = collectionName;
 
         /*System.out.println(name);

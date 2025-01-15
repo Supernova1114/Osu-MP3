@@ -78,6 +78,7 @@ public class DatabaseManager {
 
         // Initialize archivesToAdd to contain all paths from filesystem
         File[] archiveListFS = songsFolderPath.toFile().listFiles();
+
         for (File file : archiveListFS) {
             archivesToAdd.add(file.getPath());
         }
@@ -137,5 +138,26 @@ public class DatabaseManager {
 
     public int getBeatmapArchiveCount() {
         return beatmapArchiveList.size();
+    }
+
+    /**
+     * Creates hashmap based on current list of beatmaps in deserialized database.
+     * Key = MD5 Hash, Value = Beatmap object.
+     * HashMap is outdated when modifications are made to the database. HashMap will need to be
+     * rebuilt in that case.
+     * @return
+     */
+    public HashMap<String, Beatmap> buildBeatmapHashDict() {
+
+        // Key = MD5 hash, Value = Beatmap object.
+        HashMap<String, Beatmap> hashMap = new HashMap<>();
+
+        for (BeatmapArchive archive : beatmapArchiveList) {
+            for (Beatmap beatmap : archive.getBeatmapList()) {
+                hashMap.put(beatmap.getMD5Hash(), beatmap);
+            }
+        }
+
+        return hashMap;
     }
 }

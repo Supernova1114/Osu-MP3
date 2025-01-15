@@ -127,7 +127,6 @@ public class Controller {
 
         if (osuFolder != null) {
             App.setOsuFolder(osuFolder);
-
             App.Begin();
         }
     }
