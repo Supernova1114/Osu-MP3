@@ -1,7 +1,6 @@
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -9,19 +8,18 @@ import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 
-import javax.swing.*;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.*;
 
-public class App extends Application{
+public class App extends Application {
 
     private final String APP_VERSION = "0.7.2";
     private final String APP_TITLE = "Osu! MP3 v" + APP_VERSION;
+    private final int WINDOW_WIDTH = 600;
+    private final int WINDOW_HEIGHT = 600;
     private static final String DATABASE_FILE_NAME = "Beatmaps.db";
     private static final String SETTINGS_FILE_NAME = "settings.conf";
     private static final String SONGS_FOLDER_NAME = "Songs";
@@ -34,36 +32,31 @@ public class App extends Application{
     public static Stage primaryStage;
     public static Controller controller;
     public static File osuFolder = null;
-    public static ArrayList<ArrayList<SongPane>> songPaneCollectionList = new ArrayList<>();
+    public static List<List<SongPane>> songPaneCollectionList = new ArrayList<>();
     public static Parent root;
-    public static Properties applicationProps;
-    private static GlobalKeyListener globalKeyListener;
+    private GlobalKeyListener globalKeyListener;
+    private static SettingsManager settingsManager = new SettingsManager(settingsPath);
 
     @Override
-    public void start(Stage stage) throws Exception{
+    public void start(Stage stage) throws Exception {
+
         primaryStage = stage;
 
-        primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-            @Override
-            public void handle(WindowEvent event) {
-                globalKeyListener.cleaUp();
-                primaryStage.close();
-                System.exit(0);
-            }
+        primaryStage.setOnCloseRequest(event -> {
+            globalKeyListener.cleaUp();
+            primaryStage.close();
+            System.exit(0);
         });
 
         FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(getClass().getResource("sample.fxml"));
+        fxmlLoader.setLocation(getClass().getResource("primary_stage.fxml"));
 
         root = fxmlLoader.load();
         controller = fxmlLoader.getController();
 
+        Scene mainScene = new Scene(root, WINDOW_WIDTH, WINDOW_HEIGHT);
 
-        Scene scene = new Scene(root, 600, 600);
-
-
-        scene.addEventFilter(KeyEvent.KEY_PRESSED, (KeyEvent event) -> {
-
+        mainScene.addEventFilter(KeyEvent.KEY_PRESSED, (KeyEvent event) -> {
 
             if (event.getCode() == KeyCode.UP){
                 controller.volumeSlider.increment();
@@ -73,10 +66,11 @@ public class App extends Application{
                 controller.volumeSlider.decrement();
                 event.consume();
             }
+
             event.consume();
         });
 
-        scene.addEventFilter(KeyEvent.KEY_RELEASED, (KeyEvent event) -> {
+        mainScene.addEventFilter(KeyEvent.KEY_RELEASED, (KeyEvent event) -> {
             if ( event.getCode() == KeyCode.SPACE ){
                 root.requestFocus();
                 controller.TogglePause();
@@ -86,36 +80,25 @@ public class App extends Application{
         });
 
         primaryStage.setTitle(APP_TITLE);
-        primaryStage.setScene(scene);
+        primaryStage.setScene(mainScene);
         primaryStage.show();
 
-        if (Files.exists(settingsPath)) {
-            System.out.println("Settings File Exists\n");
-            applicationProps = new Properties();
-
-            FileInputStream in = new FileInputStream(settingsPath.toFile());
-            applicationProps.load(in);
-            in.close();
-        }else {
-            System.out.println("Settings File Does Not Exist\n");
-            applicationProps = new Properties();
-
-            //Default Properties
-            applicationProps.setProperty("osuFolderLocation", "null");
-            applicationProps.setProperty("showArtists", "true");
-
-            FileOutputStream out = new FileOutputStream(settingsPath.toFile());
-            applicationProps.store(out, "---No Comment---");
-            out.close();
+        if (settingsManager.settingsFileExists()) {
+            System.out.println("Settings File Exists");
+            settingsManager.loadSettings();
+        } else {
+            System.out.println("Settings File Does Not Exist");
+            settingsManager.setDefaultProperties();
+            settingsManager.saveSettings();
         }
 
-        String osuFolderLocProp = applicationProps.getProperty("osuFolderLocation");
+        String osuFolderLocProp = settingsManager.getProperty("osuFolderLocation");
 
-        if (!osuFolderLocProp.equals("null")){
+        if (!osuFolderLocProp.isEmpty()) {
             osuFolder = new File(osuFolderLocProp);
-            try{
+            try {
                 Begin();
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
@@ -132,10 +115,8 @@ public class App extends Application{
 
             Task<Void> task = new Task<Void>() {
                 @Override
-                protected Void call() throws Exception {
-
+                protected Void call() {
                     loadSongsAsync();
-
                     return null;
                 }
             };
@@ -166,7 +147,31 @@ public class App extends Application{
         List<BeatmapCollection> beatmapCollectionList = beatmapCollectionDecoder.getBeatmapCollectionList();
         HashMap<String, Beatmap> beatmapHashDict = databaseManager.buildBeatmapHashDict();
 
-        for (int i = 0; i < beatmapCollectionList.size(); i++){
+        addSongPanes(beatmapCollectionList, beatmapHashDict);
+
+        Platform.runLater(()-> {
+            controller.gridPane.setDisable(false);
+            controller.exportSongListMenuItem.setDisable(false);
+        });
+
+    }
+
+    public static void setOsuFolder(File osuFolderFile) throws IOException {
+        osuFolder = osuFolderFile;
+        settingsManager.setProperty("osuFolderLocation", osuFolder.getPath());
+        settingsManager.saveSettings();
+    }
+
+
+    //moved out of GlobalKeyListener
+    public static void togglePause(){
+        root.requestFocus();
+        controller.TogglePause();
+    }
+
+    private static void addSongPanes(List<BeatmapCollection> beatmapCollectionList, HashMap<String, Beatmap> beatmapHashDict)
+    {
+        for (int i = 0; i < beatmapCollectionList.size(); i++) {
 
             final int currentCol = i; // A final var is necessary for Platform.runLater threads.
 
@@ -180,12 +185,14 @@ public class App extends Application{
 
             // Add column title.
             Platform.runLater(
-                    ()-> controller.addToGrid(
-                            new Label(beatmapCollection.getName() + " (" + collectionSize + ")"),
-                            currentCol,
-                            0
-                    )
+                ()-> controller.addToGrid(
+                    new Label(beatmapCollection.getName() + " (" + collectionSize + ")"),
+                    currentCol,
+                    0
+                )
             );
+
+            List<SongPane> songPanes = new ArrayList<>();
 
             // Add rows
             int rowOffset = 0;
@@ -201,47 +208,26 @@ public class App extends Application{
                     SongData songData = beatmap.getSongData();
 
                     SongPane songPane = new SongPane(
-                            songData.artistName + " - " + songData.songName,
-                            hash,
-                            new File(beatmap.getFilePath()),
-                            new File(songData.filePath),
-                            null,
-                            beatmapCollection.getName()
+                        songData.artistName + " - " + songData.songName,
+                        hash,
+                        new File(beatmap.getFilePath()),
+                        new File(songData.filePath),
+                        null,
+                        beatmapCollection.getName()
                     );
 
+                    songPanes.add(songPane);
+
                     // Add song pane to row.
-                    Platform.runLater(
-                            () -> controller.addToGrid(songPane, currentCol, currentRow)
-                    );
+                    Platform.runLater(() -> controller.addToGrid(songPane, currentCol, currentRow));
 
                 } else {
                     rowOffset--; // Stay on same row until a valid hash is found.
                 }
             }
+
+            songPaneCollectionList.add(songPanes);
         }
-
-        Platform.runLater(
-            ()-> {
-                controller.gridPane.setDisable(false);
-                controller.exportSongListMenuItem.setDisable(false);
-            }
-        );
-
     }
 
-    public static void setOsuFolder(File osuFolderFile) throws IOException {
-        osuFolder = osuFolderFile;
-        applicationProps.setProperty("osuFolderLocation", osuFolder.getPath());
-
-        FileOutputStream out = new FileOutputStream(settingsPath.toFile());
-        applicationProps.store(out, "---No Comment---");
-        out.close();
-    }
-
-
-    //moved out of GlobalKeyListener
-    public static void togglePause(){
-        root.requestFocus();
-        controller.TogglePause();
-    }
 }

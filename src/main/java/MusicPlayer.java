@@ -8,6 +8,7 @@ import javafx.util.Duration;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class MusicPlayer {
 
@@ -17,9 +18,9 @@ public class MusicPlayer {
     //static SwingWorker worker;
     static double volume = 0.5;
 
-    private static ArrayList<SongPane> currentCollection;
+    private static List<SongPane> currentCollection;
 
-    public static ArrayList<SongPane> tempCollection = new ArrayList<>();//a copy of currentCollection so it can be edited
+    public static List<SongPane> tempCollection = new ArrayList<>();//a copy of currentCollection so it can be edited
     //public static ArrayList<SongPane> timeline = new ArrayList<>();
 
     private static int tempCollectionSize = 0;
@@ -96,63 +97,58 @@ public class MusicPlayer {
 
 
             //On end of media
-            player.setOnEndOfMedia(new Runnable() {
-                @Override
-                public void run() {
-                    //System.out.println();
-                    //System.out.println("Finished Song!");
+            //run()
+            player.setOnEndOfMedia(() -> {
+                //System.out.println();
+                //System.out.println("Finished Song!");
 
-                    if (songIndex < tempCollectionSize-1) {/////<<< Should i keep? was for the remove //Fix < dont mind this rn
-                        //increase index
-                        songIndex++;
+                if (songIndex < tempCollectionSize-1) {/////<<< Should i keep? was for the remove //Fix < dont mind this rn
+                    //increase index
+                    songIndex++;
 
-                        //System.out.println(songIndex);
+                    //System.out.println(songIndex);
 
-                        //get next song in list
-                        SongPane nextSong = tempCollection.get(songIndex);  //(int)(Math.random() * tempCollectionSize-1));
-                        //System.out.println("Now Playing: " + nextSong.name + "\n In Collection: " + tempCollection.get(0).collectionName);
+                    //get next song in list
+                    SongPane nextSong = tempCollection.get(songIndex);  //(int)(Math.random() * tempCollectionSize-1));
+                    //System.out.println("Now Playing: " + nextSong.name + "\n In Collection: " + tempCollection.get(0).collectionName);
 
-                        try {
-                            //play next song
-                            playMedia(nextSong);
+                    try {
+                        //play next song
+                        playMedia(nextSong);
 
-                            nextSong.label.setTextFill(Color.RED);
-                            pane.label.setTextFill(Color.DARKBLUE);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-
+                        nextSong.label.setTextFill(Color.RED);
+                        pane.label.setTextFill(Color.DARKBLUE);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
                     }
 
-                }//run()
+                }
+
             });
 
 
             //get start and stop times (ready == when it gets the data cause it is async)
-            player.setOnReady(new Runnable() {
-                @Override
-                public void run() {
-                    totalDuration = media.getDuration();
+            player.setOnReady(() -> {
+                totalDuration = media.getDuration();
 
-                    App.controller.refreshSeekBar(totalDuration);
+                App.controller.refreshSeekBar(totalDuration);
 
-                    player.setVolume(volume);
-                    player.play();
+                player.setVolume(volume);
+                player.play();
 
-                    isPaused = false;
-                    App.controller.pauseButton.setText("| |");
+                isPaused = false;
+                App.controller.pauseButton.setText("| |");
 
-                    Platform.runLater(new Runnable() {
-                        @Override
-                        public void run() {
-                            App.controller.songTitleLabel.setText("Playing: " + pane.label.getText());
-                        }
-                    });
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        App.controller.songTitleLabel.setText("Playing: " + pane.label.getText());
+                    }
+                });
 
-                    //System.out.println("current index: " + songIndex + " Duration: " + player.getTotalDuration().toSeconds());
+                //System.out.println("current index: " + songIndex + " Duration: " + player.getTotalDuration().toSeconds());
 
 
-                }
             });
 
 

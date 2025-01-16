@@ -24,6 +24,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Controller {
 
@@ -94,7 +95,7 @@ public class Controller {
                         bufferedWriter.newLine();
                         bufferedWriter.newLine();
 
-                        for (ArrayList<SongPane> songCollection: App.songPaneCollectionList){
+                        for (List<SongPane> songCollection: App.songPaneCollectionList){
                             for (SongPane song: songCollection){
                                 bufferedWriter.write(song.name);
                                 bufferedWriter.newLine();
@@ -185,12 +186,9 @@ public class Controller {
 
         showArtistsCheckMenu.setSelected(true);
 
-        scrollPane.focusedProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if (newValue){
-                    App.root.requestFocus();
-                }
+        scrollPane.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue){
+                App.root.requestFocus();
             }
         });
 
@@ -202,30 +200,21 @@ public class Controller {
         volumeSlider.setMax(50);
         volumeSlider.setMin(0);
 
-        volumeSlider.valueProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                MusicPlayer.setVolume( (((int)newValue.doubleValue()) * 1.0) / 100 );
-            }
+        volumeSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
+            MusicPlayer.setVolume( (((int)newValue.doubleValue()) * 1.0) / 100 );
         });
 
 
         seekBar.setValue(0);
 
-        seekBar.setOnMousePressed(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                if (MusicPlayer.isActive)
-                    MusicPlayer.player.seek(Duration.seconds(seekBar.getValue()));
-            }
+        seekBar.setOnMousePressed(event -> {
+            if (MusicPlayer.isActive)
+                MusicPlayer.player.seek(Duration.seconds(seekBar.getValue()));
         });
 
-        seekBar.setOnMouseDragged(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                if (MusicPlayer.isActive)
-                    MusicPlayer.player.seek(Duration.seconds(seekBar.getValue()));
-            }
+        seekBar.setOnMouseDragged(event -> {
+            if (MusicPlayer.isActive)
+                MusicPlayer.player.seek(Duration.seconds(seekBar.getValue()));
         });
 
 
