@@ -46,7 +46,6 @@
             <version>20241224</version>
         </dependency>
 
-
     </dependencies>
 
     <properties>
@@ -92,6 +91,9 @@
                             <mainClass>Main</mainClass>
                         </manifest>
                     </archive>
+                    <classesDirectory/>
+                    <outputDirectory/>
+                    <testClassesDirectory/>
                 </configuration>
             </plugin>
             <plugin>
