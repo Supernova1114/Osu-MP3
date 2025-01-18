@@ -1,6 +1,3 @@
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
@@ -8,7 +5,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
@@ -23,7 +19,6 @@ import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Controller {
@@ -141,12 +136,12 @@ public class Controller {
 
     @FXML
     public void NextTrack() throws InterruptedException {
-        MusicPlayer.nextSong();
+        MusicPlayerOld.nextSong();
     }
 
     @FXML
     public void PrevTrack() throws InterruptedException {
-        MusicPlayer.prevSong();
+        MusicPlayerOld.prevSong();
     }
 
     @FXML
@@ -155,11 +150,11 @@ public class Controller {
     }
 
     public void TogglePause() {
-        if (MusicPlayer.isActive) {
-            if (MusicPlayer.isPaused) {
-                MusicPlayer.play();
+        if (MusicPlayerOld.isActive) {
+            if (MusicPlayerOld.isPaused) {
+                MusicPlayerOld.play();
             } else {
-                MusicPlayer.pause();
+                MusicPlayerOld.pause();
             }
         }
     }
@@ -201,20 +196,20 @@ public class Controller {
         volumeSlider.setMin(0);
 
         volumeSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
-            MusicPlayer.setVolume( (((int)newValue.doubleValue()) * 1.0) / 100 );
+            MusicPlayerOld.setVolume( (((int)newValue.doubleValue()) * 1.0) / 100 );
         });
 
 
         seekBar.setValue(0);
 
         seekBar.setOnMousePressed(event -> {
-            if (MusicPlayer.isActive)
-                MusicPlayer.player.seek(Duration.seconds(seekBar.getValue()));
+            if (MusicPlayerOld.isActive)
+                MusicPlayerOld.player.seek(Duration.seconds(seekBar.getValue()));
         });
 
         seekBar.setOnMouseDragged(event -> {
-            if (MusicPlayer.isActive)
-                MusicPlayer.player.seek(Duration.seconds(seekBar.getValue()));
+            if (MusicPlayerOld.isActive)
+                MusicPlayerOld.player.seek(Duration.seconds(seekBar.getValue()));
         });
 
 

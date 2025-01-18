@@ -24,14 +24,14 @@ public class GlobalKeyListener {
                                 break;
                             case MEDIA_NEXT_TRACK:
                                 try {
-                                    MusicPlayer.nextSong();
+                                    MusicPlayerOld.nextSong();
                                 } catch (InterruptedException e) {
                                     e.printStackTrace();
                                 }
                                 break;
                             case MEDIA_PREV_TRACK:
                                 try {
-                                    MusicPlayer.prevSong();
+                                    MusicPlayerOld.prevSong();
                                 } catch (InterruptedException e) {
                                     e.printStackTrace();
                                 }

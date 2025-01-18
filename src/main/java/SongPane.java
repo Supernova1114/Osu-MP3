@@ -70,8 +70,8 @@ public class SongPane extends Pane {
             if (!isDragged){
                 ((Label) getChildren().get(0)).setTextFill(Color.RED);
                 try {
-                    MusicPlayer.playMedia(this);
-                    MusicPlayer.insertSong(this);
+                    MusicPlayerOld.playMedia(this);
+                    MusicPlayerOld.insertSong(this);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
