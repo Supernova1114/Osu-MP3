@@ -21,4 +21,18 @@ public class MusicQueueManager {
         songQueue.set(index, songData);
     }
 
+    public void nextSong() {
+        if (currentIndex + 1 < songQueue.size()) {
+            currentIndex++;
+            // TODO - add play next song
+        }
+    }
+
+    public void prevSong() {
+        if (currentIndex > 0) {
+            currentIndex--;
+            // TODO - add play prev song
+        }
+    }
+
 }

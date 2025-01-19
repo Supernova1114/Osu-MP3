@@ -9,6 +9,8 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
+
+
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -164,7 +166,7 @@ public class App extends Application {
 
 
     //moved out of GlobalKeyListener
-    public static void togglePause(){
+    public static void togglePause() {
         root.requestFocus();
         controller.TogglePause();
     }
