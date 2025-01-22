@@ -147,13 +147,13 @@ public class DatabaseManager {
      * rebuilt in that case.
      * @return
      */
-    public HashMap<String, Beatmap> buildBeatmapHashDict() {
+    public HashMap<String, Beatmap2> buildBeatmapHashDict() {
 
         // Key = MD5 hash, Value = Beatmap object.
-        HashMap<String, Beatmap> hashMap = new HashMap<>();
+        HashMap<String, Beatmap2> hashMap = new HashMap<>();
 
         for (BeatmapArchive archive : beatmapArchiveList) {
-            for (Beatmap beatmap : archive.getBeatmapList()) {
+            for (Beatmap2 beatmap : archive.getBeatmapList()) {
                 hashMap.put(beatmap.getMD5Hash(), beatmap);
             }
         }

@@ -7,9 +7,12 @@ SongMapHash.db
 target
 test.db
 
-# New Gradle Stuff
+/.kotlin
+
+# Build stuffs
 build/
 .gradle/
+
 
 # User-specific stuff
 .idea/**/workspace.xml

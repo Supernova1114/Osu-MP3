@@ -147,7 +147,7 @@ public class App extends Application {
         beatmapCollectionDecoder.readCollections();
 
         List<BeatmapCollection> beatmapCollectionList = beatmapCollectionDecoder.getBeatmapCollectionList();
-        HashMap<String, Beatmap> beatmapHashDict = databaseManager.buildBeatmapHashDict();
+        HashMap<String, Beatmap2> beatmapHashDict = databaseManager.buildBeatmapHashDict();
 
         addSongPanes(beatmapCollectionList, beatmapHashDict);
 
@@ -171,7 +171,7 @@ public class App extends Application {
         controller.TogglePause();
     }
 
-    private static void addSongPanes(List<BeatmapCollection> beatmapCollectionList, HashMap<String, Beatmap> beatmapHashDict)
+    private static void addSongPanes(List<BeatmapCollection> beatmapCollectionList, HashMap<String, Beatmap2> beatmapHashDict)
     {
         for (int i = 0; i < beatmapCollectionList.size(); i++) {
 
@@ -206,7 +206,7 @@ public class App extends Application {
                 boolean isValidHash = beatmapHashDict.containsKey(hash);
 
                 if (isValidHash) {
-                    Beatmap beatmap = beatmapHashDict.get(hash);
+                    Beatmap2 beatmap = beatmapHashDict.get(hash);
                     SongData songData = beatmap.getSongData();
 
                     SongPane songPane = new SongPane(
