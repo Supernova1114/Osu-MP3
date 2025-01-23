@@ -1,4 +1,4 @@
-package realm_stuff
+package realm_database
 
 import io.realm.kotlin.Realm
 import io.realm.kotlin.RealmConfiguration
@@ -6,7 +6,6 @@ import io.realm.kotlin.ext.query
 import io.realm.kotlin.query.RealmResults
 import java.nio.file.Path
 import kotlin.io.path.name
-import java.io.File as JavaFile
 
 // References:
 // https://github.com/kabiiQ/BeatmapExporter/blob/main/BeatmapExporterCore/Exporters/Lazer/LazerDB/LazerDatabase.cs
@@ -50,29 +49,29 @@ class RealmReadTester(val realmFilePath: Path, val osuFilesPath: Path) {
 
     fun getBeatmapCollections() {
         val beatmapCollections: RealmResults<BeatmapCollection>? = realmDB?.query<BeatmapCollection>()?.find()
-        
+
     }
 
     fun testRead() {
 
-        val beatmapSets: RealmResults<BeatmapSet> = realmDB.query<BeatmapSet>().find()
-
-        var beatmapSet: BeatmapSet = beatmapSets.first()
-        var realmNamedFileUsage: RealmNamedFileUsage? = beatmapSet.Files?.first()
-
-        var fileHash: String? = realmNamedFileUsage?.File?.Hash
-
-        var filePath: Path = Path.of(
-            osuFilesPath,
-            fileHash?.get(0).toString(),
-            fileHash?.substring(0..1),
-            fileHash
-        )
-
-        println(filePath.toString())
-        println(realmNamedFileUsage?.Filename)
-        println(beatmapSet.Beatmaps?.first()?.Metadata?.Title)
-        println(beatmapSet.Beatmaps?.first()?.Metadata?.Artist)
+//        val beatmapSets: RealmResults<BeatmapSet> = realmDB.query<BeatmapSet>().find()
+//
+//        var beatmapSet: BeatmapSet = beatmapSets.first()
+//        var realmNamedFileUsage: RealmNamedFileUsage? = beatmapSet.Files?.first()
+//
+//        var fileHash: String? = realmNamedFileUsage?.File?.Hash
+//
+//        var filePath: Path = Path.of(
+//            osuFilesPath,
+//            fileHash?.get(0).toString(),
+//            fileHash?.substring(0..1),
+//            fileHash
+//        )
+//
+//        println(filePath.toString())
+//        println(realmNamedFileUsage?.Filename)
+//        println(beatmapSet.Beatmaps?.first()?.Metadata?.Title)
+//        println(beatmapSet.Beatmaps?.first()?.Metadata?.Artist)
 
     }
 

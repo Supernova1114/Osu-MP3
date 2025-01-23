@@ -1,3 +1,5 @@
+package osu_mp3;
+
 import java.io.DataInputStream;
 import java.io.EOFException;
 import java.io.IOException;

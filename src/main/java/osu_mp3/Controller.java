@@ -1,3 +1,5 @@
+package osu_mp3;
+
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;

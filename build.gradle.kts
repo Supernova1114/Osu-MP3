@@ -15,6 +15,14 @@ plugins {
     //kotlin("jvm") version "2.1.0"
 }
 
+sourceSets {
+    main {
+        resources {
+            srcDirs( "src/main/resources")
+        }
+    }
+}
+
 kotlin {
     jvmToolchain(17)
 }
@@ -62,7 +70,7 @@ tasks.withType<Jar> {
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 
     manifest {
-        attributes["Main-Class"] = "Main"
+        attributes["Main-Class"] = "osu_mp3.Main"
     }
 
     from(configurations.compileClasspath.get().map { if (it.isDirectory()) it else zipTree(it) })

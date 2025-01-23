@@ -1,3 +1,5 @@
+package osu_mp3;
+
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;

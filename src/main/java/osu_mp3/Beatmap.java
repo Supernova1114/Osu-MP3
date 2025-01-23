@@ -1,3 +1,5 @@
+package osu_mp3;
+
 import org.json.JSONObject;
 
 import java.io.*;

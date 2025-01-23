@@ -1,3 +1,5 @@
+package osu_mp3;
+
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
@@ -50,7 +52,9 @@ public class App extends Application {
         });
 
         FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(getClass().getResource("primary_stage.fxml"));
+
+        fxmlLoader.setLocation(getClass().getResource("/primary_stage.fxml"));
+        System.out.println(fxmlLoader.getLocation());
 
         root = fxmlLoader.load();
         controller = fxmlLoader.getController();
