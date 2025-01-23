@@ -5,77 +5,77 @@ import io.realm.kotlin.RealmConfiguration
 import io.realm.kotlin.ext.query
 import io.realm.kotlin.query.RealmResults
 import java.nio.file.Path
+import kotlin.io.path.name
 import java.io.File as JavaFile
 
 // References:
 // https://github.com/kabiiQ/BeatmapExporter/blob/main/BeatmapExporterCore/Exporters/Lazer/LazerDB/LazerDatabase.cs
 
-class RealmReadTester {
+class RealmReadTester(val realmFilePath: Path, val osuFilesPath: Path) {
 
-    companion object {
-        @JvmStatic
-        fun testRead() {
+    object Constants {
+        const val REALM_DB_VERSION: Long = 46
+    }
 
-            val realmFile = JavaFile("D:\\Program Files\\osu!-lazer\\client.realm")
-            val osuFilesPath: String = "D:\\Program Files\\osu!-lazer\\files"
+    var realmDB: Realm? = null
 
-            val config: RealmConfiguration = RealmConfiguration.Builder(
-                schema = setOf(
-                    BeatmapSet::class,
-                    Beatmap::class,
-                    BeatmapMetadata::class,
-                    Ruleset::class,
-                    BeatmapDifficulty::class,
-                    BeatmapUserSettings::class,
-                    RealmUser::class,
-                    RealmNamedFileUsage::class,
-                    File::class,
-                    BeatmapCollection::class,
-                )
+
+    fun openDatabase() {
+
+        val config: RealmConfiguration = RealmConfiguration.Builder(
+            schema = setOf(
+                BeatmapSet::class,
+                Beatmap::class,
+                BeatmapMetadata::class,
+                Ruleset::class,
+                BeatmapDifficulty::class,
+                BeatmapUserSettings::class,
+                RealmUser::class,
+                RealmNamedFileUsage::class,
+                File::class,
+                BeatmapCollection::class
             )
-            .name(realmFile.name)
-            .directory(realmFile.parentFile.path)
-            .schemaVersion(46)
-            .build()
+        )
+        .name(realmFilePath.name)
+        .directory(realmFilePath.parent.toString())
+        .schemaVersion(Constants.REALM_DB_VERSION)
+        .build()
 
-            val realm = Realm.open(config)
+        realmDB = Realm.open(config)
+    }
 
+    fun closeDatabase() {
+        realmDB?.close()
+    }
 
-            // Set this configuration as the default
-            //Realm.setDefaultConfiguration(config);
+    fun getBeatmapCollections() {
+        val beatmapCollections: RealmResults<BeatmapCollection>? = realmDB?.query<BeatmapCollection>()?.find()
+        
+    }
 
-            val beatmapSets: RealmResults<BeatmapSet> = realm.query<BeatmapSet>().find()
+    fun testRead() {
 
-            var beatmapSet: BeatmapSet = beatmapSets.first()
-            var realmNamedFileUsage: RealmNamedFileUsage? = beatmapSet.Files?.first()
+        val beatmapSets: RealmResults<BeatmapSet> = realmDB.query<BeatmapSet>().find()
 
-            var fileHash: String? = realmNamedFileUsage?.File?.Hash
+        var beatmapSet: BeatmapSet = beatmapSets.first()
+        var realmNamedFileUsage: RealmNamedFileUsage? = beatmapSet.Files?.first()
 
-            var filePath: Path = Path.of(
-                osuFilesPath,
-                fileHash?.get(0).toString(),
-                fileHash?.substring(0..1),
-                fileHash
-            )
+        var fileHash: String? = realmNamedFileUsage?.File?.Hash
 
-            println(filePath.toString())
-            println(realmNamedFileUsage?.Filename)
+        var filePath: Path = Path.of(
+            osuFilesPath,
+            fileHash?.get(0).toString(),
+            fileHash?.substring(0..1),
+            fileHash
+        )
 
-//            var count: Int = 0
-//
-//            if (beatmapSets.isNotEmpty()) {
-//                for (beatmapSet in beatmapSets) {
-//                    for (beatmap in beatmapSet.Beatmaps!!) {
-//                        println(beatmap.Metadata?.AudioFile)
-//                        count++
-//                    }
-//                }
-//            }
-//
-//            println("Beatmap Count: " + count)
+        println(filePath.toString())
+        println(realmNamedFileUsage?.Filename)
+        println(beatmapSet.Beatmaps?.first()?.Metadata?.Title)
+        println(beatmapSet.Beatmaps?.first()?.Metadata?.Artist)
 
-            realm.close()
-        }
     }
 
 }
+
+

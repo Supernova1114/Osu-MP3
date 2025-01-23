@@ -4,10 +4,8 @@ import io.realm.kotlin.ext.realmListOf
 import io.realm.kotlin.types.*
 import io.realm.kotlin.types.annotations.PrimaryKey
 
-// https://github.com/yadPe/osu-lazer-db-reader/blob/master/src/shapes.ts
+// References:
 // https://github.com/ppy/osu/blob/master/osu.Game/Beatmaps/BeatmapInfo.cs#L16
-
-
 
 class Beatmap : RealmObject {
     @PrimaryKey
