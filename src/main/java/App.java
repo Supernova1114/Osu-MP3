@@ -10,7 +10,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 
-
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -147,7 +146,7 @@ public class App extends Application {
         beatmapCollectionDecoder.readCollections();
 
         List<BeatmapCollection> beatmapCollectionList = beatmapCollectionDecoder.getBeatmapCollectionList();
-        HashMap<String, Beatmap2> beatmapHashDict = databaseManager.buildBeatmapHashDict();
+        HashMap<String, Beatmap> beatmapHashDict = databaseManager.buildBeatmapHashDict();
 
         addSongPanes(beatmapCollectionList, beatmapHashDict);
 
@@ -171,7 +170,7 @@ public class App extends Application {
         controller.TogglePause();
     }
 
-    private static void addSongPanes(List<BeatmapCollection> beatmapCollectionList, HashMap<String, Beatmap2> beatmapHashDict)
+    private static void addSongPanes(List<BeatmapCollection> beatmapCollectionList, HashMap<String, Beatmap> beatmapHashDict)
     {
         for (int i = 0; i < beatmapCollectionList.size(); i++) {
 
@@ -206,7 +205,7 @@ public class App extends Application {
                 boolean isValidHash = beatmapHashDict.containsKey(hash);
 
                 if (isValidHash) {
-                    Beatmap2 beatmap = beatmapHashDict.get(hash);
+                    Beatmap beatmap = beatmapHashDict.get(hash);
                     SongData songData = beatmap.getSongData();
 
                     SongPane songPane = new SongPane(

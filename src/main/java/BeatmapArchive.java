@@ -10,10 +10,10 @@ public class BeatmapArchive {
 
     private String folderPath;
     private long folderLastModified;
-    private List<Beatmap2> beatmapList;
+    private List<Beatmap> beatmapList;
 
 
-    public BeatmapArchive(String folderPath, long folderLastModified, List<Beatmap2> beatmapList) {
+    public BeatmapArchive(String folderPath, long folderLastModified, List<Beatmap> beatmapList) {
         this.folderPath = folderPath;
         this.folderLastModified = folderLastModified;
         this.beatmapList = beatmapList;
@@ -27,7 +27,7 @@ public class BeatmapArchive {
         return folderLastModified;
     }
 
-    public List<Beatmap2> getBeatmapList() {
+    public List<Beatmap> getBeatmapList() {
         return beatmapList;
     }
 
@@ -36,7 +36,7 @@ public class BeatmapArchive {
         JSONArray beatmapListJSON = new JSONArray();
         JSONObject beatmapArchiveJSON = new JSONObject();
 
-        for (Beatmap2 beatmap : beatmapList) {
+        for (Beatmap beatmap : beatmapList) {
             beatmapListJSON.put(beatmap.serializeBeatmap());
         }
 
@@ -49,12 +49,12 @@ public class BeatmapArchive {
 
     public static BeatmapArchive deserializeArchive(JSONObject archiveObj) {
 
-        List<Beatmap2> beatmapList = new ArrayList<>();
+        List<Beatmap> beatmapList = new ArrayList<>();
 
         JSONArray beatmapListJSON = archiveObj.getJSONArray("beatmapList");
 
         for (int i = 0; i < beatmapListJSON.length(); i++) {
-            beatmapList.add(Beatmap2.deserializeBeatmap(beatmapListJSON.getJSONObject(i)));
+            beatmapList.add(Beatmap.deserializeBeatmap(beatmapListJSON.getJSONObject(i)));
         }
 
         return new BeatmapArchive(
@@ -66,11 +66,11 @@ public class BeatmapArchive {
 
     public static BeatmapArchive parseBeatmapArchive(File archiveFile) {
 
-        List<Beatmap2> beatmapList = new ArrayList<>();
+        List<Beatmap> beatmapList = new ArrayList<>();
 
         File[] beatmapFileList = archiveFile.listFiles(getFilenameFilter(".osu"));
         for (File beatmapFile : beatmapFileList) {
-            Beatmap2 beatmap = Beatmap2.parseBeatmapFile(beatmapFile);
+            Beatmap beatmap = Beatmap.parseBeatmapFile(beatmapFile);
             beatmapList.add(beatmap);
         }
 

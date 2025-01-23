@@ -3,7 +3,7 @@ import org.json.JSONObject;
 import java.io.*;
 import java.security.NoSuchAlgorithmException;
 
-public class Beatmap2 {
+public class Beatmap {
 
     private String filePath;
 
@@ -14,7 +14,7 @@ public class Beatmap2 {
     private SongData songData;
 
 
-    public Beatmap2(String filePath, long fileLastModified, String MD5Hash, SongData songData) {
+    public Beatmap(String filePath, long fileLastModified, String MD5Hash, SongData songData) {
         this.filePath = filePath;
         this.fileLastModified = fileLastModified;
         this.MD5Hash = MD5Hash;
@@ -65,7 +65,7 @@ public class Beatmap2 {
         return beatmapObj;
     }
 
-    public static Beatmap2 deserializeBeatmap(JSONObject beatmapObj) {
+    public static Beatmap deserializeBeatmap(JSONObject beatmapObj) {
 
         JSONObject songDataObj = beatmapObj.getJSONObject("songData");
 
@@ -74,7 +74,7 @@ public class Beatmap2 {
         songData.songName = songDataObj.getString("songName");
         songData.artistName = songDataObj.getString("artistName");
 
-        Beatmap2 beatmap = new Beatmap2(
+        Beatmap beatmap = new Beatmap(
                 beatmapObj.getString("filePath"),
                 beatmapObj.getLong("fileLastModified"),
                 beatmapObj.getString("hash"),
@@ -84,7 +84,7 @@ public class Beatmap2 {
         return beatmap;
     }
 
-    public static Beatmap2 parseBeatmapFile(File beatmapFile) {
+    public static Beatmap parseBeatmapFile(File beatmapFile) {
 
         SongData songData = new SongData();
 
@@ -125,7 +125,7 @@ public class Beatmap2 {
         }
 
         // TODO - properly handle failed parsing / incomplete song data???
-        return new Beatmap2(beatmapFile.getPath(), beatmapFile.lastModified(), hash, songData);
+        return new Beatmap(beatmapFile.getPath(), beatmapFile.lastModified(), hash, songData);
     }
 
     @Override
