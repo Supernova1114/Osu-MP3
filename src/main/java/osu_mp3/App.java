@@ -136,7 +136,7 @@ public class App extends Application {
         Path songsFolderPath = Path.of(osuFolder.getPath(), SONGS_FOLDER_NAME);
         Path collectionsFilePath = Path.of(osuFolder.getPath(), COLLECTIONS_FILE_NAME);
 
-        DatabaseManager databaseManager = new DatabaseManager(songsFolderPath, databaseFilePath);
+        DatabaseManager databaseManager = new DatabaseManager(songsFolderPath, collectionsFilePath, databaseFilePath);
 
         if (Files.exists(databaseFilePath)) {
             databaseManager.readDatabase();
@@ -146,13 +146,8 @@ public class App extends Application {
             databaseManager.readDatabase();
         }
 
-        BeatmapCollectionDecoder beatmapCollectionDecoder = new BeatmapCollectionDecoder(collectionsFilePath);
-        beatmapCollectionDecoder.readCollections();
-
-        List<BeatmapCollection> beatmapCollectionList = beatmapCollectionDecoder.getBeatmapCollectionList();
-        HashMap<String, Beatmap> beatmapHashDict = databaseManager.buildBeatmapHashDict();
-
-        addSongPanes(beatmapCollectionList, beatmapHashDict);
+        // TODO - stuffs here
+        //addSongPanes(beatmapCollectionList, beatmapHashDict);
 
         Platform.runLater(()-> {
             controller.gridPane.setDisable(false);
@@ -205,7 +200,7 @@ public class App extends Application {
 
                 final int currentRow = j + rowOffset + 1; // A final var is necessary for Platform.runLater threads.
 
-                String hash = beatmapCollection.getHash(j);
+                String hash = "temp";
                 boolean isValidHash = beatmapHashDict.containsKey(hash);
 
                 if (isValidHash) {

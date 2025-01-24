@@ -10,14 +10,14 @@ import java.util.List;
 public class BeatmapCollectionDecoder {
 
     private Path collectionFilePath;
-    private List<BeatmapCollection> beatmapCollectionList = new ArrayList<>();
-
 
     public BeatmapCollectionDecoder(Path collectionFilePath) {
         this.collectionFilePath = collectionFilePath;
     }
 
-    public void readCollections() {
+    public List<BeatmapCollection> readCollections() {
+
+        List<BeatmapCollection> beatmapCollectionList = new ArrayList<>();
 
         try (BinaryReader binaryReader = new BinaryReader(new FileInputStream(collectionFilePath.toFile()))) {
 
@@ -44,9 +44,8 @@ public class BeatmapCollectionDecoder {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
 
-    public List<BeatmapCollection> getBeatmapCollectionList() {
         return beatmapCollectionList;
     }
+
 }

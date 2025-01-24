@@ -8,4 +8,11 @@ public class SongData {
 
     public SongData() {}
 
+    public String toString() {
+        return "SongData:\n" +
+                "title = " + songName + "\n" +
+                "artist = " + artistName + "\n" +
+                "filePath = " + filePath + "\n";
+    }
+
 }

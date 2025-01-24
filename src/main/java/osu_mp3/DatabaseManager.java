@@ -13,10 +13,12 @@ public class DatabaseManager {
     private long songsFolderLastModified;
     private Path databaseFilePath;
     private Path songsFolderPath;
+    private Path collectionsFilePath;
 
 
-    public DatabaseManager(Path songsFolderPath, Path databaseFilePath) {
+    public DatabaseManager(Path songsFolderPath, Path collectionsFilePath, Path databaseFilePath) {
         this.songsFolderPath = songsFolderPath;
+        this.collectionsFilePath = collectionsFilePath;
         this.databaseFilePath = databaseFilePath;
     }
 
@@ -149,7 +151,7 @@ public class DatabaseManager {
      * rebuilt in that case.
      * @return
      */
-    public HashMap<String, Beatmap> buildBeatmapHashDict() {
+    private HashMap<String, Beatmap> getBeatmapHashDict() {
 
         // Key = MD5 hash, Value = Beatmap object.
         HashMap<String, Beatmap> hashMap = new HashMap<>();
@@ -162,4 +164,35 @@ public class DatabaseManager {
 
         return hashMap;
     }
+
+    public List<SongCollection> getSongCollections() {
+
+        HashMap<String, Beatmap> beatmapHashDict = getBeatmapHashDict();
+
+        BeatmapCollectionDecoder beatmapCollectionDecoder = new BeatmapCollectionDecoder(collectionsFilePath);
+        List<BeatmapCollection> beatmapCollectionList = beatmapCollectionDecoder.readCollections();
+
+        List<SongCollection> songCollectionList = new ArrayList<>();
+
+        for (BeatmapCollection beatmapCollection : beatmapCollectionList) {
+
+            List<SongData> songDataList = new ArrayList<>();
+
+            for (String hash : beatmapCollection.getHashList()) {
+                // Check to see if hash actually exists within list of available beatmaps.
+                // This is done as it is possible for Osu! to leave hash references of deleted beatmaps within
+                // the collections.db file.
+                if (beatmapHashDict.containsKey(hash)) {
+                    songDataList.add(beatmapHashDict.get(hash).getSongData());
+                }
+            }
+
+            songCollectionList.add(new SongCollection(beatmapCollection.getName(), songDataList));
+        }
+
+        return songCollectionList;
+    }
+
+
+
 }

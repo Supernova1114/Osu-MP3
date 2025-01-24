@@ -28,7 +28,7 @@ public class BeatmapCollection {
         return hashList.size();
     }
 
-    public String getHash(int index) {
-        return hashList.get(index);
+    public List<String> getHashList() {
+        return hashList;
     }
 }
