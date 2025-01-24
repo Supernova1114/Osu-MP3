@@ -48,8 +48,42 @@ class RealmReadTester(val realmFilePath: Path, val osuFilesPath: Path) {
     }
 
     fun getBeatmapCollections() {
-        val beatmapCollections: RealmResults<BeatmapCollection>? = realmDB?.query<BeatmapCollection>()?.find()
+        val collName: String = "test"
+        val beatmapCollections: RealmResults<BeatmapCollection>? = realmDB?.query<BeatmapCollection>("Name = $0", collName)?.find()
 
+        if (beatmapCollections == null) {
+            return
+        }
+
+        val hash: String? = beatmapCollections.first().BeatmapMD5Hashes[3]
+
+        if (hash == null) {
+            return
+        }
+
+        val beatmap: Beatmap? = realmDB?.query<Beatmap>("MD5Hash = $0", hash)?.find()?.first()
+
+        if (beatmap == null) {
+            return
+        }
+
+
+        val musicFileName: String? = beatmap.Metadata?.AudioFile
+
+        val set: BeatmapSet? = beatmap.BeatmapSet
+
+        val musicFileHash: String? = set?.Files?.find { it.Filename == musicFileName }?.File?.Hash
+
+        var filePath: Path = Path.of(
+            osuFilesPath.toString(),
+            musicFileHash?.get(0).toString(),
+            musicFileHash?.substring(0..1),
+            musicFileHash
+        )
+
+        println(filePath.toString())
+        println(beatmap.Metadata?.Title)
+        println(beatmap.Metadata?.Artist)
     }
 
     fun testRead() {
@@ -61,17 +95,7 @@ class RealmReadTester(val realmFilePath: Path, val osuFilesPath: Path) {
 //
 //        var fileHash: String? = realmNamedFileUsage?.File?.Hash
 //
-//        var filePath: Path = Path.of(
-//            osuFilesPath,
-//            fileHash?.get(0).toString(),
-//            fileHash?.substring(0..1),
-//            fileHash
-//        )
 //
-//        println(filePath.toString())
-//        println(realmNamedFileUsage?.Filename)
-//        println(beatmapSet.Beatmaps?.first()?.Metadata?.Title)
-//        println(beatmapSet.Beatmaps?.first()?.Metadata?.Artist)
 
     }
 
