@@ -9,10 +9,7 @@ plugins {
     `maven-publish`
     id("org.openjfx.javafxplugin") version "0.1.0"
     id("io.realm.kotlin") version "1.16.0"
-//    id("org.jetbrains.kotlinx.atomicfu") version "0.27.0"
     kotlin("jvm") version "1.9.24"
-
-    //kotlin("jvm") version "2.1.0"
 }
 
 sourceSets {
@@ -48,21 +45,13 @@ dependencies {
     implementation("io.realm.kotlin:library-base:1.16.0")
     implementation("org.jetbrains.kotlin:kotlin-reflect:1.9.24")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.0")
-//    implementation("org.openjfx:javafx-fxml:23.0.1")
-//    implementation("org.openjfx:javafx-graphics:23.0.1")
-//    implementation("org.openjfx:javafx-media:23.0.1")
 
-    implementation("org.openjfx:javafx-fxml:17.0.8")
-    implementation("org.openjfx:javafx-graphics:17.0.8")
-    implementation("org.openjfx:javafx-media:17.0.8")
+    // Java FX 22 requires minimum JDK 17
+    implementation("org.openjfx:javafx-fxml:22.0.2")
+    implementation("org.openjfx:javafx-graphics:22.0.2")
+    implementation("org.openjfx:javafx-media:22.0.2")
 
     implementation("org.jetbrains.kotlinx:atomicfu:0.24.0")
-
-    //id("org.jetbrains.kotlinx.atomicfu") version "0.27.0"
-    //implementation("org.jetbrains.kotlinx.atomicfu:0.27.0")
-
-
-
 }
 
 tasks.withType<Jar> {

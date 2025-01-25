@@ -8,6 +8,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -39,8 +40,7 @@ public class MusicPlayerOld {
 
     public static void playMedia(SongPane pane) throws InterruptedException {
 
-        //gets media file
-        Media media = new Media(pane.musicFile.toURI().toString());
+        Media media = new Media(Path.of(pane.songData.filePath).toUri().toString());
 
         //Makes shuffled playlist when new playlist is clicked.
         if (currentCollection == null || !currentCollection.get(0).collectionName.equals(pane.collectionName)) {

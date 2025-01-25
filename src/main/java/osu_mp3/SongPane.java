@@ -1,73 +1,24 @@
 package osu_mp3;
 
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
-import java.io.File;
-import java.io.FilenameFilter;
-
 public class SongPane extends Pane {
 
-    //Data
-    public String name;
-    public String md5Hash;
+    public SongData songData;
     public String collectionName;
-    public File file;
-    public File musicFile;
-    public File imageFile;
     public Label label;
-    public Image image;
     boolean isDragged = false;
 
 
-    //temp
-    //private boolean hasPlayed = false;
+    public SongPane(SongData songData, String collectionName) {
 
-    //a Filter to find imageFile;
-    FilenameFilter filenameFilter = new FilenameFilter() {
-        @Override
-        public boolean accept(File dir, String name) {
-            return name.endsWith(".jpg") || name.endsWith(".jpeg") || name.endsWith(".png");
-        }
-    };
-
-
-
-    public SongPane(String name, String md5Hash, File file, File musicFile, File imageFile, String collectionName) {
-        this.name = name;
-        this.md5Hash = md5Hash;
-        this.file = file;
-        this.musicFile = musicFile;
-        this.imageFile = imageFile;
-        //LiSA - Rising Hope (TV Size) (xChippy) [Hope]
-        //int sub = name.indexOf(" - ");
-
-        label = new Label(name);
+        this.songData = songData;
         this.collectionName = collectionName;
 
-        /*System.out.println(name);
-        System.out.println(file);*/
+        getChildren().add(label = new Label(songData.artistName + " - " + songData.songName));
 
-
-        getChildren().add(label);
-
-
-        //System.out.println();
-
-
-        /*//Find image file
-        File[] imagefileList = file.getParentFile().listFiles(filenameFilter);//.png .jpg .jpeg for image files
-        System.out.println();
-        System.out.println();
-        for (File imageFile: imagefileList){
-            System.out.println(imageFile.getName());
-        }*/
-
-
-
-        //try to play music :)))
         setOnMouseClicked(event -> {
             if (!isDragged){
                 ((Label) getChildren().get(0)).setTextFill(Color.RED);
@@ -92,9 +43,8 @@ public class SongPane extends Pane {
 
     }
 
-
-    public String toString(){
-        return "SongPane: \n" + name + "\n" + md5Hash + "\n" + file + "\n" + musicFile;
+    public String toString() {
+        return songData.toString();
     }
 
 

@@ -94,7 +94,7 @@ public class Controller {
 
                         for (List<SongPane> songCollection: App.songPaneCollectionList){
                             for (SongPane song: songCollection){
-                                bufferedWriter.write(song.name);
+                                bufferedWriter.write(song.songData.songName);
                                 bufferedWriter.newLine();
                             }
                         }

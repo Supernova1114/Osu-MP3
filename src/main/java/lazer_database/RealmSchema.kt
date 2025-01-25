@@ -1,4 +1,4 @@
-package realm_database
+package lazer_database
 
 import io.realm.kotlin.ext.realmListOf
 import io.realm.kotlin.types.*

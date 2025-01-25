@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import lazer_database.RealmDatabaseReader;
 
 
 import java.io.*;
@@ -136,24 +137,59 @@ public class App extends Application {
         Path songsFolderPath = Path.of(osuFolder.getPath(), SONGS_FOLDER_NAME);
         Path collectionsFilePath = Path.of(osuFolder.getPath(), COLLECTIONS_FILE_NAME);
 
-        DatabaseManager databaseManager = new DatabaseManager(songsFolderPath, collectionsFilePath, databaseFilePath);
+//        DatabaseManager databaseManager = new DatabaseManager(songsFolderPath, collectionsFilePath, databaseFilePath);
+//
+//        if (Files.exists(databaseFilePath)) {
+//            databaseManager.readDatabase();
+//            databaseManager.syncDatabase();
+//        } else {
+//            databaseManager.createDatabase();
+//            databaseManager.readDatabase();
+//        }
 
-        if (Files.exists(databaseFilePath)) {
-            databaseManager.readDatabase();
-            databaseManager.syncDatabase();
-        } else {
-            databaseManager.createDatabase();
-            databaseManager.readDatabase();
-        }
+        List<SongCollection> songCollectionList = loadSongCollections("lazer");
 
         // TODO - stuffs here
-        //addSongPanes(beatmapCollectionList, beatmapHashDict);
+        addSongPanes(songCollectionList);
 
         Platform.runLater(()-> {
             controller.gridPane.setDisable(false);
             controller.exportSongListMenuItem.setDisable(false);
         });
 
+    }
+
+    public static List<SongCollection> loadSongCollections(String version) {
+
+        if (version.equals("lazer")) {
+
+            System.out.println("Reading Osu! Lazer Database.");
+
+            Path realmFilePath = Path.of("D:\\Program Files\\osu!-lazer\\client.realm");
+            Path osuFilesPath = Path.of("D:\\Program Files\\osu!-lazer\\files");
+
+            RealmDatabaseReader realmDatabaseReader = new RealmDatabaseReader(realmFilePath, osuFilesPath);
+            List<SongCollection> songCollectionList = realmDatabaseReader.getSongCollections();
+            realmDatabaseReader.closeDatabase();
+
+            return songCollectionList;
+        } // if
+        else if (version.equals("stable")) {
+
+            System.out.println("Reading Osu! Stable Database.");
+
+            Path songsFolderPath = Path.of("D:\\Program Files\\osu!\\Songs");
+            Path collectionsFilePath = Path.of("D:\\Program Files\\osu!\\collection.db");
+            Path databaseFilePath = Path.of(System.getProperty("user.dir"), "Beatmaps.db");
+
+            DatabaseManager databaseManager = new DatabaseManager(songsFolderPath, collectionsFilePath, databaseFilePath);
+            databaseManager.readDatabase();
+            databaseManager.syncDatabase();
+
+            return databaseManager.getSongCollections();
+        }
+
+        return Collections.emptyList();
     }
 
     public static void setOsuFolder(File osuFolderFile) throws IOException {
@@ -169,15 +205,15 @@ public class App extends Application {
         controller.TogglePause();
     }
 
-    private static void addSongPanes(List<BeatmapCollection> beatmapCollectionList, HashMap<String, Beatmap> beatmapHashDict)
+    private static void addSongPanes(List<SongCollection> songCollectionList)
     {
-        for (int i = 0; i < beatmapCollectionList.size(); i++) {
+        for (int i = 0; i < songCollectionList.size(); i++) {
 
             final int currentCol = i; // A final var is necessary for Platform.runLater threads.
 
-            BeatmapCollection beatmapCollection = beatmapCollectionList.get(i);
+            SongCollection songCollection = songCollectionList.get(i);
 
-            int collectionSize = beatmapCollection.size();
+            int collectionSize = songCollection.size();
 
             if (collectionSize == 0) {
                 continue;
@@ -186,7 +222,7 @@ public class App extends Application {
             // Add column title.
             Platform.runLater(
                 ()-> controller.addToGrid(
-                    new Label(beatmapCollection.getName() + " (" + collectionSize + ")"),
+                    new Label(songCollection.getName() + " (" + collectionSize + ")"),
                     currentCol,
                     0
                 )
@@ -195,35 +231,19 @@ public class App extends Application {
             List<SongPane> songPanes = new ArrayList<>();
 
             // Add rows
-            int rowOffset = 0;
             for (int j = 0; j < collectionSize; j++) {
 
-                final int currentRow = j + rowOffset + 1; // A final var is necessary for Platform.runLater threads.
+                final int currentRow = j + 1; // A final var is necessary for Platform.runLater threads.
 
-                String hash = "temp";
-                boolean isValidHash = beatmapHashDict.containsKey(hash);
+                SongPane songPane = new SongPane(
+                    songCollection.get(j),
+                    songCollection.getName()
+                );
 
-                if (isValidHash) {
-                    Beatmap beatmap = beatmapHashDict.get(hash);
-                    SongData songData = beatmap.getSongData();
+                songPanes.add(songPane);
 
-                    SongPane songPane = new SongPane(
-                        songData.artistName + " - " + songData.songName,
-                        hash,
-                        new File(beatmap.getFilePath()),
-                        new File(songData.filePath),
-                        null,
-                        beatmapCollection.getName()
-                    );
-
-                    songPanes.add(songPane);
-
-                    // Add song pane to row.
-                    Platform.runLater(() -> controller.addToGrid(songPane, currentCol, currentRow));
-
-                } else {
-                    rowOffset--; // Stay on same row until a valid hash is found.
-                }
+                // Add song pane to row.
+                Platform.runLater(() -> controller.addToGrid(songPane, currentCol, currentRow));
             }
 
             songPaneCollectionList.add(songPanes);
