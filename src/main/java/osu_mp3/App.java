@@ -36,7 +36,7 @@ public class App extends Application {
     public static Stage primaryStage;
     public static Controller controller;
     public static File osuFolder = null;
-    public static List<List<SongPane>> songPaneCollectionList = new ArrayList<>();
+    public static HashMap<String, SongCollection> songCollectionDict = new HashMap();
     public static Parent root;
     private GlobalKeyListener globalKeyListener;
     private static SettingsManager settingsManager = new SettingsManager(settingsPath);
@@ -149,6 +149,10 @@ public class App extends Application {
 
         List<SongCollection> songCollectionList = loadSongCollections("lazer");
 
+        for (SongCollection collection : songCollectionList) {
+            songCollectionDict.put(collection.getName(), collection);
+        }
+
         // TODO - stuffs here
         addSongPanes(songCollectionList);
 
@@ -245,8 +249,6 @@ public class App extends Application {
                 // Add song pane to row.
                 Platform.runLater(() -> controller.addToGrid(songPane, currentCol, currentRow));
             }
-
-            songPaneCollectionList.add(songPanes);
         }
     }
 

@@ -1,6 +1,5 @@
 package osu_mp3;
 
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,30 +34,9 @@ public class Main {
                 "C:\\Users\\Super\\Downloads\\temp\\sacrifice.mp3"
         ));
 
-        MusicPlayer player = new MusicPlayer();
 
-        MusicQueueManager queueManager = new MusicQueueManager(songList);
-        queueManager.shuffle();
 
-        player.setEndOfMediaCallback((p)->{
-            SongData songData = queueManager.nextSong();
-            player.playMedia(songData.filePath);
-
-            System.out.println(songData);
-            return null;
-        });
-
-        player.setTimeChangedCallback((seconds)->{
-            if (seconds >= 10) {
-                SongData songData = queueManager.nextSong();
-                player.playMedia(songData.filePath);
-
-                System.out.println(songData);
-            }
-            return null;
-        });
-
-        SongData songData = queueManager.getSong();
+        SongData songData = musicQueue.getSong();
         player.playMedia(songData.filePath);
 
         System.out.println(songData);

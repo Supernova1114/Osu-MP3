@@ -4,12 +4,12 @@ import java.util.Collections;
 import java.util.List;
 
 
-public class MusicQueueManager {
+public class MusicQueue {
 
     private List<SongData> songQueue;
     private int currentIndex = 0;
 
-    public MusicQueueManager(List<SongData> songQueue) {
+    public MusicQueue(List<SongData> songQueue) {
         this.songQueue = songQueue;
     }
 

@@ -15,8 +15,6 @@ import java.util.logging.Logger;
 
 public class MusicPlayer {
 
-    private static MusicPlayer instance = null;
-
     private final float DEFAULT_VOLUME = 0.5f;
     private float volume = DEFAULT_VOLUME;
     private AudioPlayer audioPlayer = null;
@@ -28,11 +26,6 @@ public class MusicPlayer {
 
 
     public MusicPlayer() {
-
-        if (instance == null) {
-            instance = this;
-        }
-
         // Disable logger for audio player library.
         Logger logger = Logger.getLogger(JavaPlayer.class.getName());
         logger.setFilter((log) -> false);
@@ -140,10 +133,6 @@ public class MusicPlayer {
 
     public void setEndOfMediaCallback(Function callback) {
         endOfMediaCallback = callback;
-    }
-
-    public static MusicPlayer getInstance() {
-        return instance;
     }
 
     // Add a dot if filename does not contain one.

@@ -23,4 +23,9 @@ public class SongCollection {
     public String getName() {
         return name;
     }
+
+    // TODO - implement add, remove, funcs for list, implement songCollection into MusicQueue???
+    public List<SongData> getSongList() {
+        return songList;
+    }
 }
