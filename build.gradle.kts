@@ -43,6 +43,7 @@ dependencies {
     api(libs.org.slf4j.slf4j.jdk14)
     api(libs.org.json.json)
 
+
     implementation("io.realm.kotlin:library-base:1.16.0")
     implementation("org.jetbrains.kotlin:kotlin-reflect:1.9.24")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.0")

@@ -1,90 +1,159 @@
-//import javafx.scene.media.Media;
-//import javafx.scene.media.MediaPlayer;
-//
-//import java.nio.file.Path;
-//import java.util.function.Function;
-//
-//public class MusicPlayer {
-//
-//    private final double DEFAULT_VOLUME = 0.5f;
-//    private double volume = DEFAULT_VOLUME;
-//    private MediaPlayer mediaPlayer = null;
-//    private boolean isPlayerInitialized = false;
-//    private Function<Double, Void> currentTimeChangedEvent = null;
-//    private Function endOfMediaEvent = null;
-//
-//
-//    public void playMedia(Path soundFilePath) {
-//        initializeMedia(soundFilePath);
-//        play();
-//    }
-//
-//    private void initializeMedia(Path soundFilePath) {
-//
-//        isPlayerInitialized = false;
-//
-//        if (mediaPlayer != null) {
-//            mediaPlayer.dispose();
-//        }
-//
-//        Media media = new Media(soundFilePath.toString());
-//        mediaPlayer = new MediaPlayer(media);
-//        mediaPlayer.setVolume(volume);
-//
-//        mediaPlayer.currentTimeProperty().addListener(
-//            (observable, oldValue, newValue) -> currentTimeChangedEvent.apply(newValue.toSeconds())
-//        );
-//
-//        mediaPlayer.setOnEndOfMedia(() -> endOfMediaEvent.apply(null));
-//
-//        // Wait until media content is loaded.
-//        while (mediaPlayer.getStatus() != MediaPlayer.Status.READY);
-//
-//        isPlayerInitialized = true;
-//    }
-//
-//    public void play() {
-//        if (isPlayerInitialized) {
-//            mediaPlayer.play();
-//        }
-//    }
-//
-//    public void pause() {
-//        if (isPlayerInitialized) {
-//            mediaPlayer.pause();
-//        }
-//    }
-//
-//    public void togglePause() {
-//        if (isPlayerInitialized) {
-//
-//            MediaPlayer.Status status = mediaPlayer.getStatus();
-//
-//            if (status == MediaPlayer.Status.PAUSED) {
-//                play();
-//            } else if (status == MediaPlayer.Status.PLAYING) {
-//                pause();
-//            }
-//        }
-//    }
-//
-//    public void setVolume(double percent) {
-//
-//        // Volume should still be set as during media player
-//        // initialization this will take effect.
-//        volume = percent;
-//
-//        if (isPlayerInitialized) {
-//            mediaPlayer.setVolume(percent);
-//        }
-//    }
-//
-//    public void setCurrentTimeChangedEvent(Function<Double, Void> callback) {
-//        currentTimeChangedEvent = callback;
-//    }
-//
-//    public void setEndOfMediaEvent(Function callback) {
-//        endOfMediaEvent = callback;
-//    }
-//
-//}
+package osu_mp3;
+
+import com.tagtraum.audioplayer4j.AudioPlayer;
+import com.tagtraum.audioplayer4j.AudioPlayerFactory;
+import com.tagtraum.audioplayer4j.AudioPlayerListener;
+import com.tagtraum.audioplayer4j.java.JavaPlayer;
+
+import javax.sound.sampled.UnsupportedAudioFileException;
+import java.io.IOException;
+import java.net.URI;
+import java.nio.file.Path;
+import java.time.Duration;
+import java.util.function.Function;
+import java.util.logging.Logger;
+
+public class MusicPlayer {
+
+    private static MusicPlayer instance = null;
+
+    private final float DEFAULT_VOLUME = 0.5f;
+    private float volume = DEFAULT_VOLUME;
+    private AudioPlayer audioPlayer = null;
+    private Function<Long, Void> timeChangedCallback = null;
+    private Function endOfMediaCallback = null;
+    private Function startOfMediaCallback = null;
+    private boolean isPaused = false;
+    private boolean isPlayerInitialized = false;
+
+
+    public MusicPlayer() {
+
+        if (instance == null) {
+            instance = this;
+        }
+
+        // Disable logger for audio player library.
+        Logger logger = Logger.getLogger(JavaPlayer.class.getName());
+        logger.setFilter((log) -> false);
+    }
+
+    public void playMedia(Path soundFilePath) {
+        initializeAudioPlayer(soundFilePath);
+        play();
+    }
+
+    private void initializeAudioPlayer(Path soundFilePath) {
+
+        try {
+
+            isPlayerInitialized = false;
+
+            dispose();
+
+            audioPlayer = AudioPlayerFactory.open(addExtDot(soundFilePath).toUri());
+
+            audioPlayer.setVolume(volume);
+
+            // On Started and On Finished events.
+            audioPlayer.addAudioPlayerListener(new AudioPlayerListener() {
+                @Override
+                public void started(final AudioPlayer audioPlayer, final URI uri) {
+                    if (startOfMediaCallback != null) {
+                        startOfMediaCallback.apply(null);
+                    }
+                }
+
+                @Override
+                public void finished(final AudioPlayer audioPlayer, final URI uri, final boolean endOfMedia) {
+                    if (endOfMedia) {
+                        if (endOfMediaCallback != null) {
+                            endOfMediaCallback.apply(null);
+                        }
+                    }
+                }
+            });
+
+            // Time progressing event.
+            audioPlayer.addPropertyChangeListener(evt -> {
+                if (evt.getPropertyName().equals("time")) {
+                    if (timeChangedCallback != null) {
+                        timeChangedCallback.apply(((Duration) evt.getNewValue()).getSeconds());
+                    }
+                }
+            });
+
+            isPlayerInitialized = true;
+
+        } catch (IOException | UnsupportedAudioFileException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void dispose() {
+        if (audioPlayer != null) {
+            audioPlayer.close();
+        }
+    }
+
+    public void play() {
+        if (isPlayerInitialized) {
+            audioPlayer.play();
+        }
+    }
+
+    public void pause() {
+        if (isPlayerInitialized) {
+            audioPlayer.pause();
+        }
+    }
+
+    public void togglePause() {
+        if (isPlayerInitialized) {
+            if (audioPlayer.isPaused()) {
+                play();
+            } else {
+                pause();
+            }
+        }
+    }
+
+    public void setVolume(float percent) {
+
+        // Volume should still be set, as during media player
+        // initialization this will take effect.
+        volume = percent;
+
+        if (isPlayerInitialized) {
+            audioPlayer.setVolume(percent);
+        }
+    }
+
+    public void setTimeChangedCallback(Function<Long, Void> callback) {
+        timeChangedCallback = callback;
+    }
+
+    public void setStartOfMediaCallback(Function callback) {
+        startOfMediaCallback = callback;
+    }
+
+    public void setEndOfMediaCallback(Function callback) {
+        endOfMediaCallback = callback;
+    }
+
+    public static MusicPlayer getInstance() {
+        return instance;
+    }
+
+    // Add a dot if filename does not contain one.
+    // Tricks the AudioPlayer into actually playing the file.
+    private Path addExtDot(Path filePath) {
+
+        if (filePath.getFileName().toString().lastIndexOf('.') == -1) {
+            return Path.of(filePath.toString() + '.');
+        }
+
+        return filePath;
+    }
+}
