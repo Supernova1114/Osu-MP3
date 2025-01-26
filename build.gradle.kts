@@ -33,15 +33,16 @@ repositories {
     maven {
         url = uri("https://repo.maven.apache.org/maven2/")
     }
+    maven {
+        url = uri("https://maven.google.com/")
+    }
 }
 
 dependencies {
     api(libs.com.github.tulskiy.jkeymaster)
     api(libs.org.slf4j.slf4j.jdk14)
-    //api(libs.org.openjfx.javafx.graphics)
-    //api(libs.org.openjfx.javafx.media)
-    //api(libs.org.openjfx.javafx.fxml)
     api(libs.org.json.json)
+
     implementation("io.realm.kotlin:library-base:1.16.0")
     implementation("org.jetbrains.kotlin:kotlin-reflect:1.9.24")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.0")
@@ -51,7 +52,14 @@ dependencies {
     implementation("org.openjfx:javafx-graphics:22.0.2")
     implementation("org.openjfx:javafx-media:22.0.2")
 
+    // Needed by Realm DB
     implementation("org.jetbrains.kotlinx:atomicfu:0.24.0")
+
+    // https://mvnrepository.com/artifact/com.tagtraum/audioplayer4j-complete
+    implementation("com.tagtraum:audioplayer4j-complete:0.9.4")
+    // https://mvnrepository.com/artifact/com.tagtraum/ffsampledsp-complete
+    implementation("com.tagtraum:ffsampledsp-complete:0.9.53")
+
 }
 
 tasks.withType<Jar> {

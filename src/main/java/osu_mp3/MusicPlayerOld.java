@@ -40,6 +40,7 @@ public class MusicPlayerOld {
 
     public static void playMedia(SongPane pane) throws InterruptedException {
 
+        System.out.println(pane.songData.filePath);
         Media media = new Media(Path.of(pane.songData.filePath).toUri().toString());
 
         //Makes shuffled playlist when new playlist is clicked.
