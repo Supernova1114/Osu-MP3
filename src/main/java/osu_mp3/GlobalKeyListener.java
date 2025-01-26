@@ -25,18 +25,10 @@ public class GlobalKeyListener {
                                 App.togglePause();
                                 break;
                             case MEDIA_NEXT_TRACK:
-                                try {
-                                    MusicPlayerOld.nextSong();
-                                } catch (InterruptedException e) {
-                                    e.printStackTrace();
-                                }
+                                MusicManager.getInstance().nextSong();
                                 break;
                             case MEDIA_PREV_TRACK:
-                                try {
-                                    MusicPlayerOld.prevSong();
-                                } catch (InterruptedException e) {
-                                    e.printStackTrace();
-                                }
+                                MusicManager.getInstance().prevSong();
                                 break;
                         }//switch
                     }

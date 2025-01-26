@@ -1,5 +1,7 @@
 package osu_mp3;
 
+import javafx.application.Platform;
+
 import java.util.List;
 
 public class MusicManager {
@@ -8,6 +10,7 @@ public class MusicManager {
     private String currentCollectionName = "";
     private MusicPlayer musicPlayer;
     private MusicQueue musicQueue;
+    private SongData currentSong;
 
 
     public MusicManager() {
@@ -16,12 +19,18 @@ public class MusicManager {
 
         musicPlayer = new MusicPlayer();
 
-        musicPlayer.setEndOfMediaCallback((p)->{
+        musicPlayer.setEndOfMediaCallback((n)->{
             musicPlayer.playMedia(musicQueue.nextSong().filePath);
             return null;
         });
 
         musicPlayer.setTimeChangedCallback((seconds)->{
+            App.controller.setCurrentSeekTime(seconds);
+            return null;
+        });
+
+        musicPlayer.setStartOfMediaCallback((n)->{
+            onStartOfMedia();
             return null;
         });
     }
@@ -32,21 +41,43 @@ public class MusicManager {
             currentCollectionName = pane.collectionName;
 
             // find collection
-            List<SongData> songDataList = App.songCollectionDict.get(pane.collectionName).getSongList();
-            musicQueue = new MusicQueue(songDataList);
+            musicQueue = new MusicQueue(App.songCollectionDict.get(pane.collectionName));
             musicQueue.shuffle();
         }
 
         musicQueue.moveToCurrentIndex(pane.songData);
+
+        currentSong = pane.songData;
         musicPlayer.playMedia(pane.songData.filePath);
+    }
+
+    public void playMedia(SongData songData) {
+        currentSong = songData;
+        musicPlayer.playMedia(songData.filePath);
+    }
+
+    public void onStartOfMedia() {
+
+        App.controller.refreshSeekBar(musicPlayer.getDuration());
+
+        App.controller.pauseButton.setText("| |");
+
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                App.controller.songTitleLabel.setText("Playing: " + currentSong.artistName + " - " + currentSong.songName);
+            }
+        });
     }
 
     public void play() {
         musicPlayer.play();
+        App.controller.pauseButton.setText("| |");
     }
 
     public void pause() {
         musicPlayer.pause();
+        App.controller.pauseButton.setText(">");
     }
 
     public void togglePause() {
@@ -61,10 +92,13 @@ public class MusicManager {
         playMedia(musicQueue.prevSong());
     }
 
-    public void setVolume(float percent) {
+    public void setVolume(double percent) {
         musicPlayer.setVolume(percent);
     }
 
+    public void seek(double seconds) {
+        musicPlayer.seek(seconds);
+    }
     public static MusicManager getInstance() {
         return instance;
     }

@@ -22,12 +22,7 @@ public class SongPane extends Pane {
         setOnMouseClicked(event -> {
             if (!isDragged){
                 ((Label) getChildren().get(0)).setTextFill(Color.RED);
-                try {
-                    MusicPlayerOld.playMedia(this);
-                    MusicPlayerOld.insertSong(this);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                MusicManager.getInstance().playMedia(this);
             }
 
         });

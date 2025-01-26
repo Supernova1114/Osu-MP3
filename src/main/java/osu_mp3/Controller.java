@@ -10,7 +10,6 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
-import javafx.util.Duration;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,6 +20,7 @@ import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.Duration;
 import java.util.List;
 
 public class Controller {
@@ -65,56 +65,7 @@ public class Controller {
     }
 
     @FXML
-    public void ExportSongList(){
-        FileChooser chooser = new FileChooser();
-        chooser.setTitle("Choose Export Location");
-        chooser.setInitialFileName("SongList-OsuMP3");
-        chooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Text File", "*.txt"));
-
-        File exportDirectory = chooser.showSaveDialog(App.primaryStage);
-        System.out.println(exportDirectory);
-
-        if (exportDirectory != null){
-
-            SwingWorker worker = new SwingWorker() {
-                @Override
-                protected Object doInBackground() throws Exception {
-
-                    Path songListFile = Files.createFile(Paths.get(exportDirectory.getPath()));
-                    System.out.println("Created: " + songListFile);
-
-                    BufferedWriter bufferedWriter = null;
-
-                    try {
-                        bufferedWriter = new BufferedWriter(new FileWriter(songListFile.toFile()));
-
-                        bufferedWriter.write("Osu-MP3 Exported Song List");
-                        bufferedWriter.newLine();
-                        bufferedWriter.newLine();
-
-                        for (List<SongPane> songCollection: App.songPaneCollectionList){
-                            for (SongPane song: songCollection){
-                                bufferedWriter.write(song.songData.songName);
-                                bufferedWriter.newLine();
-                            }
-                        }
-                    }catch (Exception e){
-                        e.printStackTrace();
-                    }finally {
-                        if (bufferedWriter != null)
-                        bufferedWriter.close();
-                    }
-
-
-
-
-                    return null;
-                }
-            };
-            worker.execute();
-
-        }//if
-    }//ExportSongList()
+    public void ExportSongList() {}
 
     @FXML
     public void GetOsuFolder() throws Exception {
@@ -138,12 +89,12 @@ public class Controller {
 
     @FXML
     public void NextTrack() throws InterruptedException {
-        MusicPlayerOld.nextSong();
+        MusicManager.getInstance().nextSong();
     }
 
     @FXML
     public void PrevTrack() throws InterruptedException {
-        MusicPlayerOld.prevSong();
+        MusicManager.getInstance().prevSong();
     }
 
     @FXML
@@ -152,13 +103,7 @@ public class Controller {
     }
 
     public void TogglePause() {
-        if (MusicPlayerOld.isActive) {
-            if (MusicPlayerOld.isPaused) {
-                MusicPlayerOld.play();
-            } else {
-                MusicPlayerOld.pause();
-            }
-        }
+        MusicManager.getInstance().togglePause();
     }
 
     @FXML
@@ -198,27 +143,24 @@ public class Controller {
         volumeSlider.setMin(0);
 
         volumeSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
-            MusicPlayerOld.setVolume( (((int)newValue.doubleValue()) * 1.0) / 100 );
+            MusicManager.getInstance().setVolume( (newValue.intValue() / 100.0f) );
         });
-
 
         seekBar.setValue(0);
 
         seekBar.setOnMousePressed(event -> {
-            if (MusicPlayerOld.isActive)
-                MusicPlayerOld.player.seek(Duration.seconds(seekBar.getValue()));
+                MusicManager.getInstance().seek(seekBar.getValue());
         });
 
         seekBar.setOnMouseDragged(event -> {
-            if (MusicPlayerOld.isActive)
-                MusicPlayerOld.player.seek(Duration.seconds(seekBar.getValue()));
+            MusicManager.getInstance().seek(seekBar.getValue());
         });
 
 
 
     }
 
-
+    // TODO - this needs to be refactored probably.
     public void setCurrentSeekTime(double currSeconds){
         seekBar.setValue(currSeconds);
 
@@ -232,17 +174,19 @@ public class Controller {
 
     }
 
-    public void refreshSeekBar(Duration max){
+    public void refreshSeekBar(Duration duration){
         seekBar.setMin(0);
         seekBar.setValue(0);
-        seekBar.setMax(max.toSeconds());
 
+        seekBar.setMax(duration.toSeconds());
 
-        int hours = (int)(max.toSeconds() / 3600);
-        int minutes = (int)((max.toSeconds() % 3600) / 60);
-        int seconds = (int)(max.toSeconds() % 60);
+//        int hours = (int)(duration.toSeconds() / 3600);
+//        int minutes = (int)((duration.toSeconds() % 3600) / 60);
+//        int seconds = (int)(duration.toSeconds() % 60);
 
-        seekMaxLabel.setText(hours + ":" + minutes + ":" + (seconds < 10 ? "0" + seconds : seconds));
+        int seconds = duration.toSecondsPart();
+
+        seekMaxLabel.setText(duration.toHoursPart() + ":" + duration.toMinutesPart() + ":" + (seconds < 10 ? "0" + seconds : seconds));
 
         seekBar.setDisable(false);
     }

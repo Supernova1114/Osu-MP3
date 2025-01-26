@@ -1,30 +1,27 @@
 package osu_mp3;
 
-import java.util.Collections;
-import java.util.List;
-
 
 public class MusicQueue {
 
-    private List<SongData> songQueue;
+    private SongCollection collection;
     private int currentIndex = 0;
 
-    public MusicQueue(List<SongData> songQueue) {
-        this.songQueue = songQueue;
+    public MusicQueue(SongCollection collection) {
+        this.collection = collection;
     }
 
     public void moveToCurrentIndex(SongData songData) {
 
-        int songIndex = songQueue.indexOf(songData);
+        int songIndex = collection.indexOf(songData);
 
         if (songIndex != currentIndex) {
-            songQueue.remove(songIndex);
-            songQueue.add(songIndex > currentIndex ? ++currentIndex : currentIndex, songData);
+            collection.remove(songIndex);
+            collection.add(songIndex > currentIndex ? ++currentIndex : currentIndex, songData);
         }
     }
 
     public void shuffle() {
-        Collections.shuffle(songQueue);
+        collection.shuffle();
     }
 
     public SongData nextSong() {
@@ -36,7 +33,7 @@ public class MusicQueue {
     }
 
     private SongData getSong(int index) {
-        return songQueue.get(index);
+        return collection.get(index);
     }
 
     public SongData getSong() {
@@ -44,7 +41,7 @@ public class MusicQueue {
     }
 
     public int queueSize() {
-        return songQueue.size();
+        return collection.size();
     }
 
 }

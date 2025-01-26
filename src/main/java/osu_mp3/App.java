@@ -40,6 +40,7 @@ public class App extends Application {
     public static Parent root;
     private GlobalKeyListener globalKeyListener;
     private static SettingsManager settingsManager = new SettingsManager(settingsPath);
+    private MusicManager musicManager = new MusicManager();
 
     @Override
     public void start(Stage stage) throws Exception {

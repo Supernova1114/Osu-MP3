@@ -1,5 +1,6 @@
 package osu_mp3;
 
+import java.util.Collections;
 import java.util.List;
 
 public class SongCollection {
@@ -27,5 +28,21 @@ public class SongCollection {
     // TODO - implement add, remove, funcs for list, implement songCollection into MusicQueue???
     public List<SongData> getSongList() {
         return songList;
+    }
+
+    public int indexOf(SongData songData) {
+        return songList.indexOf(songData);
+    }
+
+    public void remove(int index) {
+        songList.remove(index);
+    }
+
+    public void add(int index, SongData songData) {
+        songList.add(index, songData);
+    }
+
+    public void shuffle() {
+        Collections.shuffle(songList);
     }
 }

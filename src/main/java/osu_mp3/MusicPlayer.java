@@ -15,13 +15,12 @@ import java.util.logging.Logger;
 
 public class MusicPlayer {
 
-    private final float DEFAULT_VOLUME = 0.5f;
-    private float volume = DEFAULT_VOLUME;
+    private final double DEFAULT_VOLUME = 0.5;
+    private double volume = DEFAULT_VOLUME;
     private AudioPlayer audioPlayer = null;
     private Function<Long, Void> timeChangedCallback = null;
     private Function endOfMediaCallback = null;
     private Function startOfMediaCallback = null;
-    private boolean isPaused = false;
     private boolean isPlayerInitialized = false;
 
 
@@ -33,7 +32,7 @@ public class MusicPlayer {
 
     public void playMedia(String soundFilePath) {
         initializeAudioPlayer(Path.of(soundFilePath));
-        play();
+        //play();
     }
 
     private void initializeAudioPlayer(Path soundFilePath) {
@@ -44,9 +43,16 @@ public class MusicPlayer {
 
             dispose();
 
-            audioPlayer = AudioPlayerFactory.open(formatFilePath(soundFilePath).toUri());
+            System.out.println("Path: " + soundFilePath);
+            System.out.println("URI: " + soundFilePath.toUri());
 
-            audioPlayer.setVolume(volume);
+            // TODO - why is there a file not found exception bruh
+            audioPlayer = AudioPlayerFactory.open(soundFilePath.toUri());
+
+            System.out.println("DSJALKDJASLDJASLKDJLSJDLKAJSLDJLKASJD");
+
+            audioPlayer.setVolume((float)volume);
+
 
             // On Started and On Finished events.
             audioPlayer.addAudioPlayerListener(new AudioPlayerListener() {
@@ -81,7 +87,6 @@ public class MusicPlayer {
         } catch (IOException | UnsupportedAudioFileException e) {
             e.printStackTrace();
         }
-
     }
 
     public void dispose() {
@@ -112,15 +117,20 @@ public class MusicPlayer {
         }
     }
 
-    public void setVolume(float percent) {
+    public void setVolume(double percent) {
 
         // Volume should still be set, as during media player
         // initialization this will take effect.
         volume = percent;
 
         if (isPlayerInitialized) {
-            audioPlayer.setVolume(percent);
+            audioPlayer.setVolume((float)percent);
         }
+    }
+
+    // TODO - this should include partial seconds as well
+    public void seek(double seconds) {
+        audioPlayer.setTime(Duration.ofSeconds((long)seconds));
     }
 
     public void setTimeChangedCallback(Function<Long, Void> callback) {
@@ -144,5 +154,9 @@ public class MusicPlayer {
         }
 
         return filePath;
+    }
+
+    public Duration getDuration() {
+        return audioPlayer.getDuration();
     }
 }
