@@ -38,8 +38,8 @@ public class MusicPlayer {
         logger.setFilter((log) -> false);
     }
 
-    public void playMedia(Path soundFilePath) {
-        initializeAudioPlayer(soundFilePath);
+    public void playMedia(String soundFilePath) {
+        initializeAudioPlayer(Path.of(soundFilePath));
         play();
     }
 
@@ -51,7 +51,7 @@ public class MusicPlayer {
 
             dispose();
 
-            audioPlayer = AudioPlayerFactory.open(addExtDot(soundFilePath).toUri());
+            audioPlayer = AudioPlayerFactory.open(formatFilePath(soundFilePath).toUri());
 
             audioPlayer.setVolume(volume);
 
@@ -77,7 +77,7 @@ public class MusicPlayer {
             // Time progressing event.
             audioPlayer.addPropertyChangeListener(evt -> {
                 if (evt.getPropertyName().equals("time")) {
-                    if (timeChangedCallback != null) {
+                    if (timeChangedCallback != null && evt.getNewValue() != null) {
                         timeChangedCallback.apply(((Duration) evt.getNewValue()).getSeconds());
                     }
                 }
@@ -148,7 +148,7 @@ public class MusicPlayer {
 
     // Add a dot if filename does not contain one.
     // Tricks the AudioPlayer into actually playing the file.
-    private Path addExtDot(Path filePath) {
+    private Path formatFilePath(Path filePath) {
 
         if (filePath.getFileName().toString().lastIndexOf('.') == -1) {
             return Path.of(filePath.toString() + '.');

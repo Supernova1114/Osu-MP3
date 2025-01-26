@@ -8,6 +8,12 @@ public class SongData {
 
     public SongData() {}
 
+    public SongData(String songName, String artistName, String filePath) {
+        this.songName = songName;
+        this.artistName = artistName;
+        this.filePath = filePath;
+    }
+
     public String toString() {
         return "SongData:\n" +
                 "title = " + songName + "\n" +

@@ -1,5 +1,6 @@
 package osu_mp3;
 
+import java.util.Collections;
 import java.util.List;
 
 
@@ -13,27 +14,37 @@ public class MusicQueueManager {
     }
 
     public void moveToCurrentIndex(SongData songData) {
-//        songQueue.remove(songData);
-//        currentIndex++; // So that the song is placed after the current song.
-//        songQueue.add(currentIndex, songData);
-    }
 
-    private void insert(int index, SongData songData) {
-        songQueue.set(index, songData);
-    }
+        int songIndex = songQueue.indexOf(songData);
 
-    public void nextSong() {
-        if (currentIndex + 1 < songQueue.size()) {
-            currentIndex++;
-            // TODO - add play next song
+        if (songIndex != currentIndex) {
+            songQueue.remove(songIndex);
+            songQueue.add(songIndex > currentIndex ? ++currentIndex : currentIndex, songData);
         }
     }
 
-    public void prevSong() {
-        if (currentIndex > 0) {
-            currentIndex--;
-            // TODO - add play prev song
-        }
+    public void shuffle() {
+        Collections.shuffle(songQueue);
+    }
+
+    public SongData nextSong() {
+        return currentIndex + 1 < queueSize() ? getSong(++currentIndex) : getSong(currentIndex);
+    }
+
+    public SongData prevSong() {
+        return currentIndex > 0 ? getSong(--currentIndex) : getSong(currentIndex);
+    }
+
+    private SongData getSong(int index) {
+        return songQueue.get(index);
+    }
+
+    public SongData getSong() {
+        return getSong(currentIndex);
+    }
+
+    public int queueSize() {
+        return songQueue.size();
     }
 
 }
