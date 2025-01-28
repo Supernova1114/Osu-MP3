@@ -3,8 +3,10 @@ package osu_mp3;
 import com.tagtraum.audioplayer4j.AudioPlayer;
 import com.tagtraum.audioplayer4j.AudioPlayerFactory;
 import com.tagtraum.audioplayer4j.AudioPlayerListener;
+import com.tagtraum.audioplayer4j.java.ExtAudioSystem;
 import com.tagtraum.audioplayer4j.java.JavaPlayer;
 import com.tagtraum.audioplayer4j.javafx.JavaFXPlayer;
+import com.tagtraum.ffsampledsp.FFNativeLibraryLoader;
 
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
@@ -13,6 +15,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.Duration;
 import java.util.function.Function;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class MusicPlayer {
@@ -26,14 +29,11 @@ public class MusicPlayer {
     private boolean isPlayerInitialized = false;
 
     public MusicPlayer() {
-        // Disable logger for audio player library.
-        Logger logger = Logger.getLogger(JavaPlayer.class.getName());
-        logger.setFilter((log) -> false);
     }
 
     public void playMedia(String soundFilePath) {
         initializeAudioPlayer(soundFilePath);
-        play();
+        attemptPlay();
     }
 
     private void initializeAudioPlayer(String soundFilePath) {
@@ -46,6 +46,12 @@ public class MusicPlayer {
             AudioPlayerFactory.setJavaEnabled(true);
             AudioPlayerFactory.setJavaFXEnabled(false);
             AudioPlayerFactory.setNativeEnabled(false);
+
+            Logger.getLogger("com.tagtraum.audioplayer4j.java").setLevel(Level.OFF);
+            Logger.getLogger("com.tagtraum.ffsampledsp").setLevel(Level.OFF);
+            //Logger.getLogger(ExtAudioSystem.class.getName()).setLevel(Level.SEVERE);
+            //Logger.getLogger(FFNativeLibraryLoader.class.getName()).setLevel(Level.OFF);
+            //Logger.getLogger(ExtAudioSystem.class.getName()).setLevel(Level.OFF);
 
             audioPlayer = AudioPlayerFactory.open(formatFilePath(Path.of(soundFilePath)).toUri());
 
@@ -62,6 +68,7 @@ public class MusicPlayer {
 
                 @Override
                 public void finished(final AudioPlayer audioPlayer, final URI uri, final boolean endOfMedia) {
+
                     if (endOfMedia) {
                         if (endOfMediaCallback != null) {
                             endOfMediaCallback.apply(null);
@@ -89,6 +96,12 @@ public class MusicPlayer {
     public void dispose() {
         if (audioPlayer != null) {
             audioPlayer.close();
+        }
+    }
+
+    private void attemptPlay() {
+        if (audioPlayer != null) {
+            audioPlayer.play();
         }
     }
 
@@ -126,9 +139,34 @@ public class MusicPlayer {
         }
     }
 
-    // TODO - this should include partial seconds as well
+    // TODO - make sure all functions do not call audioPlayer stuffs if resource is not loaded.
+    // TODO - Maybe just need to catuch the error actually
     public void seek(double seconds) {
-        audioPlayer.setTime(Duration.ofSeconds((long)seconds));
+            if (isPlayerInitialized) {
+
+
+                long secondsOnly = (long)seconds;
+                double secondsFrac = seconds - secondsOnly;
+                long millis = (long)(secondsFrac * 1000);
+
+                // Workaround fix as AudioPlayer seems to end media when seeking to 0.0 seconds.
+                // When seeking to 0.0 seconds, seek to 0.001 seconds instead.
+                if (secondsOnly == 0 && millis < 10) {
+                    //dur.plusMillis(500);
+                    millis = 10;
+                }
+
+                Duration dur = Duration.ofSeconds(secondsOnly).plusMillis(millis);
+
+                // Check against max duration
+                Duration maxDur = getDuration();
+
+                if (maxDur != null && dur.compareTo(maxDur) > 0) {
+                    dur = maxDur.minusMillis(1);
+                }
+
+                audioPlayer.setTime(dur);
+            }
     }
 
     public void setTimeChangedCallback(Function<Long, Void> callback) {

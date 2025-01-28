@@ -6,6 +6,9 @@ import com.tulskiy.keymaster.common.MediaKey;
 import com.tulskiy.keymaster.common.Provider;
 import javafx.application.Platform;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 public class GlobalKeyListener {
 
@@ -13,25 +16,24 @@ public class GlobalKeyListener {
 
     public GlobalKeyListener() {
 
+        Logger.getLogger("com.tulskiy.keymaster.windows").setLevel(Level.OFF);
+
         HotKeyListener hotKeyListener = new HotKeyListener() {
             @Override
             public void onHotKey(HotKey hotKey) {
 
-                Platform.runLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        switch (hotKey.mediaKey){
-                            case MEDIA_PLAY_PAUSE:
-                                App.togglePause();
-                                break;
-                            case MEDIA_NEXT_TRACK:
-                                MusicManager.getInstance().nextSong();
-                                break;
-                            case MEDIA_PREV_TRACK:
-                                MusicManager.getInstance().prevSong();
-                                break;
-                        }//switch
-                    }
+                Platform.runLater(() -> {
+                    switch (hotKey.mediaKey){
+                        case MEDIA_PLAY_PAUSE:
+                            App.togglePause();
+                            break;
+                        case MEDIA_NEXT_TRACK:
+                            MusicManager.getInstance().nextSong();
+                            break;
+                        case MEDIA_PREV_TRACK:
+                            MusicManager.getInstance().prevSong();
+                            break;
+                    }//switch
                 });
             }
         };
