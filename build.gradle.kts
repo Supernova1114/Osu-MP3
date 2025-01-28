@@ -58,8 +58,13 @@ dependencies {
 
     // https://mvnrepository.com/artifact/com.tagtraum/audioplayer4j-complete
     implementation("com.tagtraum:audioplayer4j-complete:0.9.4")
+
+    // Temporarily removed in favor of local fix.
+    // See libs\com\tagtraum\ffsampledsp\README.md
     // https://mvnrepository.com/artifact/com.tagtraum/ffsampledsp-complete
-    implementation("com.tagtraum:ffsampledsp-complete:0.9.53")
+    //implementation("com.tagtraum:ffsampledsp-complete:0.9.53")
+
+    implementation(files("libs\\com\\tagtraum\\ffsampledsp\\ffsampledsp-complete-0.9.53-fix.jar"))
 
 }
 

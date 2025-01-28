@@ -4,11 +4,13 @@ import com.tagtraum.audioplayer4j.AudioPlayer;
 import com.tagtraum.audioplayer4j.AudioPlayerFactory;
 import com.tagtraum.audioplayer4j.AudioPlayerListener;
 import com.tagtraum.audioplayer4j.java.JavaPlayer;
+import com.tagtraum.audioplayer4j.javafx.JavaFXPlayer;
 
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 import java.net.URI;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.Duration;
 import java.util.function.Function;
 import java.util.logging.Logger;
@@ -23,7 +25,6 @@ public class MusicPlayer {
     private Function startOfMediaCallback = null;
     private boolean isPlayerInitialized = false;
 
-
     public MusicPlayer() {
         // Disable logger for audio player library.
         Logger logger = Logger.getLogger(JavaPlayer.class.getName());
@@ -31,28 +32,24 @@ public class MusicPlayer {
     }
 
     public void playMedia(String soundFilePath) {
-        initializeAudioPlayer(Path.of(soundFilePath));
-        //play();
+        initializeAudioPlayer(soundFilePath);
+        play();
     }
 
-    private void initializeAudioPlayer(Path soundFilePath) {
+    private void initializeAudioPlayer(String soundFilePath) {
 
         try {
 
             isPlayerInitialized = false;
-
             dispose();
 
-            System.out.println("Path: " + soundFilePath);
-            System.out.println("URI: " + soundFilePath.toUri());
+            AudioPlayerFactory.setJavaEnabled(true);
+            AudioPlayerFactory.setJavaFXEnabled(false);
+            AudioPlayerFactory.setNativeEnabled(false);
 
-            // TODO - why is there a file not found exception bruh
-            audioPlayer = AudioPlayerFactory.open(soundFilePath.toUri());
-
-            System.out.println("DSJALKDJASLDJASLKDJLSJDLKAJSLDJLKASJD");
+            audioPlayer = AudioPlayerFactory.open(formatFilePath(Path.of(soundFilePath)).toUri());
 
             audioPlayer.setVolume((float)volume);
-
 
             // On Started and On Finished events.
             audioPlayer.addAudioPlayerListener(new AudioPlayerListener() {
@@ -109,6 +106,7 @@ public class MusicPlayer {
 
     public void togglePause() {
         if (isPlayerInitialized) {
+
             if (audioPlayer.isPaused()) {
                 play();
             } else {

@@ -2,8 +2,6 @@ package osu_mp3;
 
 import javafx.application.Platform;
 
-import java.util.List;
-
 public class MusicManager {
 
     private static MusicManager instance;
@@ -25,7 +23,11 @@ public class MusicManager {
         });
 
         musicPlayer.setTimeChangedCallback((seconds)->{
-            App.controller.setCurrentSeekTime(seconds);
+
+            Platform.runLater(() -> {
+                App.controller.setCurrentSeekTime(seconds);
+            });
+
             return null;
         });
 
@@ -57,27 +59,27 @@ public class MusicManager {
     }
 
     public void onStartOfMedia() {
-
-        App.controller.refreshSeekBar(musicPlayer.getDuration());
-
-        App.controller.pauseButton.setText("| |");
-
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                App.controller.songTitleLabel.setText("Playing: " + currentSong.artistName + " - " + currentSong.songName);
-            }
+        Platform.runLater(() -> {
+            App.controller.refreshSeekBar(musicPlayer.getDuration());
+            App.controller.pauseButton.setText("| |");
+            App.controller.songTitleLabel.setText("Playing: " + currentSong.artistName + " - " + currentSong.songName);
         });
     }
 
     public void play() {
         musicPlayer.play();
-        App.controller.pauseButton.setText("| |");
+
+        Platform.runLater(() -> {
+            App.controller.pauseButton.setText("| |");
+        });
     }
 
     public void pause() {
         musicPlayer.pause();
-        App.controller.pauseButton.setText(">");
+
+        Platform.runLater(() -> {
+            App.controller.pauseButton.setText(">");
+        });
     }
 
     public void togglePause() {
@@ -98,6 +100,10 @@ public class MusicManager {
 
     public void seek(double seconds) {
         musicPlayer.seek(seconds);
+    }
+
+    public void dispose() {
+        musicPlayer.dispose();
     }
     public static MusicManager getInstance() {
         return instance;

@@ -49,6 +49,7 @@ public class App extends Application {
 
         primaryStage.setOnCloseRequest(event -> {
             globalKeyListener.cleaUp();
+            musicManager.dispose();
             primaryStage.close();
             System.exit(0);
         });
