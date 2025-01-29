@@ -142,31 +142,31 @@ public class MusicPlayer {
     // TODO - make sure all functions do not call audioPlayer stuffs if resource is not loaded.
     // TODO - Maybe just need to catuch the error actually
     public void seek(double seconds) {
-            if (isPlayerInitialized) {
+        if (isPlayerInitialized) {
 
 
-                long secondsOnly = (long)seconds;
-                double secondsFrac = seconds - secondsOnly;
-                long millis = (long)(secondsFrac * 1000);
+            long secondsOnly = (long) seconds;
+            double secondsFrac = seconds - secondsOnly;
+            long millis = (long) (secondsFrac * 1000);
 
-                // Workaround fix as AudioPlayer seems to end media when seeking to 0.0 seconds.
-                // When seeking to 0.0 seconds, seek to 0.001 seconds instead.
-                if (secondsOnly == 0 && millis < 10) {
-                    //dur.plusMillis(500);
-                    millis = 10;
-                }
-
-                Duration dur = Duration.ofSeconds(secondsOnly).plusMillis(millis);
-
-                // Check against max duration
-                Duration maxDur = getDuration();
-
-                if (maxDur != null && dur.compareTo(maxDur) > 0) {
-                    dur = maxDur.minusMillis(1);
-                }
-
-                audioPlayer.setTime(dur);
+            // Workaround fix as AudioPlayer seems to end media when seeking to 0.0 seconds.
+            // When seeking to 0.0 seconds, seek to 0.001 seconds instead.
+            if (secondsOnly == 0 && millis < 10) {
+                //dur.plusMillis(500);
+                millis = 10;
             }
+
+            Duration dur = Duration.ofSeconds(secondsOnly).plusMillis(millis);
+
+            // Check against max duration
+            Duration maxDur = getDuration();
+
+            if (maxDur != null && dur.compareTo(maxDur) > 0) {
+                dur = maxDur.minusMillis(1);
+            }
+
+            audioPlayer.setTime(dur);
+        }
     }
 
     public void setTimeChangedCallback(Function<Long, Void> callback) {

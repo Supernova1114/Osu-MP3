@@ -18,7 +18,7 @@ public class MusicManager {
         musicPlayer = new MusicPlayer();
 
         musicPlayer.setEndOfMediaCallback((n)->{
-            musicPlayer.playMedia(musicQueue.nextSong().filePath);
+            nextSong();
             return null;
         });
 

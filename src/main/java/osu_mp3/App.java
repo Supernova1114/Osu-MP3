@@ -149,7 +149,7 @@ public class App extends Application {
 //            databaseManager.readDatabase();
 //        }
 
-        List<SongCollection> songCollectionList = loadSongCollections("lazer");
+        List<SongCollection> songCollectionList = loadSongCollections("stable");
 
         for (SongCollection collection : songCollectionList) {
             songCollectionDict.put(collection.getName(), collection);
