@@ -1,7 +1,5 @@
 package osu_mp3;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
@@ -11,19 +9,10 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.DirectoryChooser;
-import javafx.stage.FileChooser;
-
-import javax.swing.*;
-import java.awt.*;
-import java.io.BufferedWriter;
+import java.awt.Desktop;
 import java.io.File;
-import java.io.FileWriter;
 import java.net.URI;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.time.Duration;
-import java.util.List;
 
 public class Controller {
 
@@ -74,11 +63,11 @@ public class Controller {
         DirectoryChooser chooser = new DirectoryChooser();
         chooser.setTitle("Find Osu! Folder");
         File osuFolder = chooser.showDialog(App.primaryStage);
-        System.out.println(App.osuFolder);
+        System.out.println(App.osuStableFolderPath);
 
         if (osuFolder != null) {
-            App.setOsuFolder(osuFolder);
-            App.Begin();
+            //App.setOsuStableFolderPath(osuFolder);
+            //App.Begin();
         }
     }
 
@@ -127,19 +116,14 @@ public class Controller {
 
         pauseButton.setText(">");
 
-
         showArtistsCheckMenu.setSelected(true);
 
         scrollPane.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue){
-                App.root.requestFocus();
+                App.rootNode.requestFocus();
             }
         });
 
-//        volumeSlider.setBlockIncrement(5);
-//        volumeSlider.setMajorTickUnit(25);
-//        volumeSlider.setMinorTickCount(5);
-        //volumeSlider.setSnapToTicks(true);
         volumeSlider.setMax(100);
         volumeSlider.setMin(0);
         volumeSlider.setValue(50);

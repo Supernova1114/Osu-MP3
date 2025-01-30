@@ -6,7 +6,6 @@ import com.mpatric.mp3agic.UnsupportedTagException;
 import com.tagtraum.audioplayer4j.AudioPlayer;
 import com.tagtraum.audioplayer4j.AudioPlayerFactory;
 import com.tagtraum.audioplayer4j.AudioPlayerListener;
-
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 import java.net.URI;

@@ -45,7 +45,7 @@ public class MusicQueue {
         return collection.size();
     }
 
-    public int getCurrentIndex() {
-        return currentIndex;
+    public boolean isAtLastSong() {
+        return currentIndex == queueSize() - 1;
     }
 }

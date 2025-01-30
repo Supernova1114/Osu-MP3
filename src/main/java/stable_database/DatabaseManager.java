@@ -25,6 +25,7 @@ public class DatabaseManager {
     }
 
     public void createDatabase() {
+        System.out.println("Creating Database.");
 
         List<BeatmapArchive> archiveList = new ArrayList<>();
 
@@ -62,6 +63,8 @@ public class DatabaseManager {
     }
 
     public void readDatabase() {
+        System.out.println("Reading Database.");
+
         try {
             JSONObject rootObjJSON = new JSONObject(new String(Files.readAllBytes(databaseFilePath)));
 
@@ -78,6 +81,7 @@ public class DatabaseManager {
     }
 
     public void syncDatabase() {
+        System.out.println("Syncing Database.");
 
         // Used to figure out which archives need to be added to the database.
         List<String> archivesToAdd = new ArrayList<>();

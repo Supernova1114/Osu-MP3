@@ -75,7 +75,7 @@ public class MusicManager {
     }
 
     public void nextSong() {
-        if (musicQueue != null) {
+        if (musicQueue != null && musicQueue.isAtLastSong() == false) {
             playMedia(musicQueue.nextSong());
         }
     }
