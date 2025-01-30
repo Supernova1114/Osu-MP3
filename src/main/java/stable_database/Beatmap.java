@@ -1,6 +1,7 @@
-package osu_mp3;
+package stable_database;
 
 import org.json.JSONObject;
+import osu_mp3.SongData;
 
 import java.io.*;
 import java.security.NoSuchAlgorithmException;

@@ -14,6 +14,10 @@ import kotlin.io.path.name
 
 class RealmDatabaseReader(private val realmFilePath: Path, private val osuFilesPath: Path) {
 
+    // TODO - Need to automatically attempt to set REALM_DB_VERSION if the database gives
+    // a read errors with regards to a version change. This is because the schema that
+    // is written below may not conflict with the changes made in an Osu! Lazer update.
+    // may be able to catch the error and find the expected version number within the string.
     object Constants {
         const val REALM_DB_VERSION: Long = 46
     }

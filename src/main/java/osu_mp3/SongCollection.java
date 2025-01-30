@@ -37,6 +37,9 @@ public class SongCollection {
     public void remove(int index) {
         songList.remove(index);
     }
+    public void remove(SongData songData) {
+        songList.remove(songData);
+    }
 
     public void add(int index, SongData songData) {
         songList.add(index, songData);

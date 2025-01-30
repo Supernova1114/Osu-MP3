@@ -3,16 +3,11 @@ package osu_mp3;
 import com.tagtraum.audioplayer4j.AudioPlayer;
 import com.tagtraum.audioplayer4j.AudioPlayerFactory;
 import com.tagtraum.audioplayer4j.AudioPlayerListener;
-import com.tagtraum.audioplayer4j.java.ExtAudioSystem;
-import com.tagtraum.audioplayer4j.java.JavaPlayer;
-import com.tagtraum.audioplayer4j.javafx.JavaFXPlayer;
-import com.tagtraum.ffsampledsp.FFNativeLibraryLoader;
 
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 import java.net.URI;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.time.Duration;
 import java.util.function.Function;
 import java.util.logging.Level;
@@ -23,17 +18,14 @@ public class MusicPlayer {
     private final double DEFAULT_VOLUME = 0.5;
     private double volume = DEFAULT_VOLUME;
     private AudioPlayer audioPlayer = null;
-    private Function<Long, Void> timeChangedCallback = null;
+    private Function<Duration, Void> timeChangedCallback = null;
     private Function endOfMediaCallback = null;
     private Function startOfMediaCallback = null;
     private boolean isPlayerInitialized = false;
 
-    public MusicPlayer() {
-    }
 
     public void playMedia(String soundFilePath) {
         initializeAudioPlayer(soundFilePath);
-        attemptPlay();
     }
 
     private void initializeAudioPlayer(String soundFilePath) {
@@ -49,9 +41,6 @@ public class MusicPlayer {
 
             Logger.getLogger("com.tagtraum.audioplayer4j.java").setLevel(Level.OFF);
             Logger.getLogger("com.tagtraum.ffsampledsp").setLevel(Level.OFF);
-            //Logger.getLogger(ExtAudioSystem.class.getName()).setLevel(Level.SEVERE);
-            //Logger.getLogger(FFNativeLibraryLoader.class.getName()).setLevel(Level.OFF);
-            //Logger.getLogger(ExtAudioSystem.class.getName()).setLevel(Level.OFF);
 
             audioPlayer = AudioPlayerFactory.open(formatFilePath(Path.of(soundFilePath)).toUri());
 
@@ -81,12 +70,14 @@ public class MusicPlayer {
             audioPlayer.addPropertyChangeListener(evt -> {
                 if (evt.getPropertyName().equals("time")) {
                     if (timeChangedCallback != null && evt.getNewValue() != null) {
-                        timeChangedCallback.apply(((Duration) evt.getNewValue()).getSeconds());
+                        timeChangedCallback.apply(((Duration) evt.getNewValue()));
                     }
                 }
             });
 
             isPlayerInitialized = true;
+
+            play();
 
         } catch (IOException | UnsupportedAudioFileException e) {
             e.printStackTrace();
@@ -96,12 +87,6 @@ public class MusicPlayer {
     public void dispose() {
         if (audioPlayer != null) {
             audioPlayer.close();
-        }
-    }
-
-    private void attemptPlay() {
-        if (audioPlayer != null) {
-            audioPlayer.play();
         }
     }
 
@@ -117,15 +102,20 @@ public class MusicPlayer {
         }
     }
 
-    public void togglePause() {
+    // Returns true if played, false if paused or player is not init.
+    public boolean togglePause() {
         if (isPlayerInitialized) {
 
             if (audioPlayer.isPaused()) {
                 play();
+                return true;
             } else {
                 pause();
+                return false;
             }
         }
+
+        return false;
     }
 
     public void setVolume(double percent) {
@@ -161,15 +151,19 @@ public class MusicPlayer {
             // Check against max duration
             Duration maxDur = getDuration();
 
-            if (maxDur != null && dur.compareTo(maxDur) > 0) {
-                dur = maxDur.minusMillis(1);
+//            if (maxDur != null && dur.compareTo(maxDur) > 0) {
+//                dur = maxDur.minusMillis(1);
+//            }
+
+            if (maxDur != null && maxDur.minus(dur).compareTo(Duration.ofMillis(100)) < 0) {
+                dur = maxDur.minusMillis(100);
             }
 
             audioPlayer.setTime(dur);
         }
     }
 
-    public void setTimeChangedCallback(Function<Long, Void> callback) {
+    public void setTimeChangedCallback(Function<Duration, Void> callback) {
         timeChangedCallback = callback;
     }
 

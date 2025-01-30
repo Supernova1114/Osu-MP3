@@ -11,10 +11,10 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import lazer_database.RealmDatabaseReader;
+import stable_database.DatabaseManager;
 
 
 import java.io.*;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
 
@@ -149,7 +149,7 @@ public class App extends Application {
 //            databaseManager.readDatabase();
 //        }
 
-        List<SongCollection> songCollectionList = loadSongCollections("stable");
+        List<SongCollection> songCollectionList = loadSongCollections("lazer");
 
         for (SongCollection collection : songCollectionList) {
             songCollectionDict.put(collection.getName(), collection);

@@ -53,7 +53,7 @@ public class Controller {
     public static boolean isSeekBarPressed = false;
 
     @FXML
-    public void GotoGithub(){
+    public void GotoGithub() {
         Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
         if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
             try {
@@ -81,7 +81,7 @@ public class Controller {
     }
 
     @FXML
-    public void CloseProgram(){
+    public void CloseProgram() {
         System.out.println("Closing Program");
         App.primaryStage.close();
         System.exit(0);
@@ -111,19 +111,19 @@ public class Controller {
         showArtists(showArtistsCheckMenu.isSelected());
     }
 
-    public void showArtists(boolean b){
+    public void showArtists(boolean b) {
 
     }
 
 
-    public void initialize(){
+    public void initialize() {
         gridPane.setDisable(true);
         exportSongListMenuItem.setDisable(true);
 
         songCountLabel.setText("");
         songTitleLabel.setText("Song Title");
 
-        pauseButton.setText("| |");
+        pauseButton.setText(">");
 
 
         showArtistsCheckMenu.setSelected(true);
@@ -134,18 +134,23 @@ public class Controller {
             }
         });
 
-        volumeSlider.setValue(25);
-        volumeSlider.setBlockIncrement(5);
-        volumeSlider.setMajorTickUnit(25);
-        volumeSlider.setMinorTickCount(5);
+//        volumeSlider.setBlockIncrement(5);
+//        volumeSlider.setMajorTickUnit(25);
+//        volumeSlider.setMinorTickCount(5);
         //volumeSlider.setSnapToTicks(true);
-        volumeSlider.setMax(50);
+        volumeSlider.setMax(100);
         volumeSlider.setMin(0);
+        volumeSlider.setValue(50);
+
+        seekCurrentLabel.setText("0:0:00");
+        seekMaxLabel.setText("0:0:00");
 
         volumeSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
-            MusicManager.getInstance().setVolume( (newValue.intValue() / 100.0f) );
+            MusicManager.getInstance().setVolume( (newValue.floatValue() / 100.0f) );
         });
 
+        seekBar.setMin(0);
+        seekBar.setMax(0);
         seekBar.setValue(0);
 
         seekBar.setOnMousePressed(event -> {
@@ -160,32 +165,19 @@ public class Controller {
 
     }
 
-    // TODO - this needs to be refactored probably.
-    public void setCurrentSeekTime(double currSeconds){
-        seekBar.setValue(currSeconds);
+    public void setCurrentSeekTime(Duration duration) {
+        seekBar.setValue(duration.toSeconds());
 
-        double hours = (currSeconds / 3600);
-        double minutes = ((currSeconds % 3600) / 60);
-        double seconds = (currSeconds % 60);
-        //System.out.println("CurrSec: " + currSeconds + " sec: " + seconds);
-
-        seekCurrentLabel.setText((int)hours + ":" + (int)minutes + ":" + (seconds < 10 ? "0" + (int)seconds : (int)seconds));
-
-
+        int seconds = duration.toSecondsPart();
+        seekCurrentLabel.setText(duration.toHoursPart() + ":" + duration.toMinutesPart() + ":" + (seconds < 10 ? "0" + seconds : seconds));
     }
 
-    public void refreshSeekBar(Duration duration){
-        seekBar.setMin(0);
+    public void refreshSeekBar(Duration duration) {
         seekBar.setValue(0);
 
         seekBar.setMax(duration.toSeconds());
 
-//        int hours = (int)(duration.toSeconds() / 3600);
-//        int minutes = (int)((duration.toSeconds() % 3600) / 60);
-//        int seconds = (int)(duration.toSeconds() % 60);
-
         int seconds = duration.toSecondsPart();
-
         seekMaxLabel.setText(duration.toHoursPart() + ":" + duration.toMinutesPart() + ":" + (seconds < 10 ? "0" + seconds : seconds));
 
         seekBar.setDisable(false);

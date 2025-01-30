@@ -1,4 +1,4 @@
-package osu_mp3;
+package stable_database;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

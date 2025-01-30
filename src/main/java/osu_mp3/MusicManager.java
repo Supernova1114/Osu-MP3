@@ -22,12 +22,8 @@ public class MusicManager {
             return null;
         });
 
-        musicPlayer.setTimeChangedCallback((seconds)->{
-
-            Platform.runLater(() -> {
-                App.controller.setCurrentSeekTime(seconds);
-            });
-
+        musicPlayer.setTimeChangedCallback((duration)->{
+            Platform.runLater(() -> App.controller.setCurrentSeekTime(duration));
             return null;
         });
 
@@ -39,17 +35,22 @@ public class MusicManager {
 
     public void playMedia(SongPane pane) {
 
+        // If this is a song from a different collection, create a new playlist
         if (currentCollectionName != pane.collectionName) {
             currentCollectionName = pane.collectionName;
 
             // find collection
             musicQueue = new MusicQueue(App.songCollectionDict.get(pane.collectionName));
             musicQueue.shuffle();
+            musicQueue.moveToFront(pane.songData);
+        } else {
+            musicQueue.moveToNextIndex(pane.songData);
         }
 
-        musicQueue.moveToCurrentIndex(pane.songData);
+        //musicQueue.moveToCurrentIndex(pane.songData);
 
         currentSong = pane.songData;
+//        pane.setLabelColor(Color.RED);
         musicPlayer.playMedia(pane.songData.filePath);
     }
 
@@ -66,32 +67,21 @@ public class MusicManager {
         });
     }
 
-    public void play() {
-        musicPlayer.play();
-
-        Platform.runLater(() -> {
-            App.controller.pauseButton.setText("| |");
-        });
-    }
-
-    public void pause() {
-        musicPlayer.pause();
-
-        Platform.runLater(() -> {
-            App.controller.pauseButton.setText(">");
-        });
-    }
-
     public void togglePause() {
-        musicPlayer.togglePause();
+        boolean wasSetToPlay = musicPlayer.togglePause();
+        Platform.runLater(() -> App.controller.pauseButton.setText(wasSetToPlay ? "| |" : ">"));
     }
 
     public void nextSong() {
-        playMedia(musicQueue.nextSong());
+        if (musicQueue != null) {
+            playMedia(musicQueue.nextSong());
+        }
     }
 
     public void prevSong() {
-        playMedia(musicQueue.prevSong());
+        if (musicQueue != null) {
+            playMedia(musicQueue.prevSong());
+        }
     }
 
     public void setVolume(double percent) {
@@ -105,6 +95,7 @@ public class MusicManager {
     public void dispose() {
         musicPlayer.dispose();
     }
+
     public static MusicManager getInstance() {
         return instance;
     }

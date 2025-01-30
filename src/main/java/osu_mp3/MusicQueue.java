@@ -10,7 +10,7 @@ public class MusicQueue {
         this.collection = collection;
     }
 
-    public void moveToCurrentIndex(SongData songData) {
+    public void moveToNextIndex(SongData songData) {
 
         int songIndex = collection.indexOf(songData);
 
@@ -18,6 +18,11 @@ public class MusicQueue {
             collection.remove(songIndex);
             collection.add(songIndex > currentIndex ? ++currentIndex : currentIndex, songData);
         }
+    }
+
+    public void moveToFront(SongData songData) {
+        collection.remove(songData);
+        collection.add(0, songData);
     }
 
     public void shuffle() {
@@ -33,15 +38,15 @@ public class MusicQueue {
     }
 
     private SongData getSong(int index) {
+        System.out.println(index);
         return collection.get(index);
-    }
-
-    public SongData getSong() {
-        return getSong(currentIndex);
     }
 
     public int queueSize() {
         return collection.size();
     }
 
+    public int getCurrentIndex() {
+        return currentIndex;
+    }
 }

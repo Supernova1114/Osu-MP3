@@ -1,10 +1,12 @@
-package osu_mp3;
+package stable_database;
 
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
 import org.json.*;
+import osu_mp3.SongCollection;
+import osu_mp3.SongData;
 
 
 public class DatabaseManager {
