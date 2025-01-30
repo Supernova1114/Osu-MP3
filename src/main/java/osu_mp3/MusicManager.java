@@ -23,7 +23,9 @@ public class MusicManager {
         });
 
         musicPlayer.setTimeChangedCallback((duration)->{
-            Platform.runLater(() -> App.controller.setCurrentSeekTime(duration));
+            if (App.controller.isSeekBarPressed == false) {
+                Platform.runLater(() -> App.controller.setCurrentSeekTime(duration));
+            }
             return null;
         });
 

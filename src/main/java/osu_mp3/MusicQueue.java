@@ -38,7 +38,6 @@ public class MusicQueue {
     }
 
     private SongData getSong(int index) {
-        System.out.println(index);
         return collection.get(index);
     }
 

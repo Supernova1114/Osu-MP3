@@ -62,10 +62,11 @@ dependencies {
     // Temporarily removed in favor of local fix.
     // See libs\com\tagtraum\ffsampledsp\README.md
     // https://mvnrepository.com/artifact/com.tagtraum/ffsampledsp-complete
-    //implementation("com.tagtraum:ffsampledsp-complete:0.9.53")
-
+    // Original: implementation("com.tagtraum:ffsampledsp-complete:0.9.53")
     implementation(files("libs\\com\\tagtraum\\ffsampledsp\\ffsampledsp-complete-0.9.53-fix.jar"))
 
+    // For reading mp3 length properly.
+    implementation("com.mpatric:mp3agic:0.9.1")
 }
 
 tasks.withType<Jar> {

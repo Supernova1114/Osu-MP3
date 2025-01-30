@@ -1,5 +1,7 @@
 package osu_mp3;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
@@ -153,29 +155,35 @@ public class Controller {
         seekBar.setMax(0);
         seekBar.setValue(0);
 
-        seekBar.setOnMousePressed(event -> {
-                MusicManager.getInstance().seek(seekBar.getValue());
-        });
-
-        seekBar.setOnMouseDragged(event -> {
+        seekBar.setOnMouseReleased(event -> {
             MusicManager.getInstance().seek(seekBar.getValue());
+            isSeekBarPressed = false;
         });
 
+        seekBar.setOnMousePressed(event -> isSeekBarPressed = true);
 
+        seekBar.valueProperty().addListener((observable, oldValue, newValue) -> {
+            double durationSeconds = newValue.doubleValue();
+            double durationMillis = durationSeconds * 1000;
+
+            Duration duration = Duration.ofMillis((long)durationMillis);
+
+            int seconds = duration.toSecondsPart();
+            seekCurrentLabel.setText(duration.toHoursPart() + ":" + duration.toMinutesPart() + ":" + (seconds < 10 ? "0" + seconds : seconds));
+        });
 
     }
 
     public void setCurrentSeekTime(Duration duration) {
-        seekBar.setValue(duration.toSeconds());
-
-        int seconds = duration.toSecondsPart();
-        seekCurrentLabel.setText(duration.toHoursPart() + ":" + duration.toMinutesPart() + ":" + (seconds < 10 ? "0" + seconds : seconds));
+        double totalMillis = duration.toMillis();
+        seekBar.setValue(totalMillis / 1000);
     }
 
     public void refreshSeekBar(Duration duration) {
         seekBar.setValue(0);
 
-        seekBar.setMax(duration.toSeconds());
+        double totalMillis = duration.toMillis();
+        seekBar.setMax(totalMillis / 1000);
 
         int seconds = duration.toSecondsPart();
         seekMaxLabel.setText(duration.toHoursPart() + ":" + duration.toMinutesPart() + ":" + (seconds < 10 ? "0" + seconds : seconds));

@@ -1,5 +1,8 @@
 package osu_mp3;
 
+import com.mpatric.mp3agic.InvalidDataException;
+import com.mpatric.mp3agic.Mp3File;
+import com.mpatric.mp3agic.UnsupportedTagException;
 import com.tagtraum.audioplayer4j.AudioPlayer;
 import com.tagtraum.audioplayer4j.AudioPlayerFactory;
 import com.tagtraum.audioplayer4j.AudioPlayerListener;
@@ -22,6 +25,7 @@ public class MusicPlayer {
     private Function endOfMediaCallback = null;
     private Function startOfMediaCallback = null;
     private boolean isPlayerInitialized = false;
+    private Duration audioDuration = null;
 
 
     public void playMedia(String soundFilePath) {
@@ -43,6 +47,14 @@ public class MusicPlayer {
             Logger.getLogger("com.tagtraum.ffsampledsp").setLevel(Level.OFF);
 
             audioPlayer = AudioPlayerFactory.open(formatFilePath(Path.of(soundFilePath)).toUri());
+
+            // Alternate library to get duration of mp3 files as AudioPlayer library gives a poor duration estimate.
+            try {
+                audioDuration = Duration.ofMillis(new Mp3File(soundFilePath).getLengthInMilliseconds());
+            } catch (InvalidDataException | UnsupportedTagException e) {
+                audioDuration = audioPlayer.getDuration();
+            }
+
 
             audioPlayer.setVolume((float)volume);
 
@@ -141,20 +153,18 @@ public class MusicPlayer {
 
             // Workaround fix as AudioPlayer seems to end media when seeking to 0.0 seconds.
             // When seeking to 0.0 seconds, seek to 0.001 seconds instead.
-            if (secondsOnly == 0 && millis < 10) {
-                //dur.plusMillis(500);
-                millis = 10;
-            }
+//            if (secondsOnly == 0 && millis < 10) {
+//                //dur.plusMillis(500);
+//                millis = 10;
+//            }
 
             Duration dur = Duration.ofSeconds(secondsOnly).plusMillis(millis);
 
-            // Check against max duration
+            // Make sure duration is not greater than max duration.
+            // If seeking near end, set to max - 100 millis.
+            // This is a workaround fix as AudioPlayer seems to throw errors due to
+            // seeking to poorly estimated max durations.
             Duration maxDur = getDuration();
-
-//            if (maxDur != null && dur.compareTo(maxDur) > 0) {
-//                dur = maxDur.minusMillis(1);
-//            }
-
             if (maxDur != null && maxDur.minus(dur).compareTo(Duration.ofMillis(100)) < 0) {
                 dur = maxDur.minusMillis(100);
             }
@@ -187,6 +197,10 @@ public class MusicPlayer {
     }
 
     public Duration getDuration() {
-        return audioPlayer.getDuration();
+        if (audioDuration != null) {
+            return audioDuration;
+        } else {
+            return Duration.ZERO;
+        }
     }
 }
