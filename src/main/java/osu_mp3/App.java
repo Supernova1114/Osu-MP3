@@ -2,13 +2,12 @@ package osu_mp3;
 
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.concurrent.Task;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import lazer_database.RealmDatabaseReader;
 import stable_database.DatabaseManager;
@@ -51,7 +50,9 @@ public class App extends Application {
     public static Path osuStableFolderPath = null;
     public static Path osuLazerFolderPath = null;
     public static String osuDatabaseVersion = null;
+    public static String lastCollectionShown = null;
     public static HashMap<String, SongCollection> songCollectionDict;
+    private static String prevValue = "";
 
 
     @Override
@@ -77,28 +78,28 @@ public class App extends Application {
 
         Scene mainScene = new Scene(rootNode, WINDOW_WIDTH, WINDOW_HEIGHT);
 
-        mainScene.addEventFilter(KeyEvent.KEY_PRESSED, (KeyEvent event) -> {
+//        mainScene.addEventFilter(KeyEvent.KEY_PRESSED, (KeyEvent event) -> {
+//
+//            if (event.getCode() == KeyCode.UP){
+//                controller.volumeSlider.increment();
+//                event.consume();
+//            }
+//            if (event.getCode() == KeyCode.DOWN){
+//                controller.volumeSlider.decrement();
+//                event.consume();
+//            }
+//
+//            event.consume();
+//        });
 
-            if (event.getCode() == KeyCode.UP){
-                controller.volumeSlider.increment();
-                event.consume();
-            }
-            if (event.getCode() == KeyCode.DOWN){
-                controller.volumeSlider.decrement();
-                event.consume();
-            }
-
-            event.consume();
-        });
-
-        mainScene.addEventFilter(KeyEvent.KEY_RELEASED, (KeyEvent event) -> {
-            if ( event.getCode() == KeyCode.SPACE ){
-                rootNode.requestFocus();
-                controller.TogglePause();
-                event.consume();
-            }
-            event.consume();
-        });
+//        mainScene.addEventFilter(KeyEvent.KEY_RELEASED, (KeyEvent event) -> {
+//            if ( event.getCode() == KeyCode.SPACE ){
+//                rootNode.requestFocus();
+//                controller.TogglePause();
+//                event.consume();
+//            }
+//            event.consume();
+//        });
 
         primaryStage.setTitle(APP_TITLE);
         primaryStage.setScene(mainScene);
@@ -122,6 +123,7 @@ public class App extends Application {
         osuLazerFolderPath = Path.of(settingsManager.getProperty(SettingsManager.Settings.OSU_LAZER_FOLDER_PATH));
         osuStableFolderPath = Path.of(settingsManager.getProperty(SettingsManager.Settings.OSU_STABLE_FOLDER_PATH));
         osuDatabaseVersion = settingsManager.getProperty(SettingsManager.Settings.OSU_VERSION);
+        lastCollectionShown = settingsManager.getProperty(SettingsManager.Settings.LAST_COLLECTION_SHOWN);
     }
 
     private void exitApplication() {
@@ -149,9 +151,31 @@ public class App extends Application {
                 songCollectionDict.put(collection.getName(), collection);
             }
 
-            addSongPanes(songCollectionList);
+            controller.comboBox.getItems().addAll(songCollectionDict.keySet());
+
+            controller.comboBox.setOnAction((event) -> {
+                String value = controller.comboBox.getValue();
+                if (value == null) {
+                    return;
+                }
+
+                if (value.equals(prevValue)) {
+                    return;
+                }
+
+                prevValue = value;
+
+                displaySongCollection(value);
+            });
+
+            controller.comboBox.setOnHidden((event)->{
+                if (controller.comboBox.getValue() == null) {
+                    controller.comboBox.setValue(prevValue);
+                }
+            });
 
             Platform.runLater(()-> {
+                controller.comboBox.setValue(lastCollectionShown);
                 controller.gridPane.setDisable(false);
                 controller.exportSongListMenuItem.setDisable(false);
             });
@@ -210,48 +234,29 @@ public class App extends Application {
         controller.TogglePause();
     }
 
-    private static void addSongPanes(List<SongCollection> songCollectionList)
-    {
-        for (int i = 0; i < songCollectionList.size(); i++) {
+    private static void displaySongCollection(String name) {
+        SongCollection collection = songCollectionDict.get(name);
 
-            final int currentCol = i; // A final var is necessary for Platform.runLater threads.
+        int collectionSize = collection.size();
 
-            SongCollection songCollection = songCollectionList.get(i);
-
-            int collectionSize = songCollection.size();
-
-            if (collectionSize == 0) {
-                continue;
-            }
-
-            // Add column title.
-            Platform.runLater(
-                ()-> controller.addToGrid(
-                    new Label(songCollection.getName() + " (" + collectionSize + ")"),
-                    currentCol,
-                    0
-                )
-            );
-
-            List<SongPane> songPanes = new ArrayList<>();
-
-            // Add rows
-            for (int j = 0; j < collectionSize; j++) {
-
-                final int currentRow = j + 1; // A final var is necessary for Platform.runLater threads.
-
-                SongPane songPane = new SongPane(
-                    songCollection.get(j),
-                    songCollection.getName()
-                );
-
-                songPanes.add(songPane);
-
-                // TODO - eventually make it add entire column at once instead of individual panes.
-                // Add song pane to row.
-                Platform.runLater(() -> controller.addToGrid(songPane, currentCol, currentRow));
-            }
+        if (collectionSize == 0) {
+            return;
         }
+
+        List<Node> nodes = new ArrayList<>();
+
+        // Title header
+        nodes.add(new Label(collection.getName() + " (" + collectionSize + ")"));
+
+        // Songs
+        for (SongData songData : collection.getSongList()) {
+            nodes.add(new SongPane(songData, collection.getName()));
+        }
+
+        Platform.runLater(()->{
+            controller.clearGrid();
+            controller.addColumnToGrid(0, nodes);
+        });
     }
 
 }

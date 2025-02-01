@@ -1,5 +1,6 @@
 package osu_mp3;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
@@ -9,10 +10,13 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.DirectoryChooser;
+import org.controlsfx.control.SearchableComboBox;
+
 import java.awt.Desktop;
 import java.io.File;
 import java.net.URI;
 import java.time.Duration;
+import java.util.List;
 
 public class Controller {
 
@@ -38,8 +42,8 @@ public class Controller {
     Label seekCurrentLabel;
     @FXML
     MenuItem exportSongListMenuItem;
-
-    public static double seekBarValue = 0.0;
+    @FXML
+    SearchableComboBox<String> comboBox;
 
     public static boolean isSeekBarPressed = false;
 
@@ -177,6 +181,16 @@ public class Controller {
 
     public void addToGrid(Node node, int col, int row){
         gridPane.add(node, col, row);
+    }
+
+    public void addColumnToGrid(int index, List<Node> nodes) {
+        gridPane.addColumn(index, nodes.toArray(new Node[nodes.size()]));
+    }
+
+    public void clearGrid() {
+        Node gridData = gridPane.getChildren().get(0); // Contains gridlines
+        gridPane.getChildren().clear();
+        gridPane.getChildren().add(gridData);
     }
 
 

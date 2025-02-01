@@ -14,7 +14,8 @@ public class SettingsManager {
         OSU_STABLE_FOLDER_PATH("osuStableFolderPath", ""),
         OSU_LAZER_FOLDER_PATH("osuLazerFolderPath", ""),
         OSU_VERSION("osuVersion", ""),
-        SHOW_ARTISTS("showArtists", "true");
+        SHOW_ARTISTS("showArtists", "true"),
+        LAST_COLLECTION_SHOWN("lastCollectionShown", "");
 
         private final String key;
         private final String defaultValue;
