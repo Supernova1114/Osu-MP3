@@ -3,6 +3,7 @@ package osu_mp3;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -24,8 +25,10 @@ public class App extends Application {
 
     private final String APP_VERSION = "1.x - WIP";
     private final String APP_TITLE = "Osu! MP3 v" + APP_VERSION;
-    private final int WINDOW_WIDTH = 600;
-    private final int WINDOW_HEIGHT = 600;
+    private final int SCENE_WIDTH = 600;
+    private final int SCENE_HEIGHT = 600;
+    private final int WINDOW_WIDTH = 630;
+    private final int MIN_WINDOW_HEIGHT = 187;
     private static final String CURRENT_DIRECTORY = System.getProperty("user.dir");
     private static final String SETTINGS_FILE_NAME = "settings.conf";
     private static final String FXML_MAIN_SCENE = "primary_stage.fxml";
@@ -76,7 +79,11 @@ public class App extends Application {
         rootNode = fxmlLoader.load();
         controller = fxmlLoader.getController();
 
-        Scene mainScene = new Scene(rootNode, WINDOW_WIDTH, WINDOW_HEIGHT);
+        Scene mainScene = new Scene(rootNode, SCENE_WIDTH, SCENE_HEIGHT);
+
+        primaryStage.setMinWidth(WINDOW_WIDTH);
+        primaryStage.setMaxWidth(WINDOW_WIDTH);
+        primaryStage.setMinHeight(MIN_WINDOW_HEIGHT);
 
 //        mainScene.addEventFilter(KeyEvent.KEY_PRESSED, (KeyEvent event) -> {
 //
@@ -239,19 +246,19 @@ public class App extends Application {
 
         int collectionSize = collection.size();
 
-        if (collectionSize == 0) {
-            return;
-        }
-
         List<Node> nodes = new ArrayList<>();
 
         // Title header
-        nodes.add(new Label(collection.getName() + " (" + collectionSize + ")"));
+        Label titleLabel = new Label(collection.getName() + " (" + collectionSize + ")");
+        titleLabel.setPadding(new Insets(0,0,0,5));
+        nodes.add(titleLabel);
 
         // Songs
         for (SongData songData : collection.getSongList()) {
             nodes.add(new SongPane(songData, collection.getName()));
         }
+
+        //nodes.add(new SongPane(new SongData("abcdefgabcdefgabcdefgabcdefgabcdefgabcdefgabcdefgabcdefgabcdefgabcdefgabcdefgabcdefgabcdefgabcdefgabcdefgabcdefgabcdefgabcdefg", "abcdefgabcdefg", ""), "test"));
 
         Platform.runLater(()->{
             controller.clearGrid();

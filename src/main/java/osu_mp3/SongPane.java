@@ -1,5 +1,6 @@
 package osu_mp3;
 
+import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -37,6 +38,8 @@ public class SongPane extends Pane {
             new Text(songData.artistName + " - "),
             songText
         );
+
+        textFlow.setPadding(new Insets(0,5,0,5));
 
         label = new Label();
         label.setGraphic(textFlow);

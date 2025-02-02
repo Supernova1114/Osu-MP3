@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.stage.DirectoryChooser;
 import org.controlsfx.control.SearchableComboBox;
@@ -24,8 +25,6 @@ public class Controller {
     GridPane gridPane;
     @FXML
     Slider volumeSlider;
-    @FXML
-    Label songCountLabel;
     @FXML
     Button pauseButton;
     @FXML
@@ -113,9 +112,12 @@ public class Controller {
 
     public void initialize() {
         gridPane.setDisable(true);
+        ColumnConstraints columnConstraints = new ColumnConstraints();
+        columnConstraints.setPercentWidth(100);
+        gridPane.getColumnConstraints().add(columnConstraints);
+
         exportSongListMenuItem.setDisable(true);
 
-        songCountLabel.setText("");
         songTitleLabel.setText("Song Title");
 
         pauseButton.setText(">");
