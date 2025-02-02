@@ -12,19 +12,25 @@ public class MusicManager {
 
 
     public MusicManager() {
-
         instance = this;
+        initializeMusicPlayer();
+    }
 
+    private void initializeMusicPlayer() {
         musicPlayer = new MusicPlayer();
 
         musicPlayer.setEndOfMediaCallback((n)->{
             nextSong();
+            if (musicQueue.isAtLastSong()) {
+                // TODO - this should be pause only
+                togglePause();
+            }
             return null;
         });
 
         musicPlayer.setTimeChangedCallback((duration)->{
             if (App.controller.isSeekBarPressed == false) {
-                Platform.runLater(() -> App.controller.setCurrentSeekTime(duration));
+                Platform.runLater(() -> App.controller.setSeekBarPosition(duration));
             }
             return null;
         });
@@ -36,7 +42,6 @@ public class MusicManager {
     }
 
     public void playMedia(SongPane pane) {
-
         // If this is a song from a different collection, create a new playlist
         if (currentCollectionName != pane.collectionName) {
             currentCollectionName = pane.collectionName;
@@ -49,10 +54,7 @@ public class MusicManager {
             musicQueue.moveToNextIndex(pane.songData);
         }
 
-        //musicQueue.moveToCurrentIndex(pane.songData);
-
         currentSong = pane.songData;
-//        pane.setLabelColor(Color.RED);
         musicPlayer.playMedia(pane.songData.filePath);
     }
 
@@ -61,21 +63,20 @@ public class MusicManager {
         musicPlayer.playMedia(songData.filePath);
     }
 
-    public void onStartOfMedia() {
+    private void onStartOfMedia() {
         Platform.runLater(() -> {
-            App.controller.refreshSeekBar(musicPlayer.getDuration());
+            App.controller.prepareSeekBar(musicPlayer.getDuration());
             App.controller.pauseButton.setText("| |");
             App.controller.songTitleLabel.setText("Playing: " + currentSong.artistName + " - " + currentSong.songName);
         });
     }
 
     public void togglePause() {
-        boolean wasSetToPlay = musicPlayer.togglePause();
-        Platform.runLater(() -> App.controller.pauseButton.setText(wasSetToPlay ? "| |" : ">"));
+        Platform.runLater(() -> App.controller.pauseButton.setText(musicPlayer.togglePause() ? "| |" : ">"));
     }
 
     public void nextSong() {
-        if (musicQueue != null && musicQueue.isAtLastSong() == false) {
+        if (musicQueue != null) {
             playMedia(musicQueue.nextSong());
         }
     }
@@ -90,8 +91,8 @@ public class MusicManager {
         musicPlayer.setVolume(percent);
     }
 
-    public void seek(double seconds) {
-        musicPlayer.seek(seconds);
+    public void seek(long milliseconds) {
+        musicPlayer.seek(milliseconds);
     }
 
     public void dispose() {

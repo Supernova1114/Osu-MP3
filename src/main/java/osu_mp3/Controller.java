@@ -1,6 +1,5 @@
 package osu_mp3;
 
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
@@ -36,9 +35,9 @@ public class Controller {
     @FXML
     Slider seekBar;
     @FXML
-    Label seekMaxLabel;
+    Label maxTimeLabel;
     @FXML
-    Label seekCurrentLabel;
+    Label currentTimeLabel;
     @FXML
     MenuItem exportSongListMenuItem;
     @FXML
@@ -76,9 +75,7 @@ public class Controller {
 
     @FXML
     public void CloseProgram() {
-        System.out.println("Closing Program");
-        App.primaryStage.close();
-        System.exit(0);
+        App.exitApplication();
     }
 
     @FXML
@@ -92,13 +89,10 @@ public class Controller {
     }
 
     @FXML
-    public void TogglePauseAction(){
-        TogglePause();
-    }
-
-    public void TogglePause() {
+    public void TogglePauseAction() {
         MusicManager.getInstance().togglePause();
     }
+
 
     @FXML
     public void ShowArtists(){
@@ -124,61 +118,56 @@ public class Controller {
 
         showArtistsCheckMenu.setSelected(true);
 
-        scrollPane.focusedProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue){
-                App.rootNode.requestFocus();
-            }
-        });
+//        scrollPane.focusedProperty().addListener((observable, oldValue, newValue) -> {
+//            if (newValue){
+//                App.rootNode.requestFocus();
+//            }
+//        });
 
-        volumeSlider.setMax(100);
+
+        initializeVolumeSlider();
+        initializeSeekBar();
+    }
+
+    private void initializeVolumeSlider() {
         volumeSlider.setMin(0);
-        volumeSlider.setValue(50);
-
-        seekCurrentLabel.setText("0:0:00");
-        seekMaxLabel.setText("0:0:00");
-
+        volumeSlider.setMax(1);
+        volumeSlider.setValue(0.5);
         volumeSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
-            MusicManager.getInstance().setVolume( (newValue.floatValue() / 100.0f) );
+            MusicManager.getInstance().setVolume(newValue.doubleValue());
         });
+    }
 
-        seekBar.setMin(0);
-        seekBar.setMax(0);
-        seekBar.setValue(0);
-
+    private void initializeSeekBar() {
         seekBar.setOnMouseReleased(event -> {
-            MusicManager.getInstance().seek(seekBar.getValue());
+            MusicManager.getInstance().seek((long)seekBar.getValue());
             isSeekBarPressed = false;
         });
 
         seekBar.setOnMousePressed(event -> isSeekBarPressed = true);
 
         seekBar.valueProperty().addListener((observable, oldValue, newValue) -> {
-            double durationSeconds = newValue.doubleValue();
-            double durationMillis = durationSeconds * 1000;
-
-            Duration duration = Duration.ofMillis((long)durationMillis);
-
-            int seconds = duration.toSecondsPart();
-            seekCurrentLabel.setText(duration.toHoursPart() + ":" + duration.toMinutesPart() + ":" + (seconds < 10 ? "0" + seconds : seconds));
+            currentTimeLabel.setText(getDurationText(Duration.ofMillis(newValue.longValue())));
         });
 
+        prepareSeekBar(Duration.ZERO);
     }
 
-    public void setCurrentSeekTime(Duration duration) {
-        double totalMillis = duration.toMillis();
-        seekBar.setValue(totalMillis / 1000);
+    public void setSeekBarPosition(Duration duration) {
+        seekBar.setValue(duration.toMillis());
     }
 
-    public void refreshSeekBar(Duration duration) {
+    public void prepareSeekBar(Duration duration) {
+        seekBar.setMin(0);
         seekBar.setValue(0);
+        seekBar.setMax(duration.toMillis());
+        currentTimeLabel.setText("0:0:00");
+        maxTimeLabel.setText(getDurationText(duration));
+    }
 
-        double totalMillis = duration.toMillis();
-        seekBar.setMax(totalMillis / 1000);
-
+    public String getDurationText(Duration duration) {
         int seconds = duration.toSecondsPart();
-        seekMaxLabel.setText(duration.toHoursPart() + ":" + duration.toMinutesPart() + ":" + (seconds < 10 ? "0" + seconds : seconds));
-
-        seekBar.setDisable(false);
+        return duration.toHoursPart() + ":" + duration.toMinutesPart() + ":" + (seconds < 10 ? "0" + seconds : seconds);
     }
 
     public void addToGrid(Node node, int col, int row){

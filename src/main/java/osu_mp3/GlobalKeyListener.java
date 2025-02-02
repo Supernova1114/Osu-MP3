@@ -25,7 +25,7 @@ public class GlobalKeyListener {
                 Platform.runLater(() -> {
                     switch (hotKey.mediaKey){
                         case MEDIA_PLAY_PAUSE:
-                            App.togglePause();
+                            MusicManager.getInstance().togglePause();
                             break;
                         case MEDIA_NEXT_TRACK:
                             MusicManager.getInstance().nextSong();

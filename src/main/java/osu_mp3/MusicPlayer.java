@@ -29,12 +29,12 @@ public class MusicPlayer {
 
     public void playMedia(String soundFilePath) {
         initializeAudioPlayer(soundFilePath);
+        play();
     }
 
     private void initializeAudioPlayer(String soundFilePath) {
 
         try {
-
             isPlayerInitialized = false;
             dispose();
 
@@ -47,13 +47,12 @@ public class MusicPlayer {
 
             audioPlayer = AudioPlayerFactory.open(formatFilePath(Path.of(soundFilePath)).toUri());
 
-            // Alternate library to get duration of mp3 files as AudioPlayer library gives a poor duration estimate.
             try {
+                // Alternate library to get duration of mp3 files as AudioPlayer library gives a poor duration estimate.
                 audioDuration = Duration.ofMillis(new Mp3File(soundFilePath).getLengthInMilliseconds());
             } catch (InvalidDataException | UnsupportedTagException e) {
                 audioDuration = audioPlayer.getDuration();
             }
-
 
             audioPlayer.setVolume((float)volume);
 
@@ -61,34 +60,24 @@ public class MusicPlayer {
             audioPlayer.addAudioPlayerListener(new AudioPlayerListener() {
                 @Override
                 public void started(final AudioPlayer audioPlayer, final URI uri) {
-                    if (startOfMediaCallback != null) {
-                        startOfMediaCallback.apply(null);
-                    }
+                    if (startOfMediaCallback != null) { startOfMediaCallback.apply(null); }
                 }
 
                 @Override
                 public void finished(final AudioPlayer audioPlayer, final URI uri, final boolean endOfMedia) {
-
-                    if (endOfMedia) {
-                        if (endOfMediaCallback != null) {
-                            endOfMediaCallback.apply(null);
-                        }
-                    }
+                    //isPlayerInitialized = false;
+                    if (endOfMedia && endOfMediaCallback != null) { endOfMediaCallback.apply(null); }
                 }
             });
 
             // Time progressing event.
             audioPlayer.addPropertyChangeListener(evt -> {
-                if (evt.getPropertyName().equals("time")) {
-                    if (timeChangedCallback != null && evt.getNewValue() != null) {
-                        timeChangedCallback.apply(((Duration) evt.getNewValue()));
-                    }
+                if (evt.getPropertyName().equals("time") && timeChangedCallback != null && evt.getNewValue() != null) {
+                    timeChangedCallback.apply(((Duration) evt.getNewValue()));
                 }
             });
 
             isPlayerInitialized = true;
-
-            play();
 
         } catch (IOException | UnsupportedAudioFileException e) {
             e.printStackTrace();
@@ -96,37 +85,21 @@ public class MusicPlayer {
     }
 
     public void dispose() {
-        if (audioPlayer != null) {
-            audioPlayer.close();
-        }
+        if (audioPlayer != null) { audioPlayer.close(); }
     }
 
     public void play() {
-        if (isPlayerInitialized) {
-            audioPlayer.play();
-        }
+        if (isPlayerInitialized) { audioPlayer.play(); }
     }
 
     public void pause() {
-        if (isPlayerInitialized) {
-            audioPlayer.pause();
-        }
+        if (isPlayerInitialized) { audioPlayer.pause(); }
     }
 
-    // Returns true if played, false if paused or player is not init.
     public boolean togglePause() {
-        if (isPlayerInitialized) {
-
-            if (audioPlayer.isPaused()) {
-                play();
-                return true;
-            } else {
-                pause();
-                return false;
-            }
-        }
-
-        return false;
+        if (!isPlayerInitialized) { return false; }
+        audioPlayer.playPause();
+        return !audioPlayer.isPaused();
     }
 
     public void setVolume(double percent) {
@@ -140,36 +113,24 @@ public class MusicPlayer {
         }
     }
 
-    // TODO - make sure all functions do not call audioPlayer stuffs if resource is not loaded.
-    // TODO - Maybe just need to catuch the error actually
-    public void seek(double seconds) {
-        if (isPlayerInitialized) {
+    public void restartSong() {
+        if (isPlayerInitialized) { audioPlayer.reset(); }
+    }
 
+    public void seek(long milliseconds) {
+        Duration maxDur = getDuration();
+        if (!isPlayerInitialized || maxDur.compareTo(Duration.ZERO) == 0) { return; }
 
-            long secondsOnly = (long) seconds;
-            double secondsFrac = seconds - secondsOnly;
-            long millis = (long) (secondsFrac * 1000);
+        Duration targetDur = Duration.ofMillis(milliseconds);
 
-            // Workaround fix as AudioPlayer seems to end media when seeking to 0.0 seconds.
-            // When seeking to 0.0 seconds, seek to 0.001 seconds instead.
-//            if (secondsOnly == 0 && millis < 10) {
-//                //dur.plusMillis(500);
-//                millis = 10;
-//            }
-
-            Duration dur = Duration.ofSeconds(secondsOnly).plusMillis(millis);
-
-            // Make sure duration is not greater than max duration.
-            // If seeking near end, set to max - 100 millis.
-            // This is a workaround fix as AudioPlayer seems to throw errors due to
-            // seeking to poorly estimated max durations.
-            Duration maxDur = getDuration();
-            if (maxDur != null && maxDur.minus(dur).compareTo(Duration.ofMillis(100)) < 0) {
-                dur = maxDur.minusMillis(100);
-            }
-
-            audioPlayer.setTime(dur);
+        // Make sure duration is not greater than max duration.
+        // If seeking to end, set to (max - 100 millis).
+        // The millis subtraction is a workaround fix as MP3 duration estimates seem to be inaccurate.
+        if (maxDur.compareTo(targetDur) <= 0) {
+            targetDur = maxDur.minusMillis(100);
         }
+
+        audioPlayer.setTime(targetDur);
     }
 
     public void setTimeChangedCallback(Function<Duration, Void> callback) {
@@ -187,19 +148,10 @@ public class MusicPlayer {
     // Add a dot if filename does not contain one.
     // Tricks the AudioPlayer into actually playing the file.
     private Path formatFilePath(Path filePath) {
-
-        if (filePath.getFileName().toString().lastIndexOf('.') == -1) {
-            return Path.of(filePath.toString() + '.');
-        }
-
-        return filePath;
+        return filePath.getFileName().toString().lastIndexOf('.') == -1 ? Path.of(filePath.toString() + '.') : filePath;
     }
 
     public Duration getDuration() {
-        if (audioDuration != null) {
-            return audioDuration;
-        } else {
-            return Duration.ZERO;
-        }
+        return audioDuration != null ? audioDuration : Duration.ZERO;
     }
 }

@@ -61,7 +61,7 @@
             <Button fx:id="pauseButton" focusTraversable="false" mnemonicParsing="false" onAction="#TogglePauseAction" text="| |" />
             <Button focusTraversable="false" mnemonicParsing="false" onAction="#PrevTrack" text="|&lt;" />
             <Separator orientation="VERTICAL" prefHeight="30.0" prefWidth="20.0" />
-            <Label fx:id="seekMaxLabel" text="0:00" textAlignment="RIGHT">
+            <Label fx:id="maxTimeLabel" text="0:00" textAlignment="RIGHT">
                <padding>
                   <Insets right="10.0" />
                </padding>
@@ -71,7 +71,7 @@
                   <Point3D y="180.0" />
                </rotationAxis>
             </Slider>
-            <Label fx:id="seekCurrentLabel" layoutX="246.0" layoutY="17.0" text="0:00" textAlignment="RIGHT">
+            <Label fx:id="currentTimeLabel" layoutX="246.0" layoutY="17.0" text="0:00" textAlignment="RIGHT">
                <padding>
                   <Insets left="10.0" />
                </padding>

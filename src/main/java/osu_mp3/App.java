@@ -46,9 +46,9 @@ public class App extends Application {
     public static Stage primaryStage;
     public static Controller controller;
     public static Parent rootNode;
-    private GlobalKeyListener globalKeyListener;
+    private static GlobalKeyListener globalKeyListener;
     private static SettingsManager settingsManager;
-    private MusicManager musicManager;
+    private static MusicManager musicManager;
 
     public static Path osuStableFolderPath = null;
     public static Path osuLazerFolderPath = null;
@@ -133,7 +133,7 @@ public class App extends Application {
         lastCollectionShown = settingsManager.getProperty(SettingsManager.Settings.LAST_COLLECTION_SHOWN);
     }
 
-    private void exitApplication() {
+    public static void exitApplication() {
         globalKeyListener.cleaUp();
         musicManager.dispose();
         primaryStage.close();
@@ -232,13 +232,6 @@ public class App extends Application {
 //        osuStableFolderPath = osuFolderFile;
 //        settingsManager.setProperty("osuFolderLocation", osuStableFolderPath.getPath());
 //        settingsManager.saveSettings();
-    }
-
-
-    //moved out of GlobalKeyListener
-    public static void togglePause() {
-        rootNode.requestFocus();
-        controller.TogglePause();
     }
 
     private static void displaySongCollection(String name) {
