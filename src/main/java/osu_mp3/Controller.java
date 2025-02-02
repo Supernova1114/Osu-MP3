@@ -20,28 +20,20 @@ import java.util.List;
 
 public class Controller {
 
-    @FXML
-    GridPane gridPane;
-    @FXML
-    Slider volumeSlider;
-    @FXML
-    Button pauseButton;
-    @FXML
-    ScrollPane scrollPane;
-    @FXML
-    Label songTitleLabel;
-    @FXML
-    CheckMenuItem showArtistsCheckMenu;
-    @FXML
-    Slider seekBar;
-    @FXML
-    Label maxTimeLabel;
-    @FXML
-    Label currentTimeLabel;
-    @FXML
-    MenuItem exportSongListMenuItem;
-    @FXML
-    SearchableComboBox<String> comboBox;
+    @FXML GridPane gridPane;
+    @FXML Slider volumeSlider;
+    @FXML Button pauseButton;
+    @FXML ScrollPane scrollPane;
+    @FXML Label songTitleLabel;
+    @FXML CheckMenuItem showArtistsCheckMenu;
+    @FXML Slider seekBar;
+    @FXML Label maxTimeLabel;
+    @FXML Label currentTimeLabel;
+    @FXML MenuItem exportSongListMenuItem;
+    @FXML SearchableComboBox<String> comboBox;
+    @FXML RadioMenuItem osuLazerModeToggle;
+    @FXML RadioMenuItem osuStableModeToggle;
+
 
     public static boolean isSeekBarPressed = false;
 
@@ -74,36 +66,22 @@ public class Controller {
     }
 
     @FXML
-    public void CloseProgram() {
-        App.exitApplication();
-    }
+    public void CloseProgram() { App.exitApplication(); }
 
     @FXML
-    public void NextTrack() throws InterruptedException {
-        MusicManager.getInstance().nextSong();
-    }
+    public void NextTrack() { MusicManager.getInstance().nextSong(); }
 
     @FXML
-    public void PrevTrack() throws InterruptedException {
-        MusicManager.getInstance().prevSong();
-    }
+    public void PrevTrack() { MusicManager.getInstance().prevSong(); }
 
     @FXML
-    public void TogglePauseAction() {
-        MusicManager.getInstance().togglePause();
-    }
+    public void TogglePauseAction() { MusicManager.getInstance().togglePause(); }
 
 
     @FXML
-    public void ShowArtists(){
-        showArtists(showArtistsCheckMenu.isSelected());
-    }
+    public void ShowArtists(){}
 
-    public void showArtists(boolean b) {
-
-    }
-
-
+    // Runs prior to App start() method.
     public void initialize() {
         gridPane.setDisable(true);
         ColumnConstraints columnConstraints = new ColumnConstraints();
@@ -123,7 +101,6 @@ public class Controller {
 //                App.rootNode.requestFocus();
 //            }
 //        });
-
 
         initializeVolumeSlider();
         initializeSeekBar();

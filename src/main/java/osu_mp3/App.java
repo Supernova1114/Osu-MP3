@@ -52,7 +52,7 @@ public class App extends Application {
 
     public static Path osuStableFolderPath = null;
     public static Path osuLazerFolderPath = null;
-    public static String osuDatabaseVersion = null;
+    public static String osuDatabaseMode = null;
     public static String lastCollectionShown = null;
     public static HashMap<String, SongCollection> songCollectionDict;
     private static String prevValue = "";
@@ -129,7 +129,7 @@ public class App extends Application {
         // Initialize settings variables.
         osuLazerFolderPath = Path.of(settingsManager.getProperty(SettingsManager.Settings.OSU_LAZER_FOLDER_PATH));
         osuStableFolderPath = Path.of(settingsManager.getProperty(SettingsManager.Settings.OSU_STABLE_FOLDER_PATH));
-        osuDatabaseVersion = settingsManager.getProperty(SettingsManager.Settings.OSU_VERSION);
+        osuDatabaseMode = settingsManager.getProperty(SettingsManager.Settings.OSU_DATABASE_MODE);
         lastCollectionShown = settingsManager.getProperty(SettingsManager.Settings.LAST_COLLECTION_SHOWN);
     }
 
@@ -142,8 +142,8 @@ public class App extends Application {
 
     private static void loadSongsAsync() {
 
-        boolean validOsuLazerDatabase = osuDatabaseVersion.equals("lazer") && Files.exists(osuLazerFolderPath);
-        boolean validOsuStableDatabase = osuDatabaseVersion.equals("stable") && Files.exists(osuStableFolderPath);
+        boolean validOsuLazerDatabase = osuDatabaseMode.equals("lazer") && Files.exists(osuLazerFolderPath);
+        boolean validOsuStableDatabase = osuDatabaseMode.equals("stable") && Files.exists(osuStableFolderPath);
 
         if (!validOsuStableDatabase && !validOsuLazerDatabase) {
             System.out.println("ERROR: Invalid database folder path or database parser version!");
@@ -151,7 +151,7 @@ public class App extends Application {
         }
 
         Thread thread = new Thread(() -> {
-            List<SongCollection> songCollectionList = loadSongCollections(osuDatabaseVersion);
+            List<SongCollection> songCollectionList = loadSongCollections(osuDatabaseMode);
 
             songCollectionDict = new HashMap();
             for (SongCollection collection : songCollectionList) {
@@ -159,6 +159,8 @@ public class App extends Application {
             }
 
             controller.comboBox.getItems().addAll(songCollectionDict.keySet());
+
+            // TODO - cleanup!!!!
 
             controller.comboBox.setOnAction((event) -> {
                 String value = controller.comboBox.getValue();

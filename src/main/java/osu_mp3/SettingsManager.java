@@ -5,7 +5,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.HashMap;
 import java.util.Properties;
 
 public class SettingsManager {
@@ -13,7 +12,7 @@ public class SettingsManager {
     public enum Settings {
         OSU_STABLE_FOLDER_PATH("osuStableFolderPath", ""),
         OSU_LAZER_FOLDER_PATH("osuLazerFolderPath", ""),
-        OSU_VERSION("osuVersion", ""),
+        OSU_DATABASE_MODE("osuDatabaseMode", ""),
         SHOW_ARTISTS("showArtists", "true"),
         LAST_COLLECTION_SHOWN("lastCollectionShown", "");
 
