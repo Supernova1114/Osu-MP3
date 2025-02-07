@@ -1,5 +1,7 @@
 package osu_mp3;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
@@ -30,7 +32,8 @@ public class Controller {
     @FXML Label maxTimeLabel;
     @FXML Label currentTimeLabel;
     @FXML MenuItem exportSongListMenuItem;
-    @FXML SearchableComboBox<String> comboBox;
+    @FXML SearchableComboBoxImproved<SongCollection> comboBox;
+    @FXML ToggleGroup osuDBModeToggleGroup;
     @FXML RadioMenuItem osuLazerModeToggle;
     @FXML RadioMenuItem osuStableModeToggle;
 
@@ -83,7 +86,6 @@ public class Controller {
 
     // Runs prior to App start() method.
     public void initialize() {
-        gridPane.setDisable(true);
         ColumnConstraints columnConstraints = new ColumnConstraints();
         columnConstraints.setPercentWidth(100);
         gridPane.getColumnConstraints().add(columnConstraints);
@@ -102,9 +104,19 @@ public class Controller {
 //            }
 //        });
 
+        // FIXME: 2/3/2025 - Test
+        osuDBModeToggleGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
+            RadioMenuItem item = (RadioMenuItem)newValue;
+            System.out.println("ITEM SELECTED: " + item.getId());
+            App.osuDatabaseMode = item.getId();
+            App.loadSongsAsync();
+        });
+
         initializeVolumeSlider();
         initializeSeekBar();
     }
+
+    int testTemp = 0;
 
     private void initializeVolumeSlider() {
         volumeSlider.setMin(0);

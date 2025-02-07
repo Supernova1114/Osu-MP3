@@ -5,11 +5,14 @@ import java.util.List;
 
 public class SongCollection {
 
+    private static int lastID = 0;
     private String name;
+    private int ID;
     private List<SongData> songList;
 
     public SongCollection(String name, List<SongData> songList) {
         this.name = name;
+        this.ID = lastID++;
         this.songList = songList;
     }
 
@@ -47,5 +50,11 @@ public class SongCollection {
 
     public void shuffle() {
         Collections.shuffle(songList);
+    }
+
+    public int getID() { return ID; }
+
+    public String toString() {
+        return name + " (" + songList.size() + ")";
     }
 }

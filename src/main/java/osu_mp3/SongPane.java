@@ -14,9 +14,9 @@ import javafx.scene.text.TextFlow;
 public class SongPane extends Pane {
 
     public SongData songData;
-    public String collectionName;
+    public int collectionID;
     private Label label;
-    boolean isDragged = false;
+    private boolean isDragged = false;
 
     private final Font SONG_NAME_FONT = Font.font(
         Font.getDefault().getName(),
@@ -26,10 +26,9 @@ public class SongPane extends Pane {
     );
 
 
-    public SongPane(SongData songData, String collectionName) {
-
+    public SongPane(int collectionID, SongData songData) {
+        this.collectionID = collectionID;
         this.songData = songData;
-        this.collectionName = collectionName;
 
         Text songText = new Text(songData.songName);
         songText.setFont(SONG_NAME_FONT);
@@ -71,6 +70,4 @@ public class SongPane extends Pane {
     public String toString() {
         return songData.toString();
     }
-
-
 }

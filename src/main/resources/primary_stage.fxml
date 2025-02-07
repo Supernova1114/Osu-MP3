@@ -18,8 +18,8 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.VBox?>
-<?import org.controlsfx.control.SearchableComboBox?>
 <?import javafx.scene.control.ToggleGroup?>
+<?import osu_mp3.SearchableComboBoxImproved?>
 
 <BorderPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="osu_mp3.Controller">
    <top>
@@ -39,14 +39,14 @@
           </Menu>
             <Menu mnemonicParsing="false" text="Mode">
               <items>
-                  <RadioMenuItem fx:id="osuLazerModeToggle" mnemonicParsing="false" text="Osu! Lazer">
+                  <RadioMenuItem fx:id="osuLazerModeToggle" userData="lazer" mnemonicParsing="false" text="Osu! Lazer">
                       <toggleGroup>
-                          <ToggleGroup fx:id="toggleGroup"/>
+                          <ToggleGroup fx:id="osuDBModeToggleGroup"/>
                       </toggleGroup>
                   </RadioMenuItem>
-                  <RadioMenuItem fx:id="osuStableModeToggle" mnemonicParsing="false" text="Osu! Stable">
+                  <RadioMenuItem fx:id="osuStableModeToggle" userData="stable" mnemonicParsing="false" text="Osu! Stable">
                     <toggleGroup>
-                        <fx:reference source="toggleGroup"/>
+                        <fx:reference source="osuDBModeToggleGroup"/>
                     </toggleGroup>
                   </RadioMenuItem>
               </items>
@@ -98,7 +98,7 @@
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <SearchableComboBox fx:id="comboBox" focusTraversable="false" />
+            <SearchableComboBoxImproved fx:id="comboBox" focusTraversable="false" />
             <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" pannable="true" vbarPolicy="ALWAYS" VBox.vgrow="ALWAYS">
                <content>
                   <AnchorPane prefHeight="160.0" prefWidth="600.0">

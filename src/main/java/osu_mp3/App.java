@@ -16,10 +16,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class App extends Application {
 
@@ -54,8 +51,7 @@ public class App extends Application {
     public static Path osuLazerFolderPath = null;
     public static String osuDatabaseMode = null;
     public static String lastCollectionShown = null;
-    public static HashMap<String, SongCollection> songCollectionDict;
-    private static String prevValue = "";
+    public static LinkedHashMap<Integer, SongCollection> songCollectionDict = new LinkedHashMap<>();
 
 
     @Override
@@ -66,7 +62,9 @@ public class App extends Application {
 
         initializeSettings();
         initializeGUI(stage);
+        //applySettings();
         loadSongsAsync();
+        // FIXME - incorrect as prev func is async
     }
 
     private void initializeGUI(Stage stage) throws IOException {
@@ -133,61 +131,48 @@ public class App extends Application {
         lastCollectionShown = settingsManager.getProperty(SettingsManager.Settings.LAST_COLLECTION_SHOWN);
     }
 
+    // FIXME - adasdadad
+    private static void applySettings() {
+
+        if (osuDatabaseMode == null) {
+            return;
+        }
+
+        if (osuDatabaseMode.equals("lazer")) {
+            controller.osuLazerModeToggle.setSelected(true);
+        } else if (osuDatabaseMode.equals("stable")) {
+            controller.osuStableModeToggle.setSelected(true);
+        }
+    }
+
     public static void exitApplication() {
-        globalKeyListener.cleaUp();
+        settingsManager.saveSettings();
+        globalKeyListener.cleanUp();
         musicManager.dispose();
         primaryStage.close();
         System.exit(0);
     }
 
-    private static void loadSongsAsync() {
+    public static void loadSongsAsync() {
 
+        // FIXME - this is incorrect
         boolean validOsuLazerDatabase = osuDatabaseMode.equals("lazer") && Files.exists(osuLazerFolderPath);
         boolean validOsuStableDatabase = osuDatabaseMode.equals("stable") && Files.exists(osuStableFolderPath);
 
         if (!validOsuStableDatabase && !validOsuLazerDatabase) {
-            System.out.println("ERROR: Invalid database folder path or database parser version!");
+            System.out.println("ERROR: Invalid database folder path or database parser mode!");
             return;
         }
 
         Thread thread = new Thread(() -> {
             List<SongCollection> songCollectionList = loadSongCollections(osuDatabaseMode);
-
-            songCollectionDict = new HashMap();
             for (SongCollection collection : songCollectionList) {
-                songCollectionDict.put(collection.getName(), collection);
+                // FIXME - this is incorrect, need to have an ID as key as there may be multiple of same name in osu lazer.
+                songCollectionDict.put(collection.getID(), collection);
             }
 
-            controller.comboBox.getItems().addAll(songCollectionDict.keySet());
-
-            // TODO - cleanup!!!!
-
-            controller.comboBox.setOnAction((event) -> {
-                String value = controller.comboBox.getValue();
-                if (value == null) {
-                    return;
-                }
-
-                if (value.equals(prevValue)) {
-                    return;
-                }
-
-                prevValue = value;
-
-                displaySongCollection(value);
-            });
-
-            controller.comboBox.setOnHidden((event)->{
-                if (controller.comboBox.getValue() == null) {
-                    controller.comboBox.setValue(prevValue);
-                }
-            });
-
-            Platform.runLater(()-> {
-                controller.comboBox.setValue(lastCollectionShown);
-                controller.gridPane.setDisable(false);
-                controller.exportSongListMenuItem.setDisable(false);
-            });
+            controller.comboBox.getItems().addAll(songCollectionDict.values());
+            controller.comboBox.setOnActionImproved(event -> displayNewSongCollection(controller.comboBox.getValue()));
         });
 
         thread.start();
@@ -236,24 +221,14 @@ public class App extends Application {
 //        settingsManager.saveSettings();
     }
 
-    private static void displaySongCollection(String name) {
-        SongCollection collection = songCollectionDict.get(name);
-
-        int collectionSize = collection.size();
+    private static void displayNewSongCollection(SongCollection collection) {
 
         List<Node> nodes = new ArrayList<>();
 
-        // Title header
-        Label titleLabel = new Label(collection.getName() + " (" + collectionSize + ")");
-        titleLabel.setPadding(new Insets(0,0,0,5));
-        nodes.add(titleLabel);
-
         // Songs
         for (SongData songData : collection.getSongList()) {
-            nodes.add(new SongPane(songData, collection.getName()));
+            nodes.add(new SongPane(collection.getID(), songData));
         }
-
-        //nodes.add(new SongPane(new SongData("abcdefgabcdefgabcdefgabcdefgabcdefgabcdefgabcdefgabcdefgabcdefgabcdefgabcdefgabcdefgabcdefgabcdefgabcdefgabcdefgabcdefgabcdefg", "abcdefgabcdefg", ""), "test"));
 
         Platform.runLater(()->{
             controller.clearGrid();

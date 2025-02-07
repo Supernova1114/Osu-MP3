@@ -18,42 +18,32 @@ public class GlobalKeyListener {
 
         Logger.getLogger("com.tulskiy.keymaster.windows").setLevel(Level.OFF);
 
-        HotKeyListener hotKeyListener = new HotKeyListener() {
-            @Override
-            public void onHotKey(HotKey hotKey) {
-
-                Platform.runLater(() -> {
-                    switch (hotKey.mediaKey){
-                        case MEDIA_PLAY_PAUSE:
-                            MusicManager.getInstance().togglePause();
-                            break;
-                        case MEDIA_NEXT_TRACK:
-                            MusicManager.getInstance().nextSong();
-                            break;
-                        case MEDIA_PREV_TRACK:
-                            MusicManager.getInstance().prevSong();
-                            break;
-                    }//switch
-                });
+        HotKeyListener hotKeyListener = hotKey -> Platform.runLater(() -> {
+            switch (hotKey.mediaKey){
+                case MEDIA_PLAY_PAUSE:
+                    MusicManager.getInstance().togglePause();
+                    break;
+                case MEDIA_NEXT_TRACK:
+                    MusicManager.getInstance().nextSong();
+                    break;
+                case MEDIA_PREV_TRACK:
+                    MusicManager.getInstance().prevSong();
+                    break;
             }
-        };
+        });
 
-        provider = Provider.getCurrentProvider(false);//useSwingThread = false
+        provider = Provider.getCurrentProvider(false); //useSwingThread = false
 
-        assert provider != null;
-
-        provider.register(MediaKey.MEDIA_PLAY_PAUSE, hotKeyListener);
-
-        provider.register(MediaKey.MEDIA_NEXT_TRACK, hotKeyListener);
-
-        provider.register(MediaKey.MEDIA_PREV_TRACK, hotKeyListener);
-
-
-
-
+        if (provider != null) {
+            provider.register(MediaKey.MEDIA_PLAY_PAUSE, hotKeyListener);
+            provider.register(MediaKey.MEDIA_NEXT_TRACK, hotKeyListener);
+            provider.register(MediaKey.MEDIA_PREV_TRACK, hotKeyListener);
+        } else {
+            System.out.println("ERROR: Media Key Provider is NULL, will not be able to listen to media key presses!");
+        }
     }
 
-    public void cleaUp(){
+    public void cleanUp() {
         provider.reset();
         provider.stop();
     }

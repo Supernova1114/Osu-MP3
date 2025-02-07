@@ -5,7 +5,7 @@ import javafx.application.Platform;
 public class MusicManager {
 
     private static MusicManager instance;
-    private String currentCollectionName = "";
+    private int currentCollectionID = -1;
     private MusicPlayer musicPlayer;
     private MusicQueue musicQueue;
     private SongData currentSong;
@@ -42,12 +42,13 @@ public class MusicManager {
     }
 
     public void playMedia(SongPane pane) {
+
         // If this is a song from a different collection, create a new playlist
-        if (currentCollectionName != pane.collectionName) {
-            currentCollectionName = pane.collectionName;
+        if (currentCollectionID != pane.collectionID) {
+            currentCollectionID = pane.collectionID;
 
             // find collection
-            musicQueue = new MusicQueue(App.songCollectionDict.get(pane.collectionName));
+            musicQueue = new MusicQueue(App.songCollectionDict.get(pane.collectionID));
             musicQueue.shuffle();
             musicQueue.moveToFront(pane.songData);
         } else {

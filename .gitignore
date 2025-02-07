@@ -3,9 +3,8 @@
 
 #Project Specific
 settings.conf
-SongMapHash.db
+Beatmaps.db
 target
-test.db
 
 /.kotlin
 
