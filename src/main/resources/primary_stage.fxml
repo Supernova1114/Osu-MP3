@@ -19,6 +19,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.ToggleGroup?>
+<?import org.controlsfx.control.SearchableComboBox?>
 <?import osu_mp3.SearchableComboBoxImproved?>
 
 <BorderPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="osu_mp3.Controller">
@@ -31,7 +32,7 @@
               <MenuItem mnemonicParsing="false" onAction="#SetOsuStableFolder" text="Set Osu! Stable Folder" />
               <Menu mnemonicParsing="false" text="Export">
                 <items>
-                  <MenuItem fx:id="exportSongListMenuItem" mnemonicParsing="false" onAction="#ExportSongList" text="Song List (.txt)" />
+                  <MenuItem fx:id="exportSongListMenuItem" mnemonicParsing="false" onAction="#ExportSelectedSongList" text="Song List (.txt)" />
                 </items>
               </Menu>
               <SeparatorMenuItem mnemonicParsing="false" />
@@ -99,6 +100,7 @@
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
+<!--            <SearchableComboBox fx:id="" focusTraversable="false" />-->
             <SearchableComboBoxImproved fx:id="comboBox" focusTraversable="false" />
             <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" pannable="true" vbarPolicy="ALWAYS" VBox.vgrow="ALWAYS">
                <content>

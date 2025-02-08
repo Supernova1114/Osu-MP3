@@ -10,9 +10,13 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.stage.DirectoryChooser;
+import javafx.stage.FileChooser;
 
 import java.awt.Desktop;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.net.URI;
 import java.time.Duration;
 import java.util.List;
@@ -50,11 +54,40 @@ public class Controller {
     }
 
     @FXML
-    public void ExportSongList() {}
+    public void ExportSelectedSongList() {
+        SongCollection collection = comboBox.getValue();
+        if (collection == null) { return; }
+
+        FileChooser chooser = new FileChooser();
+        chooser.setTitle("Save File");
+        chooser.setInitialFileName("song_collection_" + collection.getName());
+        chooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Text File", "*.txt"));
+
+        File filePath = chooser.showSaveDialog(App.primaryStage);
+
+        // Canceled
+        if (filePath == null) {
+            return;
+        }
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+
+            writer.write("Song Collection: " + collection.getName() + "\n");
+            writer.write("Size: " + collection.size() + "\n\n");
+
+            for (SongData songData : collection.getSongList()) {
+                writer.write(songData.artistName + " - " + songData.songName + "\n");
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            App.showAlert(Alert.AlertType.ERROR, "Unable to save to file!", "");
+        }
+    }
 
     @FXML
     public void SetOsuStableFolder() {
-        File file = chooseDirectory("Find Osu! Stable Folder");
+        File file = chooseDirectory("Select Osu! Stable Installation Folder");
         if (file != null) {
             App.osuStableFolderPath = file.toPath();
             deselectCurrentOsuDBModeToggle();
@@ -64,7 +97,7 @@ public class Controller {
 
     @FXML
     public void SetOsuLazerFolder() {
-        File file = chooseDirectory("Find Osu! Lazer Data Folder");
+        File file = chooseDirectory("Select Osu! Lazer Data Folder");
         if (file != null) {
             App.osuLazerFolderPath = file.toPath();
             deselectCurrentOsuDBModeToggle();
@@ -107,12 +140,8 @@ public class Controller {
         columnConstraints.setPercentWidth(100);
         gridPane.getColumnConstraints().add(columnConstraints);
 
-        exportSongListMenuItem.setDisable(true);
-
         songTitleLabel.setText("Song Title");
-
         pauseButton.setText(">");
-
         showArtistsCheckMenu.setSelected(true);
 
         scrollPane.focusedProperty().addListener((observable, oldValue, newValue) -> {
@@ -145,6 +174,7 @@ public class Controller {
         volumeSlider.setMin(0);
         volumeSlider.setMax(1);
         volumeSlider.setValue(0.5);
+        volumeSlider.setBlockIncrement(0.1);
         volumeSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
             MusicManager.getInstance().setVolume(newValue.doubleValue());
         });

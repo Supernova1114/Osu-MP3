@@ -3,22 +3,23 @@ package osu_mp3;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.Dialog;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import lazer_database.RealmDatabaseReader;
 import stable_database.DatabaseManager;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 
 public class App extends Application {
@@ -29,7 +30,7 @@ public class App extends Application {
     private final int SCENE_HEIGHT = 600;
     private final int WINDOW_WIDTH = 630;
     private final int MIN_WINDOW_HEIGHT = 187;
-    private static final String CURRENT_DIRECTORY = System.getProperty("user.dir");
+    private static String programDirectory;
     private static final String SETTINGS_FILE_NAME = "settings.conf";
     private static final String FXML_MAIN_SCENE = "primary_stage.fxml";
 
@@ -60,6 +61,8 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
+        programDirectory = Path.of(App.class.getProtectionDomain().getCodeSource().getLocation().toURI()).getParent().toString();
+
         musicManager = new MusicManager();
         globalKeyListener = new GlobalKeyListener();
 
@@ -84,28 +87,24 @@ public class App extends Application {
         primaryStage.setMaxWidth(WINDOW_WIDTH);
         primaryStage.setMinHeight(MIN_WINDOW_HEIGHT);
 
-//        mainScene.addEventFilter(KeyEvent.KEY_PRESSED, (KeyEvent event) -> {
-//
-//            if (event.getCode() == KeyCode.UP){
-//                controller.volumeSlider.increment();
-//                event.consume();
-//            }
-//            if (event.getCode() == KeyCode.DOWN){
-//                controller.volumeSlider.decrement();
-//                event.consume();
-//            }
-//
-//            event.consume();
-//        });
+        mainScene.addEventFilter(KeyEvent.KEY_PRESSED, (KeyEvent event) -> {
 
-//        mainScene.addEventFilter(KeyEvent.KEY_RELEASED, (KeyEvent event) -> {
-//            if ( event.getCode() == KeyCode.SPACE ){
-//                rootNode.requestFocus();
-//                controller.TogglePause();
-//                event.consume();
-//            }
-//            event.consume();
-//        });
+            if (controller.comboBox.isShowing()) { return; }
+
+            if (event.getCode() == KeyCode.UP) {
+                controller.volumeSlider.increment();
+            }
+            if (event.getCode() == KeyCode.DOWN) {
+                controller.volumeSlider.decrement();
+            }
+        });
+
+        mainScene.addEventFilter(KeyEvent.KEY_RELEASED, (KeyEvent event) -> {
+            if ( event.getCode() == KeyCode.SPACE && controller.comboBox.isShowing() == false) {
+                rootNode.requestFocus();
+                MusicManager.getInstance().togglePause();
+            }
+        });
 
         primaryStage.setTitle(APP_TITLE);
         primaryStage.setScene(mainScene);
@@ -113,7 +112,7 @@ public class App extends Application {
     }
 
     private void initializeSettings() {
-        Path settingsFilePath = Path.of(CURRENT_DIRECTORY, SETTINGS_FILE_NAME);
+        Path settingsFilePath = Path.of(programDirectory, SETTINGS_FILE_NAME);
         settingsManager = new SettingsManager(settingsFilePath);
 
         if (settingsManager.settingsFileExists()) {
@@ -184,7 +183,7 @@ public class App extends Application {
             Path realmFilePath = Path.of(osuLazerFolderPath.toString(), LAZER_DATABASE_FILE_NAME);
 
             if (Files.notExists(osuFilesFolderPath) || Files.notExists(realmFilePath)) {
-                showAlert("Please set Osu! Lazer data folder.", "(File > Set Osu! Lazer Folder)");
+                showAlert(Alert.AlertType.INFORMATION, "Please set Osu! Lazer data folder.", "(File > Set Osu! Lazer Folder)");
                 return Collections.emptyList();
             }
 
@@ -202,10 +201,10 @@ public class App extends Application {
 
             Path songsFolderPath = Path.of(osuStableFolderPath.toString(), SONGS_FOLDER_NAME);
             Path collectionsFilePath = Path.of(osuStableFolderPath.toString(), COLLECTIONS_FILE_NAME);
-            Path databaseFilePath = Path.of(CURRENT_DIRECTORY, STABLE_DATABASE_FILE_NAME);
+            Path databaseFilePath = Path.of(programDirectory, STABLE_DATABASE_FILE_NAME);
 
             if (Files.notExists(songsFolderPath) || Files.notExists(collectionsFilePath)) {
-                showAlert("Please set Osu! Stable installation folder.", "(File > Set Osu! Stable Folder)");
+                showAlert(Alert.AlertType.INFORMATION, "Please set Osu! Stable installation folder.", "(File > Set Osu! Stable Folder)");
                 return Collections.emptyList();
             }
 
@@ -228,7 +227,7 @@ public class App extends Application {
             return songCollectionList;
         }
 
-        System.out.println("ERROR: Invalid Database Mode \"" + dbMode + "\".");
+        System.out.println("WARNING: Invalid Database Mode \"" + dbMode + "\".");
 
         return Collections.emptyList();
     }
@@ -257,9 +256,9 @@ public class App extends Application {
         loadSongsAsync();
     }
 
-    public static void showAlert(String header, String content) {
+    public static void showAlert(Alert.AlertType alertType, String header, String content) {
         Platform.runLater(()->{
-            Alert alert = new Alert(Alert.AlertType.INFORMATION, content, ButtonType.OK);
+            Alert alert = new Alert(alertType, content, ButtonType.OK);
             alert.setHeaderText(header);
             alert.showAndWait();
         });
