@@ -79,7 +79,10 @@ public class Controller {
     }
 
     private void deselectCurrentOsuDBModeToggle() {
-        osuDBModeToggleGroup.getSelectedToggle().setSelected(false);
+        Toggle toggle = osuDBModeToggleGroup.getSelectedToggle();
+        if (toggle != null) {
+            toggle.setSelected(false);
+        }
     }
 
     @FXML

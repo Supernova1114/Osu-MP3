@@ -8,6 +8,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 import lazer_database.RealmDatabaseReader;
@@ -153,15 +156,6 @@ public class App extends Application {
 
     public static void loadSongsAsync() {
 
-        // FIXME - this is incorrect? path
-        boolean validOsuLazerDatabase = osuDatabaseMode.equals("lazer") && Files.exists(osuLazerFolderPath);
-        boolean validOsuStableDatabase = osuDatabaseMode.equals("stable") && Files.exists(osuStableFolderPath);
-
-        if (!validOsuStableDatabase && !validOsuLazerDatabase) {
-            System.out.println("ERROR: Invalid database folder path or database parser mode!");
-            return;
-        }
-
         Thread thread = new Thread(() -> {
             List<SongCollection> songCollectionList = loadSongCollections(osuDatabaseMode);
             for (SongCollection collection : songCollectionList) {
@@ -190,7 +184,7 @@ public class App extends Application {
             Path realmFilePath = Path.of(osuLazerFolderPath.toString(), LAZER_DATABASE_FILE_NAME);
 
             if (Files.notExists(osuFilesFolderPath) || Files.notExists(realmFilePath)) {
-                System.out.println("ERROR: One or more Osu! Lazer files/directories do not exist.");
+                showAlert("Please set Osu! Lazer data folder.", "(File > Set Osu! Lazer Folder)");
                 return Collections.emptyList();
             }
 
@@ -211,7 +205,7 @@ public class App extends Application {
             Path databaseFilePath = Path.of(CURRENT_DIRECTORY, STABLE_DATABASE_FILE_NAME);
 
             if (Files.notExists(songsFolderPath) || Files.notExists(collectionsFilePath)) {
-                System.out.println("ERROR: One or more Osu! Stable files/directories do not exist.");
+                showAlert("Please set Osu! Stable installation folder.", "(File > Set Osu! Stable Folder)");
                 return Collections.emptyList();
             }
 
@@ -234,15 +228,9 @@ public class App extends Application {
             return songCollectionList;
         }
 
-        System.out.println("ERROR: Invalid Database Mode \"" + dbMode + "\". Check config file.");
+        System.out.println("ERROR: Invalid Database Mode \"" + dbMode + "\".");
 
         return Collections.emptyList();
-    }
-
-    public static void setOsuStableFolderPath(File osuFolderFile) throws IOException {
-//        osuStableFolderPath = osuFolderFile;
-//        settingsManager.setProperty("osuFolderLocation", osuStableFolderPath.getPath());
-//        settingsManager.saveSettings();
     }
 
     private static void displayNewSongCollection(SongCollection collection) {
@@ -263,9 +251,18 @@ public class App extends Application {
     // FIXME - temp test
     public static void switchOsuDBModes(String dbMode) {
         songCollectionDict.clear();
+        controller.clearGrid();
         osuDatabaseMode = dbMode;
         // FIXME - could be issues with async func being here if loadSongsAsync is not finished.
         loadSongsAsync();
+    }
+
+    public static void showAlert(String header, String content) {
+        Platform.runLater(()->{
+            Alert alert = new Alert(Alert.AlertType.INFORMATION, content, ButtonType.OK);
+            alert.setHeaderText(header);
+            alert.showAndWait();
+        });
     }
 
 }
