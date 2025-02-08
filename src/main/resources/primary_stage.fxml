@@ -39,12 +39,12 @@
           </Menu>
             <Menu mnemonicParsing="false" text="Mode">
               <items>
-                  <RadioMenuItem fx:id="osuLazerModeToggle" userData="lazer" mnemonicParsing="false" text="Osu! Lazer">
+                  <RadioMenuItem fx:id="osuLazerDBModeToggle" userData="lazer" mnemonicParsing="false" text="Osu! Lazer">
                       <toggleGroup>
                           <ToggleGroup fx:id="osuDBModeToggleGroup"/>
                       </toggleGroup>
                   </RadioMenuItem>
-                  <RadioMenuItem fx:id="osuStableModeToggle" userData="stable" mnemonicParsing="false" text="Osu! Stable">
+                  <RadioMenuItem fx:id="osuStableDBModeToggle" userData="stable" mnemonicParsing="false" text="Osu! Stable">
                     <toggleGroup>
                         <fx:reference source="osuDBModeToggleGroup"/>
                     </toggleGroup>

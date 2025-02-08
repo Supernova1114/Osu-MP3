@@ -2,12 +2,12 @@ package osu_mp3;
 
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 import lazer_database.RealmDatabaseReader;
@@ -62,9 +62,7 @@ public class App extends Application {
 
         initializeSettings();
         initializeGUI(stage);
-        //applySettings();
         loadSongsAsync();
-        // FIXME - incorrect as prev func is async
     }
 
     private void initializeGUI(Stage stage) throws IOException {
@@ -124,6 +122,11 @@ public class App extends Application {
             settingsManager.saveSettings();
         }
 
+        retrieveSettingVariables();
+    }
+
+    // Initialize application setting variables via properties stored in SettingsManager
+    private static void retrieveSettingVariables() {
         // Initialize settings variables.
         osuLazerFolderPath = Path.of(settingsManager.getProperty(SettingsManager.Settings.OSU_LAZER_FOLDER_PATH));
         osuStableFolderPath = Path.of(settingsManager.getProperty(SettingsManager.Settings.OSU_STABLE_FOLDER_PATH));
@@ -131,21 +134,16 @@ public class App extends Application {
         lastCollectionShown = settingsManager.getProperty(SettingsManager.Settings.LAST_COLLECTION_SHOWN);
     }
 
-    // FIXME - adasdadad
-    private static void applySettings() {
-
-        if (osuDatabaseMode == null) {
-            return;
-        }
-
-        if (osuDatabaseMode.equals("lazer")) {
-            controller.osuLazerModeToggle.setSelected(true);
-        } else if (osuDatabaseMode.equals("stable")) {
-            controller.osuStableModeToggle.setSelected(true);
-        }
+    // Update SettingsManager with the most up-to-date application setting variables.
+    private static void storeSettingVariables() {
+        settingsManager.setProperty(SettingsManager.Settings.OSU_LAZER_FOLDER_PATH, osuLazerFolderPath.toString());
+        settingsManager.setProperty(SettingsManager.Settings.OSU_STABLE_FOLDER_PATH, osuStableFolderPath.toString());
+        settingsManager.setProperty(SettingsManager.Settings.OSU_DATABASE_MODE, osuDatabaseMode);
+        settingsManager.setProperty(SettingsManager.Settings.LAST_COLLECTION_SHOWN, lastCollectionShown);
     }
 
     public static void exitApplication() {
+        storeSettingVariables();
         settingsManager.saveSettings();
         globalKeyListener.cleanUp();
         musicManager.dispose();
@@ -155,7 +153,7 @@ public class App extends Application {
 
     public static void loadSongsAsync() {
 
-        // FIXME - this is incorrect
+        // FIXME - this is incorrect? path
         boolean validOsuLazerDatabase = osuDatabaseMode.equals("lazer") && Files.exists(osuLazerFolderPath);
         boolean validOsuStableDatabase = osuDatabaseMode.equals("stable") && Files.exists(osuStableFolderPath);
 
@@ -167,12 +165,18 @@ public class App extends Application {
         Thread thread = new Thread(() -> {
             List<SongCollection> songCollectionList = loadSongCollections(osuDatabaseMode);
             for (SongCollection collection : songCollectionList) {
-                // FIXME - this is incorrect, need to have an ID as key as there may be multiple of same name in osu lazer.
                 songCollectionDict.put(collection.getID(), collection);
             }
 
-            controller.comboBox.getItems().addAll(songCollectionDict.values());
-            controller.comboBox.setOnActionImproved(event -> displayNewSongCollection(controller.comboBox.getValue()));
+            // FIXME - Move somewhere else
+            Platform.runLater(()->{
+                controller.comboBox.setItems(FXCollections.observableArrayList(songCollectionDict.values()));
+                controller.comboBox.setOnActionImproved(event -> {
+                    displayNewSongCollection(controller.comboBox.getValue());
+                });
+                controller.comboBox.getSelectionModel().selectFirst();
+            });
+
         });
 
         thread.start();
@@ -234,6 +238,19 @@ public class App extends Application {
             controller.clearGrid();
             controller.addColumnToGrid(0, nodes);
         });
+    }
+
+    // FIXME - temp test
+    public static void switchOsuDBModes(String dbMode) {
+        if (osuDatabaseMode == dbMode) {
+            return;
+        }
+
+        songCollectionDict.clear();
+        osuDatabaseMode = dbMode;
+        loadSongsAsync();
+
+        //loadSongsAsync();
     }
 
 }

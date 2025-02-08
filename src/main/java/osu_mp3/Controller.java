@@ -1,7 +1,5 @@
 package osu_mp3;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
@@ -12,7 +10,6 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.stage.DirectoryChooser;
-import org.controlsfx.control.SearchableComboBox;
 
 import java.awt.Desktop;
 import java.io.File;
@@ -34,8 +31,8 @@ public class Controller {
     @FXML MenuItem exportSongListMenuItem;
     @FXML SearchableComboBoxImproved<SongCollection> comboBox;
     @FXML ToggleGroup osuDBModeToggleGroup;
-    @FXML RadioMenuItem osuLazerModeToggle;
-    @FXML RadioMenuItem osuStableModeToggle;
+    @FXML RadioMenuItem osuLazerDBModeToggle;
+    @FXML RadioMenuItem osuStableDBModeToggle;
 
 
     public static boolean isSeekBarPressed = false;
@@ -105,18 +102,26 @@ public class Controller {
 //        });
 
         // FIXME: 2/3/2025 - Test
-        osuDBModeToggleGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
-            RadioMenuItem item = (RadioMenuItem)newValue;
-            System.out.println("ITEM SELECTED: " + item.getId());
-            App.osuDatabaseMode = item.getId();
-            App.loadSongsAsync();
-        });
 
         initializeVolumeSlider();
         initializeSeekBar();
+        initializeOsuDatabaseModeToggleGroup();
     }
 
-    int testTemp = 0;
+    private void initializeOsuDatabaseModeToggleGroup() {
+
+        String dbMode = App.osuDatabaseMode;
+        if (dbMode.equals("lazer")) {
+            osuLazerDBModeToggle.setSelected(true);
+        } else if (dbMode.equals("stable")) {
+            osuStableDBModeToggle.setSelected(true);
+        }
+
+        osuDBModeToggleGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
+            RadioMenuItem item = (RadioMenuItem)newValue;
+            App.switchOsuDBModes((String)item.getUserData());
+        });
+    }
 
     private void initializeVolumeSlider() {
         volumeSlider.setMin(0);

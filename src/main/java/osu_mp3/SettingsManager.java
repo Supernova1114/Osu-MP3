@@ -14,7 +14,7 @@ public class SettingsManager {
         OSU_LAZER_FOLDER_PATH("osuLazerFolderPath", ""),
         OSU_DATABASE_MODE("osuDatabaseMode", ""),
         SHOW_ARTISTS("showArtists", "true"),
-        LAST_COLLECTION_SHOWN("lastCollectionShown", "");
+        LAST_COLLECTION_SHOWN("lastSongCollectionShown", ""); // FIXME - may remove this
 
         private final String key;
         private final String defaultValue;
