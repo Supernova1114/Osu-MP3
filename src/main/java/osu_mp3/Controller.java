@@ -53,16 +53,33 @@ public class Controller {
     public void ExportSongList() {}
 
     @FXML
-    public void GetOsuFolder() throws Exception {
-        DirectoryChooser chooser = new DirectoryChooser();
-        chooser.setTitle("Find Osu! Folder");
-        File osuFolder = chooser.showDialog(App.primaryStage);
-        System.out.println(App.osuStableFolderPath);
-
-        if (osuFolder != null) {
-            //App.setOsuStableFolderPath(osuFolder);
-            //App.Begin();
+    public void SetOsuStableFolder() {
+        File file = chooseDirectory("Find Osu! Stable Folder");
+        if (file != null) {
+            App.osuStableFolderPath = file.toPath();
+            deselectCurrentOsuDBModeToggle();
+            osuStableDBModeToggle.setSelected(true);
         }
+    }
+
+    @FXML
+    public void SetOsuLazerFolder() {
+        File file = chooseDirectory("Find Osu! Lazer Data Folder");
+        if (file != null) {
+            App.osuLazerFolderPath = file.toPath();
+            deselectCurrentOsuDBModeToggle();
+            osuLazerDBModeToggle.setSelected(true);
+        }
+    }
+
+    private File chooseDirectory(String title) {
+        DirectoryChooser chooser = new DirectoryChooser();
+        chooser.setTitle(title);
+        return chooser.showDialog(App.primaryStage);
+    }
+
+    private void deselectCurrentOsuDBModeToggle() {
+        osuDBModeToggleGroup.getSelectedToggle().setSelected(false);
     }
 
     @FXML
@@ -95,13 +112,9 @@ public class Controller {
 
         showArtistsCheckMenu.setSelected(true);
 
-//        scrollPane.focusedProperty().addListener((observable, oldValue, newValue) -> {
-//            if (newValue){
-//                App.rootNode.requestFocus();
-//            }
-//        });
-
-        // FIXME: 2/3/2025 - Test
+        scrollPane.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue) { App.rootNode.requestFocus(); }
+        });
 
         initializeVolumeSlider();
         initializeSeekBar();
@@ -119,7 +132,9 @@ public class Controller {
 
         osuDBModeToggleGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
             RadioMenuItem item = (RadioMenuItem)newValue;
-            App.switchOsuDBModes((String)item.getUserData());
+            if (newValue != null) {
+                App.switchOsuDBModes((String)item.getUserData());
+            }
         });
     }
 

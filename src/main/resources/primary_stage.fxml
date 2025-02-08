@@ -27,14 +27,15 @@
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-              <MenuItem mnemonicParsing="false" onAction="#GetOsuFolder" text="Get Osu! Folder" />
-                  <Menu mnemonicParsing="false" text="Export">
-                    <items>
-                      <MenuItem fx:id="exportSongListMenuItem" mnemonicParsing="false" onAction="#ExportSongList" text="Song List (.txt)" />
-                    </items>
-                  </Menu>
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" onAction="#CloseProgram" text="Close" />
+              <MenuItem mnemonicParsing="false" onAction="#SetOsuLazerFolder" text="Set Osu! Lazer Folder" />
+              <MenuItem mnemonicParsing="false" onAction="#SetOsuStableFolder" text="Set Osu! Stable Folder" />
+              <Menu mnemonicParsing="false" text="Export">
+                <items>
+                  <MenuItem fx:id="exportSongListMenuItem" mnemonicParsing="false" onAction="#ExportSongList" text="Song List (.txt)" />
+                </items>
+              </Menu>
+              <SeparatorMenuItem mnemonicParsing="false" />
+              <MenuItem mnemonicParsing="false" onAction="#CloseProgram" text="Close" />
             </items>
           </Menu>
             <Menu mnemonicParsing="false" text="Mode">

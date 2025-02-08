@@ -182,26 +182,40 @@ public class App extends Application {
         thread.start();
     }
 
-    public static List<SongCollection> loadSongCollections(String version) {
+    public static List<SongCollection> loadSongCollections(String dbMode) {
 
-        if (version.equals("lazer")) {
-            System.out.println("Reading Osu! Lazer Database.");
+        if (dbMode.equals("lazer")) {
 
             Path osuFilesFolderPath = Path.of(osuLazerFolderPath.toString(), LAZER_FILES_FOLDER_NAME);
             Path realmFilePath = Path.of(osuLazerFolderPath.toString(), LAZER_DATABASE_FILE_NAME);
+
+            if (Files.notExists(osuFilesFolderPath) || Files.notExists(realmFilePath)) {
+                System.out.println("ERROR: One or more Osu! Lazer files/directories do not exist.");
+                return Collections.emptyList();
+            }
+
+            System.out.println("Reading Osu! Lazer Database.");
 
             RealmDatabaseReader realmDatabaseReader = new RealmDatabaseReader(realmFilePath, osuFilesFolderPath);
             List<SongCollection> songCollectionList = realmDatabaseReader.getSongCollections();
             realmDatabaseReader.closeDatabase();
 
+            System.out.println("Done.");
+
             return songCollectionList;
         } // if
-        else if (version.equals("stable")) {
-            System.out.println("Reading Osu! Stable Database.");
+        else if (dbMode.equals("stable")) {
 
             Path songsFolderPath = Path.of(osuStableFolderPath.toString(), SONGS_FOLDER_NAME);
             Path collectionsFilePath = Path.of(osuStableFolderPath.toString(), COLLECTIONS_FILE_NAME);
             Path databaseFilePath = Path.of(CURRENT_DIRECTORY, STABLE_DATABASE_FILE_NAME);
+
+            if (Files.notExists(songsFolderPath) || Files.notExists(collectionsFilePath)) {
+                System.out.println("ERROR: One or more Osu! Stable files/directories do not exist.");
+                return Collections.emptyList();
+            }
+
+            System.out.println("Reading Osu! Stable Database.");
 
             DatabaseManager databaseManager = new DatabaseManager(songsFolderPath, collectionsFilePath, databaseFilePath);
 
@@ -213,8 +227,14 @@ public class App extends Application {
                 databaseManager.readDatabase();
             }
 
-            return databaseManager.getSongCollections();
+            List<SongCollection> songCollectionList = databaseManager.getSongCollections();
+
+            System.out.println("Done.");
+
+            return songCollectionList;
         }
+
+        System.out.println("ERROR: Invalid Database Mode \"" + dbMode + "\". Check config file.");
 
         return Collections.emptyList();
     }
@@ -242,15 +262,10 @@ public class App extends Application {
 
     // FIXME - temp test
     public static void switchOsuDBModes(String dbMode) {
-        if (osuDatabaseMode == dbMode) {
-            return;
-        }
-
         songCollectionDict.clear();
         osuDatabaseMode = dbMode;
+        // FIXME - could be issues with async func being here if loadSongsAsync is not finished.
         loadSongsAsync();
-
-        //loadSongsAsync();
     }
 
 }
