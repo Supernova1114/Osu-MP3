@@ -1,6 +1,7 @@
 package stable_database;
 
 import org.json.JSONObject;
+import osu_mp3.HashCalculator;
 import osu_mp3.SongData;
 
 import java.io.*;
@@ -120,7 +121,7 @@ public class Beatmap {
 
         String hash = null;
         try {
-            hash = MD5Calculator.GetMD5Hash(beatmapFile);
+            hash = HashCalculator.GetMD5Hash(beatmapFile);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (NoSuchAlgorithmException e) {

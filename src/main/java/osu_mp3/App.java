@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.*;
 
 public class App extends Application {
@@ -32,16 +33,18 @@ public class App extends Application {
     private final int MIN_WINDOW_HEIGHT = 187;
     private static String programDirectory;
     private static final String SETTINGS_FILE_NAME = "settings.conf";
+    private static final String DATABASE_FOLDER_NAME = "database";
     private static final String FXML_MAIN_SCENE = "primary_stage.fxml";
 
 
     // Osu! Stable - Files
     private static final String SONGS_FOLDER_NAME = "Songs";
     private static final String COLLECTIONS_FILE_NAME = "collection.db";
-    private static final String STABLE_DATABASE_FILE_NAME = "Beatmaps.db";
+    private static final String STABLE_DATABASE_FILE_NAME = "beatmaps.db";
 
     // Osu! Lazer - Files
     private static final String LAZER_DATABASE_FILE_NAME = "client.realm";
+    private static final String LAZER_DATABASE_COPY_FILE_NAME = "client.realm";
     private static final String LAZER_FILES_FOLDER_NAME = "files";
 
     public static Stage primaryStage;
@@ -67,8 +70,16 @@ public class App extends Application {
         globalKeyListener = new GlobalKeyListener();
 
         initializeSettings();
+        initializeFileStructure();
         initializeGUI(stage);
         loadSongsAsync();
+    }
+
+    private void initializeFileStructure() throws IOException {
+        Path databaseFolder = Path.of(programDirectory, DATABASE_FOLDER_NAME);
+        if (Files.notExists(databaseFolder)) {
+            Files.createDirectory(databaseFolder);
+        }
     }
 
     private void initializeGUI(Stage stage) throws IOException {
@@ -181,6 +192,7 @@ public class App extends Application {
 
             Path osuFilesFolderPath = Path.of(osuLazerFolderPath.toString(), LAZER_FILES_FOLDER_NAME);
             Path realmFilePath = Path.of(osuLazerFolderPath.toString(), LAZER_DATABASE_FILE_NAME);
+            Path realmCopyFilePath = Path.of(programDirectory, DATABASE_FOLDER_NAME, LAZER_DATABASE_COPY_FILE_NAME);
 
             if (Files.notExists(osuFilesFolderPath) || Files.notExists(realmFilePath)) {
                 showAlert(Alert.AlertType.INFORMATION, "Please set Osu! Lazer data folder.", "(File > Set Osu! Lazer Folder)");
@@ -189,7 +201,15 @@ public class App extends Application {
 
             System.out.println("Reading Osu! Lazer Database.");
 
-            RealmDatabaseReader realmDatabaseReader = new RealmDatabaseReader(realmFilePath, osuFilesFolderPath);
+            // Copy realm file as we do not want to touch original file (Cannot open realm as readonly).
+            try {
+                System.out.println("Copying Database.");
+                Files.copy(realmFilePath, realmCopyFilePath, StandardCopyOption.REPLACE_EXISTING);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            RealmDatabaseReader realmDatabaseReader = new RealmDatabaseReader(realmCopyFilePath, osuFilesFolderPath);
             List<SongCollection> songCollectionList = realmDatabaseReader.getSongCollections();
             realmDatabaseReader.closeDatabase();
 
@@ -201,7 +221,7 @@ public class App extends Application {
 
             Path songsFolderPath = Path.of(osuStableFolderPath.toString(), SONGS_FOLDER_NAME);
             Path collectionsFilePath = Path.of(osuStableFolderPath.toString(), COLLECTIONS_FILE_NAME);
-            Path databaseFilePath = Path.of(programDirectory, STABLE_DATABASE_FILE_NAME);
+            Path databaseFilePath = Path.of(programDirectory, DATABASE_FOLDER_NAME, STABLE_DATABASE_FILE_NAME);
 
             if (Files.notExists(songsFolderPath) || Files.notExists(collectionsFilePath)) {
                 showAlert(Alert.AlertType.INFORMATION, "Please set Osu! Stable installation folder.", "(File > Set Osu! Stable Folder)");

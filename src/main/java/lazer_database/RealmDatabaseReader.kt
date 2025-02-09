@@ -4,9 +4,12 @@ import io.realm.kotlin.Realm
 import io.realm.kotlin.RealmConfiguration
 import io.realm.kotlin.ext.query
 import io.realm.kotlin.query.RealmResults
+import osu_mp3.HashCalculator
 import osu_mp3.SongCollection
 import osu_mp3.SongData
+import java.nio.file.Files
 import java.nio.file.Path
+import java.nio.file.StandardCopyOption
 import kotlin.io.path.name
 
 // References:
@@ -22,6 +25,7 @@ class RealmDatabaseReader(private val realmFilePath: Path, private val osuFilesP
     private var realmDB: Realm
 
     init {
+
         val config: RealmConfiguration = RealmConfiguration.Builder(
             schema = setOf(
                 BeatmapSet::class,
@@ -34,7 +38,7 @@ class RealmDatabaseReader(private val realmFilePath: Path, private val osuFilesP
                 RealmNamedFileUsage::class,
                 File::class,
                 BeatmapCollection::class
-            )
+            ),
         )
         .name(realmFilePath.name)
         .directory(realmFilePath.parent.toString())
@@ -42,6 +46,7 @@ class RealmDatabaseReader(private val realmFilePath: Path, private val osuFilesP
         .build()
 
         realmDB = Realm.open(config)
+
     }
 
     fun closeDatabase() {
@@ -82,11 +87,12 @@ class RealmDatabaseReader(private val realmFilePath: Path, private val osuFilesP
 
     fun getSongCollections(): List<SongCollection> {
 
+        println("Reading Database.")
+
         val beatmapCollections: RealmResults<BeatmapCollection> = getBeatmapCollections()
         val songCollections: MutableList<SongCollection> = mutableListOf()
 
         for (beatmapCollection in beatmapCollections) {
-
             val songList: MutableList<SongData> = mutableListOf()
 
             for (hash: String? in beatmapCollection.BeatmapMD5Hashes) {

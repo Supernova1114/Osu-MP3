@@ -1,4 +1,4 @@
-package stable_database;
+package osu_mp3;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class MD5Calculator {
+public class HashCalculator {
 
 
     private static String getFileChecksum(MessageDigest digest, File file) throws IOException
@@ -52,6 +52,11 @@ public class MD5Calculator {
 
         //see checksum
         return checksum;
+    }
+
+    public static String GetSHA256Hash(File file) throws NoSuchAlgorithmException, IOException {
+        MessageDigest sha256Digest = MessageDigest.getInstance("SHA-256");
+        return getFileChecksum(sha256Digest, file);
     }
 
 

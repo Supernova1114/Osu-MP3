@@ -2,14 +2,23 @@ package osu_mp3;
 
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.image.PixelReader;
+import javafx.scene.image.WritableImage;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 
 import javafx.scene.text.TextFlow;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class SongPane extends Pane {
 
@@ -42,6 +51,25 @@ public class SongPane extends Pane {
 
         label = new Label();
         label.setGraphic(textFlow);
+
+        //setMinHeight(100);
+
+//        try {
+//            FileInputStream fis = new FileInputStream("D:\\Program Files\\osu!\\Songs\\1899277 Indila - Derniere Danse\\wp7313986.jpg");
+//            Image image = new Image(fis, 2560, 1440, true, false);
+//            fis.close();
+////            PixelReader reader = image.getPixelReader();
+////            WritableImage newImage = new WritableImage(reader, 0, 0, 2560, 100);
+//
+//
+//            //Setting the image view
+//            ImageView imageView = new ImageView(image);
+//            imageView.setFitWidth(300);
+//            imageView.setFitHeight(100);
+//            getChildren().add(imageView);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
         getChildren().add(label);
 

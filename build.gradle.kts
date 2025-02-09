@@ -50,9 +50,18 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.0")
 
     // Java FX 22 requires minimum JDK 17
-    implementation("org.openjfx:javafx-fxml:22.0.2")
-    implementation("org.openjfx:javafx-graphics:22.0.2")
-    implementation("org.openjfx:javafx-media:22.0.2")
+
+    implementation("org.openjfx:javafx-fxml:22.0.2:win")
+    implementation("org.openjfx:javafx-graphics:22.0.2:win")
+    implementation("org.openjfx:javafx-media:22.0.2:win")
+
+    implementation("org.openjfx:javafx-fxml:22.0.2:linux")
+    implementation("org.openjfx:javafx-graphics:22.0.2:linux")
+    implementation("org.openjfx:javafx-media:22.0.2:linux")
+
+    implementation("org.openjfx:javafx-fxml:22.0.2:mac")
+    implementation("org.openjfx:javafx-graphics:22.0.2:mac")
+    implementation("org.openjfx:javafx-media:22.0.2:mac")
 
     // Needed by Realm DB
     implementation("org.jetbrains.kotlinx:atomicfu:0.24.0")
