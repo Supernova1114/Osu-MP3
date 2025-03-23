@@ -15,17 +15,15 @@ import javafx.stage.Stage;
 import lazer_database.RealmDatabaseReader;
 import stable_database.DatabaseManager;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.*;
 
 public class App extends Application {
 
-    private final String APP_VERSION = "1.x - WIP";
+    private final String APP_VERSION = "1.0.0";
     private final String APP_TITLE = "Osu! MP3 v" + APP_VERSION;
     private final int SCENE_WIDTH = 600;
     private final int SCENE_HEIGHT = 600;
@@ -57,8 +55,10 @@ public class App extends Application {
     public static Path osuStableFolderPath = null;
     public static Path osuLazerFolderPath = null;
     public static String osuDatabaseMode = null;
-    public static String lastCollectionShown = null;
     public static LinkedHashMap<Integer, SongCollection> songCollectionDict = new LinkedHashMap<>();
+    public static HashMap<SongData, SongPane> songPaneLookupDict = new HashMap<>();
+
+    private static volatile boolean isDoneLoadingSongs = true;
 
 
     @Override
@@ -144,7 +144,6 @@ public class App extends Application {
         osuLazerFolderPath = Path.of(settingsManager.getProperty(SettingsManager.Settings.OSU_LAZER_FOLDER_PATH));
         osuStableFolderPath = Path.of(settingsManager.getProperty(SettingsManager.Settings.OSU_STABLE_FOLDER_PATH));
         osuDatabaseMode = settingsManager.getProperty(SettingsManager.Settings.OSU_DATABASE_MODE);
-        lastCollectionShown = settingsManager.getProperty(SettingsManager.Settings.LAST_COLLECTION_SHOWN);
     }
 
     // Update SettingsManager with the most up-to-date application setting variables.
@@ -152,7 +151,6 @@ public class App extends Application {
         settingsManager.setProperty(SettingsManager.Settings.OSU_LAZER_FOLDER_PATH, osuLazerFolderPath.toString());
         settingsManager.setProperty(SettingsManager.Settings.OSU_STABLE_FOLDER_PATH, osuStableFolderPath.toString());
         settingsManager.setProperty(SettingsManager.Settings.OSU_DATABASE_MODE, osuDatabaseMode);
-        settingsManager.setProperty(SettingsManager.Settings.LAST_COLLECTION_SHOWN, lastCollectionShown);
     }
 
     public static void exitApplication() {
@@ -164,7 +162,9 @@ public class App extends Application {
         System.exit(0);
     }
 
-    public static void loadSongsAsync() {
+    private static void loadSongsAsync() {
+
+        controller.disableMenuControls(true);
 
         Thread thread = new Thread(() -> {
             List<SongCollection> songCollectionList = loadSongCollections(osuDatabaseMode);
@@ -172,21 +172,14 @@ public class App extends Application {
                 songCollectionDict.put(collection.getID(), collection);
             }
 
-            // FIXME - Move somewhere else
-            Platform.runLater(()->{
-                controller.comboBox.setItems(FXCollections.observableArrayList(songCollectionDict.values()));
-                controller.comboBox.setOnActionImproved(event -> {
-                    displayNewSongCollection(controller.comboBox.getValue());
-                });
-                controller.comboBox.getSelectionModel().selectFirst();
-            });
-
+            controller.setItemsComboBox(songCollectionDict.values());
+            controller.disableMenuControls(false);
         });
 
         thread.start();
     }
 
-    public static List<SongCollection> loadSongCollections(String dbMode) {
+    private static List<SongCollection> loadSongCollections(String dbMode) {
 
         if (dbMode.equals("lazer")) {
 
@@ -199,21 +192,26 @@ public class App extends Application {
                 return Collections.emptyList();
             }
 
-            System.out.println("Reading Osu! Lazer Database.");
+            System.out.println("Reading Osu! Lazer Database");
 
             // Copy realm file as we do not want to touch original file (Cannot open realm as readonly).
             try {
-                System.out.println("Copying Database.");
+                System.out.println("Copying Osu! Lazer Database");
+                controller.setStatusLabel("Copying Osu! Lazer Database");
+
                 Files.copy(realmFilePath, realmCopyFilePath, StandardCopyOption.REPLACE_EXISTING);
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
+            controller.setStatusLabel("Reading Osu! Lazer Database");
+
             RealmDatabaseReader realmDatabaseReader = new RealmDatabaseReader(realmCopyFilePath, osuFilesFolderPath);
             List<SongCollection> songCollectionList = realmDatabaseReader.getSongCollections();
             realmDatabaseReader.closeDatabase();
 
-            System.out.println("Done.");
+            System.out.println("Done");
+            controller.setStatusLabel("");
 
             return songCollectionList;
         } // if
@@ -233,32 +231,48 @@ public class App extends Application {
             DatabaseManager databaseManager = new DatabaseManager(songsFolderPath, collectionsFilePath, databaseFilePath);
 
             if (Files.exists(databaseFilePath)) {
+                controller.setStatusLabel("Reading Osu! Stable Database");
                 databaseManager.readDatabase();
+                controller.setStatusLabel("Syncing Osu! Stable Database");
                 databaseManager.syncDatabase();
             } else {
+                controller.setStatusLabel("Creating Osu! Stable Database (May take some time)");
                 databaseManager.createDatabase();
+                controller.setStatusLabel("Reading Osu! Stable Database");
                 databaseManager.readDatabase();
             }
 
             List<SongCollection> songCollectionList = databaseManager.getSongCollections();
 
+            controller.setStatusLabel("");
             System.out.println("Done.");
 
             return songCollectionList;
         }
 
         System.out.println("WARNING: Invalid Database Mode \"" + dbMode + "\".");
+        controller.setStatusLabel("Please Select Osu! Database Mode");
 
         return Collections.emptyList();
     }
 
-    private static void displayNewSongCollection(SongCollection collection) {
+    public static void displayNewSongCollection(SongCollection collection) {
 
         List<Node> nodes = new ArrayList<>();
 
         // Songs
         for (SongData songData : collection.getSongList()) {
-            nodes.add(new SongPane(collection.getID(), songData));
+
+            // Create new SongPane if it's not already in dict
+            if (songPaneLookupDict.containsKey(songData)) {
+                nodes.add(songPaneLookupDict.get(songData));
+            }
+            else
+            {
+                SongPane pane = new SongPane(collection.getID(), songData);
+                songPaneLookupDict.put(songData, pane);
+                nodes.add(pane);
+            }
         }
 
         Platform.runLater(()->{
@@ -267,12 +281,14 @@ public class App extends Application {
         });
     }
 
-    // FIXME - temp test
     public static void switchOsuDBModes(String dbMode) {
+
+        MusicManager.getInstance().stop();
+        songPaneLookupDict.clear();
         songCollectionDict.clear();
         controller.clearGrid();
         osuDatabaseMode = dbMode;
-        // FIXME - could be issues with async func being here if loadSongsAsync is not finished.
+        // FIXME - could be issues with async func being here if called too quickly
         loadSongsAsync();
     }
 

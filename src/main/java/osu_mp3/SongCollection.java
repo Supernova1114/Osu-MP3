@@ -1,5 +1,7 @@
 package osu_mp3;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -14,6 +16,17 @@ public class SongCollection {
         this.name = name;
         this.ID = lastID++;
         this.songList = songList;
+    }
+
+    private SongCollection(String name, int ID, List<SongData> songList) {
+        this.name = name;
+        this.ID = ID;
+        this.songList = songList;
+    }
+
+    // Copy constructor
+    public SongCollection copy() {
+        return new SongCollection(name, ID, new ArrayList<>(songList));
     }
 
     public int size() {

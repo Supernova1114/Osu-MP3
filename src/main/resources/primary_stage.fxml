@@ -3,7 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.geometry.Point3D?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckMenuItem?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -13,20 +12,21 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.ToggleGroup?>
-<?import org.controlsfx.control.SearchableComboBox?>
+
+<!--<?import org.controlsfx.control.SearchableComboBox?>-->
 <?import osu_mp3.SearchableComboBoxImproved?>
 
 <BorderPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="osu_mp3.Controller">
    <top>
       <MenuBar focusTraversable="false" prefHeight="0.0" prefWidth="600.0" BorderPane.alignment="CENTER">
         <menus>
-          <Menu mnemonicParsing="false" text="File">
+          <Menu fx:id="fileMenu" mnemonicParsing="false" text="File">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#SetOsuLazerFolder" text="Set Osu! Lazer Folder" />
               <MenuItem mnemonicParsing="false" onAction="#SetOsuStableFolder" text="Set Osu! Stable Folder" />
@@ -39,25 +39,20 @@
               <MenuItem mnemonicParsing="false" onAction="#CloseProgram" text="Close" />
             </items>
           </Menu>
-            <Menu mnemonicParsing="false" text="Mode">
+            <Menu fx:id="modeMenu" mnemonicParsing="false" text="Mode">
               <items>
-                  <RadioMenuItem fx:id="osuLazerDBModeToggle" userData="lazer" mnemonicParsing="false" text="Osu! Lazer">
+                  <RadioMenuItem fx:id="osuLazerDBModeToggle" mnemonicParsing="false" text="Osu! Lazer" userData="lazer">
                       <toggleGroup>
-                          <ToggleGroup fx:id="osuDBModeToggleGroup"/>
+                          <ToggleGroup fx:id="osuDBModeToggleGroup" />
                       </toggleGroup>
                   </RadioMenuItem>
-                  <RadioMenuItem fx:id="osuStableDBModeToggle" userData="stable" mnemonicParsing="false" text="Osu! Stable">
+                  <RadioMenuItem fx:id="osuStableDBModeToggle" mnemonicParsing="false" text="Osu! Stable" userData="stable">
                     <toggleGroup>
-                        <fx:reference source="osuDBModeToggleGroup"/>
+                        <fx:reference source="osuDBModeToggleGroup" />
                     </toggleGroup>
                   </RadioMenuItem>
               </items>
             </Menu>
-          <Menu mnemonicParsing="false" text="View">
-            <items>
-                  <CheckMenuItem fx:id="showArtistsCheckMenu" disable="true" mnemonicParsing="false" onAction="#ShowArtists" text="Show Artists" />
-            </items>
-          </Menu>
           <Menu mnemonicParsing="false" text="Help">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#GotoGithub" text="About" />
@@ -117,6 +112,11 @@
                   <Label fx:id="songTitleLabel" alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="600.0" style="-fx-background-color: #fafafa;" text="Song Title" textAlignment="RIGHT" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                      <padding>
                         <Insets right="10.0" top="5.0" />
+                     </padding>
+                  </Label>
+                  <Label fx:id="statusLabel" text="Status">
+                     <padding>
+                        <Insets left="10.0" top="5.0" />
                      </padding>
                   </Label>
                </children>

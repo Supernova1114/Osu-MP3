@@ -7,7 +7,7 @@ public class MusicQueue {
     private int currentIndex = 0;
 
     public MusicQueue(SongCollection collection) {
-        this.collection = collection;
+        this.collection = collection.copy();
     }
 
     public void moveToNextIndex(SongData songData) {

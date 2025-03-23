@@ -1,5 +1,7 @@
 package osu_mp3;
 
+import javafx.application.Platform;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
@@ -19,6 +21,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URI;
 import java.time.Duration;
+import java.util.Collection;
 import java.util.List;
 
 public class Controller {
@@ -28,7 +31,7 @@ public class Controller {
     @FXML Button pauseButton;
     @FXML ScrollPane scrollPane;
     @FXML Label songTitleLabel;
-    @FXML CheckMenuItem showArtistsCheckMenu;
+    @FXML Label statusLabel;
     @FXML Slider seekBar;
     @FXML Label maxTimeLabel;
     @FXML Label currentTimeLabel;
@@ -37,6 +40,8 @@ public class Controller {
     @FXML ToggleGroup osuDBModeToggleGroup;
     @FXML RadioMenuItem osuLazerDBModeToggle;
     @FXML RadioMenuItem osuStableDBModeToggle;
+    @FXML Menu modeMenu;
+    @FXML Menu fileMenu;
 
 
     public static boolean isSeekBarPressed = false;
@@ -130,27 +135,68 @@ public class Controller {
     @FXML
     public void TogglePauseAction() { MusicManager.getInstance().togglePause(); }
 
-
-    @FXML
-    public void ShowArtists(){}
-
     // Runs prior to App start() method.
     public void initialize() {
         ColumnConstraints columnConstraints = new ColumnConstraints();
         columnConstraints.setPercentWidth(100);
         gridPane.getColumnConstraints().add(columnConstraints);
 
-        songTitleLabel.setText("Song Title");
-        pauseButton.setText(">");
-        showArtistsCheckMenu.setSelected(true);
-
         scrollPane.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) { App.rootNode.requestFocus(); }
         });
 
+        setStatusLabel("");
         initializeVolumeSlider();
         initializeSeekBar();
+        audioControlsReset();
         initializeOsuDatabaseModeToggleGroup();
+        initializeComboBox();
+    }
+
+    private void initializeComboBox() {
+        comboBox.setOnActionImproved(event -> App.displayNewSongCollection(comboBox.getValue()));
+    }
+
+    public void setItemsComboBox(Collection<SongCollection> items) {
+        Platform.runLater(()->{
+            comboBox.setItems(FXCollections.observableArrayList(items));
+            comboBox.getSelectionModel().selectFirst();
+        });
+    }
+
+    public void disableMenuControls(boolean disable) {
+        Platform.runLater(() -> {
+            modeMenu.setDisable(disable);
+            fileMenu.setDisable(disable);
+        });
+    }
+
+    public void setStatusLabel(String text) {
+        Platform.runLater(() -> {
+            if (text.isEmpty()) {
+                statusLabel.setText("");
+            } else {
+                statusLabel.setText("Status: " + text);
+            }
+        });
+    }
+
+    public void audioControlsReset() {
+        pauseButton.setText(">");
+        songTitleLabel.setText("");
+        prepareSeekBar(Duration.ZERO);
+    }
+
+    public void audioControlsPlay() {
+        pauseButton.setText(">");
+    }
+
+    public void audioControlsPause() {
+        pauseButton.setText("| |");
+    }
+
+    public void audioControlsSetSongTitle(String title) {
+        App.controller.songTitleLabel.setText("Playing: " + title);
     }
 
     private void initializeOsuDatabaseModeToggleGroup() {

@@ -55,13 +55,13 @@ dependencies {
     implementation("org.openjfx:javafx-graphics:22.0.2:win")
     implementation("org.openjfx:javafx-media:22.0.2:win")
 
-    implementation("org.openjfx:javafx-fxml:22.0.2:linux")
-    implementation("org.openjfx:javafx-graphics:22.0.2:linux")
-    implementation("org.openjfx:javafx-media:22.0.2:linux")
-
-    implementation("org.openjfx:javafx-fxml:22.0.2:mac")
-    implementation("org.openjfx:javafx-graphics:22.0.2:mac")
-    implementation("org.openjfx:javafx-media:22.0.2:mac")
+//    implementation("org.openjfx:javafx-fxml:22.0.2:linux")
+//    implementation("org.openjfx:javafx-graphics:22.0.2:linux")
+//    implementation("org.openjfx:javafx-media:22.0.2:linux")
+//
+//    implementation("org.openjfx:javafx-fxml:22.0.2:mac")
+//    implementation("org.openjfx:javafx-graphics:22.0.2:mac")
+//    implementation("org.openjfx:javafx-media:22.0.2:mac")
 
     // Needed by Realm DB
     implementation("org.jetbrains.kotlinx:atomicfu:0.24.0")
@@ -101,8 +101,8 @@ java {
     modularity.inferModulePath = false
 }
 
-group = "org.example"
-version = "0.7.x"
+group = "org.supernova1114"
+version = "1.0.0"
 description = "OsuMP3"
 java.sourceCompatibility = JavaVersion.VERSION_17
 

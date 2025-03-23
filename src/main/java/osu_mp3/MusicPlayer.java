@@ -26,6 +26,11 @@ public class MusicPlayer {
     private boolean isPlayerInitialized = false;
     private Duration audioDuration = null;
 
+    public MusicPlayer() {
+        AudioPlayerFactory.setJavaEnabled(true);
+        AudioPlayerFactory.setJavaFXEnabled(false);
+        AudioPlayerFactory.setNativeEnabled(false);
+    }
 
     public void playMedia(String soundFilePath) {
         initializeAudioPlayer(soundFilePath);
@@ -35,17 +40,12 @@ public class MusicPlayer {
     private void initializeAudioPlayer(String soundFilePath) {
 
         try {
-            isPlayerInitialized = false;
             dispose();
-
-            AudioPlayerFactory.setJavaEnabled(true);
-            AudioPlayerFactory.setJavaFXEnabled(false);
-            AudioPlayerFactory.setNativeEnabled(false);
 
             Logger.getLogger("com.tagtraum.audioplayer4j.java").setLevel(Level.OFF);
             Logger.getLogger("com.tagtraum.ffsampledsp").setLevel(Level.OFF);
 
-            audioPlayer = AudioPlayerFactory.open(formatFilePath(Path.of(soundFilePath)).toUri());
+            audioPlayer = AudioPlayerFactory.open(Path.of(soundFilePath).toUri());
 
             try {
                 // Alternate library to get duration of mp3 files as AudioPlayer library gives a poor duration estimate.
@@ -85,7 +85,10 @@ public class MusicPlayer {
     }
 
     public void dispose() {
-        if (audioPlayer != null) { audioPlayer.close(); }
+        if (audioPlayer != null) {
+            isPlayerInitialized = false;
+            audioPlayer.close();
+        }
     }
 
     public void play() {
@@ -154,4 +157,5 @@ public class MusicPlayer {
     public Duration getDuration() {
         return audioDuration != null ? audioDuration : Duration.ZERO;
     }
+
 }

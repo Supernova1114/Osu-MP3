@@ -1,6 +1,9 @@
 package osu_mp3;
 
 import javafx.application.Platform;
+import javafx.scene.paint.Color;
+
+import java.time.Duration;
 
 public class MusicManager {
 
@@ -22,13 +25,12 @@ public class MusicManager {
         musicPlayer.setEndOfMediaCallback((n)->{
             nextSong();
             if (musicQueue.isAtLastSong()) {
-                // TODO - this should be pause only
                 togglePause();
             }
             return null;
         });
 
-        musicPlayer.setTimeChangedCallback((duration)->{
+        musicPlayer.setTimeChangedCallback((duration) -> {
             if (App.controller.isSeekBarPressed == false) {
                 Platform.runLater(() -> App.controller.setSeekBarPosition(duration));
             }
@@ -45,6 +47,16 @@ public class MusicManager {
 
         // If this is a song from a different collection, create a new playlist
         if (currentCollectionID != pane.collectionID) {
+
+            currentSong = null;
+
+            // Clear color from grid of previous collection
+            if (App.songCollectionDict.containsKey(currentCollectionID)) {
+                for (SongData songData : App.songCollectionDict.get(currentCollectionID).getSongList()) {
+                    App.songPaneLookupDict.get(songData).resetState();
+                }
+            }
+
             currentCollectionID = pane.collectionID;
 
             // find collection
@@ -55,25 +67,38 @@ public class MusicManager {
             musicQueue.moveToNextIndex(pane.songData);
         }
 
-        currentSong = pane.songData;
-        musicPlayer.playMedia(pane.songData.filePath);
+        playMedia(pane.songData);
     }
 
     public void playMedia(SongData songData) {
-        currentSong = songData;
+
+        if (currentSong != null) {
+            App.songPaneLookupDict.get(currentSong).setStatePlayed();
+        }
+
+        App.songPaneLookupDict.get(songData).setStatePlaying();
+
         musicPlayer.playMedia(songData.filePath);
+        currentSong = songData;
     }
 
     private void onStartOfMedia() {
         Platform.runLater(() -> {
             App.controller.prepareSeekBar(musicPlayer.getDuration());
-            App.controller.pauseButton.setText("| |");
-            App.controller.songTitleLabel.setText("Playing: " + currentSong.artistName + " - " + currentSong.songName);
+            App.controller.audioControlsPause();
+            App.controller.audioControlsSetSongTitle(currentSong.artistName + " - " + currentSong.songName);
         });
     }
 
     public void togglePause() {
-        Platform.runLater(() -> App.controller.pauseButton.setText(musicPlayer.togglePause() ? "| |" : ">"));
+        boolean result = musicPlayer.togglePause();
+        Platform.runLater(() -> {
+            if (result) {
+                App.controller.audioControlsPause();
+            } else {
+                App.controller.audioControlsPlay();
+            }
+        });
     }
 
     public void nextSong() {
@@ -98,6 +123,15 @@ public class MusicManager {
 
     public void dispose() {
         musicPlayer.dispose();
+    }
+
+    public void stop() {
+        musicQueue = null;
+        currentSong = null;
+        musicPlayer.dispose();
+        Platform.runLater(() -> {
+            App.controller.audioControlsReset();
+        });
     }
 
     public static MusicManager getInstance() {

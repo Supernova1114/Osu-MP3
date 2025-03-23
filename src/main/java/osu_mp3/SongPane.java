@@ -91,8 +91,20 @@ public class SongPane extends Pane {
 
     }
 
-    public void setLabelColor(Color color) {
-        ((TextFlow)label.getGraphic()).getChildren().forEach(text -> ((Text)text).setFill(Color.RED));
+    private void setLabelColor(Color color) {
+        ((TextFlow)label.getGraphic()).getChildren().forEach(text -> ((Text)text).setFill(color));
+    }
+
+    public void setStatePlaying() {
+        setLabelColor(Color.RED);
+    }
+
+    public void setStatePlayed() {
+        setLabelColor(Color.DARKBLUE);
+    }
+
+    public void resetState() {
+        setLabelColor(Color.BLACK);
     }
 
     public String toString() {
