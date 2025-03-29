@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
@@ -33,6 +34,7 @@ public class App extends Application {
     private static final String SETTINGS_FILE_NAME = "settings.conf";
     private static final String DATABASE_FOLDER_NAME = "database";
     private static final String FXML_MAIN_SCENE = "primary_stage.fxml";
+    private static final String APP_ICON = "app_icon.png";
 
 
     // Osu! Stable - Files
@@ -57,8 +59,6 @@ public class App extends Application {
     public static String osuDatabaseMode = null;
     public static LinkedHashMap<Integer, SongCollection> songCollectionDict = new LinkedHashMap<>();
     public static HashMap<SongData, SongPane> songPaneLookupDict = new HashMap<>();
-
-    private static volatile boolean isDoneLoadingSongs = true;
 
 
     @Override
@@ -118,6 +118,7 @@ public class App extends Application {
         });
 
         primaryStage.setTitle(APP_TITLE);
+        primaryStage.getIcons().add(new Image(App.class.getResourceAsStream("/" + APP_ICON)));
         primaryStage.setScene(mainScene);
         primaryStage.show();
     }
@@ -282,13 +283,11 @@ public class App extends Application {
     }
 
     public static void switchOsuDBModes(String dbMode) {
-
         MusicManager.getInstance().stop();
         songPaneLookupDict.clear();
         songCollectionDict.clear();
         controller.clearGrid();
         osuDatabaseMode = dbMode;
-        // FIXME - could be issues with async func being here if called too quickly
         loadSongsAsync();
     }
 
