@@ -5,7 +5,8 @@
 ![Release Version](https://img.shields.io/github/v/release/Supernova1114/Osu-MP3)
 
 **Music player that enables playback from your Osu! directory!**
-
+<br>
+<br>
 **Supports: Osu! Lazer and Osu! Stable.**
 <br>
 **Requires: Java 17+**
@@ -14,7 +15,7 @@
 
 ![Application Image](repo_images/app-v1.0.0.png)
 
-**How to use:**
+## How to use:
 1. Open Osu!
 2. Add Osu! beatmaps to a collection to be used as a playlist. (Osu! Stable: Close Osu! to apply collection changes).
 3. Place Osu!-MP3 jar file in a folder, as the program will create items within the same directory.
@@ -27,16 +28,16 @@ Osu! Stable Mode will initialize and begin building a cache of songs (This may t
 9. You can switch between Osu! Lazer and Osu! Stable modes using the Mode Menu.
 
 
-**Controls:**
+## Controls:
 * Up and down arrow keys for volume.
 * Space key to play/pause.
 * Keyboard and headphone media keys for audio playback (Play/Pause, SkipNext/SkipPrev) (Even while program is minimized).
 * Click and drag or use mouse-wheel to scroll song panel.
 
-**Notes:**
+## Notes:
 * For headphones with a single media button, the media controls are usually: double-click = next song, triple-click = prev song, single-click = play/pause
 
-Uses libraries:
+## Libraries Used:
 * https://github.com/tulskiy/jkeymaster for media button keystrokes.
 * https://github.com/hendriks73/ffsampledsp and https://github.com/hendriks73/audioplayer4j for .OGG and .MP3 audio playback.
 * https://github.com/mpatric/mp3agic for obtaining MP3 audio length.
