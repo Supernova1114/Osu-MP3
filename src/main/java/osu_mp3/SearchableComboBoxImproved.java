@@ -3,10 +3,6 @@ package osu_mp3;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.ContentDisplay;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
 import org.controlsfx.control.SearchableComboBox;
 
 // Notes: Cannot override setOnAction and setOnHidden from SearchableComboBox as the methods are "final".

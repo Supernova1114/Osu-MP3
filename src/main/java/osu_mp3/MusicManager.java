@@ -1,9 +1,6 @@
 package osu_mp3;
 
 import javafx.application.Platform;
-import javafx.scene.paint.Color;
-
-import java.time.Duration;
 
 public class MusicManager {
 
