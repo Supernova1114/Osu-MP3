@@ -13,8 +13,6 @@
 <br>
 **Tested: Windows 10**
 
-![Application Image](repo_images/app-v1.0.0.png)
-
 ## How to use:
 1. Open Osu!
 2. Add Osu! beatmaps to a collection to be used as a playlist. (Osu! Stable: Close Osu! to apply collection changes).
@@ -44,3 +42,6 @@ Osu! Stable Mode will initialize and begin building a cache of songs (This may t
 * https://github.com/controlsfx/controlsfx for Searchable ComboBox
 * https://github.com/openjdk/jfx for GUI components.
 * https://github.com/realm/realm-kotlin for reading Osu! Lazer database.
+
+## Preview:
+![Application Image](repo_images/app-v1.0.0.png)
