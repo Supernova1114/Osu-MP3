@@ -37,7 +37,7 @@ Osu! Stable Mode will initialize and begin building a cache of songs (This may t
 
 ## Libraries Used:
 * https://github.com/tulskiy/jkeymaster for media button keystrokes.
-* https://github.com/hendriks73/ffsampledsp and https://github.com/hendriks73/audioplayer4j for .OGG and .MP3 audio playback.
+* https://github.com/hendriks73/ffsampledsp (modified) and https://github.com/hendriks73/audioplayer4j for .OGG and .MP3 audio playback.
 * https://github.com/mpatric/mp3agic for obtaining MP3 audio length.
 * https://github.com/controlsfx/controlsfx for Searchable ComboBox
 * https://github.com/openjdk/jfx for GUI components.

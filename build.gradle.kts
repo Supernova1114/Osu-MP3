@@ -103,7 +103,7 @@ java {
 
 group = "org.supernova1114"
 version = "1.0.0"
-description = "OsuMP3"
+description = "An Osu! music player."
 java.sourceCompatibility = JavaVersion.VERSION_17
 
 publishing {

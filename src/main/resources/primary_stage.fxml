@@ -22,7 +22,7 @@
 <!--<?import org.controlsfx.control.SearchableComboBox?>-->
 <?import osu_mp3.SearchableComboBoxImproved?>
 
-<BorderPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="osu_mp3.Controller">
+<BorderPane xmlns="http://javafx.com/javafx/22.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="osu_mp3.Controller">
    <top>
       <MenuBar focusTraversable="false" prefHeight="0.0" prefWidth="600.0" BorderPane.alignment="CENTER">
         <menus>
