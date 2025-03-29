@@ -10,7 +10,7 @@ target
 
 # Build stuffs
 build/
-.gradle/
+#.gradle/
 
 
 # User-specific stuff
