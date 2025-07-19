@@ -20,7 +20,7 @@
 4. Start Osu!-MP3.
 5. For Osu! Stable: Go to (File > Set Osu! Stable Folder) and set this to the Osu! Stable installation directory.
 Osu! Stable Mode will initialize and begin building a cache of songs (This may take a few minutes to process).
-6. For Osu! Lazer: Go to (File > Set Osu! Lazer Folder) and set this to the Osu! Lazer "data directory" (Not installation directory).
+6. For Osu! Lazer: Go to (File > Set Osu! Lazer Folder) and set this to the Osu! Lazer "data directory" (Not installation directory). Default locations can be found here: https://osu.ppy.sh/wiki/en/Client/Release_stream/Lazer/File_storage
 7. Click a song name to begin playing a shuffled playlist of the selected collection.
 8. You can switch between collections using the combo-box near the top of the window.
 9. You can switch between Osu! Lazer and Osu! Stable modes using the Mode Menu.
